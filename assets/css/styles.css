@@ -312,6 +312,35 @@ strong { color: var(--grey-900); font-weight: 700; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* =========================================================================
+   PRELOADER — brand logo loading screen
+   ========================================================================= */
+.preloader {
+  position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center;
+  background: var(--bg-dark);
+  transition: opacity .7s var(--ease), visibility .7s var(--ease);
+}
+.preloader.is-done { opacity: 0; visibility: hidden; }
+.pl-skip .preloader { display: none; }
+.preloader__inner { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+.preloader__logo {
+  width: clamp(220px, 32vw, 340px); height: auto; display: block;
+  opacity: 0; transform: translateY(6px);
+  animation: plLogo .9s var(--ease) .05s forwards;
+}
+@keyframes plLogo { to { opacity: 1; transform: none; } }
+.preloader__bar { position: relative; width: 190px; height: 2px; overflow: hidden; background: rgba(255,255,255,.12); }
+.preloader__bar::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: -40%; width: 40%;
+  background: var(--red); box-shadow: 0 0 14px 1px rgba(193,24,25,.6);
+  animation: plBar 1.15s var(--ease) infinite;
+}
+@keyframes plBar { 0% { left: -40%; } 100% { left: 100%; } }
+@media (prefers-reduced-motion: reduce) {
+  .preloader__logo { animation: none; opacity: 1; transform: none; }
+  .preloader__bar::after { animation-duration: 2s; }
+}
+
+/* =========================================================================
    EXHIBITION BOARD — "Where to Find Us"
    ========================================================================= */
 .exboard { overflow: hidden; isolation: isolate; border-top: 3px solid var(--red); }
