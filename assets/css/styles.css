@@ -166,10 +166,10 @@ strong { color: var(--grey-900); font-weight: 700; }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 24px; }
 
 /* Logo — official Schmoll Asia Pacific wordmark (image) */
-.logo { display: flex; align-items: center; gap: 6px; }
-.logo-img { height: 62px; width: auto; display: block; }
-.site-footer .logo-img { height: 58px; }
-@media (max-width: 480px){ .logo-img { height: 50px; } }
+.logo { display: flex; align-items: center; gap: 6px; flex: none; }
+.logo-img { height: 58px; width: auto; max-width: none; display: block; flex: none; }
+.site-footer .logo-img { height: 54px; }
+@media (max-width: 480px){ .logo-img { height: 46px; } }
 .logo__word { font-family: var(--font-display); text-transform: lowercase; font-weight: 500; font-size: 1.2rem; letter-spacing: .05em; color: var(--grey-700); line-height: 1; white-space: nowrap; }
 .logo__fid { width: 22px; height: 34px; flex: none; }
 .site-footer .logo__word { color: #e8e8e8; }
