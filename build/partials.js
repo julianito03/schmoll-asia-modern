@@ -3,7 +3,7 @@
 const HEADER = `<header class="site-header">
   <div class="container">
     <nav class="nav" aria-label="Primary">
-      <a class="logo" href="index.html" aria-label="Schmoll Asia Pacific — one step ahead"><img class="logo-img" src="assets/img/logo-sap.png?v=9" alt="Schmoll Asia Pacific — one step ahead"></a>
+      <a class="logo" href="index.html" aria-label="Schmoll Asia Pacific — one step ahead"><img class="logo-img" src="assets/img/logo-sap.png?v=10" alt="Schmoll Asia Pacific — one step ahead"></a>
       <ul class="menu">
         <li><a href="about.html" data-i18n="nav.about">About</a></li>
         <li><a href="team.html" data-i18n="nav.team">Team</a></li>
@@ -58,7 +58,7 @@ const FOOTER = `<footer class="site-footer">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="logo"><img class="logo-img" src="assets/img/logo-sap-white.png?v=9" alt="Schmoll Asia Pacific"></div>
+        <div class="logo"><img class="logo-img" src="assets/img/logo-sap-white.png?v=10" alt="Schmoll Asia Pacific"></div>
         <p data-i18n="foot.tagline">German-engineered precision, automation and high-performance solutions for PCB manufacturing across Asia Pacific.</p>
       </div>
       <div class="footer-col">
@@ -137,7 +137,7 @@ function page({ title, desc, main, lang = "en" }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=8">
+<link rel="stylesheet" href="assets/css/styles.css?v=10">
 </head>
 <body>
 ${HEADER}
@@ -145,8 +145,8 @@ ${HEADER}
 ${main}
 </main>
 ${FOOTER}
-<script src="assets/js/i18n.js?v=8"></script>
-<script src="assets/js/main.js?v=8"></script>
+<script src="assets/js/i18n.js?v=10"></script>
+<script src="assets/js/main.js?v=10"></script>
 </body>
 </html>`;
 }
