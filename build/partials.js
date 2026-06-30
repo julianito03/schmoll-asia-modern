@@ -1,0 +1,157 @@
+/* Shared chrome for all pages. Single source of truth. */
+
+const HEADER = `<header class="site-header">
+  <div class="container">
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="index.html" aria-label="Schmoll Asia Pacific — home">
+        <svg class="logo__mark" viewBox="0 0 28 48" fill="none" aria-hidden="true">
+          <path d="M9 4 h10 v14 l-5 9 -5 -9 z" fill="#C11819"/>
+          <line x1="2" y1="29" x2="26" y2="29" stroke="currentColor" stroke-width="2"/>
+          <line x1="14" y1="34" x2="14" y2="44" stroke="#C11819" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="logo__type"><b>Schmoll</b><span>Asia Pacific</span></span>
+      </a>
+      <ul class="menu">
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+        <li><a href="products.html" data-i18n="nav.products">Products</a></li>
+        <li class="has-dropdown">
+          <button type="button" aria-haspopup="true" aria-expanded="false">
+            <span data-i18n="nav.application">Application</span>
+            <svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+          </button>
+          <div class="dropdown">
+            <a href="applications.html#ccd" data-i18n="app.ccd">CCD Application</a>
+            <a href="applications.html#backdrilling" data-i18n="app.backdrilling">Backdrilling</a>
+            <a href="applications.html#substrate" data-i18n="app.substrate">Substrate</a>
+            <a href="applications.html#automation" data-i18n="app.automation">Automation</a>
+            <a href="applications.html#fixture" data-i18n="app.fixture">Fixture / Probe Card</a>
+            <a href="applications.html#xray" data-i18n="app.xray">XRay – XRA3</a>
+            <a href="applications.html#laser" data-i18n="app.laser">Laser</a>
+            <a href="applications.html#ev" data-i18n="app.ev">Electric Vehicle</a>
+          </div>
+        </li>
+        <li><a href="service.html" data-i18n="nav.service">Service</a></li>
+        <li><a href="careers.html" data-i18n="nav.careers">Careers</a></li>
+        <li class="has-dropdown">
+          <button type="button" aria-haspopup="true" aria-expanded="false">
+            <span data-i18n="nav.media">Media</span>
+            <svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+          </button>
+          <div class="dropdown">
+            <a href="news.html" data-i18n="media.news">News</a>
+            <a href="news.html#blog" data-i18n="media.blog">Blog</a>
+            <a href="news.html#videos" data-i18n="media.videos">Videos</a>
+          </div>
+        </li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="nav__right">
+        <div class="lang">
+          <button class="lang__btn" type="button" aria-haspopup="true" aria-expanded="false">
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor"/><path d="M1.5 8h13M8 1.5c2 2 2 11 0 13M8 1.5c-2 2-2 11 0 13" stroke="currentColor"/></svg>
+            <span class="lang__current">EN</span>
+          </button>
+          <div class="lang__menu" role="menu"></div>
+        </div>
+        <a href="contact.html" class="btn" data-i18n="btn.connect">Connect</a>
+        <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>`;
+
+const FOOTER = `<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <svg class="logo__mark" viewBox="0 0 28 48" fill="none" aria-hidden="true" style="color:#fff">
+            <path d="M9 4 h10 v14 l-5 9 -5 -9 z" fill="#C11819"/>
+            <line x1="2" y1="29" x2="26" y2="29" stroke="currentColor" stroke-width="2"/>
+            <line x1="14" y1="34" x2="14" y2="44" stroke="#C11819" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <span class="logo__type"><b style="color:#fff">Schmoll</b><span>Asia Pacific</span></span>
+        </div>
+        <p data-i18n="foot.tagline">German-engineered precision, automation and high-performance solutions for PCB manufacturing across Asia Pacific.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot.channels">Channels</h4>
+        <a href="about.html" data-i18n="nav.about">About</a>
+        <a href="contact.html" data-i18n="nav.contact">Contacts</a>
+        <a href="careers.html" data-i18n="nav.careers">Careers</a>
+        <a href="news.html" data-i18n="nav.media">Media</a>
+        <a href="news.html" data-i18n="media.news">News</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot.explore">Explore</h4>
+        <a href="products.html" data-i18n="nav.products">Products</a>
+        <a href="applications.html" data-i18n="nav.application">Application</a>
+        <a href="service.html" data-i18n="nav.service">Service</a>
+        <a href="team.html" data-i18n="nav.team">Team</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot.legal">Legal</h4>
+        <a href="#" data-i18n="foot.terms">Term of use</a>
+        <a href="#" data-i18n="foot.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="foot.cookie">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Copyright © <span data-year>2026</span> Schmoll. <span data-i18n="foot.rights">All rights reserved.</span></span>
+      <div class="footer-legal">
+        <a href="mailto:sales@schmoll-asia.com">sales@schmoll-asia.com</a>
+        <a href="mailto:career@schmoll-asia.com">career@schmoll-asia.com</a>
+      </div>
+    </div>
+  </div>
+</footer>`;
+
+/* Reusable contact CTA block (used at the bottom of most pages) */
+const CONTACT_CTA = `<section class="section section--alt" id="contact">
+  <div class="container">
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center">
+      <div data-reveal>
+        <span class="eyebrow" data-i18n="ct.eyebrow">Contact</span>
+        <h2 style="margin:18px 0 16px" data-i18n="ct.title">Let's get in touch</h2>
+        <p class="lead" data-i18n="ct.sub">Provide us with your details and our team will contact you!</p>
+        <p style="margin-top:24px;font-family:var(--font-mono);font-size:.82rem;letter-spacing:.04em"><a href="mailto:sales@schmoll-asia.com" style="color:var(--red)">sales@schmoll-asia.com</a></p>
+      </div>
+      <form class="form" data-demo data-reveal data-delay="1">
+        <div class="form__row"><label data-i18n="ct.name">Name</label><input name="name" type="text" required data-i18n-ph="ct.name"></div>
+        <div class="form__row"><label data-i18n="ct.email">Email</label><input name="email" type="email" required data-i18n-ph="ct.email"></div>
+        <div class="form__row"><label data-i18n="ct.company">Company Name</label><input name="company" type="text" data-i18n-ph="ct.company"></div>
+        <button class="btn btn--lg" type="submit" data-sent="Sent" data-i18n="btn.connect">Connect</button>
+        <p class="form__note" data-i18n="ct.note">*Your email is safe with us, we don't spam.</p>
+      </form>
+    </div>
+  </div>
+</section>`;
+
+function page({ title, desc, main, lang = "en" }) {
+  return `<!DOCTYPE html>
+<html lang="${lang}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${title}</title>
+<meta name="description" content="${desc}">
+<link rel="icon" href="assets/monogram.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+${HEADER}
+<main>
+${main}
+</main>
+${FOOTER}
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>`;
+}
+
+module.exports = { HEADER, FOOTER, CONTACT_CTA, page };

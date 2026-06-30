@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" role="img" aria-label="Schmoll fiducial monogram">
+  <!-- outer ring -->
+  <circle cx="60" cy="60" r="54" stroke="currentColor" stroke-width="3"/>
+  <!-- crosshair fiducial: left + right horizontal, bottom vertical -->
+  <line x1="20" y1="60" x2="48" y2="60" stroke="#C11819" stroke-width="5" stroke-linecap="round"/>
+  <line x1="72" y1="60" x2="100" y2="60" stroke="#C11819" stroke-width="5" stroke-linecap="round"/>
+  <line x1="60" y1="72" x2="60" y2="100" stroke="#C11819" stroke-width="5" stroke-linecap="round"/>
+  <!-- drill bit pointing down into the registration point -->
+  <path d="M52 24 h16 v20 l-8 16 -8 -16 z" fill="#C11819"/>
+</svg>
