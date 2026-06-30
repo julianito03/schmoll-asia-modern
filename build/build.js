@@ -235,19 +235,24 @@ const appIcons = {
   laser:'<path d="M16 2v14M16 16l-4 14M16 16l4 14" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="2" fill="currentColor"/>',
   ev:'<path d="M14 3L6 18h6l-2 11 12-16h-7l3-10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>'
 };
+const APP_POSTER = { ccd:1, backdrilling:1, substrate:1, automation:1, fixture:1, xray:1, laser:1, ev:1 };
 const applicationsPage = banner('Application', 'Discover our Applications', '<span>Application</span>') + `
 <section class="section">
   <div class="container">
-    <div class="grid" style="gap:1px;background:var(--line);border:1px solid var(--line);grid-template-columns:1fr">
+    <div class="sec-head" data-reveal><span class="eyebrow">Applications</span><h2>Engineered for every PCB challenge</h2><p class="lead">From CCD precision drilling to backdrilling, substrate, automation, X-ray, laser and EV — explore the detailed application solutions behind every Schmoll machine.</p></div>
+    <div class="pgrid" style="grid-template-columns:repeat(auto-fill,minmax(310px,1fr))" data-reveal>
       ${apps.map((a,i)=>`
-      <div id="${a[0]}" style="background:#fff;padding:clamp(28px,4vw,52px);scroll-margin-top:90px" data-reveal>
-        <div class="grid" style="grid-template-columns:64px 1fr 220px;gap:clamp(20px,3vw,40px);align-items:center">
-          <svg viewBox="0 0 32 32" width="46" height="46" fill="none" style="color:var(--red)" aria-hidden="true">${appIcons[a[0]]}</svg>
-          <div><span class="prod-card__no">A${String(i+1).padStart(2,"0")}</span><h3 style="margin:8px 0 8px">${a[1]}</h3><p style="max-width:60ch">${a[2]}</p></div>
-          <div style="text-align:right"><a class="tlink" href="contact.html">Enquire ${arrow(13)}</a></div>
+      <div class="pcard" id="${a[0]}" style="scroll-margin-top:90px">
+        ${APP_POSTER[a[0]]?`<a class="pcard__img" style="aspect-ratio:3/4;cursor:zoom-in" data-lightbox="assets/img/apps/${a[0]}.png" href="assets/img/apps/${a[0]}.png"><span class="pcard__cat">Application</span><img src="assets/img/apps/${a[0]}.png" alt="${a[1]} application poster" loading="lazy" style="object-position:center top"></a>`:""}
+        <div class="pcard__body">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" style="color:var(--red);margin-bottom:8px" aria-hidden="true">${appIcons[a[0]]}</svg>
+          <span class="pcard__no">A${String(i+1).padStart(2,"0")}</span>
+          <h3>${a[1]}</h3><p>${a[2]}</p>
+          <div class="pcard__foot"><a class="tlink" href="contact.html" style="border:0;padding:0">Enquire</a><span class="pcard__arrow">${arrow(18)}</span></div>
         </div>
       </div>`).join("")}
     </div>
+    <p class="form__note" style="margin-top:18px;text-align:center">Click any poster to view the full application detail.</p>
   </div>
 </section>` + CONTACT_CTA;
 

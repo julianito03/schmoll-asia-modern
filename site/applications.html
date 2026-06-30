@@ -86,65 +86,83 @@
 </section>
 <section class="section">
   <div class="container">
-    <div class="grid" style="gap:1px;background:var(--line);border:1px solid var(--line);grid-template-columns:1fr">
+    <div class="sec-head" data-reveal><span class="eyebrow">Applications</span><h2>Engineered for every PCB challenge</h2><p class="lead">From CCD precision drilling to backdrilling, substrate, automation, X-ray, laser and EV — explore the detailed application solutions behind every Schmoll machine.</p></div>
+    <div class="pgrid" style="grid-template-columns:repeat(auto-fill,minmax(310px,1fr))" data-reveal>
       
-      <div id="ccd" style="background:#fff;padding:clamp(28px,4vw,52px);scroll-margin-top:90px" data-reveal>
-        <div class="grid" style="grid-template-columns:64px 1fr 220px;gap:clamp(20px,3vw,40px);align-items:center">
-          <svg viewBox="0 0 32 32" width="46" height="46" fill="none" style="color:var(--red)" aria-hidden="true"><circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><path d="M16 2v6M16 24v6M2 16h6M24 16h6" stroke="currentColor" stroke-width="2"/></svg>
-          <div><span class="prod-card__no">A01</span><h3 style="margin:8px 0 8px">CCD Application</h3><p style="max-width:60ch">High-precision PCB drilling with CCD camera technology for accurate target recognition and registration.</p></div>
-          <div style="text-align:right"><a class="tlink" href="contact.html">Enquire <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a></div>
+      <div class="pcard" id="ccd" style="scroll-margin-top:90px">
+        <a class="pcard__img" style="aspect-ratio:3/4;cursor:zoom-in" data-lightbox="assets/img/apps/ccd.png" href="assets/img/apps/ccd.png"><span class="pcard__cat">Application</span><img src="assets/img/apps/ccd.png" alt="CCD Application application poster" loading="lazy" style="object-position:center top"></a>
+        <div class="pcard__body">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" style="color:var(--red);margin-bottom:8px" aria-hidden="true"><circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><path d="M16 2v6M16 24v6M2 16h6M24 16h6" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="pcard__no">A01</span>
+          <h3>CCD Application</h3><p>High-precision PCB drilling with CCD camera technology for accurate target recognition and registration.</p>
+          <div class="pcard__foot"><a class="tlink" href="contact.html" style="border:0;padding:0">Enquire</a><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div>
         </div>
       </div>
-      <div id="backdrilling" style="background:#fff;padding:clamp(28px,4vw,52px);scroll-margin-top:90px" data-reveal>
-        <div class="grid" style="grid-template-columns:64px 1fr 220px;gap:clamp(20px,3vw,40px);align-items:center">
-          <svg viewBox="0 0 32 32" width="46" height="46" fill="none" style="color:var(--red)" aria-hidden="true"><path d="M16 3v18M11 16l5 5 5-5M6 27h20" stroke="currentColor" stroke-width="2"/></svg>
-          <div><span class="prod-card__no">A02</span><h3 style="margin:8px 0 8px">Backdrilling</h3><p style="max-width:60ch">Precision via management and stub removal — controlled-depth backdrilling for high-speed signal integrity.</p></div>
-          <div style="text-align:right"><a class="tlink" href="contact.html">Enquire <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a></div>
+      <div class="pcard" id="backdrilling" style="scroll-margin-top:90px">
+        <a class="pcard__img" style="aspect-ratio:3/4;cursor:zoom-in" data-lightbox="assets/img/apps/backdrilling.png" href="assets/img/apps/backdrilling.png"><span class="pcard__cat">Application</span><img src="assets/img/apps/backdrilling.png" alt="Backdrilling application poster" loading="lazy" style="object-position:center top"></a>
+        <div class="pcard__body">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" style="color:var(--red);margin-bottom:8px" aria-hidden="true"><path d="M16 3v18M11 16l5 5 5-5M6 27h20" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="pcard__no">A02</span>
+          <h3>Backdrilling</h3><p>Precision via management and stub removal — controlled-depth backdrilling for high-speed signal integrity.</p>
+          <div class="pcard__foot"><a class="tlink" href="contact.html" style="border:0;padding:0">Enquire</a><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div>
         </div>
       </div>
-      <div id="substrate" style="background:#fff;padding:clamp(28px,4vw,52px);scroll-margin-top:90px" data-reveal>
-        <div class="grid" style="grid-template-columns:64px 1fr 220px;gap:clamp(20px,3vw,40px);align-items:center">
-          <svg viewBox="0 0 32 32" width="46" height="46" fill="none" style="color:var(--red)" aria-hidden="true"><rect x="4" y="9" width="24" height="14" stroke="currentColor" stroke-width="2"/><path d="M9 9V5M16 9V5M23 9V5M9 27v-4M16 27v-4M23 27v-4" stroke="currentColor" stroke-width="2"/></svg>
-          <div><span class="prod-card__no">A03</span><h3 style="margin:8px 0 8px">Substrate</h3><p style="max-width:60ch">Advanced processing for IC substrates and high-density interconnect applications.</p></div>
-          <div style="text-align:right"><a class="tlink" href="contact.html">Enquire <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a></div>
+      <div class="pcard" id="substrate" style="scroll-margin-top:90px">
+        <a class="pcard__img" style="aspect-ratio:3/4;cursor:zoom-in" data-lightbox="assets/img/apps/substrate.png" href="assets/img/apps/substrate.png"><span class="pcard__cat">Application</span><img src="assets/img/apps/substrate.png" alt="Substrate application poster" loading="lazy" style="object-position:center top"></a>
+        <div class="pcard__body">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" style="color:var(--red);margin-bottom:8px" aria-hidden="true"><rect x="4" y="9" width="24" height="14" stroke="currentColor" stroke-width="2"/><path d="M9 9V5M16 9V5M23 9V5M9 27v-4M16 27v-4M23 27v-4" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="pcard__no">A03</span>
+          <h3>Substrate</h3><p>Advanced processing for IC substrates and high-density interconnect applications.</p>
+          <div class="pcard__foot"><a class="tlink" href="contact.html" style="border:0;padding:0">Enquire</a><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div>
         </div>
       </div>
-      <div id="automation" style="background:#fff;padding:clamp(28px,4vw,52px);scroll-margin-top:90px" data-reveal>
-        <div class="grid" style="grid-template-columns:64px 1fr 220px;gap:clamp(20px,3vw,40px);align-items:center">
-          <svg viewBox="0 0 32 32" width="46" height="46" fill="none" style="color:var(--red)" aria-hidden="true"><rect x="5" y="13" width="22" height="12" stroke="currentColor" stroke-width="2"/><circle cx="11" cy="28" r="2" stroke="currentColor" stroke-width="2"/><circle cx="21" cy="28" r="2" stroke="currentColor" stroke-width="2"/><path d="M16 13V6M12 6h8" stroke="currentColor" stroke-width="2"/></svg>
-          <div><span class="prod-card__no">A04</span><h3 style="margin:8px 0 8px">Automation</h3><p style="max-width:60ch">PCB machine automation across the drillroom for the highest productivity at the lowest cost of ownership.</p></div>
-          <div style="text-align:right"><a class="tlink" href="contact.html">Enquire <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a></div>
+      <div class="pcard" id="automation" style="scroll-margin-top:90px">
+        <a class="pcard__img" style="aspect-ratio:3/4;cursor:zoom-in" data-lightbox="assets/img/apps/automation.png" href="assets/img/apps/automation.png"><span class="pcard__cat">Application</span><img src="assets/img/apps/automation.png" alt="Automation application poster" loading="lazy" style="object-position:center top"></a>
+        <div class="pcard__body">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" style="color:var(--red);margin-bottom:8px" aria-hidden="true"><rect x="5" y="13" width="22" height="12" stroke="currentColor" stroke-width="2"/><circle cx="11" cy="28" r="2" stroke="currentColor" stroke-width="2"/><circle cx="21" cy="28" r="2" stroke="currentColor" stroke-width="2"/><path d="M16 13V6M12 6h8" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="pcard__no">A04</span>
+          <h3>Automation</h3><p>PCB machine automation across the drillroom for the highest productivity at the lowest cost of ownership.</p>
+          <div class="pcard__foot"><a class="tlink" href="contact.html" style="border:0;padding:0">Enquire</a><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div>
         </div>
       </div>
-      <div id="fixture" style="background:#fff;padding:clamp(28px,4vw,52px);scroll-margin-top:90px" data-reveal>
-        <div class="grid" style="grid-template-columns:64px 1fr 220px;gap:clamp(20px,3vw,40px);align-items:center">
-          <svg viewBox="0 0 32 32" width="46" height="46" fill="none" style="color:var(--red)" aria-hidden="true"><rect x="6" y="6" width="20" height="20" stroke="currentColor" stroke-width="2"/><path d="M11 11h.01M16 11h.01M21 11h.01M11 16h.01M16 16h.01M21 16h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
-          <div><span class="prod-card__no">A05</span><h3 style="margin:8px 0 8px">Fixture / Probe Card</h3><p style="max-width:60ch">Test fixtures and probe-card solutions engineered for reliable electrical test.</p></div>
-          <div style="text-align:right"><a class="tlink" href="contact.html">Enquire <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a></div>
+      <div class="pcard" id="fixture" style="scroll-margin-top:90px">
+        <a class="pcard__img" style="aspect-ratio:3/4;cursor:zoom-in" data-lightbox="assets/img/apps/fixture.png" href="assets/img/apps/fixture.png"><span class="pcard__cat">Application</span><img src="assets/img/apps/fixture.png" alt="Fixture / Probe Card application poster" loading="lazy" style="object-position:center top"></a>
+        <div class="pcard__body">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" style="color:var(--red);margin-bottom:8px" aria-hidden="true"><rect x="6" y="6" width="20" height="20" stroke="currentColor" stroke-width="2"/><path d="M11 11h.01M16 11h.01M21 11h.01M11 16h.01M16 16h.01M21 16h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+          <span class="pcard__no">A05</span>
+          <h3>Fixture / Probe Card</h3><p>Test fixtures and probe-card solutions engineered for reliable electrical test.</p>
+          <div class="pcard__foot"><a class="tlink" href="contact.html" style="border:0;padding:0">Enquire</a><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div>
         </div>
       </div>
-      <div id="xray" style="background:#fff;padding:clamp(28px,4vw,52px);scroll-margin-top:90px" data-reveal>
-        <div class="grid" style="grid-template-columns:64px 1fr 220px;gap:clamp(20px,3vw,40px);align-items:center">
-          <svg viewBox="0 0 32 32" width="46" height="46" fill="none" style="color:var(--red)" aria-hidden="true"><path d="M16 4v24M4 16h24M8 8l16 16M24 8L8 24" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2"/></svg>
-          <div><span class="prod-card__no">A06</span><h3 style="margin:8px 0 8px">XRay – XRA3</h3><p style="max-width:60ch">X-ray inspection and registration systems for layer-to-layer alignment accuracy.</p></div>
-          <div style="text-align:right"><a class="tlink" href="contact.html">Enquire <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a></div>
+      <div class="pcard" id="xray" style="scroll-margin-top:90px">
+        <a class="pcard__img" style="aspect-ratio:3/4;cursor:zoom-in" data-lightbox="assets/img/apps/xray.png" href="assets/img/apps/xray.png"><span class="pcard__cat">Application</span><img src="assets/img/apps/xray.png" alt="XRay – XRA3 application poster" loading="lazy" style="object-position:center top"></a>
+        <div class="pcard__body">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" style="color:var(--red);margin-bottom:8px" aria-hidden="true"><path d="M16 4v24M4 16h24M8 8l16 16M24 8L8 24" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="pcard__no">A06</span>
+          <h3>XRay – XRA3</h3><p>X-ray inspection and registration systems for layer-to-layer alignment accuracy.</p>
+          <div class="pcard__foot"><a class="tlink" href="contact.html" style="border:0;padding:0">Enquire</a><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div>
         </div>
       </div>
-      <div id="laser" style="background:#fff;padding:clamp(28px,4vw,52px);scroll-margin-top:90px" data-reveal>
-        <div class="grid" style="grid-template-columns:64px 1fr 220px;gap:clamp(20px,3vw,40px);align-items:center">
-          <svg viewBox="0 0 32 32" width="46" height="46" fill="none" style="color:var(--red)" aria-hidden="true"><path d="M16 2v14M16 16l-4 14M16 16l4 14" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="2" fill="currentColor"/></svg>
-          <div><span class="prod-card__no">A07</span><h3 style="margin:8px 0 8px">Laser</h3><p style="max-width:60ch">Hybrid laser drilling technology for microvias and advanced HDI structures.</p></div>
-          <div style="text-align:right"><a class="tlink" href="contact.html">Enquire <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a></div>
+      <div class="pcard" id="laser" style="scroll-margin-top:90px">
+        <a class="pcard__img" style="aspect-ratio:3/4;cursor:zoom-in" data-lightbox="assets/img/apps/laser.png" href="assets/img/apps/laser.png"><span class="pcard__cat">Application</span><img src="assets/img/apps/laser.png" alt="Laser application poster" loading="lazy" style="object-position:center top"></a>
+        <div class="pcard__body">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" style="color:var(--red);margin-bottom:8px" aria-hidden="true"><path d="M16 2v14M16 16l-4 14M16 16l4 14" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="2" fill="currentColor"/></svg>
+          <span class="pcard__no">A07</span>
+          <h3>Laser</h3><p>Hybrid laser drilling technology for microvias and advanced HDI structures.</p>
+          <div class="pcard__foot"><a class="tlink" href="contact.html" style="border:0;padding:0">Enquire</a><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div>
         </div>
       </div>
-      <div id="ev" style="background:#fff;padding:clamp(28px,4vw,52px);scroll-margin-top:90px" data-reveal>
-        <div class="grid" style="grid-template-columns:64px 1fr 220px;gap:clamp(20px,3vw,40px);align-items:center">
-          <svg viewBox="0 0 32 32" width="46" height="46" fill="none" style="color:var(--red)" aria-hidden="true"><path d="M14 3L6 18h6l-2 11 12-16h-7l3-10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-          <div><span class="prod-card__no">A08</span><h3 style="margin:8px 0 8px">Electric Vehicle</h3><p style="max-width:60ch">PCB manufacturing solutions tailored to the demands of EV power and control electronics.</p></div>
-          <div style="text-align:right"><a class="tlink" href="contact.html">Enquire <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a></div>
+      <div class="pcard" id="ev" style="scroll-margin-top:90px">
+        <a class="pcard__img" style="aspect-ratio:3/4;cursor:zoom-in" data-lightbox="assets/img/apps/ev.png" href="assets/img/apps/ev.png"><span class="pcard__cat">Application</span><img src="assets/img/apps/ev.png" alt="Electric Vehicle application poster" loading="lazy" style="object-position:center top"></a>
+        <div class="pcard__body">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" style="color:var(--red);margin-bottom:8px" aria-hidden="true"><path d="M14 3L6 18h6l-2 11 12-16h-7l3-10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <span class="pcard__no">A08</span>
+          <h3>Electric Vehicle</h3><p>PCB manufacturing solutions tailored to the demands of EV power and control electronics.</p>
+          <div class="pcard__foot"><a class="tlink" href="contact.html" style="border:0;padding:0">Enquire</a><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div>
         </div>
       </div>
     </div>
+    <p class="form__note" style="margin-top:18px;text-align:center">Click any poster to view the full application detail.</p>
   </div>
 </section><section class="section section--alt" id="contact">
   <div class="container">
