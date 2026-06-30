@@ -166,7 +166,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 .nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 76px; gap: 24px; }
 .nav__right { display: flex; align-items: center; gap: 14px; justify-self: end; }
 .nav .menu { justify-self: center; }
-.nav .logo { justify-self: start; }
+.nav .logo { justify-self: start; margin-left: calc(-1 * var(--gutter) + 8px); }
 
 /* Logo — official Schmoll Asia Pacific wordmark (image) */
 .logo { display: flex; align-items: center; gap: 6px; flex: none; }
