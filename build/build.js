@@ -2,7 +2,7 @@
    Generates interior pages into ../site/ using shared chrome from partials.js. */
 const fs = require("fs");
 const path = require("path");
-const { CONTACT_CTA, page } = require("./partials.js");
+const { CONTACT_CTA, GALLERY, page } = require("./partials.js");
 const OUT = path.join(__dirname, "..", "site");
 
 /* ---------- helpers ---------- */
@@ -297,7 +297,7 @@ const teamPage = banner('Team', 'Meet our Team', '<span>Team</span>', 'assets/im
     <div class="roster__group">Vice Presidents</div>
     ${roster(vps)}
   </div>
-</section>` + CONTACT_CTA;
+</section>` + GALLERY + CONTACT_CTA;
 
 /* ======================================================= SERVICE */
 const servicePage = banner('Service', 'Got a Problem? Schmoll is Here.', '<span>Service</span>') + `
@@ -314,7 +314,7 @@ const servicePage = banner('Service', 'Got a Problem? Schmoll is Here.', '<span>
       <div class="svc-item"><span class="svc-item__no">04</span><h3 data-i18n="svc.rnd">R&amp;D Center</h3><p>Innovative &amp; cutting-edge research and development to advance your process.</p></div>
     </div>
   </div>
-</section>` + CONTACT_CTA;
+</section>` + GALLERY + CONTACT_CTA;
 
 /* ======================================================= CAREERS */
 const careersPage = banner('Careers', 'Start Your Career With Schmoll', '<span>Careers</span>', 'assets/img/team-hero.jpg') + `
@@ -335,7 +335,7 @@ const careersPage = banner('Careers', 'Start Your Career With Schmoll', '<span>C
       </div>
     </div>
   </div>
-</section>` + CONTACT_CTA;
+</section>` + GALLERY + CONTACT_CTA;
 
 /* ======================================================= CONTACT */
 const offices = [
@@ -416,7 +416,7 @@ const newsPage = banner('Media', 'News &amp; Insights', '<span>Media</span>') + 
       ].map(([t,u])=>`<div class="video-card"><video controls preload="none" playsinline src="${u}"></video><div class="video-card__cap">${t}</div></div>`).join("")}
     </div>
   </div>
-</section>` + CONTACT_CTA;
+</section>` + GALLERY + CONTACT_CTA;
 
 /* ======================================================= MANIFEST */
 const PAGES = [

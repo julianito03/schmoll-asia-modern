@@ -129,6 +129,20 @@ const CONTACT_CTA = `<section class="section section--alt" id="contact">
   </div>
 </section>`;
 
+/* Reusable "Inside Schmoll" photo gallery (lightbox) */
+const GALLERY = `<section class="section">
+  <div class="container">
+    <div class="sec-head" data-reveal><span class="eyebrow">Inside Schmoll</span><h2>Precision, in practice</h2><p class="lead">German-engineered machines at work across our Asia Pacific facilities.</p></div>
+    <div class="gallery" data-reveal>
+      <a class="span2" data-lightbox="assets/img/facility-3.jpg" href="assets/img/facility-3.jpg"><img src="assets/img/facility-3.jpg" alt="Schmoll machine in operation" loading="lazy"></a>
+      <a data-lightbox="assets/img/facility-1.jpg" href="assets/img/facility-1.jpg"><img src="assets/img/facility-1.jpg" alt="Schmoll precision machine" loading="lazy"></a>
+      <a data-lightbox="assets/img/facility-2.jpg" href="assets/img/facility-2.jpg"><img src="assets/img/facility-2.jpg" alt="Schmoll facility" loading="lazy"></a>
+      <a data-lightbox="assets/img/apps/xray.png" href="assets/img/apps/xray.png"><img src="assets/img/apps/xray.png" alt="X-ray application detail" loading="lazy" style="object-position:center top"></a>
+      <a data-lightbox="assets/img/team-hero.jpg" href="assets/img/team-hero.jpg"><img src="assets/img/team-hero.jpg" alt="Schmoll Asia Pacific team" loading="lazy"></a>
+    </div>
+  </div>
+</section>`;
+
 function page({ title, desc, main, lang = "en" }) {
   return `<!DOCTYPE html>
 <html lang="${lang}">
@@ -141,7 +155,7 @@ function page({ title, desc, main, lang = "en" }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=4">
+<link rel="stylesheet" href="assets/css/styles.css?v=5">
 </head>
 <body>
 ${HEADER}
@@ -149,10 +163,10 @@ ${HEADER}
 ${main}
 </main>
 ${FOOTER}
-<script src="assets/js/i18n.js?v=4"></script>
-<script src="assets/js/main.js?v=4"></script>
+<script src="assets/js/i18n.js?v=5"></script>
+<script src="assets/js/main.js?v=5"></script>
 </body>
 </html>`;
 }
 
-module.exports = { HEADER, FOOTER, CONTACT_CTA, page };
+module.exports = { HEADER, FOOTER, CONTACT_CTA, GALLERY, page };
