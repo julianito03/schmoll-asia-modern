@@ -58,29 +58,161 @@ const about = banner('About', 'German Quality &amp; Innovation', '<span>About</s
   </div>
 </section>` + CONTACT_CTA;
 
-/* ======================================================= PRODUCTS */
-const products = [
-  ["eagle","Eagle Series","Drilling · Depth Control","Special-application microdrilling with Contact Bit Detection depth control. S80 controller, AI-driven linear motors, solid granite structure."],
-  ["hawk","Hawk Series","Drilling · High-End","High-end microdrilling and depth control. S80 Next-Gen high-speed controller with Industry 4.0 connectivity."],
-  ["falcon","Falcon Series","Drilling · Substrate","Substrate drilling precision engineered for IC substrate and HDI production (FS / FT / FXY)."],
-  ["rmxy","RMXY Series","Routing","Precision PCB routing built on the MXY motion concept."],
-  ["raptor","Raptor Series","Routing · CCD","XY CCD routing for contour and depth — clean, accurate profiling (RXY-6)."],
-  ["combidrill","CombiDrill 500","Laser Drilling","Hybrid UV-CO₂ laser drilling for microvias and advanced HDI structures."],
-  ["mdi","MDI Series","Direct Imaging","Soldermask direct imaging (TTG SolderBeam) for fine-line, maskless patterning."],
-  ["xra3","XRA3 Series","X-Ray","Full-panel X-ray inspection, registration and drilling — XRA3 &amp; XRA3-XXL."],
-  ["automation","Automation Series","Automation","PCB drill-room automation: ALS, QLB, DTE and ACC for lights-out productivity."],
-  ["probecard","Probe Card / Fixture","Fixture / Probe Card","Probe-card and fixture solutions — Fixture Nano / Fixture 1 / MX 1, EXY-CCD."]
+/* ======================================================= PRODUCTS / MACHINES */
+const check = '<svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 9.5l4.5 4.5L16 3.5" stroke="currentColor" stroke-width="2.2"/></svg>';
+const MACHINES = [
+  { key:"eagle", name:"Eagle Series", cat:"Drilling · Depth Control",
+    tagline:"Eagle XY CCD — special-application microdrilling &amp; backdrilling, made in Germany.",
+    blurb:"Special-application microdrilling with Contact Bit Detection depth control, AI-driven linear motors and a solid granite structure.",
+    apps:["Panel Traceability","Sliver Control","Stub Length Control"],
+    features:["S80 Next-Gen High-Speed Controller","High-Speed AI-Drives","Solid Granite Structure","Automated Collet Cleaning","Active Process Monitoring","Industry 4.0 Connectivity"],
+    specs:[["Models","ES-6-2228 / 2528 / 2532 / 2643"],["Basic accuracy","X/Y ± 18 µm, Cpk &gt; 1.67"],["Spindles","T160 / T200x / T250 — up to 250,000 rpm"],["X/Y drive","AI-driven linear motor — 90 m/min"],["Depth control","Contact Bit Detection (CBD)"],["Panel size","up to 25.9″ × 43.0″ (658 × 1092 mm)"]] },
+  { key:"hawk", name:"Hawk Series", cat:"Drilling · High-End",
+    tagline:"Hawk — high-end microdrilling &amp; depth control for the most demanding PCBs.",
+    blurb:"High-end microdrilling and depth control with the S80 Next-Gen controller and full Industry 4.0 connectivity.",
+    apps:["LEO Satellite PCB","Automotive PCB","Artificial Intelligence"],
+    features:["S80 Next-Gen High-Speed Controller","Durable High-Performance Spindles","High-Speed AI-Drives","Optional Automation QLB · DTE · ALS","Industry 4.0 Connectivity","Automated Collet Cleaning"],
+    specs:[["Models","HS-6-2228 / 2528 / 2532 / 2643"],["Basic accuracy","X/Y ± 18 µm, Cpk &gt; 1.67"],["Spindles","T160 / T200x — up to 200,000 rpm"],["X/Y drive","AI-driven linear motor — 90 m/min"],["Z drive","AI-driven AC motor — 60 m/min"],["Tool cassette","JTC 6×50 / 8×50 tools"]] },
+  { key:"falcon", name:"Falcon Series", cat:"Drilling · Substrate",
+    tagline:"Falcon — substrate drilling machine for micro-via and micro-drilling.",
+    blurb:"Substrate drilling precision engineered for IC substrate and HDI, with Smart Climate Control on a full-body granite base.",
+    apps:["Substrate","Micro Via","Micro Drilling"],
+    features:["S80 Next-Gen Controller","High-Speed AI-Drives","Smart Climate Control","Full-Body Granite Base","Industry 4.0"],
+    specs:[["Models","FS / FT / FXY-6-2227"],["Basic accuracy","up to ± 12 µm (15 µm @ Cpk 1.67)"],["Spindles","T200x / T250 / PS300 — up to 300,000 rpm"],["Axis speed","XY 100 m/min · Z 50–60 m/min"],["CCD registration","High-resolution cameras (FXY)"],["Drive","AI-driven linear motor"]] },
+  { key:"raptor", name:"Raptor Series", cat:"Routing",
+    tagline:"Raptor XY CCD Routing — high-quality routing PCB equipment made in Germany.",
+    blurb:"Contour and depth routing with CCD registration, vacuum table and touch-probe second measurement.",
+    apps:["Contour Routing","Depth Routing","Optical Module"],
+    features:["Vacuum Table","2nd Measurement Touch Probe","Pin-Up Table","Optical Broken-Bit Detection (BBD)","ESD Protection","Industry 4.0 Connectivity"],
+    specs:[["Models","RXY-6-2228 / 2528 / 2532 / 2643"],["Depth routing","± 15 µm with CBD"],["Edge-to-edge accuracy","± 50 µm"],["Spindles","DR-130 (20–125k) · SM75 (5–75k)"],["CCD target","Ø 0.2 mm – 8 mm"],["Drive","AI-driven linear motor — 90 m/min"]] },
+  { key:"combidrill", name:"CombiDrill 500", cat:"Laser Drilling",
+    tagline:"CombiDrill 500 — hybrid UV-CO₂ laser drilling for microvias.",
+    blurb:"Dual-beam hybrid laser combining CO₂ via drilling with UV copper clearance and cleaning for advanced HDI.",
+    apps:["UV Copper Clearance","CO₂ Via Drilling","UV Copper Cleaning"],
+    features:["Dual Laser Beam","CO₂ 9400 nm + UV 355 nm","Integrated Loader","MES / Industry 4.0 Ready"],
+    specs:[["Laser source","CO₂ 9400 nm / UV 355 nm"],["Via size","50 µm – 300 µm"],["Productivity","300 vias/sec*"],["Accuracy","± 10 µm"],["Laser beams","2"],["Dimensions","2090 × 1970 × 2126 mm"]] },
+  { key:"mdi", name:"MDI Series", cat:"Direct Imaging",
+    tagline:"MDI-TTG SolderBeam — soldermask &amp; resist direct imaging.",
+    blurb:"Maskless direct imaging with multi-wavelength UV-LED photoheads, dynamic autofocus and tandem-table throughput.",
+    apps:["White Ink","Black Ink","Green Ink"],
+    features:["Multi Light-Source 365–420 nm","Resolution 30 µm L/S","High-Power UV-LED Beam","XXL Format up to 54″ × 36″","Dynamic Autofocus to 11 mm","Full Automatic Clamping"],
+    specs:[["Machine type","MDI-TTG"],["Max system accuracy","registered ± 10 µm"],["CCD alignment","&lt; 2 µm"],["Working format","up to 54″ × 36″ (gantry mode)"],["Platform","Solid granite"],["Weight","ca. 4500 kg"]] },
+  { key:"xra3", name:"XRA3 Series", cat:"X-Ray",
+    tagline:"XRA3 — full-panel X-ray inspection, registration &amp; drilling.",
+    blurb:"Dual-spindle X-ray system for drill-in-centre accuracy, layer optimization and panel serialization.",
+    apps:["Drill in Centre","Serialization","Layer Optimization"],
+    features:["Dual Spindle DD / DR","70 KV High-Performance X-Ray Tube","Multi-Zone CCD Registration","S80 Next-Gen Control","First-Article Checking","Automation Options"],
+    specs:[["Models","XRA3 · XRA3-XXL"],["Panel size","30″ × 28″ · 50″ × 32″ (XXL)"],["Drill-in-centre accuracy","≤ 9 µm"],["X-Ray source","70 KV (optional 90 KV)"],["Layer count","up to 99 layers"],["CCD vision","min. pad Ø 0.20 mm"]] },
+  { key:"automation", name:"Automation Series", cat:"Automation",
+    tagline:"Drill-room automation — ALS · QLB · DTE · ACC.",
+    blurb:"End-to-end PCB drill-room automation, from flexible line shuttles to AGV intralogistics and automatic collet cleaning.",
+    apps:["AGV Intralogistics","Individual Automation","Inline Automation"],
+    features:["ALS — Flexible Line Shuttle","QLB — 4-Level Buffer","DTE — 2-Level Buffer","ACC — Automatic Collet Cleaning","MES / Industry 4.0"],
+    specs:[["ALS capacity","up to 18 levels / 102 stacks"],["QLB","4 levels / 18 stacks"],["DTE","2 levels / 6 stacks"],["Process time","1 min load / unload"],["Compatible","Eagle / Hawk series"],["Smart factory","MES, customizable"]] },
+  { key:"probecard", name:"Probe Card / Fixture", cat:"Fixture / Probe Card",
+    tagline:"Fixture &amp; probe-card solutions — nano accuracy.",
+    blurb:"Ultra-precision fixture drilling and probe-card solutions with nano-scale accuracy and CCD control.",
+    apps:["Nano Accuracy","Precision Alignment","High Aspect Ratio"],
+    features:["Hole Ø from 20 µm","Wall Thickness 10 µm","Hole Position ± 1.5 µm","CCD Control","Depth-Routing","Spray Cooling"],
+    specs:[["Models","Fixture Nano · Fixture 1 · MX 1"],["Process accuracy","± 1.5 µm (Nano)"],["Min. hole / pitch","0.02 mm / 0.03 mm"],["Scale resolution","5 nm"],["Climate control","Yes (Nano)"],["Controller","S80"]] },
+  { key:"rmxy", name:"RMXY Series", cat:"Routing",
+    tagline:"RMXY — Routing Machine XY precision profiling platform.",
+    blurb:"The routing-machine-XY platform delivering CCD-registered contour and depth routing with linear-motor precision.",
+    apps:["Contour Routing","Depth Routing"],
+    features:["CCD Registration","AI-Driven Linear-Motor Drive","Industry 4.0 Connectivity","Depth Routing with CBD"],
+    specs:[["Platform","Routing Machine XY (RXY)"],["Routing","Contour &amp; Depth"],["Registration","CCD target recognition"],["Drive","AI-driven linear motor"]] }
 ];
+const BROCHURE = {
+  eagle:"https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-Eagle-.pdf",
+  hawk:"https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-HAWK.pdf",
+  falcon:"https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-FALCON.pdf",
+  raptor:"https://schmoll-asia.com/wp-content/uploads/2026/03/Raptor_Brochure-1-1.pdf",
+  combidrill:"https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-CombiDrill-500.pdf",
+  mdi:"https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-MDI.pdf",
+  xra3:"https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-XRA3.pdf",
+  automation:"https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-ALS.pdf",
+  probecard:"https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-Fixture.pdf",
+  rmxy:"http://47.239.40.173/wp-content/uploads/2024/06/EN_RMXY_Brochure_FRONTBACK.pdf"
+};
+const dl = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9M4.5 6.5L8 10l3.5-3.5M2 14h12" stroke="currentColor" stroke-width="1.6"/></svg>';
+
 const productsPage = banner('Products', 'You Name It, We Have It', '<span>Products</span>', 'assets/img/facility-3.jpg') + `
 <section class="section">
   <div class="container">
-    <div class="sec-head" data-reveal><span class="eyebrow">Cutting-Edge Technology</span><h2>The Schmoll Machine Lineup</h2><p class="lead">Our machines leverage artificial intelligence to enhance operational efficiency — dynamically adjusting settings and measurements with machine learning for optimal performance and high-quality standards in every operation.</p></div>
-    <div class="prod-grid" data-reveal>
-      ${products.map((p,i)=>`<a class="prod-card" id="${p[0]}" href="#${p[0]}"><span class="prod-card__no">${String(i+1).padStart(2,"0")}</span><span class="prod-card__cat">${p[2]}</span><h3>${p[1]}</h3><p>${p[3]}</p><span class="prod-card__arrow">${arrow(20)}</span></a>`).join("")}
-      <a class="prod-card prod-card--feature" href="contact.html" style="grid-column:span 8;flex-direction:row;align-items:center;justify-content:space-between;gap:24px;min-height:auto"><div><span class="prod-card__no">→</span><h3 style="margin:8px 0 6px">Can't find the right machine?</h3><p>Talk to our engineers — we have a solution for your needs.</p></div><span class="btn btn--light">Contact ${arrow(14)}</span></a>
+    <div class="sec-head" data-reveal><span class="eyebrow">Cutting-Edge Technology</span><h2>The Schmoll Machine Lineup</h2><p class="lead">Our machines leverage artificial intelligence to enhance operational efficiency — dynamically adjusting settings and measurements with machine learning for optimal performance in every operation.</p></div>
+    <div class="pgrid" data-reveal>
+      ${MACHINES.map((m,i)=>`<a class="pcard" href="product-${m.key}.html">
+        <div class="pcard__img pcard__img--render"><span class="pcard__cat">${m.cat}</span><img src="assets/img/machines/${m.key}.webp" alt="${m.name}" loading="lazy"></div>
+        <div class="pcard__body"><span class="pcard__no">${String(i+1).padStart(2,"0")}</span><h3>${m.name}</h3><p>${m.blurb}</p>
+        <div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow">${arrow(20)}</span></div></div>
+      </a>`).join("")}
+    </div>
+  </div>
+</section>
+<section class="section section--alt">
+  <div class="container">
+    <div class="sec-head" data-reveal><span class="eyebrow">Downloads</span><h2>Machine Brochures</h2><p class="lead">Full specifications, feature breakdowns and application notes — every Schmoll machine, made in Germany.</p></div>
+    <div class="pgrid" data-reveal style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+      ${MACHINES.filter(m=>BROCHURE[m.key]).map(m=>`<a class="pcard" href="${BROCHURE[m.key]}" target="_blank" rel="noopener">
+        <div class="pcard__img" style="aspect-ratio:3/4"><img src="assets/img/machines/${m.key}.jpg" alt="${m.name} brochure" loading="lazy" style="object-position:center top"></div>
+        <div class="pcard__body" style="padding:16px 18px"><h3 style="font-size:1.05rem">${m.name}</h3><div class="pcard__foot"><span class="tlink">${dl} PDF</span></div></div>
+      </a>`).join("")}
     </div>
   </div>
 </section>` + CONTACT_CTA;
+
+/* Individual machine detail page */
+function productDetail(m, idx) {
+  const prev = MACHINES[(idx - 1 + MACHINES.length) % MACHINES.length];
+  const next = MACHINES[(idx + 1) % MACHINES.length];
+  const broc = BROCHURE[m.key];
+  return banner(m.cat, m.name, `<a href="products.html">Products</a><span>/</span><span>${m.name}</span>`) + `
+<section class="section">
+  <div class="container">
+    <div class="pd-hero">
+      <figure class="pd-figure" data-lightbox="assets/img/machines/${m.key}.webp" data-reveal>
+        <span class="pd-figure__tag">Made in Germany</span>
+        <img src="assets/img/machines/${m.key}.webp" alt="${m.name}">
+      </figure>
+      <div data-reveal data-delay="1">
+        <span class="eyebrow pd-cat">${m.cat}</span>
+        <h2 style="margin:14px 0 0">${m.name}</h2>
+        <p class="pd-tagline">${m.tagline}</p>
+        <p style="margin-bottom:22px">${m.blurb}</p>
+        <div class="tags">${m.apps.map(a=>`<span class="tag">${a}</span>`).join("")}</div>
+        <div class="pd-actions">
+          ${broc?`<a class="btn btn--lg" href="${broc}" target="_blank" rel="noopener">${dl} Download Brochure</a>`:""}
+          <a class="btn btn--ghost btn--lg" href="contact.html">Request a quote ${arrow(14)}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section--alt" style="padding-block:clamp(48px,7vw,90px)">
+  <div class="container">
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,70px);align-items:start">
+      <div data-reveal>
+        <span class="eyebrow">Key Features</span>
+        <h3 style="margin:14px 0 24px">Engineered for precision</h3>
+        <div class="features">${m.features.map(f=>`<div class="feature">${check}<span>${f}</span></div>`).join("")}</div>
+      </div>
+      <div data-reveal data-delay="1">
+        <span class="eyebrow">Specifications</span>
+        <h3 style="margin:14px 0 24px">Technical data</h3>
+        <table class="spec"><tbody>${m.specs.map(([k,v])=>`<tr><th>${k}</th><td>${v}</td></tr>`).join("")}</tbody></table>
+        <p class="form__note" style="margin-top:14px">Full multi-model specifications in the ${broc?`<a href="${broc}" target="_blank" rel="noopener" style="color:var(--red)">product brochure</a>`:"product brochure"}.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" style="padding-block:clamp(40px,5vw,70px)">
+  <div class="container" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:32px">
+    <a class="tlink" href="product-${prev.key}.html" style="border:0;padding:0">← ${prev.name}</a>
+    <a class="tlink" href="products.html" style="border:0;padding:0">All machines</a>
+    <a class="tlink" href="product-${next.key}.html" style="border:0;padding:0">${next.name} →</a>
+  </div>
+</section>` + CONTACT_CTA;
+}
 
 /* ======================================================= APPLICATIONS */
 const apps = [
@@ -266,6 +398,16 @@ const PAGES = [
   { file:"contact.html",      title:"Contact — Schmoll Asia Pacific",                       desc:"Contact Schmoll Asia Pacific — 8 offices across 7 countries in Asia Pacific.", main:contactPage },
   { file:"news.html",         title:"Media — Schmoll Asia Pacific",                         desc:"News, blog and videos from Schmoll Asia Pacific.", main:newsPage }
 ];
+
+// machine detail pages
+MACHINES.forEach((m, i) => {
+  PAGES.push({
+    file: `product-${m.key}.html`,
+    title: `${m.name} — Schmoll Asia Pacific`,
+    desc: m.tagline.replace(/<[^>]+>/g, ""),
+    main: productDetail(m, i)
+  });
+});
 
 let n = 0;
 for (const p of PAGES) {

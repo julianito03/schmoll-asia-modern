@@ -4,12 +4,14 @@ const HEADER = `<header class="site-header">
   <div class="container">
     <nav class="nav" aria-label="Primary">
       <a class="logo" href="index.html" aria-label="Schmoll Asia Pacific — home">
-        <svg class="logo__mark" viewBox="0 0 28 48" fill="none" aria-hidden="true">
-          <path d="M9 4 h10 v14 l-5 9 -5 -9 z" fill="#C11819"/>
-          <line x1="2" y1="29" x2="26" y2="29" stroke="currentColor" stroke-width="2"/>
-          <line x1="14" y1="34" x2="14" y2="44" stroke="#C11819" stroke-width="2.5" stroke-linecap="round"/>
+        <span class="logo__word">schmoll</span>
+        <svg class="logo__fid" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+          <path d="M16 4 h12 v13 l-6 9 -6 -9 z" fill="#C11819"/>
+          <line x1="3" y1="24" x2="15" y2="24" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
+          <line x1="29" y1="24" x2="41" y2="24" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
+          <line x1="22" y1="29" x2="22" y2="42" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
         </svg>
-        <span class="logo__type"><b>Schmoll</b><span>Asia Pacific</span></span>
+        <span class="logo__word">asia pacific</span>
       </a>
       <ul class="menu">
         <li><a href="about.html" data-i18n="nav.about">About</a></li>
@@ -66,12 +68,14 @@ const FOOTER = `<footer class="site-footer">
     <div class="footer-top">
       <div class="footer-brand">
         <div class="logo">
-          <svg class="logo__mark" viewBox="0 0 28 48" fill="none" aria-hidden="true" style="color:#fff">
-            <path d="M9 4 h10 v14 l-5 9 -5 -9 z" fill="#C11819"/>
-            <line x1="2" y1="29" x2="26" y2="29" stroke="currentColor" stroke-width="2"/>
-            <line x1="14" y1="34" x2="14" y2="44" stroke="#C11819" stroke-width="2.5" stroke-linecap="round"/>
+          <span class="logo__word">schmoll</span>
+          <svg class="logo__fid" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <path d="M16 4 h12 v13 l-6 9 -6 -9 z" fill="#C11819"/>
+            <line x1="3" y1="24" x2="15" y2="24" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
+            <line x1="29" y1="24" x2="41" y2="24" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
+            <line x1="22" y1="29" x2="22" y2="42" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
           </svg>
-          <span class="logo__type"><b style="color:#fff">Schmoll</b><span>Asia Pacific</span></span>
+          <span class="logo__word">asia pacific</span>
         </div>
         <p data-i18n="foot.tagline">German-engineered precision, automation and high-performance solutions for PCB manufacturing across Asia Pacific.</p>
       </div>
