@@ -298,9 +298,10 @@ strong { color: var(--grey-900); font-weight: 700; }
    EXHIBITIONS TICKER
    ========================================================================= */
 .exhibits { background: var(--red); color: #fff; }
-.exhibits__inner { display: flex; align-items: center; gap: 28px; padding-block: 18px; overflow: hidden; }
-.exhibits__label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; white-space: nowrap; opacity: .85; flex: none; display: flex; align-items: center; gap: 10px; }
-.exhibits__track { display: flex; flex: none; width: max-content; gap: 48px; animation: marquee 40s linear infinite; white-space: nowrap; }
+.exhibits__inner { display: flex; align-items: center; gap: 0; padding-block: 18px; overflow: hidden; position: relative; }
+.exhibits__label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; white-space: nowrap; flex: none; display: flex; align-items: center; gap: 10px; position: relative; z-index: 2; background: var(--red); padding-right: 36px; }
+.exhibits__viewport { flex: 1 1 auto; overflow: hidden; position: relative; z-index: 1; }
+.exhibits__track { display: flex; width: max-content; gap: 48px; animation: marquee 40s linear infinite; white-space: nowrap; }
 .exhibits:hover .exhibits__track { animation-play-state: paused; }
 .exhibits__item { font-family: var(--font-display); text-transform: uppercase; font-size: .92rem; letter-spacing: .04em; display: inline-flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; transition: opacity .2s var(--ease); }
 .exhibits__item:hover { opacity: .72; }
