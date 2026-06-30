@@ -21,21 +21,24 @@ const banner = (eyebrow, title, crumbs, img = "assets/img/facility-2.jpg") => `
 const about = banner('About', 'German Quality &amp; Innovation', '<span>About</span>', 'assets/img/facility-1.jpg') + `
 <section class="section">
   <div class="container">
-    <div class="grid" style="grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:start">
+    <div class="grid" style="grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,80px);align-items:center">
       <div class="prose" data-reveal>
         <span class="eyebrow">Our Mission</span>
         <h2 style="margin:16px 0 22px">Precision engineering, in Asia since 1996</h2>
         <p>Schmoll has offered German quality and innovation across Asia since 1996, operating as a leading PCB drilling and routing machinery provider. Our machines are built on precision-engineering fundamentals: high-speed linear motors, granite machine bases for superior stability, and sophisticated tool adjustment systems.</p>
         <p>We help you meet your expectations with efficient solutions and machinery — your technology partner and a solution provider you can trust.</p>
       </div>
-      <div data-reveal data-delay="1">
-        <div class="prod-grid" style="grid-template-columns:1fr 1fr">
-          <div class="prod-card" style="min-height:auto"><span class="prod-card__no">A1</span><h3 style="margin-top:10px">8 Offices</h3><p>Across 7 countries — China (2), Taiwan, Malaysia, Thailand, Korea, Hong Kong &amp; Vietnam.</p></div>
-          <div class="prod-card" style="min-height:auto"><span class="prod-card__no">A2</span><h3 style="margin-top:10px">80+ Years</h3><p>Of continuous innovation in PCB manufacturing technology.</p></div>
-          <div class="prod-card" style="min-height:auto"><span class="prod-card__no">A3</span><h3 style="margin-top:10px">German Engineering</h3><p>Linear motors, granite bases and precision tooling.</p></div>
-          <div class="prod-card" style="min-height:auto"><span class="prod-card__no">A4</span><h3 style="margin-top:10px">Full Lifecycle</h3><p>Maintenance, spare parts, repair and R&amp;D support.</p></div>
-        </div>
-      </div>
+      <div data-reveal data-delay="1"><img src="assets/img/facility-2.jpg" alt="Schmoll precision machine" style="width:100%;border:1px solid var(--line);border-radius:var(--radius)" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+<section class="section section--dark" style="padding-block:clamp(48px,6vw,80px)">
+  <div class="container">
+    <div class="hero__stats" style="border:0;margin:0;justify-content:space-between" data-reveal>
+      <div class="stat"><div class="stat__num">80<span>+</span></div><div class="stat__label">Years of innovation</div></div>
+      <div class="stat"><div class="stat__num">8</div><div class="stat__label">Offices · 7 countries</div></div>
+      <div class="stat"><div class="stat__num">300<span>K</span></div><div class="stat__label">Max spindle RPM</div></div>
+      <div class="stat"><div class="stat__num">10</div><div class="stat__label">Machine series</div></div>
     </div>
   </div>
 </section>
@@ -54,6 +57,17 @@ const about = banner('About', 'German Quality &amp; Innovation', '<span>About</s
         ["2015","Laser drilling technology."],
         ["2023","X-Ray inspection systems."]
       ].map(([y,t])=>`<div class="tl-item"><div class="tl-year">${y}</div><div class="tl-text">${t}</div></div>`).join("")}
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="sec-head" data-reveal><span class="eyebrow">Inside Schmoll</span><h2>Precision, in practice</h2></div>
+    <div class="gallery" data-reveal>
+      <a class="span2" data-lightbox="assets/img/facility-3.jpg" href="assets/img/facility-3.jpg"><img src="assets/img/facility-3.jpg" alt="Schmoll machine in operation" loading="lazy"></a>
+      <a data-lightbox="assets/img/facility-1.jpg" href="assets/img/facility-1.jpg"><img src="assets/img/facility-1.jpg" alt="" loading="lazy"></a>
+      <a data-lightbox="assets/img/machines/eagle.webp" href="assets/img/machines/eagle.webp" style="background:radial-gradient(120% 100% at 50% 35%,#2c2c30,#141416)"><img src="assets/img/machines/eagle.webp" alt="Eagle machine" loading="lazy" style="object-fit:contain;padding:10px"></a>
+      <a data-lightbox="assets/img/team-hero.jpg" href="assets/img/team-hero.jpg"><img src="assets/img/team-hero.jpg" alt="Schmoll team" loading="lazy"></a>
     </div>
   </div>
 </section>` + CONTACT_CTA;
@@ -289,7 +303,10 @@ const teamPage = banner('Team', 'Meet our Team', '<span>Team</span>', 'assets/im
 const servicePage = banner('Service', 'Got a Problem? Schmoll is Here.', '<span>Service</span>') + `
 <section class="section">
   <div class="container">
-    <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="svc.eyebrow">Service</span><h2 data-i18n="svc.title">Got a Problem? Schmoll is Here.</h2><p class="lead" data-i18n="svc.body">With expertise spanning various domains, we ensure that every challenge is met with a tailored solution.</p></div>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;margin-bottom:clamp(40px,6vw,72px)">
+      <div data-reveal><span class="eyebrow" data-i18n="svc.eyebrow">Service</span><h2 style="margin:16px 0 18px" data-i18n="svc.title">Got a Problem? Schmoll is Here.</h2><p class="lead" data-i18n="svc.body">With expertise spanning various domains, we ensure that every challenge is met with a tailored solution.</p></div>
+      <div data-reveal data-delay="1"><img src="assets/img/facility-3.jpg" alt="Schmoll service engineers" style="width:100%;border:1px solid var(--line);border-radius:var(--radius)" loading="lazy"></div>
+    </div>
     <div class="svc-list" data-reveal>
       <div class="svc-item"><span class="svc-item__no">01</span><h3 data-i18n="svc.maint">Maintenance</h3><p>Reliable &amp; efficient preventive and corrective maintenance to keep your machines at peak performance.</p></div>
       <div class="svc-item"><span class="svc-item__no">02</span><h3 data-i18n="svc.spare">Spare Parts</h3><p>Comprehensive &amp; prompt supply of genuine Schmoll spare parts, minimising downtime.</p></div>
@@ -389,6 +406,15 @@ const newsPage = banner('Media', 'News &amp; Insights', '<span>Media</span>') + 
     </div>
 
     <div id="videos" class="sec-head" style="margin-top:80px" data-reveal><span class="eyebrow" data-i18n="media.videos">Videos</span><h2>Watch Schmoll in Action</h2><p class="lead">Product demonstrations and exhibition highlights.</p></div>
+    <div class="video-grid" data-reveal>
+      ${[
+        ["SIMPIMA 2026 — Exhibition Reel","https://videos.files.wordpress.com/Q1GHA7sS/simpimav2026.mp4"],
+        ["Schmoll Asia Pacific","https://schmoll-asia.com/wp-content/uploads/2024/06/Untitled-design.mp4"],
+        ["Machine in Action","https://schmoll-asia.com/wp-content/uploads/2024/07/0807.mp4"],
+        ["Precision Drilling","https://schmoll-asia.com/wp-content/uploads/2024/07/08071.mp4"],
+        ["Schmoll Showcase","https://schmoll-asia.com/wp-content/uploads/2024/05/0521.mp4"]
+      ].map(([t,u])=>`<div class="video-card"><video controls preload="none" playsinline src="${u}"></video><div class="video-card__cap">${t}</div></div>`).join("")}
+    </div>
   </div>
 </section>` + CONTACT_CTA;
 

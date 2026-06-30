@@ -378,6 +378,14 @@ strong { color: var(--grey-900); font-weight: 700; }
 .spec tr:last-child th, .spec tr:last-child td { border-bottom: 0; }
 
 /* =========================================================================
+   VIDEO GRID
+   ========================================================================= */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: clamp(16px, 2vw, 24px); }
+.video-card { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #000; }
+.video-card video { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: #000; }
+.video-card__cap { background: #fff; padding: 14px 18px; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .06em; color: var(--grey-700); text-transform: uppercase; }
+
+/* =========================================================================
    GALLERY
    ========================================================================= */
 .gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 12px; }
@@ -429,8 +437,8 @@ strong { color: var(--grey-900); font-weight: 700; }
 .lead-card__role { color: var(--red); }
 .lead-card h3 { margin: 14px 0 16px; }
 .lead-card blockquote { font-size: 1.15rem; color: var(--grey-700); border-left: 2px solid var(--red); padding-left: 22px; font-style: italic; }
-.roster { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 1px; }
-.roster__item { background: #fff; padding: 24px 22px; }
+.roster { display: flex; flex-wrap: wrap; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 1px; }
+.roster__item { background: #fff; padding: 24px 22px; flex: 1 1 220px; }
 .roster__item b { display: block; font-family: var(--font-display); text-transform: uppercase; font-size: 1rem; color: var(--grey-900); letter-spacing: .02em; }
 .roster__item span { font-size: .85rem; color: var(--text-mute); }
 .roster__group { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--red); margin: 48px 0 18px; }
