@@ -156,7 +156,7 @@ const productsPage = banner('Products', 'You Name It, We Have It', '<span>Produc
     <div class="sec-head" data-reveal><span class="eyebrow">Cutting-Edge Technology</span><h2>The Schmoll Machine Lineup</h2><p class="lead">Our machines leverage artificial intelligence to enhance operational efficiency — dynamically adjusting settings and measurements with machine learning for optimal performance in every operation.</p></div>
     <div class="pgrid" data-reveal>
       ${MACHINES.map((m,i)=>`<a class="pcard" href="product-${m.key}.html">
-        <div class="pcard__img pcard__img--render"><span class="pcard__cat">${m.cat}</span><img src="assets/img/machines/${m.key}.webp?v=7" alt="${m.name}" loading="lazy"></div>
+        <div class="pcard__img pcard__img--render"><span class="pcard__cat">${m.cat}</span><img src="assets/img/machines/${m.key}.webp?v=8" alt="${m.name}" loading="lazy"></div>
         <div class="pcard__body"><span class="pcard__no">${String(i+1).padStart(2,"0")}</span><h3>${m.name}</h3><p>${m.blurb}</p>
         <div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow">${arrow(20)}</span></div></div>
       </a>`).join("")}
@@ -184,9 +184,9 @@ function productDetail(m, idx) {
 <section class="section">
   <div class="container">
     <div class="pd-hero">
-      <figure class="pd-figure" data-lightbox="assets/img/machines/${m.key}.webp?v=7" data-reveal>
+      <figure class="pd-figure" data-lightbox="assets/img/machines/${m.key}.webp?v=8" data-reveal>
         <span class="pd-figure__tag">Made in Germany</span>
-        <img src="assets/img/machines/${m.key}.webp?v=7" alt="${m.name}">
+        <img src="assets/img/machines/${m.key}.webp?v=8" alt="${m.name}">
       </figure>
       <div data-reveal data-delay="1">
         <span class="eyebrow pd-cat">${m.cat}</span>
