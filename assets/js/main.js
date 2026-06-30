@@ -59,6 +59,43 @@
     reveal.forEach((el) => el.classList.add("is-visible"));
   }
 
+  /* ---------- Count-up stats ---------- */
+  function animateCount(el) {
+    if (el.dataset.counted) return;
+    const html = el.innerHTML;
+    const m = html.match(/^(\d[\d,]*)/);
+    if (!m) return;
+    const target = parseInt(m[1].replace(/,/g, ""), 10);
+    const suffix = html.slice(m[1].length);
+    if (!target) return;
+    el.dataset.counted = "1";
+    const dur = 1500, t0 = performance.now();
+    (function tick(now) {
+      const p = Math.min(1, (now - t0) / dur);
+      const v = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      el.innerHTML = v.toLocaleString() + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+  const counters = document.querySelectorAll(".stat__num");
+  if ("IntersectionObserver" in window && counters.length && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { animateCount(en.target); cio.unobserve(en.target); } });
+    }, { threshold: 0.6 });
+    counters.forEach((el) => cio.observe(el));
+  }
+
+  /* ---------- Lightbox for gallery images ---------- */
+  const lb = document.createElement("div");
+  lb.className = "lightbox"; lb.innerHTML = '<img alt=""><button class="lightbox__x" aria-label="Close">&times;</button>';
+  document.body.appendChild(lb);
+  const lbImg = lb.querySelector("img");
+  document.querySelectorAll("[data-lightbox]").forEach((el) => {
+    el.addEventListener("click", () => { lbImg.src = el.getAttribute("href") || el.dataset.lightbox || el.querySelector("img")?.src; lb.classList.add("is-open"); });
+    if (el.tagName === "A") el.addEventListener("click", (e) => e.preventDefault());
+  });
+  lb.addEventListener("click", () => lb.classList.remove("is-open"));
+
   /* ---------- Forms (front-end only demo) ---------- */
   document.querySelectorAll("form[data-demo]").forEach((f) => {
     f.addEventListener("submit", (e) => {

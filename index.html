@@ -18,12 +18,14 @@
   <div class="container">
     <nav class="nav" aria-label="Primary">
       <a class="logo" href="index.html" aria-label="Schmoll Asia Pacific — home">
-        <svg class="logo__mark" viewBox="0 0 28 48" fill="none" aria-hidden="true">
-          <path d="M9 4 h10 v14 l-5 9 -5 -9 z" fill="#C11819"/>
-          <line x1="2" y1="29" x2="26" y2="29" stroke="currentColor" stroke-width="2"/>
-          <line x1="14" y1="34" x2="14" y2="44" stroke="#C11819" stroke-width="2.5" stroke-linecap="round"/>
+        <span class="logo__word">schmoll</span>
+        <svg class="logo__fid" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+          <path d="M16 4 h12 v13 l-6 9 -6 -9 z" fill="#C11819"/>
+          <line x1="3" y1="24" x2="15" y2="24" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
+          <line x1="29" y1="24" x2="41" y2="24" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
+          <line x1="22" y1="29" x2="22" y2="42" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
         </svg>
-        <span class="logo__type"><b>Schmoll</b><span>Asia Pacific</span></span>
+        <span class="logo__word">asia pacific</span>
       </a>
 
       <ul class="menu">
@@ -82,7 +84,17 @@
 <!-- ===================== HERO ===================== -->
 <section class="hero">
   <div class="hero__media"><img src="assets/img/facility-3.jpg" alt="Schmoll technicians operating a precision PCB drilling machine"></div>
-  <span class="fiducial" style="top:18%;right:8%"></span>
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__scan" aria-hidden="true"></div>
+  <svg class="hero__target" viewBox="0 0 130 130" aria-hidden="true">
+    <circle class="ring" cx="65" cy="65" r="56"/>
+    <circle class="spin" cx="65" cy="65" r="40" stroke-dasharray="6 10"/>
+    <line class="tick" x1="65" y1="18" x2="65" y2="44"/>
+    <line class="tick" x1="65" y1="86" x2="65" y2="112"/>
+    <line class="tick" x1="18" y1="65" x2="44" y2="65"/>
+    <line class="tick" x1="86" y1="65" x2="112" y2="65"/>
+    <circle cx="65" cy="65" r="3" fill="#C11819" stroke="none"/>
+  </svg>
   <span class="fiducial" style="bottom:26%;left:4%;opacity:.25"></span>
   <div class="container">
     <div class="hero__inner">
@@ -136,25 +148,17 @@
       <p class="lead" data-i18n="prod.body">Schmoll boasts a wide range of machines to ensure that any requirement can be met.</p>
     </div>
 
-    <div class="prod-grid" data-reveal>
-      <a class="prod-card prod-card--feature" href="products.html#eagle">
-        <span class="prod-card__no">01</span>
-        <span class="prod-card__cat">Mechanical Drilling</span>
-        <h3>Eagle Series</h3>
-        <p>Flagship high-speed mechanical drilling with linear-motor precision and granite stability.</p>
-        <span class="prod-card__arrow"><svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span>
-      </a>
-      <a class="prod-card" href="products.html#hawk"><span class="prod-card__no">02</span><span class="prod-card__cat">Drilling</span><h3>Hawk Series</h3><p>High-performance drilling throughput.</p><span class="prod-card__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></a>
-      <a class="prod-card" href="products.html#falcon"><span class="prod-card__no">03</span><span class="prod-card__cat">Drilling</span><h3>Falcon Series</h3><p>Versatile precision drilling platform.</p><span class="prod-card__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></a>
-      <a class="prod-card" href="products.html#raptor"><span class="prod-card__no">04</span><span class="prod-card__cat">Routing</span><h3>Raptor Series</h3><p>Best-in-class PCB routing equipment.</p><span class="prod-card__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></a>
-      <a class="prod-card" href="products.html#combidrill"><span class="prod-card__no">05</span><span class="prod-card__cat">Laser Drilling</span><h3>CombiDrill 500</h3><p>Hybrid UV-CO₂ laser drilling.</p><span class="prod-card__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></a>
-      <a class="prod-card" href="products.html#mdi"><span class="prod-card__no">06</span><span class="prod-card__cat">Imaging</span><h3>MDI Series</h3><p>Direct imaging for fine-line PCBs.</p><span class="prod-card__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></a>
-      <a class="prod-card" href="products.html#xra3"><span class="prod-card__no">07</span><span class="prod-card__cat">X-Ray</span><h3>XRA3 Series</h3><p>X-ray inspection &amp; registration.</p><span class="prod-card__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></a>
-      <a class="prod-card" href="products.html#automation"><span class="prod-card__no">08</span><span class="prod-card__cat">Automation</span><h3>Automation &amp; Probe Card</h3><p>Drillroom automation and probe-card / fixture solutions for the lowest cost of ownership.</p><span class="prod-card__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></a>
+    <div class="pgrid" data-reveal>
+      <a class="pcard" href="product-eagle.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">Drilling · Depth Control</span><img src="assets/img/machines/eagle.webp" alt="Eagle Series" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">01</span><h3>Eagle Series</h3><p>Special-application microdrilling with Contact Bit Detection depth control.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
+      <a class="pcard" href="product-raptor.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">Routing</span><img src="assets/img/machines/raptor.webp" alt="Raptor Series" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">02</span><h3>Raptor Series</h3><p>XY CCD contour &amp; depth routing — made in Germany.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
+      <a class="pcard" href="product-combidrill.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">Laser Drilling</span><img src="assets/img/machines/combidrill.webp" alt="CombiDrill 500" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">03</span><h3>CombiDrill 500</h3><p>Hybrid UV-CO₂ laser drilling for microvias.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
+      <a class="pcard" href="product-mdi.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">Direct Imaging</span><img src="assets/img/machines/mdi.webp" alt="MDI Series" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">04</span><h3>MDI Series</h3><p>Soldermask direct imaging — maskless &amp; fine-line.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
+      <a class="pcard" href="product-xra3.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">X-Ray</span><img src="assets/img/machines/xra3.webp" alt="XRA3 Series" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">05</span><h3>XRA3 Series</h3><p>Full-panel X-ray inspection, registration &amp; drilling.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
+      <a class="pcard" href="product-automation.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">Automation</span><img src="assets/img/machines/automation.webp" alt="Automation Series" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">06</span><h3>Automation Series</h3><p>Drill-room automation — ALS, QLB, DTE &amp; ACC.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
     </div>
 
-    <div style="margin-top:40px" data-reveal>
-      <a href="products.html" class="tlink" data-i18n="btn.allproducts">All Products
+    <div style="margin-top:44px" data-reveal>
+      <a href="products.html" class="btn btn--ghost btn--lg" data-i18n="btn.allproducts">All Products
         <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a>
     </div>
   </div>
@@ -196,6 +200,24 @@
       <a class="app-card" href="applications.html#xray"><svg class="app-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4v24M4 16h24M8 8l16 16M24 8L8 24" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="app.xray">XRay – XRA3</h3><p>X-ray inspection &amp; registration systems.</p></a>
       <a class="app-card" href="applications.html#laser"><svg class="app-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2v14M16 16l-4 14M16 16l4 14" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="2" fill="currentColor"/></svg><h3 data-i18n="app.laser">Laser</h3><p>Hybrid laser drilling technology.</p></a>
       <a class="app-card" href="applications.html#ev"><svg class="app-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M14 3L6 18h6l-2 11 12-16h-7l3-10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><h3 data-i18n="app.ev">Electric Vehicle</h3><p>PCB solutions for EV electronics.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Inside Schmoll</span>
+      <h2>Precision, in practice</h2>
+      <p class="lead">German-engineered machines at work across our Asia Pacific facilities.</p>
+    </div>
+    <div class="gallery" data-reveal>
+      <a class="span2" data-lightbox="assets/img/facility-3.jpg" href="assets/img/facility-3.jpg"><img src="assets/img/facility-3.jpg" alt="Schmoll machine in operation" loading="lazy"></a>
+      <a data-lightbox="assets/img/facility-1.jpg" href="assets/img/facility-1.jpg"><img src="assets/img/facility-1.jpg" alt="Schmoll precision machine" loading="lazy"></a>
+      <a data-lightbox="assets/img/facility-2.jpg" href="assets/img/facility-2.jpg"><img src="assets/img/facility-2.jpg" alt="Schmoll facility" loading="lazy"></a>
+      <a data-lightbox="assets/img/machines/xra3.webp" href="assets/img/machines/xra3.webp" style="background:radial-gradient(120% 100% at 50% 35%,#2c2c30,#141416)"><img src="assets/img/machines/xra3.webp" alt="XRA3 X-ray machine" loading="lazy" style="object-fit:contain;padding:12px"></a>
+      <a data-lightbox="assets/img/team-hero.jpg" href="assets/img/team-hero.jpg"><img src="assets/img/team-hero.jpg" alt="Schmoll Asia Pacific team" loading="lazy"></a>
     </div>
   </div>
 </section>
@@ -259,12 +281,14 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="logo">
-          <svg class="logo__mark" viewBox="0 0 28 48" fill="none" aria-hidden="true" style="color:#fff">
-            <path d="M9 4 h10 v14 l-5 9 -5 -9 z" fill="#C11819"/>
-            <line x1="2" y1="29" x2="26" y2="29" stroke="currentColor" stroke-width="2"/>
-            <line x1="14" y1="34" x2="14" y2="44" stroke="#C11819" stroke-width="2.5" stroke-linecap="round"/>
+          <span class="logo__word">schmoll</span>
+          <svg class="logo__fid" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <path d="M16 4 h12 v13 l-6 9 -6 -9 z" fill="#C11819"/>
+            <line x1="3" y1="24" x2="15" y2="24" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
+            <line x1="29" y1="24" x2="41" y2="24" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
+            <line x1="22" y1="29" x2="22" y2="42" stroke="#C11819" stroke-width="3" stroke-linecap="round"/>
           </svg>
-          <span class="logo__type"><b style="color:#fff">Schmoll</b><span>Asia Pacific</span></span>
+          <span class="logo__word">asia pacific</span>
         </div>
         <p data-i18n="foot.tagline">German-engineered precision, automation and high-performance solutions for PCB manufacturing across Asia Pacific.</p>
       </div>

@@ -165,12 +165,12 @@ strong { color: var(--grey-900); font-weight: 700; }
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 24px; }
 
-/* Logo */
-.logo { display: flex; align-items: center; gap: 11px; }
-.logo__mark { width: 26px; height: 44px; color: var(--grey-900); flex: none; }
-.logo__type { font-family: var(--font-display); text-transform: uppercase; line-height: 1; }
-.logo__type b { display: block; font-weight: 700; font-size: 1.18rem; letter-spacing: .02em; color: var(--grey-900); }
-.logo__type span { display: block; font-family: var(--font-mono); font-weight: 500; font-size: .62rem; letter-spacing: .34em; color: var(--grey-500); margin-top: 3px; }
+/* Logo — faithful recreation of the real "schmoll · fiducial · asia pacific" wordmark */
+.logo { display: flex; align-items: center; gap: 6px; }
+.logo__word { font-family: var(--font-display); text-transform: lowercase; font-weight: 500; font-size: 1.2rem; letter-spacing: .05em; color: var(--grey-700); line-height: 1; white-space: nowrap; }
+.logo__fid { width: 22px; height: 34px; flex: none; }
+.site-footer .logo__word { color: #e8e8e8; }
+@media (max-width: 380px){ .logo__word { font-size: 1rem; letter-spacing: .03em; } }
 
 /* Primary menu */
 .menu { display: flex; align-items: center; gap: 4px; }
@@ -258,6 +258,26 @@ strong { color: var(--grey-900); font-weight: 700; }
 .hero__sub { font-size: clamp(1.1rem, 1.8vw, 1.45rem); color: var(--grey-300); max-width: 48ch; margin-bottom: 40px; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 
+/* Animated technical grid overlay */
+.hero__grid { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 64px 64px; mask-image: radial-gradient(120% 90% at 30% 30%, #000 30%, transparent 80%);
+  animation: gridDrift 24s linear infinite; }
+@keyframes gridDrift { to { background-position: 64px 64px; } }
+/* Scanning drill line */
+.hero__scan { position: absolute; left: 0; right: 0; top: 0; height: 2px; z-index: -1;
+  background: linear-gradient(90deg, transparent, rgba(193,24,25,.9) 50%, transparent);
+  box-shadow: 0 0 24px 2px rgba(193,24,25,.5); animation: scan 6s ease-in-out infinite; }
+@keyframes scan { 0%,100% { top: 8%; opacity: 0; } 10% { opacity: 1; } 50% { top: 88%; opacity: 1; } 60%{opacity:0;} }
+/* Animated crosshair that draws onto a target */
+.hero__target { position: absolute; right: 7%; top: 26%; width: 130px; height: 130px; z-index: -1; opacity: .85; }
+.hero__target circle, .hero__target line { stroke: var(--red); fill: none; stroke-width: 2; }
+.hero__target .ring { stroke-dasharray: 360; stroke-dashoffset: 360; animation: draw 2.4s var(--ease) .4s forwards; }
+.hero__target .tick { stroke-dasharray: 30; stroke-dashoffset: 30; animation: draw 1s var(--ease) 1.4s forwards; }
+.hero__target .spin { transform-origin: center; animation: spin 12s linear infinite; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
 /* Fiducial crosshair decoration */
 .fiducial { position: absolute; width: 64px; height: 64px; pointer-events: none; opacity: .5; }
 .fiducial::before, .fiducial::after { content: ""; position: absolute; background: var(--red); }
@@ -306,6 +326,67 @@ strong { color: var(--grey-900); font-weight: 700; }
 .prod-card--feature { grid-column: span 4; grid-row: span 2; background: var(--bg-dark); color: #fff; }
 .prod-card--feature h3, .prod-card--feature .prod-card__no { color: #fff; }
 .prod-card--feature p { color: var(--grey-400); }
+
+/* =========================================================================
+   PRODUCT CARDS (image)
+   ========================================================================= */
+.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: clamp(16px, 2vw, 26px); }
+.pcard { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s; }
+.pcard:hover { transform: translateY(-5px); box-shadow: 0 26px 50px -28px rgba(0,0,0,.35); border-color: var(--grey-300); }
+.pcard__img { position: relative; aspect-ratio: 5/4; overflow: hidden; background: var(--grey-100); border-bottom: 1px solid var(--line); }
+.pcard__img img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; transition: transform .7s var(--ease); }
+/* clean machine renders sit on a dark studio backdrop, shown in full */
+.pcard__img--render { background: radial-gradient(120% 100% at 50% 35%, #2c2c30 0%, #141416 70%); border-bottom-color: #1f1f22; }
+.pcard__img--render img { object-fit: contain; object-position: center; padding: 16px; }
+.pcard:hover .pcard__img--render img { transform: scale(1.05); }
+.pcard:hover .pcard__img img { transform: scale(1.07); }
+.pcard__cat { position: absolute; top: 12px; left: 12px; font-family: var(--font-mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--red); padding: 5px 9px; border-radius: 2px; }
+.pcard__body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+.pcard__no { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .14em; color: var(--grey-400); }
+.pcard h3 { margin: 8px 0 8px; font-size: 1.3rem; transition: color .25s; }
+.pcard:hover h3 { color: var(--red); }
+.pcard p { font-size: .9rem; color: var(--text-mute); }
+.pcard__foot { margin-top: auto; padding-top: 18px; display: flex; align-items: center; justify-content: space-between; }
+.pcard__foot .tlink { border: 0; padding: 0; }
+.pcard__arrow { color: var(--grey-400); transition: color .25s, transform .25s var(--ease); }
+.pcard:hover .pcard__arrow { color: var(--red); transform: translateX(5px); }
+
+/* =========================================================================
+   PRODUCT DETAIL
+   ========================================================================= */
+.pd-hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(30px, 5vw, 70px); align-items: center; }
+.pd-figure { position: relative; border: 1px solid var(--line); background: radial-gradient(120% 100% at 50% 35%, #2c2c30 0%, #141416 70%); border-radius: var(--radius); overflow: hidden; cursor: zoom-in; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; padding: 18px; }
+.pd-figure img { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform .6s var(--ease); }
+.pd-figure:hover img { transform: scale(1.03); }
+.pd-figure__tag { position: absolute; top: 14px; left: 14px; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: rgba(20,20,20,.7); padding: 6px 10px; border-radius: 2px; }
+.pd-cat { color: var(--red); }
+.pd-tagline { font-size: clamp(1.1rem, 1.6vw, 1.35rem); color: var(--text-soft); margin: 16px 0 22px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+.tag { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--grey-700); border: 1px solid var(--line); padding: 6px 11px; border-radius: 2px; }
+.pd-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* Feature chips */
+.features { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.feature { background: #fff; padding: 20px 22px; display: flex; gap: 12px; align-items: flex-start; }
+.feature svg { width: 18px; height: 18px; color: var(--red); flex: none; margin-top: 3px; }
+.feature span { font-size: .92rem; color: var(--text-soft); }
+
+/* Spec table */
+.spec { width: 100%; border-collapse: collapse; border: 1px solid var(--line); background: #fff; }
+.spec th { text-align: left; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--grey-500); padding: 14px 20px; width: 38%; vertical-align: top; border-bottom: 1px solid var(--line); background: var(--grey-50); }
+.spec td { padding: 14px 20px; font-size: .94rem; color: var(--grey-900); border-bottom: 1px solid var(--line); }
+.spec tr:last-child th, .spec tr:last-child td { border-bottom: 0; }
+
+/* =========================================================================
+   GALLERY
+   ========================================================================= */
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 12px; }
+.gallery a { overflow: hidden; border-radius: var(--radius); cursor: zoom-in; position: relative; background: var(--grey-100); }
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+.gallery a:hover img { transform: scale(1.08); }
+.gallery a.span2 { grid-column: span 2; grid-row: span 2; }
+.gallery a.tall { grid-row: span 2; }
+@media (max-width: 860px){ .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; } .gallery a.span2 { grid-column: span 2; } .pd-hero { grid-template-columns: 1fr; } }
 
 /* =========================================================================
    APPLICATIONS
@@ -402,6 +483,15 @@ strong { color: var(--grey-900); font-weight: 700; }
 .footer-bottom a { color: var(--grey-500); }
 .footer-bottom a:hover { color: var(--grey-300); }
 .footer-legal { display: flex; gap: 22px; flex-wrap: wrap; }
+
+/* =========================================================================
+   LIGHTBOX
+   ========================================================================= */
+.lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(10,10,10,.92); display: flex; align-items: center; justify-content: center; padding: 5vw; opacity: 0; visibility: hidden; transition: opacity .3s var(--ease), visibility .3s; cursor: zoom-out; }
+.lightbox.is-open { opacity: 1; visibility: visible; }
+.lightbox img { max-width: 92vw; max-height: 88vh; object-fit: contain; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+.lightbox__x { position: absolute; top: 24px; right: 30px; background: none; border: 0; color: #fff; font-size: 2.4rem; line-height: 1; opacity: .8; }
+.lightbox__x:hover { opacity: 1; color: var(--red); }
 
 /* =========================================================================
    SCROLL REVEAL
