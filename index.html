@@ -27,16 +27,13 @@
         </svg>
         <span class="logo__word">asia pacific</span>
       </a>
-
       <ul class="menu">
         <li><a href="about.html" data-i18n="nav.about">About</a></li>
         <li><a href="team.html" data-i18n="nav.team">Team</a></li>
         <li><a href="products.html" data-i18n="nav.products">Products</a></li>
         <li class="has-dropdown">
-          <button type="button" aria-haspopup="true" aria-expanded="false">
-            <span data-i18n="nav.application">Application</span>
-            <svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
-          </button>
+          <button type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n="nav.application">Application</span>
+            <svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></button>
           <div class="dropdown">
             <a href="applications.html#ccd" data-i18n="app.ccd">CCD Application</a>
             <a href="applications.html#backdrilling" data-i18n="app.backdrilling">Backdrilling</a>
@@ -51,10 +48,8 @@
         <li><a href="service.html" data-i18n="nav.service">Service</a></li>
         <li><a href="careers.html" data-i18n="nav.careers">Careers</a></li>
         <li class="has-dropdown">
-          <button type="button" aria-haspopup="true" aria-expanded="false">
-            <span data-i18n="nav.media">Media</span>
-            <svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
-          </button>
+          <button type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n="nav.media">Media</span>
+            <svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></button>
           <div class="dropdown">
             <a href="news.html" data-i18n="media.news">News</a>
             <a href="news.html#blog" data-i18n="media.blog">Blog</a>
@@ -63,7 +58,6 @@
         </li>
         <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
       </ul>
-
       <div class="nav__right">
         <div class="lang">
           <button class="lang__btn" type="button" aria-haspopup="true" aria-expanded="false">
@@ -81,7 +75,7 @@
 
 <main>
 
-<!-- ===================== HERO ===================== -->
+<!-- ===================== 1. HERO ===================== -->
 <section class="hero">
   <div class="hero__media"><img src="assets/img/facility-3.jpg" alt="Schmoll technicians operating a precision PCB drilling machine"></div>
   <div class="hero__grid" aria-hidden="true"></div>
@@ -89,13 +83,10 @@
   <svg class="hero__target" viewBox="0 0 130 130" aria-hidden="true">
     <circle class="ring" cx="65" cy="65" r="56"/>
     <circle class="spin" cx="65" cy="65" r="40" stroke-dasharray="6 10"/>
-    <line class="tick" x1="65" y1="18" x2="65" y2="44"/>
-    <line class="tick" x1="65" y1="86" x2="65" y2="112"/>
-    <line class="tick" x1="18" y1="65" x2="44" y2="65"/>
-    <line class="tick" x1="86" y1="65" x2="112" y2="65"/>
+    <line class="tick" x1="65" y1="18" x2="65" y2="44"/><line class="tick" x1="65" y1="86" x2="65" y2="112"/>
+    <line class="tick" x1="18" y1="65" x2="44" y2="65"/><line class="tick" x1="86" y1="65" x2="112" y2="65"/>
     <circle cx="65" cy="65" r="3" fill="#C11819" stroke="none"/>
   </svg>
-  <span class="fiducial" style="bottom:26%;left:4%;opacity:.25"></span>
   <div class="container">
     <div class="hero__inner">
       <span class="eyebrow" data-i18n="hero.eyebrow">Efficient Solutions — PCB Drilling</span>
@@ -104,24 +95,17 @@
       <div class="hero__cta">
         <a href="products.html" class="btn btn--lg" data-i18n="btn.discover">Discover more
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a>
-        <a href="about.html" class="btn btn--light btn--lg" data-i18n="nav.about">About</a>
-      </div>
-
-      <div class="hero__stats">
-        <div class="stat"><div class="stat__num" data-i18n="stat.years">80<span>+</span></div><div class="stat__label" data-i18n="stat.years_l">Years of innovation</div></div>
-        <div class="stat"><div class="stat__num" data-i18n="stat.offices">8</div><div class="stat__label" data-i18n="stat.offices_l">Offices · 7 countries</div></div>
-        <div class="stat"><div class="stat__num" data-i18n="stat.rpm">300<span>K</span></div><div class="stat__label" data-i18n="stat.rpm_l">Max spindle RPM</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== EXHIBITIONS ===================== -->
-<section class="exhibits" aria-label="Exhibitions 2026">
+<!-- ===================== 2. EXHIBITIONS ===================== -->
+<section class="exhibits" aria-label="Exhibitions">
   <div class="container exhibits__inner">
     <div class="exhibits__label">
       <svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="currentColor" fill="none"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg>
-      <span data-i18n="exh.label">Meet us at</span>
+      <span data-i18n="exh.label">Exhibitions</span>
     </div>
     <div class="exhibits__track">
       <span class="exhibits__item"><b>CPCA 2026</b><span>March 24–26</span></span>
@@ -129,7 +113,6 @@
       <span class="exhibits__item"><b>KPCA 2026</b><span>Sep 9–11</span></span>
       <span class="exhibits__item"><b>TPCA 2026</b><span>Oct 20–22</span></span>
       <span class="exhibits__item"><b>HKPCA 2026</b><span>Dec 2–4</span></span>
-      <!-- duplicate for seamless marquee -->
       <span class="exhibits__item"><b>CPCA 2026</b><span>March 24–26</span></span>
       <span class="exhibits__item"><b>THECA</b><span>August 26–28</span></span>
       <span class="exhibits__item"><b>KPCA 2026</b><span>Sep 9–11</span></span>
@@ -139,91 +122,60 @@
   </div>
 </section>
 
-<!-- ===================== PRODUCTS ===================== -->
+<!-- ===================== 3. OUR PRODUCTS ===================== -->
 <section class="section" id="products">
   <div class="container">
     <div class="sec-head" data-reveal>
-      <span class="eyebrow" data-i18n="prod.eyebrow">Products</span>
-      <h2 data-i18n="prod.title">You Name It, We Have It</h2>
-      <p class="lead" data-i18n="prod.body">Schmoll boasts a wide range of machines to ensure that any requirement can be met.</p>
+      <span class="eyebrow" data-i18n="prod.eyebrow">You Name It We Have It</span>
+      <h2 data-i18n="prod.title">Our Products</h2>
+      <p class="lead" data-i18n="prod.body">Schmoll boasts a wide range of machines to ensure that any requirement can be met. Each machine has its own unique features that will be just right for you.</p>
     </div>
-
     <div class="pgrid" data-reveal>
-      <a class="pcard" href="product-eagle.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">Drilling · Depth Control</span><img src="assets/img/machines/eagle.webp" alt="Eagle Series" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">01</span><h3>Eagle Series</h3><p>Special-application microdrilling with Contact Bit Detection depth control.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
-      <a class="pcard" href="product-raptor.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">Routing</span><img src="assets/img/machines/raptor.webp" alt="Raptor Series" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">02</span><h3>Raptor Series</h3><p>XY CCD contour &amp; depth routing — made in Germany.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
-      <a class="pcard" href="product-combidrill.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">Laser Drilling</span><img src="assets/img/machines/combidrill.webp" alt="CombiDrill 500" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">03</span><h3>CombiDrill 500</h3><p>Hybrid UV-CO₂ laser drilling for microvias.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
-      <a class="pcard" href="product-mdi.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">Direct Imaging</span><img src="assets/img/machines/mdi.webp" alt="MDI Series" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">04</span><h3>MDI Series</h3><p>Soldermask direct imaging — maskless &amp; fine-line.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
-      <a class="pcard" href="product-xra3.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">X-Ray</span><img src="assets/img/machines/xra3.webp" alt="XRA3 Series" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">05</span><h3>XRA3 Series</h3><p>Full-panel X-ray inspection, registration &amp; drilling.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
-      <a class="pcard" href="product-automation.html"><div class="pcard__img pcard__img--render"><span class="pcard__cat">Automation</span><img src="assets/img/machines/automation.webp" alt="Automation Series" loading="lazy"></div><div class="pcard__body"><span class="pcard__no">06</span><h3>Automation Series</h3><p>Drill-room automation — ALS, QLB, DTE &amp; ACC.</p><div class="pcard__foot"><span class="tlink">View machine</span><span class="pcard__arrow"><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span></div></div></a>
-    </div>
-
-    <div style="margin-top:44px" data-reveal>
-      <a href="products.html" class="btn btn--ghost btn--lg" data-i18n="btn.allproducts">All Products
-        <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a>
+      <div class="pcard"><a class="pcard__img pcard__img--render" href="product-eagle.html"><span class="pcard__cat">Drilling</span><img src="assets/img/machines/eagle.webp" alt="Eagle" loading="lazy"></a><div class="pcard__body"><h3>Eagle</h3><div class="pcard__foot"><a class="tlink" href="product-eagle.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-Eagle-.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
+      <div class="pcard"><a class="pcard__img pcard__img--render" href="product-hawk.html"><span class="pcard__cat">Drilling</span><img src="assets/img/machines/hawk.webp" alt="Hawk" loading="lazy"></a><div class="pcard__body"><h3>Hawk</h3><div class="pcard__foot"><a class="tlink" href="product-hawk.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-HAWK.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
+      <div class="pcard"><a class="pcard__img pcard__img--render" href="product-falcon.html"><span class="pcard__cat">Drilling · Substrate</span><img src="assets/img/machines/falcon.webp" alt="Falcon" loading="lazy"></a><div class="pcard__body"><h3>Falcon</h3><div class="pcard__foot"><a class="tlink" href="product-falcon.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-FALCON.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
+      <div class="pcard"><a class="pcard__img pcard__img--render" href="product-rmxy.html"><span class="pcard__cat">Routing</span><img src="assets/img/machines/rmxy.webp" alt="RMXY" loading="lazy"></a><div class="pcard__body"><h3>RMXY</h3><div class="pcard__foot"><a class="tlink" href="product-rmxy.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="http://47.239.40.173/wp-content/uploads/2024/06/EN_RMXY_Brochure_FRONTBACK.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
+      <div class="pcard"><a class="pcard__img pcard__img--render" href="product-raptor.html"><span class="pcard__cat">Routing · CCD</span><img src="assets/img/machines/raptor.webp" alt="Raptor" loading="lazy"></a><div class="pcard__body"><h3>Raptor</h3><div class="pcard__foot"><a class="tlink" href="product-raptor.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/Raptor_Brochure-1-1.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
+      <div class="pcard"><a class="pcard__img pcard__img--render" href="product-xra3.html"><span class="pcard__cat">X-Ray</span><img src="assets/img/machines/xra3.webp" alt="XRA3" loading="lazy"></a><div class="pcard__body"><h3>XRA3</h3><div class="pcard__foot"><a class="tlink" href="product-xra3.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-XRA3.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
+      <div class="pcard"><a class="pcard__img pcard__img--render" href="product-combidrill.html"><span class="pcard__cat">Laser Drilling</span><img src="assets/img/machines/combidrill.webp" alt="CombiDrill-500" loading="lazy"></a><div class="pcard__body"><h3>CombiDrill-500</h3><div class="pcard__foot"><a class="tlink" href="product-combidrill.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-CombiDrill-500.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
+      <div class="pcard"><a class="pcard__img pcard__img--render" href="product-mdi.html"><span class="pcard__cat">Direct Imaging</span><img src="assets/img/machines/mdi.webp" alt="MDI" loading="lazy"></a><div class="pcard__body"><h3>MDI</h3><div class="pcard__foot"><a class="tlink" href="product-mdi.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-MDI.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
+      <div class="pcard"><a class="pcard__img pcard__img--render" href="product-automation.html"><span class="pcard__cat">Automation</span><img src="assets/img/machines/automation.webp" alt="ALS" loading="lazy"></a><div class="pcard__body"><h3>ALS</h3><div class="pcard__foot"><a class="tlink" href="product-automation.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-ALS.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
+      <div class="pcard"><a class="pcard__img pcard__img--render" href="product-probecard.html"><span class="pcard__cat">Fixture / Probe Card</span><img src="assets/img/machines/probecard.webp" alt="Fixture" loading="lazy"></a><div class="pcard__body"><h3>Fixture</h3><div class="pcard__foot"><a class="tlink" href="product-probecard.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-Fixture.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ===================== VALUE (dark) ===================== -->
-<section class="section section--dark" style="background:#141414;position:relative;overflow:hidden">
-  <div class="hero__media" style="z-index:0;opacity:1"><img src="assets/img/facility-1.jpg" alt="" style="opacity:.16"></div>
-  <div class="container" style="position:relative;z-index:1">
-    <div class="grid" style="grid-template-columns:1.1fr .9fr;align-items:center">
+<!-- ===================== 4. DISCOVER OUR APPLICATIONS ===================== -->
+<section class="section section--dark app-cta" style="position:relative;overflow:hidden">
+  <div class="hero__media" style="z-index:0;opacity:1"><img src="assets/img/facility-1.jpg" alt="" style="opacity:.18"></div>
+  <div class="hero__grid" aria-hidden="true" style="z-index:0"></div>
+  <div class="container" style="position:relative;z-index:1;text-align:center;max-width:760px">
+    <span class="eyebrow" style="justify-content:center" data-i18n="appsec.eyebrow">Applications</span>
+    <h2 style="margin:18px 0 18px" data-reveal data-i18n="appsec.title">Discover our Applications</h2>
+    <p class="lead" style="margin:0 auto 32px" data-reveal data-i18n="appsec.body">You might have been searching for a while, but now you've found Schmoll. We believe we have everything you need to achieve your goals.</p>
+    <a href="applications.html" class="btn btn--lg" data-reveal data-i18n="btn.findout">Find out More
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a>
+  </div>
+</section>
+
+<!-- ===================== 5. HIGHEST PRODUCTIVITY ===================== -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="grid" style="grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,80px);align-items:center">
       <div data-reveal>
         <span class="eyebrow" data-i18n="val.eyebrow">Why Schmoll</span>
         <h2 style="margin:18px 0 22px" data-i18n="val.title">Highest Productivity at Lowest Cost of Ownership</h2>
-        <p style="font-size:1.15rem" data-i18n="val.body">Your Technology Partner and a Solution Provider you can trust. German-engineered precision, automation and high-performance solutions for electronics.</p>
+        <p class="lead" data-i18n="val.body">Our expertise helps customers get the most from our products. We continuously adapt to market challenges and refine our processes, strengthening our role as your <strong>Technology Partner</strong>. Service awards show we're more than just engineers. We are your <strong>Solution Provider</strong> you can trust.</p>
+        <div style="margin-top:30px"><a href="service.html" class="btn btn--ghost btn--lg" data-i18n="btn.services">Our Services
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a></div>
       </div>
-      <div class="hero__stats" style="border:0;margin:0;flex-direction:column;gap:28px;align-items:flex-start" data-reveal data-delay="1">
-        <div class="stat"><div class="stat__num"><span>1943</span></div><div class="stat__label">Founded by Heinz Schmoll, Germany</div></div>
-        <div class="stat"><div class="stat__num">German<span>·</span>Quality</div><div class="stat__label">In Asia since 1996</div></div>
-        <div class="stat"><div class="stat__num">Granite<span>+</span></div><div class="stat__label">Linear-motor precision base</div></div>
-      </div>
+      <div data-reveal data-delay="1"><img src="assets/img/facility-2.jpg" alt="Schmoll precision machine" style="width:100%;border:1px solid var(--line);border-radius:var(--radius)" loading="lazy"></div>
     </div>
   </div>
 </section>
 
-<!-- ===================== APPLICATIONS ===================== -->
-<section class="section section--alt" id="applications">
-  <div class="container">
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow" data-i18n="appsec.eyebrow">Applications</span>
-      <h2 data-i18n="appsec.title">Discover our Applications</h2>
-      <p class="lead" data-i18n="appsec.body">From CCD precision drilling to backdrilling, automation and laser — engineered for every PCB challenge.</p>
-    </div>
-    <div class="app-grid" data-reveal>
-      <a class="app-card" href="applications.html#ccd"><svg class="app-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><path d="M16 2v6M16 24v6M2 16h6M24 16h6" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="app.ccd">CCD Application</h3><p>High-precision drilling with CCD camera technology.</p></a>
-      <a class="app-card" href="applications.html#backdrilling"><svg class="app-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3v18M11 16l5 5 5-5M6 27h20" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="app.backdrilling">Backdrilling</h3><p>Precision via management &amp; stub removal.</p></a>
-      <a class="app-card" href="applications.html#substrate"><svg class="app-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="9" width="24" height="14" stroke="currentColor" stroke-width="2"/><path d="M9 9V5M16 9V5M23 9V5M9 27v-4M16 27v-4M23 27v-4" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="app.substrate">Substrate</h3><p>Advanced substrate processing.</p></a>
-      <a class="app-card" href="applications.html#automation"><svg class="app-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="5" y="13" width="22" height="12" stroke="currentColor" stroke-width="2"/><circle cx="11" cy="28" r="2" stroke="currentColor" stroke-width="2"/><circle cx="21" cy="28" r="2" stroke="currentColor" stroke-width="2"/><path d="M16 13V6M12 6h8" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="app.automation">Automation</h3><p>End-to-end drillroom automation.</p></a>
-      <a class="app-card" href="applications.html#fixture"><svg class="app-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="6" y="6" width="20" height="20" stroke="currentColor" stroke-width="2"/><path d="M11 11h.01M16 11h.01M21 11h.01M11 16h.01M16 16h.01M21 16h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><h3 data-i18n="app.fixture">Fixture / Probe Card</h3><p>Test fixtures &amp; probe-card solutions.</p></a>
-      <a class="app-card" href="applications.html#xray"><svg class="app-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4v24M4 16h24M8 8l16 16M24 8L8 24" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2"/></svg><h3 data-i18n="app.xray">XRay – XRA3</h3><p>X-ray inspection &amp; registration systems.</p></a>
-      <a class="app-card" href="applications.html#laser"><svg class="app-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2v14M16 16l-4 14M16 16l4 14" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="2" fill="currentColor"/></svg><h3 data-i18n="app.laser">Laser</h3><p>Hybrid laser drilling technology.</p></a>
-      <a class="app-card" href="applications.html#ev"><svg class="app-card__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M14 3L6 18h6l-2 11 12-16h-7l3-10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><h3 data-i18n="app.ev">Electric Vehicle</h3><p>PCB solutions for EV electronics.</p></a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== GALLERY ===================== -->
-<section class="section">
-  <div class="container">
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow">Inside Schmoll</span>
-      <h2>Precision, in practice</h2>
-      <p class="lead">German-engineered machines at work across our Asia Pacific facilities.</p>
-    </div>
-    <div class="gallery" data-reveal>
-      <a class="span2" data-lightbox="assets/img/facility-3.jpg" href="assets/img/facility-3.jpg"><img src="assets/img/facility-3.jpg" alt="Schmoll machine in operation" loading="lazy"></a>
-      <a data-lightbox="assets/img/facility-1.jpg" href="assets/img/facility-1.jpg"><img src="assets/img/facility-1.jpg" alt="Schmoll precision machine" loading="lazy"></a>
-      <a data-lightbox="assets/img/facility-2.jpg" href="assets/img/facility-2.jpg"><img src="assets/img/facility-2.jpg" alt="Schmoll facility" loading="lazy"></a>
-      <a data-lightbox="assets/img/machines/xra3.webp" href="assets/img/machines/xra3.webp" style="background:radial-gradient(120% 100% at 50% 35%,#2c2c30,#141416)"><img src="assets/img/machines/xra3.webp" alt="XRA3 X-ray machine" loading="lazy" style="object-fit:contain;padding:12px"></a>
-      <a data-lightbox="assets/img/team-hero.jpg" href="assets/img/team-hero.jpg"><img src="assets/img/team-hero.jpg" alt="Schmoll Asia Pacific team" loading="lazy"></a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== SERVICE ===================== -->
-<section class="section" id="service">
+<!-- ===================== 6. GOT A PROBLEM (SERVICE) ===================== -->
+<section class="section section--alt" id="service">
   <div class="container">
     <div class="sec-head" data-reveal>
       <span class="eyebrow" data-i18n="svc.eyebrow">Service</span>
@@ -239,18 +191,23 @@
   </div>
 </section>
 
-<!-- ===================== CAREERS CTA ===================== -->
-<section class="section cta-band" style="padding-block:clamp(64px,8vw,110px)">
-  <div class="container" data-reveal>
-    <span class="eyebrow" style="justify-content:center" data-i18n="nav.careers">Careers</span>
-    <h2 style="margin:18px 0 0" data-i18n="car.title">Ready to kick-start Your Career?</h2>
-    <p data-i18n="car.sub">Schmoll is Looking for You!</p>
-    <a href="careers.html" class="btn btn--lg" data-i18n="btn.join">Join us Now
-      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a>
+<!-- ===================== 7. MEET OUR TEAM ===================== -->
+<section class="section" id="team">
+  <div class="container">
+    <div class="grid" style="grid-template-columns:.95fr 1.05fr;gap:clamp(40px,6vw,80px);align-items:center">
+      <div data-reveal data-delay="1" style="order:2"><img src="assets/img/team-hero.jpg" alt="Schmoll Asia Pacific team" style="width:100%;border:1px solid var(--line);border-radius:var(--radius)" loading="lazy"></div>
+      <div data-reveal style="order:1">
+        <span class="eyebrow" data-i18n="team.eyebrow">Team</span>
+        <h2 style="margin:18px 0 18px" data-i18n="team.title">Meet our Team</h2>
+        <p class="lead" data-i18n="team.body">At Schmoll we are a big family. Discover who runs the harmony in the company.</p>
+        <div style="margin-top:30px"><a href="team.html" class="btn btn--lg" data-i18n="btn.meet">Meet Schmoll
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ===================== CONTACT ===================== -->
+<!-- ===================== 8. LET'S GET IN TOUCH ===================== -->
 <section class="section section--alt" id="contact">
   <div class="container">
     <div class="grid" style="grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center">
@@ -258,14 +215,12 @@
         <span class="eyebrow" data-i18n="ct.eyebrow">Contact</span>
         <h2 style="margin:18px 0 16px" data-i18n="ct.title">Let's get in touch</h2>
         <p class="lead" data-i18n="ct.sub">Provide us with your details and our team will contact you!</p>
-        <p style="margin-top:24px;font-family:var(--font-mono);font-size:.82rem;letter-spacing:.04em">
-          <a href="mailto:sales@schmoll-asia.com" style="color:var(--red)">sales@schmoll-asia.com</a>
-        </p>
+        <p style="margin-top:24px;font-family:var(--font-mono);font-size:.82rem;letter-spacing:.04em"><a href="mailto:sales@schmoll-asia.com" style="color:var(--red)">sales@schmoll-asia.com</a></p>
       </div>
       <form class="form" data-demo data-reveal data-delay="1">
-        <div class="form__row"><label for="n" data-i18n="ct.name">Name</label><input id="n" name="name" type="text" required data-i18n-ph="ct.name"></div>
-        <div class="form__row"><label for="e" data-i18n="ct.email">Email</label><input id="e" name="email" type="email" required data-i18n-ph="ct.email"></div>
-        <div class="form__row"><label for="c" data-i18n="ct.company">Company Name</label><input id="c" name="company" type="text" data-i18n-ph="ct.company"></div>
+        <div class="form__row"><label data-i18n="ct.name">Name</label><input name="name" type="text" required data-i18n-ph="ct.name"></div>
+        <div class="form__row"><label data-i18n="ct.email">Email</label><input name="email" type="email" required data-i18n-ph="ct.email"></div>
+        <div class="form__row"><label data-i18n="ct.company">Company Name</label><input name="company" type="text" data-i18n-ph="ct.company"></div>
         <button class="btn btn--lg" type="submit" data-sent="Sent" data-i18n="btn.connect">Connect</button>
         <p class="form__note" data-i18n="ct.note">*Your email is safe with us, we don't spam.</p>
       </form>
@@ -301,17 +256,14 @@
         <a href="news.html" data-i18n="media.news">News</a>
       </div>
       <div class="footer-col">
-        <h4 data-i18n="foot.explore">Explore</h4>
-        <a href="products.html" data-i18n="nav.products">Products</a>
-        <a href="applications.html" data-i18n="nav.application">Application</a>
-        <a href="service.html" data-i18n="nav.service">Service</a>
-        <a href="team.html" data-i18n="nav.team">Team</a>
-      </div>
-      <div class="footer-col">
         <h4 data-i18n="foot.legal">Legal</h4>
         <a href="#" data-i18n="foot.terms">Term of use</a>
         <a href="#" data-i18n="foot.privacy">Privacy Policy</a>
         <a href="#" data-i18n="foot.cookie">Cookie Policy</a>
+      </div>
+      <div class="footer-col footer-wechat">
+        <h4 data-i18n="foot.wechat">Our WeChat</h4>
+        <img src="assets/img/wechat-qr.png" alt="Schmoll Asia Pacific WeChat QR code" width="120" height="120" loading="lazy">
       </div>
     </div>
     <div class="footer-bottom">

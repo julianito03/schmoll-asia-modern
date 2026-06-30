@@ -487,6 +487,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 .footer-col h4 { color: #fff; font-size: .8rem; letter-spacing: .14em; margin-bottom: 18px; }
 .footer-col a { display: block; padding: 7px 0; font-size: .92rem; color: var(--grey-400); transition: color .2s, padding .2s; }
 .footer-col a:hover { color: var(--red); padding-left: 6px; }
+.footer-wechat img { background: #fff; padding: 8px; border-radius: var(--radius); width: 120px; height: 120px; }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 28px; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .06em; color: var(--grey-500); }
 .footer-bottom a { color: var(--grey-500); }
 .footer-bottom a:hover { color: var(--grey-300); }

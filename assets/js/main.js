@@ -122,9 +122,10 @@
 
   function applyLang(code) {
     const dict = I18N[code] || {};
+    const en = I18N.en || {};
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
-      const val = dict[key];
+      const val = dict[key] != null ? dict[key] : en[key];
       if (val != null) el.innerHTML = val;
     });
     document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
