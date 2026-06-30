@@ -177,6 +177,27 @@
   } catch (e) {}
   if (Object.keys(I18N).length) applyLang(initial);
 
+  /* ---------- Hero slideshow ---------- */
+  const show = document.querySelector("[data-slideshow]");
+  if (show) {
+    const slides = Array.from(show.querySelectorAll(".hero__slide"));
+    if (slides.length > 1) {
+      let idx = 0;
+      const INTERVAL = 5500;
+      let timer = null;
+      const advance = () => {
+        slides[idx].classList.remove("is-active");
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add("is-active");
+      };
+      const start = () => { if (!timer) timer = setInterval(advance, INTERVAL); };
+      const stop = () => { clearInterval(timer); timer = null; };
+      // Pause when the tab is hidden so it doesn't drift.
+      document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+      start();
+    }
+  }
+
   /* ---------- Preloader ---------- */
   const pre = document.getElementById("preloader");
   if (pre) {
