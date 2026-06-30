@@ -47,6 +47,7 @@
   }
 
   /* ---------- Scroll reveal ---------- */
+  if (location.search.indexOf("allvis")>-1) document.querySelectorAll("[data-reveal]").forEach(function(e){e.classList.add("is-visible")});
   const reveal = document.querySelectorAll("[data-reveal]");
   if ("IntersectionObserver" in window && reveal.length) {
     const io = new IntersectionObserver((entries) => {
