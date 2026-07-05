@@ -590,7 +590,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 .globe-sec .sec-head { margin-bottom: clamp(18px, 2.5vw, 32px); }
 .globe-wrap { position: relative; display: grid; grid-template-columns: 230px 1fr; gap: clamp(18px, 3vw, 42px); align-items: center; }
 @media (max-width: 860px){ .globe-wrap { grid-template-columns: 1fr; } }
-#globeViz { width: 100%; min-height: 330px; height: clamp(330px, 46vh, 500px); cursor: grab; }
+#globeViz { width: 100%; min-height: 500px; height: clamp(500px, 70vh, 740px); cursor: grab; }
 #globeViz:active { cursor: grabbing; }
 #globeViz canvas { display: block; }
 .globe-legend { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
