@@ -601,13 +601,14 @@ strong { color: var(--grey-900); font-weight: 700; }
 .globe-legend__t b { display: block; font-family: var(--font-display); text-transform: uppercase; font-size: .86rem; letter-spacing: .03em; color: #fff; }
 .globe-legend__t span { font-size: .78rem; color: var(--grey-400); }
 .globe-hint { font-family: var(--font-mono); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--grey-500); margin-top: 4px; line-height: 1.7; }
-/* Globe HTML callout pins (readable, clickable city labels that grow out on hover) */
-.gpin { display: flex; flex-direction: column; align-items: center; transform: translateY(-50%); pointer-events: none; user-select: none; animation: gpinIn .26s var(--ease) both; }
-@keyframes gpinIn { from { opacity: 0; } to { opacity: 1; } }
-.gpin__label { pointer-events: auto; cursor: pointer; text-decoration: none; display: inline-block; transform: translateX(var(--dx, 0px)); background: #141414; color: #fff; border: 1px solid rgba(255,255,255,.18); font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; letter-spacing: .04em; padding: 5px 11px; border-radius: 3px; white-space: nowrap; box-shadow: 0 10px 24px rgba(0,0,0,.55); transition: background .18s var(--ease), color .18s var(--ease), border-color .18s; }
-.gpin__label:hover { background: var(--red); border-color: var(--red); color: #fff; }
-.gpin__stem { width: 2px; height: var(--stem, 30px); background: linear-gradient(to top, #ff3b30, rgba(255,59,48,.12)); }
-.gpin__dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(193,24,25,.55), 0 0 12px 2px rgba(255,60,50,.9); }
+/* Globe pins — always-visible dot markers; office name pops up only on hover */
+.gpin { pointer-events: none; user-select: none; }
+.gpin__hit { pointer-events: auto; cursor: pointer; text-decoration: none; position: relative; display: block; width: 16px; height: 16px; }
+.gpin__dot { position: absolute; left: 50%; top: 50%; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px rgba(255,255,255,.85), 0 0 10px 2px rgba(255,60,50,.85); transition: transform .18s var(--ease), background .18s var(--ease); }
+.gpin__hit:hover .gpin__dot { background: #fff; transform: scale(1.25); }
+.gpin__label { position: absolute; left: 50%; bottom: calc(50% + 16px); transform: translate(-50%, 6px); opacity: 0; visibility: hidden; transition: opacity .18s var(--ease), transform .18s var(--ease); background: #141414; color: #fff; border: 1px solid rgba(255,255,255,.2); font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; letter-spacing: .04em; padding: 5px 11px; border-radius: 3px; white-space: nowrap; box-shadow: 0 12px 26px rgba(0,0,0,.6); }
+.gpin__label::after { content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: #141414; }
+.gpin__hit:hover .gpin__label { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
 @media (max-width: 860px){ .globe-legend { flex-direction: row; flex-wrap: wrap; gap: 14px 28px; } .globe-hint{ width:100%; } }
 
 /* =========================================================================
