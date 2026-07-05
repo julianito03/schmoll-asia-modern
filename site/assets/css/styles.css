@@ -594,18 +594,21 @@ strong { color: var(--grey-900); font-weight: 700; }
 #globeViz canvas { display: block; }
 .globe-legend { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
 .globe-legend__item { display: flex; align-items: flex-start; gap: 12px; }
-.globe-legend__dot { width: 13px; height: 13px; border-radius: 50%; flex: none; margin-top: 3px; }
-.globe-legend__dot--ap { background: var(--red); box-shadow: 0 0 12px 2px rgba(193,24,25,.7); }
-.globe-legend__dot--office { background: #d6d6d6; }
-.globe-legend__dot--vendor { background: #6f6f6f; }
+.globe-legend__dot { width: 13px; height: 13px; flex: none; margin-top: 3px; }
+.globe-legend__dot--ap { border-radius: 50%; background: var(--red); box-shadow: 0 0 0 2px rgba(255,255,255,.7), 0 0 10px 1px rgba(193,24,25,.7); }
+.globe-legend__dot--office { width: 12px; height: 12px; border-radius: 2px; background: #fff; transform: rotate(45deg); box-shadow: 0 0 0 2px var(--red); margin-top: 4px; }
 .globe-legend__t b { display: block; font-family: var(--font-display); text-transform: uppercase; font-size: .86rem; letter-spacing: .03em; color: #fff; }
 .globe-legend__t span { font-size: .78rem; color: var(--grey-400); }
 .globe-hint { font-family: var(--font-mono); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--grey-500); margin-top: 4px; line-height: 1.7; }
 /* Globe pins — always-visible dot markers; office name pops up only on hover */
 .gpin { pointer-events: none; user-select: none; }
 .gpin__hit { pointer-events: auto; cursor: pointer; text-decoration: none; position: relative; display: block; width: 16px; height: 16px; }
+/* Asia Pacific office — solid red circle */
 .gpin__dot { position: absolute; left: 50%; top: 50%; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px rgba(255,255,255,.85), 0 0 10px 2px rgba(255,60,50,.85); transition: transform .18s var(--ease), background .18s var(--ease); }
 .gpin__hit:hover .gpin__dot { background: #fff; transform: scale(1.25); }
+/* Schmoll Group office (Germany HQ, America) — white diamond, clearly distinct */
+.gpin--hq .gpin__dot { width: 13px; height: 13px; margin: -6.5px 0 0 -6.5px; border-radius: 2px; background: #fff; transform: rotate(45deg); box-shadow: 0 0 0 2.5px var(--red), 0 0 10px 2px rgba(255,255,255,.55); }
+.gpin--hq .gpin__hit:hover .gpin__dot { background: #fff; transform: rotate(45deg) scale(1.22); }
 .gpin__label { position: absolute; left: 50%; bottom: calc(50% + 16px); transform: translate(-50%, 6px); opacity: 0; visibility: hidden; transition: opacity .18s var(--ease), transform .18s var(--ease); background: #141414; color: #fff; border: 1px solid rgba(255,255,255,.2); font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; letter-spacing: .04em; padding: 5px 11px; border-radius: 3px; white-space: nowrap; box-shadow: 0 12px 26px rgba(0,0,0,.6); }
 .gpin__label::after { content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: #141414; }
 .gpin__hit:hover .gpin__label { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
