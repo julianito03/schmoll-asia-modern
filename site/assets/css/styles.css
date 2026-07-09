@@ -493,7 +493,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 .bro-face--back { transform: rotateY(180deg); }
 /* meta row under the sheet */
 .bro-item__meta { margin-top: 18px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
-.bro-item__idx { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--grey-400); }
+.bro-item__idx { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
 .bro-item__name { display: inline-block; margin-top: 4px; font-family: var(--font-display); font-weight: 600; font-size: 1.28rem; letter-spacing: .01em; color: var(--grey-900); transition: color .25s; }
 .bro-item__name:hover { color: var(--red); }
 .bro-item__pdf {
