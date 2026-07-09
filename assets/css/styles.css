@@ -312,9 +312,16 @@ strong { color: var(--grey-900); font-weight: 700; }
    EXHIBITIONS TICKER
    ========================================================================= */
 .exhibits { background: var(--red); color: #fff; }
-.exhibits__inner { display: flex; align-items: center; gap: 0; padding-block: 18px; overflow: hidden; position: relative; }
-.exhibits__label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; white-space: nowrap; flex: none; display: flex; align-items: center; gap: 10px; position: relative; z-index: 2; background: var(--red); padding-right: 36px; }
-.exhibits__viewport { flex: 1 1 auto; overflow: hidden; position: relative; z-index: 1; }
+.exhibits__inner { display: flex; align-items: stretch; gap: 0; padding-block: 0; position: relative; }
+.exhibits__label {
+  font-family: var(--font-mono); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+  white-space: nowrap; flex: none; display: flex; align-items: center; gap: 10px;
+  position: relative; z-index: 2; background: var(--bg-dark);
+  margin-left: calc(-1 * var(--gutter)); padding: 18px 32px 18px var(--gutter);
+}
+.exhibits__label::before { content: ""; position: absolute; top: 0; bottom: 0; right: 100%; width: 100vw; background: var(--bg-dark); }
+.exhibits__label svg { color: var(--red); }
+.exhibits__viewport { flex: 1 1 auto; overflow: hidden; position: relative; z-index: 1; padding-block: 18px; margin-left: 34px; }
 .exhibits__track { display: flex; width: max-content; gap: 48px; animation: marquee 40s linear infinite; white-space: nowrap; }
 .exhibits:hover .exhibits__track { animation-play-state: paused; }
 .exhibits__item { font-family: var(--font-display); text-transform: uppercase; font-size: .92rem; letter-spacing: .04em; display: inline-flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; transition: opacity .2s var(--ease); }
