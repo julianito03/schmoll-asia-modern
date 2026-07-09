@@ -499,11 +499,11 @@ strong { color: var(--grey-900); font-weight: 700; }
 .bro-item__pdf {
   display: inline-flex; align-items: center; gap: 8px; flex: none;
   font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--grey-700); border: 1px solid var(--grey-300); border-radius: 2px; padding: 10px 14px;
-  transition: background .25s, border-color .25s, color .25s;
+  color: #fff; background: var(--red); border: 1px solid var(--red); border-radius: 2px; padding: 10px 14px;
+  transition: background .25s, border-color .25s, transform .25s var(--ease);
 }
 .bro-item__pdf svg { width: 14px; height: 14px; }
-.bro-item__pdf:hover { background: var(--red); border-color: var(--red); color: #fff; }
+.bro-item__pdf:hover { background: #e04243; border-color: #e04243; transform: scale(1.07); }
 
 /* =========================================================================
    PRODUCT DETAIL
