@@ -35,6 +35,28 @@
   });
 
 
+  /* ---------- Brochure flip cards + rail ---------- */
+  document.querySelectorAll(".bro-card").forEach((card) => {
+    const flip = () => {
+      const item = card.closest(".bro-item");
+      item.classList.toggle("is-flipped");
+      card.setAttribute("aria-pressed", String(item.classList.contains("is-flipped")));
+    };
+    card.addEventListener("click", flip);
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); }
+    });
+  });
+  const rail = document.querySelector(".bro-rail");
+  if (rail) {
+    const step = () => {
+      const item = rail.querySelector(".bro-item");
+      return item ? item.getBoundingClientRect().width + parseFloat(getComputedStyle(rail).columnGap || 24) : 320;
+    };
+    document.querySelectorAll("[data-rail-prev]").forEach((b) => b.addEventListener("click", () => rail.scrollBy({ left: -step(), behavior: "smooth" })));
+    document.querySelectorAll("[data-rail-next]").forEach((b) => b.addEventListener("click", () => rail.scrollBy({ left: step(), behavior: "smooth" })));
+  }
+
   /* ---------- Scroll reveal ---------- */
   if (location.search.indexOf("allvis")>-1) document.querySelectorAll("[data-reveal]").forEach(function(e){e.classList.add("is-visible")});
   const reveal = document.querySelectorAll("[data-reveal]");

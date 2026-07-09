@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=39">
+<link rel="stylesheet" href="assets/css/styles.css?v=40">
 <script>try{if(sessionStorage.getItem('sap_loaded'))document.documentElement.classList.add('pl-skip')}catch(e){}</script>
 </head>
 <body>
@@ -142,6 +142,196 @@
       <div class="pcard"><a class="pcard__img pcard__img--render" href="product-mdi.html"><span class="pcard__cat">Direct Imaging</span><img src="assets/img/machines/mdi.webp?v=8" alt="MDI" loading="lazy"></a><div class="pcard__body"><h3>MDI</h3><div class="pcard__foot"><a class="tlink" href="product-mdi.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-MDI.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
       <div class="pcard"><a class="pcard__img pcard__img--render" href="product-automation.html"><span class="pcard__cat">Automation</span><img src="assets/img/machines/automation.webp?v=8" alt="ALS" loading="lazy"></a><div class="pcard__body"><h3>ALS</h3><div class="pcard__foot"><a class="tlink" href="product-automation.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-ALS.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
       <div class="pcard"><a class="pcard__img pcard__img--render" href="product-probecard.html"><span class="pcard__cat">Fixture / Probe Card</span><img src="assets/img/machines/probecard.webp?v=8" alt="Fixture" loading="lazy"></a><div class="pcard__body"><h3>Fixture</h3><div class="pcard__foot"><a class="tlink" href="product-probecard.html" data-i18n="btn.viewmachine">View machine</a><a class="tlink" href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-Fixture.pdf" target="_blank" rel="noopener" data-i18n="btn.brochure">Brochure</a></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3a. BROCHURE RACK (flip cards) ===================== -->
+<section class="section section--alt" id="brochures">
+  <div class="container">
+    <div class="bro-head" data-reveal>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="eyebrow" data-i18n="bro.eyebrow">Straight from the Rack</span>
+        <h2 data-i18n="bro.title">Product Brochures</h2>
+        <p class="lead" data-i18n="bro.body">Every machine on one A4 sheet — front and back, exactly like the printed brochure. Flip a card to read the back, or take the PDF with you.</p>
+        <p class="bro-hint" data-i18n="bro.hint">Click a card to turn it over</p>
+      </div>
+      <div class="bro-nav">
+        <button type="button" data-rail-prev aria-label="Scroll brochures left"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 2.5L4.5 8 10 13.5" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <button type="button" data-rail-next aria-label="Scroll brochures right"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 2.5L11.5 8 6 13.5" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      </div>
+    </div>
+    <div class="bro-rail" aria-label="Product brochures">
+      <div class="bro-item" data-reveal data-delay="0">
+        <article class="bro-card" tabindex="0" role="button" aria-pressed="false" aria-label="Eagle brochure — flip to see the back">
+          <div class="bro-card__inner">
+            <figure class="bro-face bro-face--front"><img src="assets/img/brochures/eagle-front.jpg" alt="Eagle brochure — front" loading="lazy"></figure>
+            <figure class="bro-face bro-face--back"><img src="assets/img/brochures/eagle-back.jpg" alt="Eagle brochure — back" loading="lazy"></figure>
+          </div>
+          <span class="bro-card__flip" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 6.5A6 6 0 003 4.5M2.5 9.5a6 6 0 0010.5 2" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 2.5v4h-4M2.5 13.5v-4h4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </article>
+        <div class="bro-item__meta">
+          <div><span class="bro-item__idx">01 · Drilling</span><br><b>Eagle</b></div>
+          <span class="bro-item__side"><span class="s-front" data-i18n="bro.front">Front</span><span class="s-back" data-i18n="bro.back">Back</span></span>
+        </div>
+        <div class="bro-item__links">
+          <a href="product-eagle.html" data-i18n="btn.viewmachine">View machine</a>
+          <a href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-Eagle-.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+      <div class="bro-item" data-reveal data-delay="1">
+        <article class="bro-card" tabindex="0" role="button" aria-pressed="false" aria-label="Hawk brochure — flip to see the back">
+          <div class="bro-card__inner">
+            <figure class="bro-face bro-face--front"><img src="assets/img/brochures/hawk-front.jpg" alt="Hawk brochure — front" loading="lazy"></figure>
+            <figure class="bro-face bro-face--back"><img src="assets/img/brochures/hawk-back.jpg" alt="Hawk brochure — back" loading="lazy"></figure>
+          </div>
+          <span class="bro-card__flip" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 6.5A6 6 0 003 4.5M2.5 9.5a6 6 0 0010.5 2" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 2.5v4h-4M2.5 13.5v-4h4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </article>
+        <div class="bro-item__meta">
+          <div><span class="bro-item__idx">02 · Drilling</span><br><b>Hawk</b></div>
+          <span class="bro-item__side"><span class="s-front" data-i18n="bro.front">Front</span><span class="s-back" data-i18n="bro.back">Back</span></span>
+        </div>
+        <div class="bro-item__links">
+          <a href="product-hawk.html" data-i18n="btn.viewmachine">View machine</a>
+          <a href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-HAWK.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+      <div class="bro-item" data-reveal data-delay="2">
+        <article class="bro-card" tabindex="0" role="button" aria-pressed="false" aria-label="Falcon brochure — flip to see the back">
+          <div class="bro-card__inner">
+            <figure class="bro-face bro-face--front"><img src="assets/img/brochures/falcon-front.jpg" alt="Falcon brochure — front" loading="lazy"></figure>
+            <figure class="bro-face bro-face--back"><img src="assets/img/brochures/falcon-back.jpg" alt="Falcon brochure — back" loading="lazy"></figure>
+          </div>
+          <span class="bro-card__flip" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 6.5A6 6 0 003 4.5M2.5 9.5a6 6 0 0010.5 2" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 2.5v4h-4M2.5 13.5v-4h4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </article>
+        <div class="bro-item__meta">
+          <div><span class="bro-item__idx">03 · Drilling · Substrate</span><br><b>Falcon</b></div>
+          <span class="bro-item__side"><span class="s-front" data-i18n="bro.front">Front</span><span class="s-back" data-i18n="bro.back">Back</span></span>
+        </div>
+        <div class="bro-item__links">
+          <a href="product-falcon.html" data-i18n="btn.viewmachine">View machine</a>
+          <a href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-FALCON.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+      <div class="bro-item" data-reveal data-delay="3">
+        <article class="bro-card" tabindex="0" role="button" aria-pressed="false" aria-label="RMXY brochure — flip to see the back">
+          <div class="bro-card__inner">
+            <figure class="bro-face bro-face--front"><img src="assets/img/brochures/rmxy-front.jpg" alt="RMXY brochure — front" loading="lazy"></figure>
+            <figure class="bro-face bro-face--back"><img src="assets/img/brochures/rmxy-back.jpg" alt="RMXY brochure — back" loading="lazy"></figure>
+          </div>
+          <span class="bro-card__flip" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 6.5A6 6 0 003 4.5M2.5 9.5a6 6 0 0010.5 2" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 2.5v4h-4M2.5 13.5v-4h4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </article>
+        <div class="bro-item__meta">
+          <div><span class="bro-item__idx">04 · Routing</span><br><b>RMXY</b></div>
+          <span class="bro-item__side"><span class="s-front" data-i18n="bro.front">Front</span><span class="s-back" data-i18n="bro.back">Back</span></span>
+        </div>
+        <div class="bro-item__links">
+          <a href="product-rmxy.html" data-i18n="btn.viewmachine">View machine</a>
+          <a href="http://47.239.40.173/wp-content/uploads/2024/06/EN_RMXY_Brochure_FRONTBACK.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+      <div class="bro-item" data-reveal data-delay="0">
+        <article class="bro-card" tabindex="0" role="button" aria-pressed="false" aria-label="Raptor brochure — flip to see the back">
+          <div class="bro-card__inner">
+            <figure class="bro-face bro-face--front"><img src="assets/img/brochures/raptor-front.jpg" alt="Raptor brochure — front" loading="lazy"></figure>
+            <figure class="bro-face bro-face--back"><img src="assets/img/brochures/raptor-back.jpg" alt="Raptor brochure — back" loading="lazy"></figure>
+          </div>
+          <span class="bro-card__flip" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 6.5A6 6 0 003 4.5M2.5 9.5a6 6 0 0010.5 2" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 2.5v4h-4M2.5 13.5v-4h4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </article>
+        <div class="bro-item__meta">
+          <div><span class="bro-item__idx">05 · Routing · CCD</span><br><b>Raptor</b></div>
+          <span class="bro-item__side"><span class="s-front" data-i18n="bro.front">Front</span><span class="s-back" data-i18n="bro.back">Back</span></span>
+        </div>
+        <div class="bro-item__links">
+          <a href="product-raptor.html" data-i18n="btn.viewmachine">View machine</a>
+          <a href="https://schmoll-asia.com/wp-content/uploads/2026/03/Raptor_Brochure-1-1.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+      <div class="bro-item" data-reveal data-delay="1">
+        <article class="bro-card" tabindex="0" role="button" aria-pressed="false" aria-label="XRA3 brochure — flip to see the back">
+          <div class="bro-card__inner">
+            <figure class="bro-face bro-face--front"><img src="assets/img/brochures/xra3-front.jpg" alt="XRA3 brochure — front" loading="lazy"></figure>
+            <figure class="bro-face bro-face--back"><img src="assets/img/brochures/xra3-back.jpg" alt="XRA3 brochure — back" loading="lazy"></figure>
+          </div>
+          <span class="bro-card__flip" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 6.5A6 6 0 003 4.5M2.5 9.5a6 6 0 0010.5 2" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 2.5v4h-4M2.5 13.5v-4h4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </article>
+        <div class="bro-item__meta">
+          <div><span class="bro-item__idx">06 · X-Ray</span><br><b>XRA3</b></div>
+          <span class="bro-item__side"><span class="s-front" data-i18n="bro.front">Front</span><span class="s-back" data-i18n="bro.back">Back</span></span>
+        </div>
+        <div class="bro-item__links">
+          <a href="product-xra3.html" data-i18n="btn.viewmachine">View machine</a>
+          <a href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-XRA3.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+      <div class="bro-item" data-reveal data-delay="2">
+        <article class="bro-card" tabindex="0" role="button" aria-pressed="false" aria-label="CombiDrill-500 brochure — flip to see the back">
+          <div class="bro-card__inner">
+            <figure class="bro-face bro-face--front"><img src="assets/img/brochures/combidrill-front.jpg" alt="CombiDrill-500 brochure — front" loading="lazy"></figure>
+            <figure class="bro-face bro-face--back"><img src="assets/img/brochures/combidrill-back.jpg" alt="CombiDrill-500 brochure — back" loading="lazy"></figure>
+          </div>
+          <span class="bro-card__flip" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 6.5A6 6 0 003 4.5M2.5 9.5a6 6 0 0010.5 2" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 2.5v4h-4M2.5 13.5v-4h4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </article>
+        <div class="bro-item__meta">
+          <div><span class="bro-item__idx">07 · Laser Drilling</span><br><b>CombiDrill-500</b></div>
+          <span class="bro-item__side"><span class="s-front" data-i18n="bro.front">Front</span><span class="s-back" data-i18n="bro.back">Back</span></span>
+        </div>
+        <div class="bro-item__links">
+          <a href="product-combidrill.html" data-i18n="btn.viewmachine">View machine</a>
+          <a href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-CombiDrill-500.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+      <div class="bro-item" data-reveal data-delay="3">
+        <article class="bro-card" tabindex="0" role="button" aria-pressed="false" aria-label="MDI brochure — flip to see the back">
+          <div class="bro-card__inner">
+            <figure class="bro-face bro-face--front"><img src="assets/img/brochures/mdi-front.jpg" alt="MDI brochure — front" loading="lazy"></figure>
+            <figure class="bro-face bro-face--back"><img src="assets/img/brochures/mdi-back.jpg" alt="MDI brochure — back" loading="lazy"></figure>
+          </div>
+          <span class="bro-card__flip" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 6.5A6 6 0 003 4.5M2.5 9.5a6 6 0 0010.5 2" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 2.5v4h-4M2.5 13.5v-4h4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </article>
+        <div class="bro-item__meta">
+          <div><span class="bro-item__idx">08 · Direct Imaging</span><br><b>MDI</b></div>
+          <span class="bro-item__side"><span class="s-front" data-i18n="bro.front">Front</span><span class="s-back" data-i18n="bro.back">Back</span></span>
+        </div>
+        <div class="bro-item__links">
+          <a href="product-mdi.html" data-i18n="btn.viewmachine">View machine</a>
+          <a href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-MDI.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+      <div class="bro-item" data-reveal data-delay="0">
+        <article class="bro-card" tabindex="0" role="button" aria-pressed="false" aria-label="ALS brochure — flip to see the back">
+          <div class="bro-card__inner">
+            <figure class="bro-face bro-face--front"><img src="assets/img/brochures/automation-front.jpg" alt="ALS brochure — front" loading="lazy"></figure>
+            <figure class="bro-face bro-face--back"><img src="assets/img/brochures/automation-back.jpg" alt="ALS brochure — back" loading="lazy"></figure>
+          </div>
+          <span class="bro-card__flip" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 6.5A6 6 0 003 4.5M2.5 9.5a6 6 0 0010.5 2" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 2.5v4h-4M2.5 13.5v-4h4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </article>
+        <div class="bro-item__meta">
+          <div><span class="bro-item__idx">09 · Automation</span><br><b>ALS</b></div>
+          <span class="bro-item__side"><span class="s-front" data-i18n="bro.front">Front</span><span class="s-back" data-i18n="bro.back">Back</span></span>
+        </div>
+        <div class="bro-item__links">
+          <a href="product-automation.html" data-i18n="btn.viewmachine">View machine</a>
+          <a href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-ALS.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
+      <div class="bro-item" data-reveal data-delay="1">
+        <article class="bro-card" tabindex="0" role="button" aria-pressed="false" aria-label="Fixture brochure — flip to see the back">
+          <div class="bro-card__inner">
+            <figure class="bro-face bro-face--front"><img src="assets/img/brochures/probecard-front.jpg" alt="Fixture brochure — front" loading="lazy"></figure>
+            <figure class="bro-face bro-face--back"><img src="assets/img/brochures/probecard-back.jpg" alt="Fixture brochure — back" loading="lazy"></figure>
+          </div>
+          <span class="bro-card__flip" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 6.5A6 6 0 003 4.5M2.5 9.5a6 6 0 0010.5 2" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 2.5v4h-4M2.5 13.5v-4h4" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </article>
+        <div class="bro-item__meta">
+          <div><span class="bro-item__idx">10 · Fixture / Probe Card</span><br><b>Fixture</b></div>
+          <span class="bro-item__side"><span class="s-front" data-i18n="bro.front">Front</span><span class="s-back" data-i18n="bro.back">Back</span></span>
+        </div>
+        <div class="bro-item__links">
+          <a href="product-probecard.html" data-i18n="btn.viewmachine">View machine</a>
+          <a href="https://schmoll-asia.com/wp-content/uploads/2026/03/EN-BACKFRONT-Fixture.pdf" target="_blank" rel="noopener">PDF</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -364,7 +554,7 @@
   </div>
 </footer>
 
-<script src="assets/js/i18n.js?v=38"></script>
-<script src="assets/js/main.js?v=39"></script>
+<script src="assets/js/i18n.js?v=40"></script>
+<script src="assets/js/main.js?v=40"></script>
 </body>
 </html>
