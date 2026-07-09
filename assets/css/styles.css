@@ -452,30 +452,12 @@ strong { color: var(--grey-900); font-weight: 700; }
 .pcard:hover .pcard__arrow { color: var(--red); transform: translateX(5px); }
 
 /* =========================================================================
-   BROCHURE FLIP RAIL (homepage) — A4 sheets, front/back like the print piece
+   BROCHURE FLIP GRID (homepage products) — A4 sheets, flip on hover
    ========================================================================= */
-.bro-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
-.bro-head .sec-head { margin-bottom: 0; }
-.bro-nav { display: flex; gap: 10px; flex: none; }
-.bro-nav button {
-  width: 46px; height: 46px; border: 1px solid var(--grey-300); background: #fff;
-  border-radius: 2px; display: inline-flex; align-items: center; justify-content: center;
-  color: var(--grey-700); cursor: pointer; transition: background .25s, border-color .25s, color .25s;
+.bro-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  gap: clamp(30px, 3.4vw, 46px) clamp(20px, 2.4vw, 34px); padding-top: 14px;
 }
-.bro-nav button:hover { background: var(--red); border-color: var(--red); color: #fff; }
-.bro-nav svg { width: 16px; height: 16px; }
-@media (max-width: 640px){ .bro-nav { display: none; } }
-
-.bro-rail {
-  display: grid; grid-auto-flow: column; grid-auto-columns: clamp(228px, 23vw, 296px);
-  gap: clamp(20px, 2.6vw, 34px); overflow-x: auto; scroll-snap-type: x mandatory;
-  padding: clamp(26px, 3vw, 40px) 6px 26px;
-  scrollbar-width: thin; scrollbar-color: var(--grey-300) transparent;
-}
-.bro-rail::-webkit-scrollbar { height: 4px; }
-.bro-rail::-webkit-scrollbar-thumb { background: var(--grey-300); border-radius: 2px; }
-.bro-rail::-webkit-scrollbar-thumb:hover { background: var(--red); }
-.bro-item { scroll-snap-align: start; }
 
 /* the sheet — A4 ratio, 3D flip */
 .bro-card { position: relative; aspect-ratio: 1 / 1.414; perspective: 1500px; cursor: pointer; }
@@ -494,10 +476,7 @@ strong { color: var(--grey-900); font-weight: 700; }
   transition: transform .85s cubic-bezier(.2, .7, .25, 1);
 }
 .bro-item.is-flipped .bro-card__inner { transform: rotateY(-180deg); }
-@media (hover: hover){
-  .bro-item:not(.is-flipped) .bro-card:hover .bro-card__inner { transform: rotateY(-16deg) translateY(-6px); }
-  .bro-item.is-flipped .bro-card:hover .bro-card__inner { transform: rotateY(-164deg) translateY(-6px); }
-}
+.bro-item.is-flipped .bro-face--front { pointer-events: none; }
 .bro-face {
   position: absolute; inset: 0; overflow: hidden; background: #fff;
   border: 1px solid var(--line); backface-visibility: hidden; -webkit-backface-visibility: hidden;

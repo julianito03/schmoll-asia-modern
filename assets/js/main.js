@@ -35,27 +35,24 @@
   });
 
 
-  /* ---------- Brochure flip cards + rail ---------- */
+  /* ---------- Brochure flip cards (hover on desktop, tap on touch) ---------- */
+  const hoverFlips = window.matchMedia("(hover: hover)").matches;
   document.querySelectorAll(".bro-card").forEach((card) => {
-    const flip = () => {
-      const item = card.closest(".bro-item");
-      item.classList.toggle("is-flipped");
-      card.setAttribute("aria-pressed", String(item.classList.contains("is-flipped")));
+    const item = card.closest(".bro-item");
+    const set = (on) => {
+      item.classList.toggle("is-flipped", on);
+      card.setAttribute("aria-pressed", String(on));
     };
-    card.addEventListener("click", flip);
+    if (hoverFlips) {
+      card.addEventListener("mouseenter", () => set(true));
+      card.addEventListener("mouseleave", () => set(false));
+    } else {
+      card.addEventListener("click", () => set(!item.classList.contains("is-flipped")));
+    }
     card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); }
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); set(!item.classList.contains("is-flipped")); }
     });
   });
-  const rail = document.querySelector(".bro-rail");
-  if (rail) {
-    const step = () => {
-      const item = rail.querySelector(".bro-item");
-      return item ? item.getBoundingClientRect().width + parseFloat(getComputedStyle(rail).columnGap || 24) : 320;
-    };
-    document.querySelectorAll("[data-rail-prev]").forEach((b) => b.addEventListener("click", () => rail.scrollBy({ left: -step(), behavior: "smooth" })));
-    document.querySelectorAll("[data-rail-next]").forEach((b) => b.addEventListener("click", () => rail.scrollBy({ left: step(), behavior: "smooth" })));
-  }
 
   /* ---------- Scroll reveal ---------- */
   if (location.search.indexOf("allvis")>-1) document.querySelectorAll("[data-reveal]").forEach(function(e){e.classList.add("is-visible")});
