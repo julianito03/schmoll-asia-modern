@@ -30,6 +30,14 @@ node build/build.js          # regenerate interior pages after editing build/
 cd site && python3 -m http.server 8080   # preview at http://localhost:8080
 ```
 
+## Deploy (GitHub Pages)
+Live at **https://julianito03.github.io/schmoll-asia-modern/** — served from the
+`gh-pages` branch (contents of `site/`). To redeploy after changes:
+```bash
+git branch -D gh-pages 2>/dev/null; git subtree split -P site -b gh-pages
+git push -f origin gh-pages
+```
+
 ## Language preview
 Append `?lang=zh` (or `zh-hk`, `ko`, `ms`, `th`, `vi`) to any page URL, or use the
 in-page language switcher.
