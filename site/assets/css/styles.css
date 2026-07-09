@@ -161,7 +161,6 @@ strong { color: var(--grey-900); font-weight: 700; }
   background: rgba(255,255,255,.92);
   backdrop-filter: saturate(160%) blur(12px);
   border-bottom: 4px solid var(--red);
-  transition: transform .4s var(--ease);
 }
 .nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 92px; gap: 24px; }
 .nav__right { display: flex; align-items: center; gap: 14px; justify-self: end; margin-right: calc(-1 * var(--gutter) + 8px); }
