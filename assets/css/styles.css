@@ -314,11 +314,12 @@ strong { color: var(--grey-900); font-weight: 700; }
 .exhibits { background: var(--red); color: #fff; }
 .exhibits__inner { display: flex; align-items: stretch; gap: 0; padding-block: 0; position: relative; }
 .exhibits__label {
-  font-family: var(--font-mono); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
-  white-space: nowrap; flex: none; display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: .84rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+  color: #fff; white-space: nowrap; flex: none; display: flex; align-items: center; gap: 12px;
   position: relative; z-index: 2; background: var(--bg-dark);
   margin-left: calc(-1 * var(--gutter)); padding: 18px 32px 18px var(--gutter);
 }
+.exhibits__label svg { width: 13px; height: 13px; }
 .exhibits__label::before { content: ""; position: absolute; top: 0; bottom: 0; right: 100%; width: 100vw; background: var(--bg-dark); }
 .exhibits__label svg { color: var(--red); }
 .exhibits__viewport { flex: 1 1 auto; overflow: hidden; position: relative; z-index: 1; padding-block: 18px; margin-left: 34px; }
