@@ -34,17 +34,6 @@
     document.querySelectorAll(".menu > li.is-open").forEach((o) => o.classList.remove("is-open"));
   });
 
-  /* ---------- Sticky header hide on scroll down ---------- */
-  const header = document.querySelector(".site-header");
-  let lastY = 0;
-  if (header) {
-    window.addEventListener("scroll", () => {
-      const y = window.scrollY;
-      if (y > 400 && y > lastY) header.style.transform = "translateY(-100%)";
-      else header.style.transform = "translateY(0)";
-      lastY = y;
-    }, { passive: true });
-  }
 
   /* ---------- Scroll reveal ---------- */
   if (location.search.indexOf("allvis")>-1) document.querySelectorAll("[data-reveal]").forEach(function(e){e.classList.add("is-visible")});
