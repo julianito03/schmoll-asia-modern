@@ -132,7 +132,7 @@ function page({ title, desc, main, lang = "en" }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=42">
+<link rel="stylesheet" href="assets/css/styles.css?v=43">
 <script>try{if(sessionStorage.getItem('sap_loaded'))document.documentElement.classList.add('pl-skip')}catch(e){}</script>
 </head>
 <body>
@@ -148,8 +148,8 @@ ${HEADER}
 ${main}
 </main>
 ${FOOTER}
-<script src="assets/js/i18n.js?v=42"></script>
-<script src="assets/js/main.js?v=42"></script>
+<script src="assets/js/i18n.js?v=43"></script>
+<script src="assets/js/main.js?v=43"></script>
 </body>
 </html>`;
 }
