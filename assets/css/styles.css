@@ -496,10 +496,14 @@ strong { color: var(--grey-900); font-weight: 700; }
 .bro-item__idx { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--grey-400); }
 .bro-item__name { display: inline-block; margin-top: 4px; font-family: var(--font-display); font-weight: 600; font-size: 1.28rem; letter-spacing: .01em; color: var(--grey-900); transition: color .25s; }
 .bro-item__name:hover { color: var(--red); }
-.bro-item__pdf { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-mute); border-bottom: 1px solid var(--grey-300); padding-bottom: 3px; transition: color .25s, border-color .25s; }
-.bro-item__pdf:hover { color: var(--red); border-color: var(--red); }
-.bro-hint { margin-top: 4px; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--grey-400); display: flex; align-items: center; gap: 10px; }
-.bro-hint::before { content: ""; width: 34px; height: 1px; background: var(--red); }
+.bro-item__pdf {
+  display: inline-flex; align-items: center; gap: 8px; flex: none;
+  font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--grey-700); border: 1px solid var(--grey-300); border-radius: 2px; padding: 10px 14px;
+  transition: background .25s, border-color .25s, color .25s;
+}
+.bro-item__pdf svg { width: 14px; height: 14px; }
+.bro-item__pdf:hover { background: var(--red); border-color: var(--red); color: #fff; }
 
 /* =========================================================================
    PRODUCT DETAIL
