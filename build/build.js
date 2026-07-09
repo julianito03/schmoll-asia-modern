@@ -270,34 +270,8 @@ const applicationsPage = banner('Application', 'Discover our Applications', '<sp
   </div>
 </section>` + CONTACT_CTA;
 
-/* ======================================================= TEAM */
-const cLevel = [["Thomas Kuhn","Chief Technology Officer &amp; Vietnam BM"],["Enno Bronnmann","Chief Technology Officer"],["Elmar Streich","Chief Operations Officer"],["Oliver Amann","Chief Sales Officer &amp; Dongguan GM"],["Cynthia Hung","Group Accounting Manager"],["Marc Su","Group Technology Support"]];
-const localMgmt = [["Eric Thum","Malaysia · GM"],["Ken Liu","Taiwan · GM"],["Tkay Jeong","Korea · GM"],["Michael Dammann","Thailand · GM"],["Martin Jeschke","Kunshan China · GM"]];
-const vps = [["Tracy Liang","Sales VP China"],["Jacky Yang","Technology VP China"],["Vincent Tung","Sales VP Taiwan"]];
-const roster = (arr)=>`<div class="roster">${arr.map(([n,t])=>`<div class="roster__item"><b>${n}</b><span>${t}</span></div>`).join("")}</div>`;
-const teamPage = banner('Team', 'Meet our Team', '<span>Team</span>', 'assets/img/team-hero.jpg') + `
-<section class="section">
-  <div class="container">
-    <div class="lead-card" data-reveal>
-      <div class="lead-card__cell">
-        <span class="eyebrow lead-card__role">Schmoll Group CEO</span>
-        <h3>Thomas Kunz</h3>
-        <p>Thomas Kunz stepped up to lead Schmoll Maschinen GmbH at the age of 33 when the company was struggling with insolvency. Over the last 32 years, his visionary leadership and steadfast determination have driven Schmoll to become a leader in the PCB industry.</p>
-      </div>
-      <div class="lead-card__cell">
-        <span class="eyebrow lead-card__role">Schmoll Asia Pacific CEO</span>
-        <h3>Joachim Ruff</h3>
-        <blockquote>With 35 years of experience in running businesses and 30 years in the PCB industry, I consider myself the silverback of the company. My aim is to build a promising future for the next generation.</blockquote>
-      </div>
-    </div>
-    <div class="roster__group">C-Level Team · Asia</div>
-    ${roster(cLevel)}
-    <div class="roster__group">Local Management</div>
-    ${roster(localMgmt)}
-    <div class="roster__group">Vice Presidents</div>
-    ${roster(vps)}
-  </div>
-</section>` + GALLERY + CONTACT_CTA;
+/* ======================================================= TEAM
+   team.html is hand-maintained in site/ (CEO photo layout + globe.gl embed) — not generated here. */
 
 /* ======================================================= SERVICE */
 const servicePage = banner('Service', 'Got a Problem? Schmoll is Here.', '<span>Service</span>') + `
@@ -339,15 +313,15 @@ const careersPage = banner('Careers', 'Start Your Career With Schmoll', '<span>C
 
 /* ======================================================= CONTACT */
 const offices = [
-  ["China — Dongguan","Dongguan Schmoll Electronic Equipment Co., Ltd","+86-(0)769-2241-9199","F1,F3 Block G, LianShang Intelligent Manufacturing Park, ChuangRing Road, DiChong Village, Gaobu Town, Dongguan City, Guangdong Province, China",false],
-  ["Taiwan","Schmoll Asia Pacific Ltd. Taiwan Branch (H.K.)","+886-(0)3-358-3808","5F., No. 117, Long'an St., Taoyuan Dist., Taoyuan City, Taiwan 33033",false],
-  ["China — Kunshan","Schmoll PCB Equipment (Kunshan) Co., Ltd.","+86-(0)512-5737 1850","5th Floor, Building No.4, No.1367 Juxiang Road, Zhangpu Town 215300 Kunshan, Jiangsu Province, P.R. China",false],
-  ["Malaysia — Penang","Schmoll Asia Pacific (Malaysia) Sdn Bhd","+60 (0)4 5897396","1-27, Utropolis, Utama, Persiaran Cassia Barat 3, 14110 Bandar, Cassia, Pulau Pinang",false],
-  ["Thailand — Bangkok","Schmoll Asia Pacific (Thailand) Ltd.","+66 (0) 2 10 72 923","Head Office no.1023, Room 158, 15th Floor, MS SIAM TOWER, Rama III Road, Khwaeng Chong Nonsi, Khet Yan Nawa, Bangkok 10120",false],
-  ["Korea — Ansan","Schmoll Asia Pacific Korea Co., Ltd.","+82-031-497-8779","#616, Ansan Smartsquare, 325, Sandan-ro, Danwon-gu, Ansan-si, Gyeonggi-do, Republic of Korea",false],
-  ["China — Hong Kong","Schmoll Asia Pacific Limited","+852-28-505-909","Room 1803, 18/F, Chinachem Exchange Square, 1 Hoi Wan Street, Quarry Bay, Hong Kong",false],
-  ["Vietnam","Schmoll Asia Pacific Vietnam Company Limited","","Room 232, 2nd Floor, Hoang Ha Building, Le Thai To Street, Vo Cuong Ward, Bac Ninh Province, Vietnam",true],
-  ["Germany — Headquarters","Schmoll Maschinen GmbH","","Parent company · Rödermark, Germany — schmoll-maschinen.de",false]
+  ["China — Dongguan","Dongguan Schmoll Electronic Equipment Co., Ltd","+86-(0)769-2241-9199","F1,F3 Block G, LianShang Intelligent Manufacturing Park, ChuangRing Road, DiChong Village, Gaobu Town, Dongguan City, Guangdong Province, China",false,"office-china"],
+  ["Taiwan","Schmoll Asia Pacific Ltd. Taiwan Branch (H.K.)","+886-(0)3-358-3808","5F., No. 117, Long'an St., Taoyuan Dist., Taoyuan City, Taiwan 33033",false,"office-taiwan"],
+  ["China — Kunshan","Schmoll PCB Equipment (Kunshan) Co., Ltd.","+86-(0)512-5737 1850","5th Floor, Building No.4, No.1367 Juxiang Road, Zhangpu Town 215300 Kunshan, Jiangsu Province, P.R. China",false,"office-kunshan"],
+  ["Malaysia — Penang","Schmoll Asia Pacific (Malaysia) Sdn Bhd","+60 (0)4 5897396","1-27, Utropolis, Utama, Persiaran Cassia Barat 3, 14110 Bandar, Cassia, Pulau Pinang",false,"office-malaysia"],
+  ["Thailand — Bangkok","Schmoll Asia Pacific (Thailand) Ltd.","+66 (0) 2 10 72 923","Head Office no.1023, Room 158, 15th Floor, MS SIAM TOWER, Rama III Road, Khwaeng Chong Nonsi, Khet Yan Nawa, Bangkok 10120",false,"office-thailand"],
+  ["Korea — Ansan","Schmoll Asia Pacific Korea Co., Ltd.","+82-031-497-8779","#616, Ansan Smartsquare, 325, Sandan-ro, Danwon-gu, Ansan-si, Gyeonggi-do, Republic of Korea",false,"office-korea"],
+  ["China — Hong Kong","Schmoll Asia Pacific Limited","+852-28-505-909","Room 1803, 18/F, Chinachem Exchange Square, 1 Hoi Wan Street, Quarry Bay, Hong Kong",false,"office-hongkong"],
+  ["Vietnam","Schmoll Asia Pacific Vietnam Company Limited","","Room 232, 2nd Floor, Hoang Ha Building, Le Thai To Street, Vo Cuong Ward, Bac Ninh Province, Vietnam",true,"office-vietnam"],
+  ["Germany — Headquarters","Schmoll Maschinen GmbH","","Parent company · Rödermark, Germany — schmoll-maschinen.de",false,""]
 ];
 const pin = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5c-2.5 0-4.5 2-4.5 4.5C3.5 9.5 8 14.5 8 14.5s4.5-5 4.5-8.5C12.5 3.5 10.5 1.5 8 1.5z" stroke="currentColor"/><circle cx="8" cy="6" r="1.6" stroke="currentColor"/></svg>';
 const phoneIco = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 2.5h3l1 3-2 1.2a8 8 0 003.8 3.8l1.2-2 3 1V13a1.5 1.5 0 01-1.6 1.5A11.5 11.5 0 012.5 4.1 1.5 1.5 0 014 2.5z" stroke="currentColor"/></svg>';
@@ -357,8 +331,8 @@ const contactPage = banner('Contact', 'Contact Us', '<span>Contact</span>') + `
   <div class="container">
     <div class="sec-head" data-reveal><span class="eyebrow">Global Presence</span><h2>8 Offices · 7 Countries</h2><p class="lead">Find your nearest Schmoll Asia Pacific office.</p></div>
     <div class="office-grid" data-reveal>
-      ${offices.map(([region,co,phone,addr,soon])=>`
-      <div class="office${soon?' office--soon':''}">
+      ${offices.map(([region,co,phone,addr,soon,id])=>`
+      <div class="office${soon?' office--soon':''}"${id?` id="${id}"`:''}>
         <div class="office__region">${pin} ${region} ${soon?'<span class="badge-soon">Published soon</span>':''}</div>
         <h3>${co}</h3>
         ${phone?`<div class="office__row">${phoneIco}<a href="tel:${phone.replace(/[^+\d]/g,'')}">${phone}</a></div>`:''}
@@ -423,7 +397,7 @@ const PAGES = [
   { file:"about.html",        title:"About — Schmoll Asia Pacific",                         desc:"German quality and innovation in PCB drilling and routing since 1996. 8 offices across 7 countries; 80 years of innovation.", main:about },
   { file:"products.html",     title:"Products — Schmoll Asia Pacific",                      desc:"The full Schmoll machine lineup: Eagle, Hawk, Falcon, RMXY, Raptor, CombiDrill, MDI, XRA3, Automation and Probe Card.", main:productsPage },
   { file:"applications.html", title:"Applications — Schmoll Asia Pacific",                  desc:"CCD, backdrilling, substrate, automation, fixture/probe card, X-ray, laser and EV PCB applications.", main:applicationsPage },
-  { file:"team.html",         title:"Team — Schmoll Asia Pacific",                          desc:"Meet the leadership and management team behind Schmoll Asia Pacific.", main:teamPage },
+  // team.html is hand-maintained (CEO photo layout + globe.gl script) — edit site/team.html directly, like index.html
   { file:"service.html",      title:"Service — Schmoll Asia Pacific",                       desc:"Maintenance, spare parts, repair and R&D services to keep your Schmoll machines at peak performance.", main:servicePage },
   { file:"careers.html",      title:"Careers — Schmoll Asia Pacific",                       desc:"Start your career with Schmoll — a dynamic, innovative environment for growth.", main:careersPage },
   { file:"contact.html",      title:"Contact — Schmoll Asia Pacific",                       desc:"Contact Schmoll Asia Pacific — 8 offices across 7 countries in Asia Pacific.", main:contactPage },

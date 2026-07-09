@@ -14,6 +14,7 @@ better-looking. **Staging only. NOT connected to the live schmoll-asia.com domai
 ```
 site/                 ← the deployable website (open site/index.html)
   index.html          ← homepage (hand-built flagship)
+  team.html           ← hand-built (CEO layout + globe.gl embed) — edit directly, not via build/
   *.html              ← generated interior pages
   assets/css|js|img   ← design system, scripts, images
   assets/js/i18n.js   ← translation dictionaries (chrome + homepage, 7 langs)
