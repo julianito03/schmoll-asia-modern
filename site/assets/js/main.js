@@ -253,12 +253,12 @@
       const rand = rng(20260710);
       const PITCH = 44;
       const cols = Math.floor(W / PITCH);
-      const n = Math.max(8, Math.min(18, Math.round(cols / 2)));
+      const n = Math.max(6, Math.min(11, Math.round(cols / 3)));
       const used = new Set();
       for (let i = 0; i < n; i++) {
-        // Pick a free column with a one-column clearance on either side.
+        // Pick a free column with a two-column clearance on either side.
         let c = 1 + Math.floor(rand() * (cols - 2)), guard = 0;
-        while ((used.has(c) || used.has(c - 1) || used.has(c + 1)) && guard++ < 40)
+        while ((used.has(c) || used.has(c - 1) || used.has(c + 1) || used.has(c - 2) || used.has(c + 2)) && guard++ < 40)
           c = 1 + Math.floor(rand() * (cols - 2));
         used.add(c);
         let x = c * PITCH, y = -12;
@@ -282,7 +282,7 @@
         path.setAttribute("class", "pcb-trace" + tone);
         svg.appendChild(path);
         const via = document.createElementNS(NS, "circle");
-        via.setAttribute("cx", x); via.setAttribute("cy", y); via.setAttribute("r", 5);
+        via.setAttribute("cx", x); via.setAttribute("cy", y); via.setAttribute("r", 4);
         via.setAttribute("class", "pcb-via" + tone);
         svg.appendChild(via);
         const len = path.getTotalLength();
