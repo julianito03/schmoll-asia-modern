@@ -469,7 +469,18 @@ strong { color: var(--grey-900); font-weight: 700; }
 .pcb-lines { position: absolute; left: 0; right: 0; width: 100%; pointer-events: none; display: none; }
 @media (min-width: 1024px) { .pcb-lines { display: block; } }
 .pcb-lines--head { top: 34px; }
-.pcb-lines--mid { top: 46%; }
+/* Fixed board-artwork layer revealed under the cursor (built by main.js) */
+.pcb-pattern { display: none; }
+@media (hover: hover) and (min-width: 1024px) {
+  .pcb-pattern {
+    display: block; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: url(../img/pcb-pattern.png);
+    opacity: 0; transition: opacity .5s ease-out;
+    -webkit-mask: radial-gradient(#000 0%, rgba(0, 0, 0, .25) 40%, rgba(0, 0, 0, .1) 50%, transparent 70%) center center / 576px 576px no-repeat;
+            mask: radial-gradient(#000 0%, rgba(0, 0, 0, .25) 40%, rgba(0, 0, 0, .1) 50%, transparent 70%) center center / 576px 576px no-repeat;
+  }
+  .pcb-pattern.is--visible { opacity: .1; }
+}
 .pcb-line {
   fill: none; stroke: rgba(0, 0, 0, .15); stroke-width: 2;
   transition: stroke-dashoffset 1.5s cubic-bezier(.3, .1, .25, 1);
