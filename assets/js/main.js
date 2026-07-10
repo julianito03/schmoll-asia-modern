@@ -206,6 +206,115 @@
     }
   }
 
+  /* ---------- PCB routing backdrop (homepage products) ---------- */
+  // Traces enter from the section's top edge, route down with 45° jogs and
+  // draw themselves in sync with scroll; each ends in a via that lights up
+  // once its trace is fully routed.
+  const pcbHost = document.querySelector("#products .bro-grid") && document.getElementById("products");
+  if (pcbHost) {
+    const NS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("class", "pcb-bg");
+    svg.setAttribute("aria-hidden", "true");
+    pcbHost.prepend(svg);
+
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let traces = [];
+
+    // Seeded PRNG so the routing is identical on every visit/resize.
+    const rng = (seed) => () => {
+      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+
+    const progress = () => {
+      const r = pcbHost.getBoundingClientRect();
+      // 0 when the section top enters the viewport, 1 when its bottom lands
+      // at the viewport bottom — traces keep extending the whole way down.
+      return Math.max(0, Math.min(1, (innerHeight - r.top) / Math.max(1, r.height)));
+    };
+
+    const paint = (p) => {
+      for (const t of traces) {
+        const f = Math.max(0, Math.min(1, (p - t.stagger) / 0.55));
+        t.path.style.strokeDashoffset = t.len * (1 - f);
+        t.via.classList.toggle("is-live", f >= 1);
+      }
+    };
+
+    const build = () => {
+      const W = pcbHost.clientWidth, H = pcbHost.clientHeight;
+      if (!W || !H) return;
+      svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      traces = [];
+      const rand = rng(20260710);
+      const PITCH = 44;
+      const cols = Math.floor(W / PITCH);
+      const n = Math.max(8, Math.min(18, Math.round(cols / 2)));
+      const used = new Set();
+      for (let i = 0; i < n; i++) {
+        // Pick a free column with a one-column clearance on either side.
+        let c = 1 + Math.floor(rand() * (cols - 2)), guard = 0;
+        while ((used.has(c) || used.has(c - 1) || used.has(c + 1)) && guard++ < 40)
+          c = 1 + Math.floor(rand() * (cols - 2));
+        used.add(c);
+        let x = c * PITCH, y = -12;
+        let d = "M" + x + " " + y;
+        const endY = H * (0.5 + rand() * 0.45);
+        while (y < endY) {
+          y = Math.min(endY, y + PITCH * (2 + Math.floor(rand() * 5)));
+          d += " L" + x + " " + y;
+          if (y >= endY) break;
+          const dir = rand() < 0.5 ? -1 : 1;
+          const jog = PITCH * (1 + Math.floor(rand() * 2));
+          if (x + dir * jog > PITCH && x + dir * jog < W - PITCH) {
+            x += dir * jog; y += jog;
+            d += " L" + x + " " + y;
+          }
+        }
+        const roll = rand();
+        const tone = roll > 0.86 ? " pcb--red" : roll > 0.64 ? " pcb--blue" : "";
+        const path = document.createElementNS(NS, "path");
+        path.setAttribute("d", d);
+        path.setAttribute("class", "pcb-trace" + tone);
+        svg.appendChild(path);
+        const via = document.createElementNS(NS, "circle");
+        via.setAttribute("cx", x); via.setAttribute("cy", y); via.setAttribute("r", 5);
+        via.setAttribute("class", "pcb-via" + tone);
+        svg.appendChild(via);
+        const len = path.getTotalLength();
+        path.style.strokeDasharray = len;
+        traces.push({ path, via, len, stagger: (i / n) * 0.4 });
+      }
+      paint(reduced ? 1 : progress());
+    };
+
+    let raf = null;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = null; paint(progress()); });
+    };
+
+    build();
+    if (!reduced) addEventListener("scroll", onScroll, { passive: true });
+    // Rebuild when the section resizes (viewport change, images settling).
+    let lastH = pcbHost.clientHeight, rt = null;
+    const onResize = () => {
+      clearTimeout(rt);
+      rt = setTimeout(() => {
+        if (Math.abs(pcbHost.clientHeight - lastH) > 40 || pcbHost.clientWidth !== (svg.viewBox.baseVal.width | 0)) {
+          lastH = pcbHost.clientHeight;
+          build();
+        }
+      }, 200);
+    };
+    if ("ResizeObserver" in window) new ResizeObserver(onResize).observe(pcbHost);
+    else addEventListener("resize", onResize);
+  }
+
   /* ---------- Preloader ---------- */
   const pre = document.getElementById("preloader");
   if (pre) {
