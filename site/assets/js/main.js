@@ -206,113 +206,112 @@
     }
   }
 
-  /* ---------- PCB routing backdrop (homepage products) ---------- */
-  // Traces enter from the section's top edge, route down with 45° jogs and
-  // draw themselves in sync with scroll; each ends in a via that lights up
-  // once its trace is fully routed.
-  const pcbHost = document.querySelector("#products .bro-grid") && document.getElementById("products");
-  if (pcbHost) {
+  /* ---------- PCB signal lines (homepage products) ---------- */
+  // Mimics schmoll-maschinen.de's "pathAnimation": horizontal traces with 45°
+  // jogs that draw in (staggered) when the band scrolls into view. Each trace
+  // starts on a soft grey pad with a red signal dot that then travels the
+  // route; a small grey dot marks the far end. Desktop only, like theirs.
+  const pcbSec = document.querySelector("#products .bro-grid") && document.getElementById("products");
+  if (pcbSec) {
     const NS = "http://www.w3.org/2000/svg";
-    const svg = document.createElementNS(NS, "svg");
-    svg.setAttribute("class", "pcb-bg");
-    svg.setAttribute("aria-hidden", "true");
-    pcbHost.prepend(svg);
-
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let traces = [];
-
-    // Seeded PRNG so the routing is identical on every visit/resize.
-    const rng = (seed) => () => {
-      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
-      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
-      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    // Authored on a 1440×340 band (content column 120–1320); head band routes
+    // around the section title, mid band mirrors it between card rows.
+    const BANDS = [
+      // Routed around the section head: text sits at roughly x 120–900 /
+      // y 110–340, so lines pass above it, right of it, and below it.
+      { cls: "pcb-lines--head", vb: "0 0 1440 400", paths: [
+        "M-10,12 h740 l46,46 h300 l12,12 h250",
+        "M1450,160 h-200 l-30,-30 h-180",
+        "M1010,190 l26,-26 h190 l12,-12 h160",
+        "M1450,260 h-260 l-40,40 h-240",
+        "M180,372 h560 l48,-48 h370 l10,-10 h140",
+        "M-10,140 h40 l30,30 h70",
+      ]},
+      { cls: "pcb-lines--mid", vb: "0 0 1440 340", paths: [
+        "M1450,50 h-650 l-70,70 h-350 l-10,10 h-250",
+        "M1180,16 l-34,34 h-300 l-10,10 h-420",
+        "M1450,190 h-60 l-26,26 h-90",
+        "M1450,300 h-560 l-56,-56 h-380 l-12,-12 h-230",
+        "M620,330 l30,-30 h330 l10,-10 h280",
+        "M-10,240 h170 l24,24 h150",
+      ]},
+    ];
+    const mk = (tag, cls) => {
+      const el = document.createElementNS(NS, tag);
+      if (cls) el.setAttribute("class", cls);
+      return el;
     };
+    BANDS.forEach((band) => {
+      const svg = mk("svg", "pcb-lines " + band.cls);
+      svg.setAttribute("viewBox", band.vb);
+      svg.setAttribute("aria-hidden", "true");
+      const items = band.paths.map((d) => {
+        const g = mk("g");
+        const p = mk("path", "pcb-line");
+        p.setAttribute("d", d);
+        g.appendChild(p);
+        svg.appendChild(g);
+        return { g, p };
+      });
+      pcbSec.prepend(svg);
 
-    const progress = () => {
-      const r = pcbHost.getBoundingClientRect();
-      // 0 when the section top enters the viewport, 1 when its bottom lands
-      // at the viewport bottom — traces keep extending the whole way down.
-      return Math.max(0, Math.min(1, (innerHeight - r.top) / Math.max(1, r.height)));
-    };
-
-    const paint = (p) => {
-      for (const t of traces) {
-        const f = Math.max(0, Math.min(1, (p - t.stagger) / 0.55));
-        t.path.style.strokeDashoffset = t.len * (1 - f);
-        t.via.classList.toggle("is-live", f >= 1);
-      }
-    };
-
-    const build = () => {
-      const W = pcbHost.clientWidth, H = pcbHost.clientHeight;
-      if (!W || !H) return;
-      svg.setAttribute("viewBox", "0 0 " + W + " " + H);
-      while (svg.firstChild) svg.removeChild(svg.firstChild);
-      traces = [];
-      const rand = rng(20260710);
-      const PITCH = 44;
-      const cols = Math.floor(W / PITCH);
-      const n = Math.max(6, Math.min(11, Math.round(cols / 3)));
-      const used = new Set();
-      for (let i = 0; i < n; i++) {
-        // Pick a free column with a two-column clearance on either side.
-        let c = 1 + Math.floor(rand() * (cols - 2)), guard = 0;
-        while ((used.has(c) || used.has(c - 1) || used.has(c + 1) || used.has(c - 2) || used.has(c + 2)) && guard++ < 40)
-          c = 1 + Math.floor(rand() * (cols - 2));
-        used.add(c);
-        let x = c * PITCH, y = -12;
-        let d = "M" + x + " " + y;
-        const endY = H * (0.5 + rand() * 0.45);
-        while (y < endY) {
-          y = Math.min(endY, y + PITCH * (2 + Math.floor(rand() * 5)));
-          d += " L" + x + " " + y;
-          if (y >= endY) break;
-          const dir = rand() < 0.5 ? -1 : 1;
-          const jog = PITCH * (1 + Math.floor(rand() * 2));
-          if (x + dir * jog > PITCH && x + dir * jog < W - PITCH) {
-            x += dir * jog; y += jog;
-            d += " L" + x + " " + y;
-          }
-        }
-        const roll = rand();
-        const tone = roll > 0.86 ? " pcb--red" : roll > 0.64 ? " pcb--blue" : "";
-        const path = document.createElementNS(NS, "path");
-        path.setAttribute("d", d);
-        path.setAttribute("class", "pcb-trace" + tone);
-        svg.appendChild(path);
-        const via = document.createElementNS(NS, "circle");
-        via.setAttribute("cx", x); via.setAttribute("cy", y); via.setAttribute("r", 4);
-        via.setAttribute("class", "pcb-via" + tone);
-        svg.appendChild(via);
-        const len = path.getTotalLength();
-        path.style.strokeDasharray = len;
-        traces.push({ path, via, len, stagger: (i / n) * 0.4 });
-      }
-      paint(reduced ? 1 : progress());
-    };
-
-    let raf = null;
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => { raf = null; paint(progress()); });
-    };
-
-    build();
-    if (!reduced) addEventListener("scroll", onScroll, { passive: true });
-    // Rebuild when the section resizes (viewport change, images settling).
-    let lastH = pcbHost.clientHeight, rt = null;
-    const onResize = () => {
-      clearTimeout(rt);
-      rt = setTimeout(() => {
-        if (Math.abs(pcbHost.clientHeight - lastH) > 40 || pcbHost.clientWidth !== (svg.viewBox.baseVal.width | 0)) {
-          lastH = pcbHost.clientHeight;
-          build();
-        }
-      }, 200);
-    };
-    if ("ResizeObserver" in window) new ResizeObserver(onResize).observe(pcbHost);
-    else addEventListener("resize", onResize);
+      // Geometry (getTotalLength) only works once the band has a layout box,
+      // so pads/dots are placed on first intersection.
+      let ready = false;
+      const init = () => {
+        if (ready) return; ready = true;
+        items.forEach((it, i) => {
+          it.len = it.p.getTotalLength();
+          const a = it.p.getPointAtLength(0);
+          const b = it.p.getPointAtLength(it.len);
+          const dot = (cls, pt, r) => {
+            const c = mk("circle", cls);
+            c.setAttribute("cx", pt.x); c.setAttribute("cy", pt.y); c.setAttribute("r", r);
+            it.g.appendChild(c);
+            return c;
+          };
+          dot("pcb-dot", a, 7.5);
+          it.end = dot("pcb-dot pcb-dot--end", b, 4.5);
+          it.red = dot("pcb-dot pcb-dot--red", a, 3);
+          if (reduced) { it.g.classList.add("is-drawn"); return; }
+          it.p.style.strokeDasharray = it.len + " " + (it.len + 10);
+          it.p.style.strokeDashoffset = it.len;
+          it.p.getBoundingClientRect(); // flush so the transition runs
+          it.p.style.transitionDelay = (i * 0.18) + "s";
+          it.end.style.transitionDelay = (i * 0.18 + 1.1) + "s";
+          it.g.classList.add("is-drawn");
+          it.p.style.strokeDashoffset = "0";
+        });
+        if (!reduced) setTimeout(() => pulse(items, 0), 2600);
+      };
+      // Red signal dots take turns travelling their route, then glide home.
+      const pulse = (its, i) => {
+        const it = its[i % its.length];
+        const t0 = performance.now(), DUR = 2200;
+        const tick = (now) => {
+          const t = Math.min(1, (now - t0) / DUR);
+          const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+          const pt = it.p.getPointAtLength(e * it.len);
+          it.red.setAttribute("cx", pt.x); it.red.setAttribute("cy", pt.y);
+          if (t < 1) { requestAnimationFrame(tick); return; }
+          it.red.style.opacity = "0";
+          setTimeout(() => {
+            const s = it.p.getPointAtLength(0);
+            it.red.setAttribute("cx", s.x); it.red.setAttribute("cy", s.y);
+            it.red.style.opacity = "";
+            setTimeout(() => pulse(its, i + 1), 1400);
+          }, 500);
+        };
+        requestAnimationFrame(tick);
+      };
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+          if (entries.some((e) => e.isIntersecting)) { init(); io.disconnect(); }
+        }, { threshold: 0.2 });
+        io.observe(svg);
+      } else init();
+    });
   }
 
   /* ---------- Preloader ---------- */

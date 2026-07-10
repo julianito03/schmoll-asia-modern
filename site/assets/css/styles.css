@@ -462,21 +462,22 @@ strong { color: var(--grey-900); font-weight: 700; }
 /* =========================================================================
    BROCHURE FLIP GRID (homepage products) — A4 sheets, flip on hover
    ========================================================================= */
-/* PCB routing backdrop — traces drawn in sync with scroll (built by main.js) */
+/* PCB signal lines — after schmoll-maschinen.de's pathAnimation (built by main.js):
+   horizontal traces with 45° jogs draw in on view; a red dot travels each route. */
 #products { overflow: hidden; }
 #products > .container { position: relative; z-index: 1; }
-.pcb-bg {
-  position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 130px, #000 calc(100% - 60px), transparent);
-          mask-image: linear-gradient(180deg, transparent 0, #000 130px, #000 calc(100% - 60px), transparent);
+.pcb-lines { position: absolute; left: 0; right: 0; width: 100%; pointer-events: none; display: none; }
+@media (min-width: 1024px) { .pcb-lines { display: block; } }
+.pcb-lines--head { top: 34px; }
+.pcb-lines--mid { top: 46%; }
+.pcb-line {
+  fill: none; stroke: rgba(0, 0, 0, .15); stroke-width: 2;
+  transition: stroke-dashoffset 1.5s cubic-bezier(.3, .1, .25, 1);
 }
-.pcb-trace { fill: none; stroke: rgba(0, 0, 0, .12); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.pcb-trace.pcb--blue { stroke: rgba(44, 85, 163, .16); }
-.pcb-trace.pcb--red  { stroke: rgba(193, 24, 25, .12); }
-.pcb-via { fill: rgba(0, 0, 0, .14); stroke: none; opacity: 0; transition: opacity .6s; }
-.pcb-via.pcb--blue { fill: rgba(44, 85, 163, .20); }
-.pcb-via.pcb--red  { fill: rgba(193, 24, 25, .16); }
-.pcb-via.is-live { opacity: 1; }
+.pcb-dot { fill: hsl(0 0% 90%); opacity: 0; transition: opacity .5s ease-out; }
+.pcb-dot--end { fill: rgba(0, 0, 0, .15); }
+.pcb-dot--red { fill: var(--red); }
+.is-drawn .pcb-dot { opacity: 1; }
 
 .bro-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
