@@ -228,14 +228,6 @@
         "M180,372 h560 l48,-48 h370 l10,-10 h140",
         "M-10,140 h40 l30,30 h70",
       ]},
-      { cls: "pcb-lines--mid", vb: "0 0 1440 340", paths: [
-        "M1450,50 h-650 l-70,70 h-350 l-10,10 h-250",
-        "M1180,16 l-34,34 h-300 l-10,10 h-420",
-        "M1450,190 h-60 l-26,26 h-90",
-        "M1450,300 h-560 l-56,-56 h-380 l-12,-12 h-230",
-        "M620,330 l30,-30 h330 l10,-10 h280",
-        "M-10,240 h170 l24,24 h150",
-      ]},
     ];
     const mk = (tag, cls) => {
       const el = document.createElementNS(NS, tag);
@@ -312,6 +304,31 @@
         io.observe(svg);
       } else init();
     });
+
+    // PCB layout underneath — schmoll-maschinen.de's ".pattern": a fixed,
+    // tiled board-artwork layer revealed through a radial mask that follows
+    // the cursor while it's over the products section. The layer is fixed to
+    // the viewport (with a slow parallax), so the routes continue as you
+    // scroll rather than moving with the page.
+    const pat = document.createElement("div");
+    pat.className = "pcb-pattern";
+    pat.setAttribute("aria-hidden", "true");
+    document.body.appendChild(pat);
+    const MASK = 576; // px, matches their mask-size
+    let mx = -1, my = -1;
+    const updPattern = () => {
+      const r = pcbSec.getBoundingClientRect();
+      const inside = mx >= 0 && my >= r.top && my <= r.bottom;
+      pat.classList.toggle("is--visible", inside);
+      if (inside) {
+        const pos = (mx - MASK / 2) + "px " + (my - MASK / 2) + "px";
+        pat.style.webkitMaskPosition = pos;
+        pat.style.maskPosition = pos;
+        pat.style.backgroundPosition = "center " + Math.round(scrollY * 0.25) + "px";
+      }
+    };
+    addEventListener("mousemove", (e) => { mx = e.clientX; my = e.clientY; updPattern(); }, { passive: true });
+    addEventListener("scroll", () => { if (mx >= 0) updPattern(); }, { passive: true });
   }
 
   /* ---------- Preloader ---------- */
