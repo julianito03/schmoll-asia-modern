@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Entrance 03 — Kinetic — Experiments</title>
+<title>Entrance 03 — Lens — Experiments</title>
 <meta name="robots" content="noindex">
 <meta name="description" content="Schmoll Asia Pacific offers advanced PCB and PCB manufacturing equipment. German-engineered precision, automation and high-performance solutions for electronics.">
 <link rel="icon" href="../assets/monogram.svg" type="image/svg+xml">
@@ -74,78 +74,73 @@
 
 <main>
 
-<!-- ============ EXPERIMENT 03 — "Kinetic" scroll-scrubbed hero ============ -->
+<!-- ============ EXPERIMENT 03 — "Lens" cinematic scroll hero ============ -->
 <style>
-.xk { position: relative; height: 380vh; background: var(--bg-dark); }
+.xk { position: relative; height: 440vh; background: #0d0d0f; }
 .xk__pin { position: sticky; top: 0; height: 100vh; overflow: hidden; isolation: isolate; }
-.xk__pin .hero__grid { position: absolute; inset: 0; }
+.xk__bg { position: absolute; inset: 0; background:
+  radial-gradient(120% 90% at 62% 42%, #1b1b1f 0%, #121214 52%, #0b0b0d 100%); }
+.xk__vig { position: absolute; inset: 0; background: radial-gradient(105% 105% at 50% 50%, transparent 60%, rgba(0,0,0,.5) 100%); }
 .xk__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .xk__phase { position: absolute; inset: 0; pointer-events: none; }
 .xk__phase .container { height: 100%; display: flex; flex-direction: column; justify-content: center; }
-.xk__p1 .container { align-items: flex-start; }
-.xk__p1 h1 { color: #fff; max-width: 10ch; margin: 22px 0 24px; }
+.xk__p1 h1 { color: #fff; max-width: 11ch; margin: 26px 0 28px; text-shadow: 0 2px 40px rgba(0,0,0,.6); }
 .xk__p1 h1 em { font-style: normal; color: var(--red); }
 .xk__p1 .hero__sub { color: var(--grey-400); font-size: clamp(1.05rem, 1.5vw, 1.3rem); }
-.xk__spec {
-  position: absolute; display: flex; align-items: center; gap: 12px; opacity: 0;
-  font-family: var(--font-mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--grey-300);
+.xk__rule { display: block; width: 76px; height: 1px; background: var(--red); margin-top: 34px; }
+.xk__label {
+  position: absolute; left: 0; top: 0; opacity: 0; max-width: 300px;
+  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .18em; line-height: 1.9; text-transform: uppercase; color: var(--grey-300); text-shadow: 0 1px 14px rgba(0,0,0,.9), 0 0 3px rgba(0,0,0,.7);
 }
-.xk__spec::before { content: ""; width: 44px; height: 1px; background: var(--red); flex: none; }
-.xk__spec b { color: #fff; font-weight: 500; }
-.xk__spec--1 { top: 24%; right: 8%; }
-.xk__spec--2 { top: 46%; right: 4%; }
-.xk__spec--3 { top: 68%; right: 10%; }
+.xk__label b { display: block; color: #fff; font-weight: 500; }
+.xk__label i { font-style: normal; color: var(--grey-500); }
 .xk__p3 .container { align-items: center; text-align: center; }
-.xk__p3 h2 { color: #fff; max-width: 22ch; font-size: clamp(1.7rem, 3.6vw, 3rem); }
-.xk__p3 p { color: var(--grey-400); margin: 18px 0 30px; font-size: clamp(1rem, 1.4vw, 1.2rem); }
-.xk__p3 .hero__cta { display: flex; gap: 14px; pointer-events: auto; justify-content: center; }
-.xk__hud {
-  position: absolute; right: 26px; bottom: 24px; display: flex; align-items: center; gap: 14px;
-  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .18em; color: var(--grey-500);
+.xk__p3 h2 { color: #fff; font-size: clamp(1.8rem, 3.4vw, 2.9rem); max-width: 24ch; font-weight: 600; }
+.xk__p3 p { color: var(--grey-400); margin: 20px 0 34px; font-size: clamp(1rem, 1.3vw, 1.15rem); letter-spacing: .01em; }
+.xk__p3 .hero__cta { display: flex; gap: 14px; justify-content: center; pointer-events: auto; }
+.xk__idx {
+  position: absolute; right: 28px; bottom: 26px; display: flex; align-items: baseline; gap: 12px;
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .22em; color: var(--grey-500); text-transform: uppercase;
 }
-.xk__hud i { font-style: normal; color: var(--grey-300); min-width: 8.5ch; text-align: right; }
-.xk__track { width: 130px; height: 2px; background: rgba(255,255,255,.14); }
-.xk__track b { display: block; height: 100%; width: 0; background: var(--red); }
+.xk__idx b { color: var(--grey-300); font-weight: 400; font-size: .8rem; }
 .xk__hint {
-  position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .3em; color: var(--grey-500); text-transform: uppercase;
+  position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .34em; color: var(--grey-500); text-transform: uppercase;
 }
-.xk__hint::after { content: ""; width: 1px; height: 34px; background: linear-gradient(var(--red), transparent); animation: xkHint 1.6s ease-in-out infinite; }
-@keyframes xkHint { 0%, 100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(10px); opacity: .35; } }
+.xk__hint::after { content: ""; width: 1px; height: 30px; background: linear-gradient(rgba(255,255,255,.55), transparent); animation: xkHint 2s ease-in-out infinite; }
+@keyframes xkHint { 0%, 100% { transform: translateY(0); opacity: .9; } 50% { transform: translateY(9px); opacity: .25; } }
 @media (max-width: 1023px), (prefers-reduced-motion: reduce) {
   .xk { height: auto; }
   .xk__pin { position: relative; height: 100svh; min-height: 560px; }
-  .xk__spec, .xk__p3, .xk__hud, .xk__hint { display: none; }
+  .xk__label, .xk__p3, .xk__idx, .xk__hint { display: none; }
 }
 </style>
 <section class="xk" id="xk" aria-label="Hero">
   <div class="xk__pin">
-    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="xk__bg" aria-hidden="true"></div>
     <canvas class="xk__canvas" aria-hidden="true"></canvas>
+    <div class="xk__vig" aria-hidden="true"></div>
     <div class="xk__phase xk__p1" id="xkP1">
       <div class="container">
         <span class="eyebrow" data-i18n="hero.eyebrow">Efficient Solutions — PCB Drilling</span>
         <h1 data-i18n="hero.title">Efficient and <em>Smart</em> Machines</h1>
         <p class="hero__sub" data-i18n="hero.sub">We have the right solution for your needs.</p>
+        <span class="xk__rule" aria-hidden="true"></span>
       </div>
     </div>
-    <div class="xk__phase" id="xkP2" aria-hidden="true">
-      <span class="xk__spec xk__spec--1" data-at="0.20"><span><b>Solid granite</b> structure</span></span>
-      <span class="xk__spec xk__spec--2" data-at="0.30"><span><b>High-speed</b> AI drives</span></span>
-      <span class="xk__spec xk__spec--3" data-at="0.40"><span><b>Active</b> process monitoring</span></span>
-    </div>
+    <div class="xk__label" id="xkLabel" aria-hidden="true"></div>
     <div class="xk__phase xk__p3" id="xkP3">
       <div class="container">
-        <h2>Every part engineered in Germany.</h2>
-        <p>Deconstructed here — assembled, installed and serviced across Asia's PCB industry.</p>
+        <h2>Engineered in R&ouml;dermark.<br>At work across Asia.</h2>
+        <p>Every Schmoll system is inspected to the micron before it ever reaches your floor.</p>
         <div class="hero__cta">
           <a href="../products.html" class="btn btn--lg">Discover the machines
             <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a>
         </div>
       </div>
     </div>
-    <div class="xk__hud" aria-hidden="true"><span>DISASSEMBLY</span><span class="xk__track"><b id="xkBar"></b></span><i id="xkPct">000.0%</i></div>
+    <div class="xk__idx" aria-hidden="true"><span id="xkStage">HAWK HS — OVERVIEW</span><b id="xkNo">01 / 04</b></div>
     <div class="xk__hint" id="xkHint">Scroll</div>
   </div>
 </section>
@@ -525,163 +520,224 @@
 
 <script src="../assets/js/i18n.js?v=43"></script>
 <script src="../assets/js/main.js?v=47"></script>
-<a class="xp-badge" href="index.html" style="position:fixed;left:18px;bottom:18px;z-index:250;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#141416;border:1px solid #333;border-radius:2px;padding:9px 13px;display:inline-flex;gap:10px;align-items:center"><i style="font-style:normal;color:#e04243">&#9679;</i>&nbsp;Experiment 03 — Kinetic &middot; all experiments</a>
+<a class="xp-badge" href="index.html" style="position:fixed;left:18px;bottom:18px;z-index:250;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#141416;border:1px solid #333;border-radius:2px;padding:9px 13px;display:inline-flex;gap:10px;align-items:center"><i style="font-style:normal;color:#e04243">&#9679;</i>&nbsp;Experiment 03 &mdash; Lens &middot; all experiments</a>
 <script>
-/* EXPERIMENT 03 — scroll-scrubbed particle disintegration of the Hawk */
+/* EXPERIMENT 03 — "Lens": cinematic pull-back + loupe inspection, all f(scroll) */
 (function () {
   var sec = document.getElementById("xk");
   var canvas = sec.querySelector(".xk__canvas");
+  var ctx = canvas.getContext("2d");
   var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var small = matchMedia("(max-width: 1023px)").matches;
-  var ctx = canvas.getContext("2d");
   var img = new Image();
   img.src = "../assets/img/machines/hawk.webp";
 
-  var W = 0, H = 0, DPR = 1;
-  var parts = [], buckets = [];
-  var draw = { x: 0, y: 0, w: 0, h: 0 };
+  var W = 0, H = 0, DPR = 1, refl = null;
   var p = 0, sp = 0, needs = true;
+
+  var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
+  var io = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+  var smooth = function (t) { return t * t * (3 - 2 * t); };
+  var seg = function (v, a, b) { return clamp((v - a) / (b - a)); };
+  var mix = function (a, b, t) { return a + (b - a) * t; };
+
+  // Inspection stops: focus point on the image (u,v), label copy.
+  var STOPS = [
+    { u: 0.565, v: 0.40, t: "Durable high-performance spindles", d: "Six stations \u00b7 up to 300k rpm" },
+    { u: 0.155, v: 0.305, t: "S80 next-gen controller", d: "High-speed AI drives" },
+    { u: 0.52, v: 0.765, t: "Solid granite structure", d: "Thermally stable monobloc" },
+  ];
 
   function layout() {
     DPR = Math.min(2, devicePixelRatio || 1);
     W = canvas.clientWidth; H = canvas.clientHeight;
     canvas.width = W * DPR; canvas.height = H * DPR;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    var mw = Math.min(W * 0.62, 1040);
-    var mh = mw * (img.naturalHeight / img.naturalWidth);
-    draw.w = mw; draw.h = mh;
-    draw.x = small ? (W - mw) / 2 : W * 0.56 - mw / 2 + Math.min(180, W * 0.1);
-    draw.y = H * 0.60 - mh / 2 + 30;
-    sample();
+    if (img.naturalWidth) buildReflection();
     needs = true;
   }
 
-  function sample() {
-    parts = []; buckets = [];
-    if (small || reduced || !img.naturalWidth) return;
-    var step = Math.max(4, Math.round(draw.w / 215));
-    var off = document.createElement("canvas");
-    off.width = Math.round(draw.w); off.height = Math.round(draw.h);
-    var octx = off.getContext("2d", { willReadFrequently: true });
-    octx.drawImage(img, 0, 0, off.width, off.height);
-    var data = octx.getImageData(0, 0, off.width, off.height).data;
-    var map = {};
-    for (var y = 0; y < off.height; y += step) {
-      for (var x = 0; x < off.width; x += step) {
-        var i = (y * off.width + x) * 4;
-        if (data[i + 3] < 90) continue;
-        var seed = Math.abs(Math.sin(x * 12.9898 + y * 78.233) * 43758.5453) % 1;
-        var red = seed > 0.976;
-        var key = red ? "R" : ((data[i] >> 4) << 8 | (data[i + 1] >> 4) << 4 | (data[i + 2] >> 4));
-        if (!(key in map)) {
-          map[key] = buckets.length;
-          buckets.push({ c: red ? "#e04243" : "rgb(" + (data[i] & 240) + "," + (data[i + 1] & 240) + "," + (data[i + 2] & 240) + ")", list: [] });
-        }
-        buckets[map[key]].list.push({
-          hx: x, hy: y, s: seed,
-          s2: Math.abs(Math.sin(x * 3.7 + y * 9.1)) % 1,
-          start: 0.12 + (1 - x / off.width) * 0.5 + seed * 0.05,
-        });
-      }
-    }
+  function buildReflection() {
+    refl = document.createElement("canvas");
+    refl.width = img.naturalWidth; refl.height = Math.round(img.naturalHeight * 0.42);
+    var rc = refl.getContext("2d");
+    rc.save();
+    rc.translate(0, 0); rc.scale(1, -1);
+    rc.drawImage(img, 0, -img.naturalHeight, img.naturalWidth, img.naturalHeight);
+    rc.restore();
+    rc.globalCompositeOperation = "destination-in";
+    var g = rc.createLinearGradient(0, 0, 0, refl.height);
+    g.addColorStop(0, "rgba(0,0,0,.30)");
+    g.addColorStop(0.7, "rgba(0,0,0,.05)");
+    g.addColorStop(1, "rgba(0,0,0,0)");
+    rc.fillStyle = g;
+    rc.fillRect(0, 0, refl.width, refl.height);
   }
 
-  var ease = function (t) { return t * t * (3 - 2 * t); };
+  // Camera: returns {s, fu, fv, ax, ay} — image point (fu,fv) pinned to screen (ax,ay) at scale s.
+  function camera(v, t) {
+    var base = Math.min(W * 0.64, 1060) / img.naturalWidth; // fit scale
+    var pull = io(seg(v, 0.16, 0.44));
+    var s = mix(2.35, 1.0, pull) * base;
+    var fu = mix(0.585, 0.5, pull), fv = mix(0.42, 0.55, pull);
+    var ax = mix(W * 0.68, W * 0.5, pull);
+    var ay = mix(H * 0.46, H * 0.52, pull);
+    // settle slightly for the closing act
+    var out = io(seg(v, 0.82, 0.97));
+    s *= mix(1, 0.86, out);
+    ay += out * H * 0.045;
+    // idle drift while intact
+    if (v < 0.16 && !small && !reduced) ay += Math.sin(t / 1400) * 3;
+    return { s: s, fu: fu, fv: fv, ax: ax, ay: ay };
+  }
+
+  function machineRect(c) {
+    return {
+      x: c.ax - c.fu * img.naturalWidth * c.s,
+      y: c.ay - c.fv * img.naturalHeight * c.s,
+      w: img.naturalWidth * c.s,
+      h: img.naturalHeight * c.s,
+    };
+  }
+
+  // Lens position/state across the inspection act
+  function lens(v) {
+    var a = 0.46, b = 0.80; // inspection window
+    if (v <= a || v >= b + 0.04) return null;
+    var n = STOPS.length;
+    var t = seg(v, a, b) * n; // 0..3
+    var i = Math.min(n - 1, Math.floor(t));
+    var local = t - i;
+    var cur = STOPS[i], nxt = STOPS[Math.min(n - 1, i + 1)];
+    var m = io(clamp((local - 0.72) / 0.28)); // glide in the last quarter of each stop
+    var open = smooth(seg(v, a, a + 0.05)) * (1 - smooth(seg(v, b, b + 0.04)));
+    return {
+      u: mix(cur.u, nxt.u, m), v: mix(cur.v, nxt.v, m),
+      i: i, hold: 1 - m, open: open,
+    };
+  }
 
   function render(t) {
     ctx.clearRect(0, 0, W, H);
-    var bob = (sp < 0.12 && !reduced && !small) ? Math.sin(t / 900) * 4 * (1 - sp / 0.12) : 0;
-    // base shadow
-    var sh = Math.max(0, 1 - sp * 2.2);
-    if (sh > 0.01) {
-      var g = ctx.createRadialGradient(draw.x + draw.w / 2, draw.y + draw.h * 0.97, 10, draw.x + draw.w / 2, draw.y + draw.h * 0.97, draw.w * 0.44);
-      g.addColorStop(0, "rgba(0,0,0," + 0.5 * sh + ")");
-      g.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = g;
-      ctx.save(); ctx.scale(1, 0.22);
-      ctx.beginPath(); ctx.arc(draw.x + draw.w / 2, (draw.y + bob + draw.h * 0.97) / 0.22, draw.w * 0.44, 0, 7); ctx.fill();
-      ctx.restore();
-    }
-    if (small || reduced || !parts) {
-      ctx.drawImage(img, draw.x, draw.y + bob, draw.w, draw.h);
-      return;
-    }
-    // intact slice — everything left of the erosion front
-    var front = sp <= 0.12 ? 1 : Math.max(0, 1 - (sp - 0.12) / 0.5);
-    if (front > 0) {
-      ctx.save();
-      ctx.beginPath();
-      ctx.rect(draw.x - 2, draw.y + bob - 2, draw.w * front + 2, draw.h + 4);
-      ctx.clip();
-      ctx.drawImage(img, draw.x, draw.y + bob, draw.w, draw.h);
-      ctx.restore();
-    }
-    if (sp <= 0.12) return;
-    // departed particles
-    var fade = Math.max(0, 1 - Math.max(0, sp - 0.78) / 0.2);
-    for (var b = 0; b < buckets.length; b++) {
-      var bk = buckets[b];
-      ctx.fillStyle = bk.c;
-      for (var i = 0; i < bk.list.length; i++) {
-        var q = bk.list[i];
-        var tt = (sp - q.start) / 0.16;
-        if (tt <= 0 || tt >= 1) { if (tt >= 1) continue; else continue; }
-        var e = ease(Math.min(1, tt));
-        var a = (1 - e) * fade;
-        if (a < 0.025) continue;
-        var ang = q.s * 6.283 + e * 2.2;
-        var dx = e * (140 + q.s * 760) + Math.cos(ang) * e * 46 * q.s2;
-        var dy = -e * (30 + q.s2 * 210) + Math.sin(ang) * e * 60 * q.s2 + e * e * 120 * (q.s - 0.5);
-        var size = Math.max(1.4, 5 * (1 - e * 0.6));
-        ctx.globalAlpha = a;
-        ctx.fillRect(draw.x + q.hx + dx, draw.y + bob + q.hy + dy, size, size);
-      }
-    }
+    if (!img.naturalWidth) return;
+    var c = camera(small || reduced ? 0.44 : sp, t);
+    var r = machineRect(c);
+
+    // floor shadow
+    ctx.save();
+    var sg = ctx.createRadialGradient(r.x + r.w / 2, r.y + r.h * 0.985, 8, r.x + r.w / 2, r.y + r.h * 0.985, r.w * 0.5);
+    sg.addColorStop(0, "rgba(0,0,0,.55)");
+    sg.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = sg;
+    ctx.scale(1, 0.16);
+    ctx.beginPath(); ctx.arc(r.x + r.w / 2, (r.y + r.h * 0.985) / 0.16, r.w * 0.5, 0, 7); ctx.fill();
+    ctx.restore();
+
+    // reflection + machine (dimmed to a backdrop during the closing act)
+    var dim = (small || reduced) ? 0 : io(seg(sp, 0.82, 0.97));
+    ctx.globalAlpha = 1 - dim * 0.85;
+    if (refl) ctx.drawImage(refl, r.x, r.y + r.h - r.h * 0.006, r.w, refl.height / img.naturalWidth * r.w);
+    ctx.drawImage(img, r.x, r.y, r.w, r.h);
     ctx.globalAlpha = 1;
+
+    if (small || reduced) return;
+
+    // registration hairlines fade in with the pull-back, out before the close
+    var reg = smooth(seg(sp, 0.34, 0.46)) * (1 - smooth(seg(sp, 0.78, 0.86)));
+    if (reg > 0.01) {
+      ctx.strokeStyle = "rgba(255,255,255," + 0.16 * reg + ")";
+      ctx.lineWidth = 1;
+      var pad = 40;
+      ctx.beginPath();
+      ctx.moveTo(r.x - pad, r.y + r.h + 0.5); ctx.lineTo(r.x + r.w + pad, r.y + r.h + 0.5);
+      ctx.moveTo(r.x - 0.5 - 18, r.y - pad + 30); ctx.lineTo(r.x - 0.5 - 18, r.y + r.h + pad - 10);
+      ctx.stroke();
+      // end ticks
+      ctx.strokeStyle = "rgba(255,255,255," + 0.34 * reg + ")";
+      [[r.x - pad, r.y + r.h], [r.x + r.w + pad, r.y + r.h]].forEach(function (q) {
+        ctx.beginPath(); ctx.moveTo(q[0] + 0.5, q[1] - 6); ctx.lineTo(q[0] + 0.5, q[1] + 6); ctx.stroke();
+      });
+    }
+
+    // inspection loupe
+    var L = lens(sp);
+    var label = document.getElementById("xkLabel");
+    if (L && L.open > 0.02) {
+      var lx = r.x + L.u * r.w, ly = r.y + L.v * r.h;
+      var rad = 118 * L.open;
+      var mag = 2.1;
+      // magnified clip
+      ctx.save();
+      ctx.beginPath(); ctx.arc(lx, ly, rad, 0, 7); ctx.clip();
+      ctx.fillStyle = "#101012";
+      ctx.fillRect(lx - rad, ly - rad, rad * 2, rad * 2);
+      ctx.drawImage(img, lx - L.u * r.w * mag, ly - L.v * r.h * mag, r.w * mag, r.h * mag);
+      ctx.restore();
+      // ring
+      ctx.strokeStyle = "rgba(255,255,255," + 0.85 * L.open + ")";
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(lx, ly, rad, 0, 7); ctx.stroke();
+      ctx.strokeStyle = "rgba(255,255,255," + 0.2 * L.open + ")";
+      ctx.beginPath(); ctx.arc(lx, ly, rad + 7, 0, 7); ctx.stroke();
+      // focus ticks
+      ctx.strokeStyle = "rgba(193,24,25," + 0.9 * L.open + ")";
+      for (var k = 0; k < 4; k++) {
+        var an = k * Math.PI / 2 + Math.PI / 4;
+        ctx.beginPath();
+        ctx.moveTo(lx + Math.cos(an) * (rad - 8), ly + Math.sin(an) * (rad - 8));
+        ctx.lineTo(lx + Math.cos(an) * (rad - 1), ly + Math.sin(an) * (rad - 1));
+        ctx.stroke();
+      }
+      // hairline to the label, anchored right of the lens
+      var side = lx < W * 0.55 ? -1 : 1;
+      var tx = lx + side * (rad + 46), ty = ly - rad * 0.2;
+      ctx.strokeStyle = "rgba(255,255,255," + 0.4 * L.open * L.hold + ")";
+      ctx.beginPath();
+      ctx.moveTo(lx + side * (rad + 2), ly);
+      ctx.lineTo(tx, ty);
+      ctx.lineTo(tx + side * 30, ty);
+      ctx.stroke();
+      // DOM label
+      var st = STOPS[L.i];
+      label.innerHTML = "<b>" + st.t + "</b><i>" + st.d + "</i>";
+      label.style.opacity = L.open * L.hold;
+      var lw = 300;
+      label.style.transform = "translate(" + (side > 0 ? tx + 38 : tx - 38 - lw) + "px," + (ty - 16) + "px)";
+      label.style.textAlign = side > 0 ? "left" : "right";
+    } else {
+      label.style.opacity = 0;
+    }
   }
 
-  // DOM phases scrubbed directly from progress
   var p1 = document.getElementById("xkP1"), p3 = document.getElementById("xkP3");
-  var specs = [].slice.call(document.querySelectorAll(".xk__spec"));
-  var bar = document.getElementById("xkBar"), pct = document.getElementById("xkPct");
   var hint = document.getElementById("xkHint");
-  var band = function (v, a, b, c, d) {
-    if (v <= a || v >= d) return 0;
-    if (v < b) return (v - a) / (b - a);
-    if (v > c) return 1 - (v - c) / (d - c);
-    return 1;
-  };
+  var stage = document.getElementById("xkStage"), no = document.getElementById("xkNo");
+  var NAMES = ["HAWK HS — DETAIL", "HAWK HS — OVERVIEW", "INSPECTION", "SCHMOLL ASIA PACIFIC"];
   function phases() {
-    var o1 = band(sp, -1, -0.5, 0.1, 0.2);
+    var o1 = 1 - smooth(seg(sp, 0.10, 0.20));
     p1.style.opacity = o1;
-    p1.style.transform = "translateY(" + (-sp * 260) + "px)";
-    specs.forEach(function (el) {
-      var at = parseFloat(el.getAttribute("data-at"));
-      var o = band(sp, at, at + 0.06, 0.52, 0.62);
-      el.style.opacity = o;
-      el.style.transform = "translateX(" + (1 - o) * 24 + "px)";
-    });
-    var o3 = band(sp, 0.6, 0.72, 2, 3);
+    p1.style.transform = "translateY(" + (-smooth(seg(sp, 0.08, 0.3)) * 120) + "px)";
+    var o3 = smooth(seg(sp, 0.85, 0.94));
     p3.style.opacity = o3;
-    p3.style.transform = "translateY(" + (1 - o3) * 40 + "px)";
+    p3.style.transform = "translateY(" + (1 - o3) * 34 + "px)";
     p3.style.pointerEvents = o3 > 0.5 ? "auto" : "none";
-    var d = Math.max(0, Math.min(1, (sp - 0.12) / 0.5));
-    bar.style.width = (d * 100) + "%";
-    pct.textContent = (d * 100).toFixed(1).padStart(5, "0") + "%";
-    hint.style.opacity = Math.max(0, 1 - sp / 0.05);
+    hint.style.opacity = Math.max(0, 1 - sp / 0.04);
+    var idx = sp < 0.16 ? 0 : sp < 0.46 ? 1 : sp < 0.82 ? 2 : 3;
+    stage.textContent = NAMES[idx];
+    no.textContent = "0" + (idx + 1) + " / 04";
   }
 
   function progress() {
     var r = sec.getBoundingClientRect();
     var span = r.height - innerHeight;
-    return span > 0 ? Math.max(0, Math.min(1, -r.top / span)) : 0;
+    return span > 0 ? clamp(-r.top / span) : 0;
   }
 
   function loop(t) {
     p = progress();
     var d = p - sp;
-    if (Math.abs(d) > 0.0004 || needs || (sp < 0.12 && !small && !reduced)) {
-      sp += Math.abs(d) < 0.0005 ? d : d * 0.14;
+    if (Math.abs(d) > 0.0004 || needs || (sp < 0.16 && !small && !reduced)) {
+      sp += Math.abs(d) < 0.0005 ? d : d * 0.12;
       needs = false;
       render(t || 0);
       if (!small && !reduced) phases();
@@ -689,10 +745,7 @@
     requestAnimationFrame(loop);
   }
 
-  img.onload = function () {
-    layout();
-    requestAnimationFrame(loop);
-  };
+  img.onload = function () { layout(); requestAnimationFrame(loop); };
   addEventListener("resize", function () { clearTimeout(layout._t); layout._t = setTimeout(layout, 180); });
 })();
 </script>
