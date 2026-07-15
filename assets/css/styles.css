@@ -928,7 +928,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 }
 .fam-row__slider::-webkit-scrollbar { display: none; }
 .fam-row__next {
-  position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 5;
+  position: absolute; right: var(--gutter); top: 50%; transform: translateY(-50%); z-index: 5;
   width: 46px; height: 46px; display: grid; place-items: center;
   background: var(--red); color: #fff; border: 0; cursor: pointer;
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
