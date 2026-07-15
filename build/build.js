@@ -499,6 +499,9 @@ const famRow = (id, labelKey, labelText, inner, variant = "") => `
   <div class="container"><h2 class="fam-row__h" data-i18n="${labelKey}">${labelText}</h2></div>
   <div class="container fam-row__wrap">
     <div class="fam-row__slider">${inner}</div>
+    <button type="button" class="fam-row__prev is-hidden" aria-label="Scroll left">
+      <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M14 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+    </button>
     <button type="button" class="fam-row__next" aria-label="Scroll right">
       <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
     </button>
@@ -538,7 +541,7 @@ const MEDIA_HEAD = `<link rel="canonical" href="https://julianito03.github.io/sc
   publisher: { "@type": "Organization", name: "Schmoll Asia Pacific" }
 })}</script>
 `;
-const MEDIA_SCRIPTS = `<script src="assets/js/media.js?v=3"></script>
+const MEDIA_SCRIPTS = `<script src="assets/js/media.js?v=4"></script>
 `;
 
 /* ---------- article pages ---------- */

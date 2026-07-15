@@ -37,14 +37,19 @@
   document.querySelectorAll(".fam-row__wrap").forEach(function (wrap) {
     var slider = wrap.querySelector(".fam-row__slider");
     var btn = wrap.querySelector(".fam-row__next");
+    var back = wrap.querySelector(".fam-row__prev");
     if (!slider || !btn) return;
     function update() {
       var atEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 8;
       var scrollable = slider.scrollWidth > slider.clientWidth + 8;
       btn.classList.toggle("is-hidden", atEnd || !scrollable);
+      if (back) back.classList.toggle("is-hidden", slider.scrollLeft <= 8);
     }
     btn.addEventListener("click", function () {
       slider.scrollBy({ left: Math.round(slider.clientWidth * 0.8), behavior: "smooth" });
+    });
+    if (back) back.addEventListener("click", function () {
+      slider.scrollBy({ left: -Math.round(slider.clientWidth * 0.8), behavior: "smooth" });
     });
     slider.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
