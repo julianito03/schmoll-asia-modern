@@ -655,7 +655,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 /* globe centered on the page; legend floats to its left */
 .globe-wrap { position: relative; display: block; }
 #globeViz {
-  width: min(100%, 940px); margin-left: auto; margin-right: clamp(20px, 6vw, 80px);
+  width: min(100%, 940px); margin-left: auto; margin-right: clamp(0px, 2vw, 24px);
   min-height: 500px; height: clamp(500px, 70vh, 740px); cursor: grab;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;   /* whatever size the canvas ends up, keep the sphere centered in this box */
@@ -686,6 +686,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 .gpin__hit:hover .gpin__label { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
 @media (max-width: 1080px){
   .globe-legend { position: static; transform: none; flex-direction: row; flex-wrap: wrap; gap: 14px 28px; max-width: none; margin-bottom: 18px; }
+  #globeViz { margin-inline: auto; }
 }
 
 /* =========================================================================
