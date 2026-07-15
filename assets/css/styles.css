@@ -962,7 +962,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 
 /* ---- topic index ---- */
 .media-topic-index {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   border-top: 1px solid var(--grey-300);
 }
 .media-topic { padding: 22px 20px 24px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
