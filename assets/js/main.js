@@ -339,24 +339,6 @@
     addEventListener("scroll", () => { if (mx >= 0) updPattern(); }, { passive: true });
   }
 
-  /* ---------- Preloader ---------- */
-  const pre = document.getElementById("preloader");
-  if (pre) {
-    const hide = () => {
-      pre.classList.add("is-done");
-      try { sessionStorage.setItem("sap_loaded", "1"); } catch (e) {}
-      setTimeout(() => { pre.remove(); }, 800);
-    };
-    // Keep the splash up so the brand reads, then fade after load.
-    const MIN = 2200;
-    const start = Date.now();
-    const run = () => setTimeout(hide, Math.max(0, MIN - (Date.now() - start)));
-    if (document.readyState === "complete") run();
-    else window.addEventListener("load", run, { once: true });
-    // Safety net in case load never fires.
-    setTimeout(hide, 6000);
-  }
-
   /* ---------- Year ---------- */
   const yr = document.querySelector("[data-year]");
   if (yr) yr.textContent = new Date().getFullYear();
