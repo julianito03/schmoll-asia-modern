@@ -30,7 +30,7 @@ const HEADER = `<header class="site-header">
             <svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></button>
           <div class="dropdown">
             <a href="news.html" data-i18n="media.news">News</a>
-            <a href="news.html#blog" data-i18n="media.blog">Blog</a>
+            <a href="news.html#insights" data-i18n="media.blog">Blog</a>
             <a href="news.html#videos" data-i18n="media.videos">Videos</a>
           </div>
         </li>
@@ -132,7 +132,7 @@ function page({ title, desc, main, lang = "en", head = "", scripts = "" }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=64">
+<link rel="stylesheet" href="assets/css/styles.css?v=65">
 ${head}</head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
@@ -141,7 +141,7 @@ ${HEADER}
 ${main}
 </main>
 ${FOOTER}
-<script src="assets/js/i18n.js?v=45"></script>
+<script src="assets/js/i18n.js?v=46"></script>
 <script src="assets/js/main.js?v=49"></script>
 ${scripts}</body>
 </html>`;

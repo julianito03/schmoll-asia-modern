@@ -446,186 +446,6 @@ const mediaCard = (p) => `
     </a>
   </article>`;
 
-/* video feed card */
-const videoCard = (v, i) => `
-  <article class="media-card" data-type="video" data-topics="${(v.topics || []).join(" ")}" data-search="${(v.title + " " + (v.description || "")).toLowerCase()}" data-date="2024-06-01">
-    <a class="media-card__link" href="#videos" data-video-jump="${v.id}">
-      <span class="media-card__media"><img src="${v.poster}" alt="${v.title}" loading="lazy" width="900" height="506"><span class="media-card__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><circle cx="12" cy="12" r="11" fill="rgba(10,10,10,.62)"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg></span></span>
-      <span class="media-card__body">
-        <span class="media-card__top">${typeLabel("video")}<span class="media-card__meta"><time>2024–2026</time></span></span>
-        <span class="media-card__title">${v.title}</span>
-        ${v.description ? `<span class="media-card__excerpt">${v.description}</span>` : ""}
-        <span class="media-card__action"><span data-i18n="m.watch">Watch the video</span> ${arrow(14)}</span>
-      </span>
-    </a>
-  </article>`;
-
-/* ---------- hero ---------- */
-const heroPost = sorted.filter((p) => p.isFeatured).sort((a, b) => a.featuredRank - b.featuredRank)[0];
-const mediaHero = `
-<section class="media-hero">
-  <div class="container media-hero__grid">
-    <div class="media-hero__copy">
-      <span class="eyebrow" data-i18n="mh.eyebrow">Schmoll Media / Asia Pacific</span>
-      <h1 data-i18n="mh.title">Precision in Motion</h1>
-      <p data-i18n="mh.sub">Stories, technologies and people shaping advanced PCB manufacturing across Asia Pacific.</p>
-      <div class="media-hero__actions">
-        <a class="btn" href="#feed" data-i18n="mh.cta1">Explore latest stories</a>
-        <a class="btn btn--ghost" href="#videos" data-i18n="mh.cta2">Watch machines in action</a>
-      </div>
-    </div>
-    <a class="media-hero__feature" href="${postHref(heroPost)}">
-      <img src="${postThumb(heroPost)}" alt="${heroPost.imageAlt}" width="1200" height="750" fetchpriority="high">
-      <span class="media-hero__feature-body">
-        <span class="media-card__top"><span class="media-card__type media-card__type--${heroPost.type}" data-i18n="mh.featured">Featured Insight</span><span class="media-card__meta"><time datetime="${heroPost.date}">${fmtDate(heroPost.date)}</time></span></span>
-        <span class="media-hero__feature-title">${heroPost.cleanTitle}</span>
-        <span class="media-hero__feature-sub">${excerptOf(heroPost)}</span>
-        <span class="media-card__action"><span data-i18n="m.readinsight">Read the insight</span> ${arrow(14)}</span>
-      </span>
-    </a>
-  </div>
-</section>`;
-
-/* ---------- toolbar ---------- */
-const FILTERS = [
-  ["all", "All"], ["news", "News"], ["insight", "Expert Insights"],
-  ["event", "Events"], ["video", "Videos"], ["company", "Company Life"]
-];
-const mediaToolbar = `
-<div class="media-toolbar" id="media-toolbar">
-  <div class="container media-toolbar__row">
-    <div class="media-toolbar__filters" role="group" aria-label="Filter media by type">
-      ${FILTERS.map(([k, l], i) => `<button type="button" data-filter="${k}" aria-pressed="${i === 0}" data-i18n="mf.${k}">${l}</button>`).join("")}
-    </div>
-    <div class="media-toolbar__search">
-      <label for="media-search" class="visually-hidden" data-i18n="m.searchlabel">Search media</label>
-      <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M14 14l4 4" stroke="currentColor" stroke-width="1.6"/></svg>
-      <input id="media-search" type="search" placeholder="Search technologies, machines and stories" data-i18n-ph="m.searchph" autocomplete="off">
-    </div>
-    <p class="media-toolbar__count" aria-live="polite" id="media-count"></p>
-  </div>
-</div>`;
-
-/* ---------- featured stories (hero item excluded) ---------- */
-const featuredRest = sorted.filter((p) => p.isFeatured && p !== heroPost).sort((a, b) => a.featuredRank - b.featuredRank);
-const featuredExtra = featuredRest.length < 3 ? sorted.filter((p) => !p.isFeatured && p !== heroPost).slice(0, 3 - featuredRest.length) : [];
-const featuredSet = [...featuredRest, ...featuredExtra].slice(0, 3);
-const featuredStory = (p, lead = false) => `
-  <a class="feature-story${lead ? " feature-story--lead" : ""}" href="${postHref(p)}">
-    <span class="feature-story__media"><img src="${postThumb(p)}" alt="${p.imageAlt || ""}" loading="lazy" width="900" height="563"></span>
-    <span class="feature-story__body">
-      <span class="media-card__top">${typeLabel(p.type)}${metaLine(p)}</span>
-      <span class="feature-story__title">${p.cleanTitle}</span>
-      ${lead ? `<span class="media-card__excerpt">${excerptOf(p)}</span>` : ""}
-      <span class="media-card__action"><span data-i18n="m.read">Read the story</span> ${arrow(14)}</span>
-    </span>
-  </a>`;
-const featuredSection = `
-<section class="section media-section">
-  <div class="container">
-    <div class="sec-head sec-head--tight"><span class="eyebrow" data-i18n="ms.featured">Selected Stories</span></div>
-    <div class="media-feature-grid">
-      ${featuredStory(featuredSet[0], true)}
-      <div class="media-feature-grid__side">
-        ${featuredSet.slice(1).map((p) => featuredStory(p)).join("")}
-      </div>
-    </div>
-  </div>
-</section>`;
-
-/* ---------- unified feed (everything, videos included) ---------- */
-const feedItems = [
-  ...sorted.map((p) => ({ date: p.date, html: mediaCard(p) })),
-  ...VIDEOS.map((v, i) => ({ date: "2024-06-0" + (5 - i), html: videoCard(v, i) })),
-].sort((a, b) => b.date.localeCompare(a.date));
-const feedSection = `
-<section class="section media-section" id="feed">
-  <div class="container">
-    <div class="sec-head sec-head--tight"><span class="eyebrow" data-i18n="ms.latest">Latest from Schmoll</span></div>
-    <div class="media-feed" id="media-feed">
-      ${feedItems.map((f) => f.html).join("")}
-    </div>
-    <p class="media-empty" id="media-empty" hidden><span data-i18n="m.empty">No media items match these filters.</span> <button type="button" id="media-clear" data-i18n="m.clear">Clear filters</button></p>
-    <div class="media-more"><button type="button" class="btn btn--ghost" id="media-loadmore" hidden data-i18n="m.loadmore">Load more stories</button></div>
-  </div>
-</section>`;
-
-/* ---------- topic index ---------- */
-const topicCount = (key) => sorted.filter((p) => (p.topics || []).includes(key)).length
-  + VIDEOS.filter((v) => (v.topics || []).includes(key)).length;
-const topicIndex = `
-<section class="section media-section media-section--alt" id="topics">
-  <div class="container">
-    <div class="sec-head sec-head--tight"><span class="eyebrow" data-i18n="ms.topics">Explore by Technology</span></div>
-    <div class="media-topic-index">
-      ${Object.entries(EDITORIAL.topicIndex).filter(([k]) => topicCount(k) > 0).map(([k, t]) => `
-      <div class="media-topic">
-        <button type="button" class="media-topic__head" data-topic="${k}">
-          <span class="media-topic__label">${t.label}</span>
-          <span class="media-topic__count">${topicCount(k)} <span data-i18n="m.stories">stories</span></span>
-        </button>
-        <p class="media-topic__blurb">${t.blurb}</p>
-        <span class="media-topic__links">
-          ${t.products.length ? `<a href="product-${t.products[0]}.html">${MACHINES.find((m) => m.key === t.products[0])?.name || t.products[0]} ${arrow(12)}</a>` : ""}
-          ${t.application ? `<a href="${t.application}" data-i18n="m.solutions">Related solutions ${arrow(12)}</a>` : ""}
-        </span>
-      </div>`).join("")}
-    </div>
-  </div>
-</section>`;
-
-/* ---------- Video Lab (poster-first: src attached on play by media.js) ---------- */
-const featVideo = VIDEOS.find((v) => v.featured) || VIDEOS[0];
-const videoLab = `
-<section class="section section--dark media-section" id="videos">
-  <div class="container">
-    <div class="sec-head sec-head--tight"><span class="eyebrow">Video Lab</span><h2 class="media-h2" data-i18n="ms.videolab">See Precision in Action</h2></div>
-    <div class="video-lab">
-      <figure class="video-lab__player">
-        <div class="video-lab__stage" id="video-stage">
-          <img src="${featVideo.poster}" alt="${featVideo.title}" id="video-poster" width="1280" height="720">
-          <button type="button" class="video-lab__play" id="video-play" data-src="${featVideo.videoUrl}" aria-label="Play: ${featVideo.title}">
-            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5l12 7-12 7z" fill="currentColor"/></svg>
-          </button>
-        </div>
-        <figcaption class="video-lab__caption"><b id="video-title">${featVideo.title}</b><span id="video-desc">${featVideo.description || ""}</span></figcaption>
-      </figure>
-      <div class="video-lab__playlist" role="list">
-        ${VIDEOS.map((v) => `
-        <button type="button" class="video-lab__item${v === featVideo ? " is-active" : ""}" role="listitem" data-video="${v.id}" data-src="${v.videoUrl}" data-poster="${v.poster}" data-title="${v.title}" data-desc="${v.description || ""}">
-          <img src="${v.poster}" alt="" loading="lazy" width="320" height="180">
-          <span>${v.title}</span>
-        </button>`).join("")}
-      </div>
-    </div>
-  </div>
-</section>`;
-
-/* ---------- LinkedIn strip (restrained, clearly external) ---------- */
-const liIcon = '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.16h4.52V23H.24V8.16zM8.34 8.16h4.33v2.03h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.93V23h-4.51v-7.29c0-1.74-.03-3.98-2.42-3.98-2.43 0-2.8 1.9-2.8 3.86V23H8.34V8.16z"/></svg>';
-const extIcon = '<svg viewBox="0 0 14 14" width="11" height="11" aria-hidden="true"><path d="M4 2h8v8M12 2L2 12" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>';
-const liVisible = LI.posts.filter((p) => !p.hidden && p.approved !== false).slice(0, 4);
-const socialStrip = `
-<section class="section media-section media-section--alt" id="linkedin">
-  <div class="container">
-    <div class="li-head">
-      <div class="sec-head sec-head--tight" style="margin-bottom:0"><span class="eyebrow">${liIcon} LinkedIn</span><h2 class="media-h2" data-i18n="ms.linkedin">Latest from Schmoll Asia Pacific</h2></div>
-      <a class="btn btn--ghost" href="${LI.source}" target="_blank" rel="noopener noreferrer"><span data-i18n="li.follow">Follow on LinkedIn</span> ${extIcon}</a>
-    </div>
-    <div class="social-strip">
-      ${liVisible.map((p) => `
-      <a class="social-card" href="${p.url}" target="_blank" rel="noopener noreferrer">
-        ${p.images[0] ? `<span class="social-card__media"><img src="${p.images[0]}" alt="" loading="lazy" width="600" height="338" onerror="this.parentNode.hidden=true"></span>` : ""}
-        <span class="social-card__body">
-          <span class="media-card__meta"><time datetime="${p.date}">${fmtDate(p.date)}</time><span aria-hidden="true">·</span><span>${liIcon} LinkedIn</span></span>
-          <span class="social-card__title">${(p.customTitle || p.text.split("\n")[0]).slice(0, 90)}</span>
-          <span class="media-card__action"><span data-i18n="li.view">View post</span> ${extIcon} <span class="visually-hidden" data-i18n="m.external">(external link)</span></span>
-        </span>
-      </a>`).join("")}
-    </div>
-  </div>
-</section>`;
-
 /* ---------- contextual CTA ---------- */
 const mediaCta = `
 <section class="section media-section">
@@ -641,7 +461,72 @@ const mediaCta = `
   </div>
 </section>`;
 
-const newsPage = mediaHero + mediaToolbar + featuredSection + feedSection + topicIndex + videoLab + socialStrip + mediaCta;
+/* ============ FAMILY MEDIA PAGE (schmoll-maschinen design language, light) ============ */
+const heroPost = sorted.filter((p) => p.isFeatured).sort((a, b) => a.featuredRank - b.featuredRank)[0];
+
+const famPanel = (p) => `
+  <a class="fam-panel" href="${postHref(p)}">
+    <span class="fam-panel__head"><time datetime="${p.date}">${fmtDate(p.date)}</time><span data-i18n="mtype.${p.type}">${TYPE_LABELS[p.type]}</span></span>
+    <span class="fam-panel__title">${p.cleanTitle}</span>
+    ${excerptOf(p) ? `<span class="fam-panel__body">${excerptOf(p)}</span>` : ""}
+    <span class="fam-panel__more"><span data-i18n="m.more">More</span> <span aria-hidden="true">→</span></span>
+  </a>`;
+
+const famVideo = (v, i) => `
+  <div class="fam-vtile" data-video-src="${v.videoUrl}" data-video-title="${v.title.replace(/"/g, "&quot;")}">
+    <button type="button" class="fam-vtile__img" aria-label="Play: ${v.title.replace(/"/g, "&quot;")}">
+      <img src="${v.poster}" alt="${v.title}" loading="lazy" width="640" height="360">
+      <span class="fam-vtile__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M8 5l12 7-12 7z" fill="currentColor"/></svg></span>
+    </button>
+    <span class="fam-vtile__cap">${v.title}</span>
+  </div>`;
+
+const liIcon = '<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.16h4.52V23H.24V8.16zM8.34 8.16h4.33v2.03h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.93V23h-4.51v-7.29c0-1.74-.03-3.98-2.42-3.98-2.43 0-2.8 1.9-2.8 3.86V23H8.34V8.16z"/></svg>';
+const famLi = (p) => `
+  <a class="fam-panel fam-panel--img" href="${p.url}" target="_blank" rel="noopener noreferrer">
+    ${p.images[0] ? `<img src="${p.images[0]}" alt="" loading="lazy" width="640" height="360" onerror="this.hidden=true">` : ""}
+    <span class="fam-panel__inner">
+      <span class="fam-panel__head"><time datetime="${p.date}">${fmtDate(p.date)}</time><span>${liIcon} LinkedIn ↗<span class="visually-hidden" data-i18n="m.external">(external link)</span></span></span>
+      <span class="fam-panel__title fam-panel__title--s">${(p.customTitle || p.text.split("\n")[0]).slice(0, 90)}</span>
+      <span class="fam-panel__more"><span data-i18n="li.view">View post</span> <span aria-hidden="true">↗</span></span>
+    </span>
+  </a>`;
+
+const famRow = (id, labelKey, labelText, inner, variant = "") => `
+<section class="fam-row${variant ? " fam-row--" + variant : ""}" id="${id}">
+  <div class="container"><h2 class="fam-row__h" data-i18n="${labelKey}">${labelText}</h2></div>
+  <div class="fam-row__slider container">${inner}</div>
+</section>`;
+
+const newsEventPosts = sorted.filter((p) => p.type !== "insight" && p !== heroPost);
+const insightPosts = sorted.filter((p) => p.type === "insight" && p !== heroPost);
+
+const newsPage = `
+<header class="fam-head">
+  <div class="container">
+    <h1>Media</h1>
+    <p data-i18n="mh.sub">Stories, technologies and people shaping advanced PCB manufacturing across Asia Pacific.</p>
+  </div>
+</header>
+<section class="fam-feat container">
+  <img class="fam-feat__img" src="${postThumb(heroPost)}" alt="${heroPost.imageAlt}" width="1600" height="686" fetchpriority="high">
+  <a class="fam-feat__panel" href="${postHref(heroPost)}">
+    <span class="fam-panel__head fam-panel__head--onred"><time datetime="${heroPost.date}">${fmtDate(heroPost.date)}</time><span data-i18n="mh.featured">Featured Insight</span></span>
+    <span class="fam-feat__title">${heroPost.cleanTitle}</span>
+    <span class="fam-feat__body">${excerptOf(heroPost)}</span>
+    <span class="fam-panel__more"><span data-i18n="m.readinsight">Read the insight</span> <span aria-hidden="true">→</span></span>
+  </a>
+</section>
+${famRow("news", "ms.newsevents", "News &amp; Events", newsEventPosts.map(famPanel).join(""))}
+<div class="fam-band" aria-hidden="true"><img src="assets/img/facility-3.jpg" alt="" loading="lazy"></div>
+${famRow("insights", "mf.insight", "Expert Insights", insightPosts.map(famPanel).join(""), "diary")}
+${famRow("videos", "media.videos", "Videos", VIDEOS.map(famVideo).join(""), "video")}
+${famRow("linkedin", "ms.linkedin", "Latest from Schmoll Asia Pacific", LI.posts.filter((p) => !p.hidden && p.approved !== false).slice(0, 6).map(famLi).join("") + `
+  <a class="fam-panel fam-panel--follow" href="${LI.source}" target="_blank" rel="noopener noreferrer">
+    <span class="fam-panel__title">${liIcon}&nbsp; <span data-i18n="li.follow">Follow on LinkedIn</span></span>
+    <span class="fam-panel__more">↗</span>
+  </a>`, "li")}
+` + mediaCta;
 
 const MEDIA_HEAD = `<link rel="canonical" href="https://julianito03.github.io/schmoll-asia-modern/news.html">
 <meta property="og:type" content="website">
@@ -656,7 +541,7 @@ const MEDIA_HEAD = `<link rel="canonical" href="https://julianito03.github.io/sc
   publisher: { "@type": "Organization", name: "Schmoll Asia Pacific" }
 })}</script>
 `;
-const MEDIA_SCRIPTS = `<script src="assets/js/media.js?v=1"></script>
+const MEDIA_SCRIPTS = `<script src="assets/js/media.js?v=2"></script>
 `;
 
 /* ---------- article pages ---------- */
