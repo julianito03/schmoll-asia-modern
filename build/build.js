@@ -414,76 +414,58 @@ const liCard = (p) => `
     </div>
   </a>`;
 
-/* mosaic tiles: [0] lead cover, [1] tall, [2-4] standard tiles, [5-7] compact text tiles */
-const mosaicTile = (p, kind) => {
+/* photo tiles: the image IS the tile; caption is a small overlay */
+const pTile = (p, span, lead = false) => {
   const href = postHref(p);
-  const meta = `<span class="news-card__meta">${fmtDate(p.date)}<i></i><span data-i18n="media.${p.category}">${p.category === "blog" ? "Blog" : "News"}</span></span>`;
-  if (kind === "lead") {
-    const inner = `<img src="${postThumb(p)}" alt=""><div class="m-lead__body">${meta}<h3>${p.title}</h3><p>${postExcerpt(p, 180)}</p>
-      <span class="news-card__more"><span data-i18n="btn.readmore">Read more</span> ${arrow(14)}</span></div>`;
-    return `<a class="m-lead" href="${href}" data-reveal>${inner}</a>`;
-  }
-  if (kind === "mini") {
-    const body = `${meta}<h3>${p.title}</h3>${href ? `<span class="news-card__more"><span data-i18n="btn.readmore">Read more</span> ${arrow(14)}</span>` : ""}`;
-    return href ? `<a class="m-mini" href="${href}" data-reveal>${body}</a>` : `<div class="m-mini" data-reveal>${body}</div>`;
-  }
-  const cls = kind === "tall" ? "news-card m-tall" : "news-card m-tile";
-  const body = `<div class="news-card__media"><img src="${postThumb(p)}" alt="" loading="lazy"></div>
-    <div class="news-card__body">${meta}<h3>${p.title}</h3>${kind === "tall" ? `<p>${postExcerpt(p, 130)}</p>` : ""}
-    ${href ? `<span class="news-card__more"><span data-i18n="btn.readmore">Read more</span> ${arrow(14)}</span>` : ""}</div>`;
-  return href ? `<a class="${cls}" href="${href}" data-reveal>${body}</a>` : `<div class="${cls}" data-reveal>${body}</div>`;
+  const cat = p.category === "blog" ? "Blog" : "News";
+  const cap = `<div class="p-tile__cap"><span class="news-card__meta">${fmtDate(p.date)}<i></i><span data-i18n="media.${p.category}">${cat}</span></span><h3>${p.title}</h3></div>`;
+  const img = `<img src="${postThumb(p)}" alt="" loading="lazy">`;
+  const cls = `p-tile ${span}${lead ? " p-tile--lead" : ""}`;
+  return href
+    ? `<a class="${cls}" href="${href}" data-reveal>${img}${cap}<span class="p-tile__go">${arrow(16)}</span></a>`
+    : `<div class="${cls}" data-reveal>${img}${cap}</div>`;
 };
-const mosaicKind = (i) => i === 0 ? "lead" : i === 1 ? "tall" : i <= 4 ? "tile" : "mini";
+const NEWS_SPANS = ["p-span8 p-rows2", "p-span4", "p-span4", "p-span4", "p-span4", "p-span4", "p-span6", "p-span6"];
+const BLOG_SPANS = ["p-span6", "p-span6", "p-span4", "p-span4", "p-span4", "p-span12"];
 
-const blogRow = (p) => `
-  <a class="blog-row" href="${postHref(p)}" data-reveal>
-    <span class="news-card__meta">${fmtDate(p.date)}<i></i><span data-i18n="media.blog">Blog</span></span>
-    <div><h3 class="blog-row__title">${p.title}</h3><p>${postExcerpt(p, 130)}</p></div>
-    <div class="blog-row__thumb"><img src="${postThumb(p)}" alt="" loading="lazy"></div>
-    <span class="blog-row__arrow">${arrow(18)}</span>
-  </a>`;
-
-const liRow = (p) => `
-  <a class="li-row" href="${p.url}" target="_blank" rel="noopener" data-reveal>
-    <div class="li-row__thumb">${p.images[0] ? `<img src="${p.images[0]}" alt="" loading="lazy">` : ""}</div>
-    <div class="li-row__text"><span class="news-card__meta">${fmtDate(p.date)}</span><b>${p.text.split("\n")[0]}</b></div>
-    <span class="li-row__arrow">${arrow(18)}</span>
-  </a>`;
+const liTile = (p, span, lead = false) => {
+  const cap = `<div class="p-tile__cap"><span class="news-card__meta">${fmtDate(p.date)}<i></i>LinkedIn</span><h3>${p.text.split("\n")[0]}</h3></div>`;
+  const img = p.images[0] ? `<img src="${p.images[0]}" alt="" loading="lazy">` : "";
+  return `<a class="p-tile ${span}${lead ? " p-tile--lead" : ""}" href="${p.url}" target="_blank" rel="noopener" data-reveal>${img}${cap}<span class="p-tile__go">${arrow(16)}</span></a>`;
+};
+const LI_SPANS = ["p-span6 p-rows2", "p-span3", "p-span3", "p-span3", "p-span3"];
 
 const newsPage = banner('Media', 'News &amp; Insights', '<span>Media</span>') + `
 <section class="section section--alt">
   <div class="container">
-    <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.news">News</span><h2>Latest from Schmoll</h2><p class="lead" data-i18n="news.lead">Exhibitions, milestones and announcements from across Asia Pacific.</p></div>
-    <div class="mosaic">
-      ${newsList.map((p, i) => mosaicTile(p, mosaicKind(i))).join("")}
+    <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.news">News</span><h2>Latest from Schmoll</h2></div>
+    <div class="photo-mosaic">
+      ${newsList.map((p, i) => pTile(p, NEWS_SPANS[i] || "p-span4", i === 0)).join("")}
     </div>
   </div>
 </section>
 <section class="section" id="blog">
   <div class="container">
-    <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.blog">Blog</span><h2>From the Schmoll Blog</h2><p class="lead" data-i18n="blog.lead">Technology, partnerships and the engineering behind our machines.</p></div>
-    <div class="blog-index">
-      ${blogList.map(blogRow).join("")}
+    <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.blog">Blog</span><h2>From the Schmoll Blog</h2></div>
+    <div class="photo-mosaic">
+      ${blogList.map((p, i) => pTile(p, BLOG_SPANS[i] || "p-span4", i === 5)).join("")}
     </div>
   </div>
 </section>
 <section class="section section--dark" id="linkedin">
   <div class="container">
     <div class="li-head" data-reveal>
-      <div class="sec-head" style="margin-bottom:0"><span class="eyebrow">LinkedIn</span><h2 data-i18n="li.title">Live from LinkedIn</h2><p class="lead" data-i18n="li.lead">What we're sharing with the industry, as we post it.</p></div>
+      <div class="sec-head" style="margin-bottom:0"><span class="eyebrow">LinkedIn</span><h2 data-i18n="li.title">Live from LinkedIn</h2></div>
       <a class="btn btn--light" href="${LI.source}" target="_blank" rel="noopener"><span data-i18n="li.follow">Follow Schmoll Asia Pacific</span> ${arrow(14)}</a>
     </div>
-    <div class="li-split">
-      ${liCard(LI.posts[0])}
-      <div class="li-rows">
-        ${LI.posts.slice(1, 6).map(liRow).join("")}
-      </div>
+    <div class="photo-mosaic">
+      ${LI.posts.slice(0, 5).map((p, i) => liTile(p, LI_SPANS[i], i === 0)).join("")}
     </div>
   </div>
 </section>
 <section class="section section--alt">
   <div class="container">
-    <div id="videos" class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.videos">Videos</span><h2>Watch Schmoll in Action</h2><p class="lead">Product demonstrations and exhibition highlights.</p></div>
+    <div id="videos" class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.videos">Videos</span><h2>Watch Schmoll in Action</h2></div>
     <div class="video-grid" data-reveal>
       ${[
         ["SIMPIMA 2026 — Exhibition Reel","https://videos.files.wordpress.com/Q1GHA7sS/simpimav2026.mp4"],
