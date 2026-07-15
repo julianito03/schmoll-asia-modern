@@ -921,13 +921,27 @@ strong { color: var(--grey-900); font-weight: 700; }
 
 .fam-row { padding: clamp(26px, 3.5vw, 46px) 0 clamp(18px, 2.5vw, 30px); }
 .fam-row__h { font-size: clamp(1.15rem, 1.8vw, 1.55rem); margin-bottom: 20px; }
+.fam-row__wrap { position: relative; }
 .fam-row__slider {
-  display: flex; gap: 16px; overflow-x: auto; padding-bottom: 14px;
-  scrollbar-width: thin; scrollbar-color: var(--red) var(--grey-100);
+  display: flex; gap: 16px; overflow-x: auto; padding-bottom: 6px;
+  scrollbar-width: none; scroll-behavior: smooth;
 }
-.fam-row__slider::-webkit-scrollbar { height: 5px; }
-.fam-row__slider::-webkit-scrollbar-track { background: var(--grey-100); }
-.fam-row__slider::-webkit-scrollbar-thumb { background: var(--red); }
+.fam-row__slider::-webkit-scrollbar { display: none; }
+.fam-row__next {
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 5;
+  width: 46px; height: 46px; display: grid; place-items: center;
+  background: var(--red); color: #fff; border: 0; cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  transition: background .2s, opacity .25s, visibility .25s;
+}
+.fam-row__next::after {
+  content: ""; position: absolute; right: 100%; top: -30px; bottom: -30px; width: 70px;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,.9)); pointer-events: none;
+}
+.fam-row__next:hover { background: var(--red-dark); }
+.fam-row__next:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.fam-row__next.is-hidden { opacity: 0; visibility: hidden; }
+.fam-row--diary .fam-row__next::after { background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,.9)); }
 
 .fam-panel {
   flex: 0 0 clamp(270px, 24vw, 360px); display: flex; flex-direction: column;
@@ -971,9 +985,6 @@ strong { color: var(--grey-900); font-weight: 700; }
 .fam-panel--img > img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .fam-panel__inner { display: flex; flex-direction: column; padding: 16px 20px 20px; flex: 1; }
 .fam-panel--follow { align-items: center; justify-content: center; text-align: center; gap: 12px; background: var(--grey-200); }
-
-.fam-band { margin: clamp(30px, 4vw, 56px) 0 0; }
-.fam-band img { width: 100%; height: clamp(200px, 28vw, 360px); object-fit: cover; display: block; }
 
 .fam-vtile {
   flex: 0 0 clamp(300px, 30vw, 440px); display: flex; flex-direction: column;

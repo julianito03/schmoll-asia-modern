@@ -497,7 +497,12 @@ const famLi = (p) => `
 const famRow = (id, labelKey, labelText, inner, variant = "") => `
 <section class="fam-row${variant ? " fam-row--" + variant : ""}" id="${id}">
   <div class="container"><h2 class="fam-row__h" data-i18n="${labelKey}">${labelText}</h2></div>
-  <div class="fam-row__slider container">${inner}</div>
+  <div class="fam-row__wrap">
+    <div class="fam-row__slider container">${inner}</div>
+    <button type="button" class="fam-row__next" aria-label="Scroll right">
+      <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+    </button>
+  </div>
 </section>`;
 
 const newsEventPosts = sorted.filter((p) => p.type !== "insight");
@@ -511,7 +516,6 @@ const newsPage = `
   </div>
 </header>
 ${famRow("news", "ms.newsevents", "News &amp; Events", newsEventPosts.map(famPanel).join(""))}
-<div class="fam-band" aria-hidden="true"><img src="assets/img/facility-3.jpg" alt="" loading="lazy"></div>
 ${famRow("insights", "mf.insight", "Expert Insights", insightPosts.map(famPanel).join(""), "diary")}
 ${famRow("videos", "media.videos", "Videos", VIDEOS.map(famVideo).join(""), "video")}
 ${famRow("linkedin", "ms.linkedin", "Latest from Schmoll Asia Pacific", LI.posts.filter((p) => !p.hidden && p.approved !== false).slice(0, 6).map(famLi).join("") + `
@@ -534,7 +538,7 @@ const MEDIA_HEAD = `<link rel="canonical" href="https://julianito03.github.io/sc
   publisher: { "@type": "Organization", name: "Schmoll Asia Pacific" }
 })}</script>
 `;
-const MEDIA_SCRIPTS = `<script src="assets/js/media.js?v=2"></script>
+const MEDIA_SCRIPTS = `<script src="assets/js/media.js?v=3"></script>
 `;
 
 /* ---------- article pages ---------- */

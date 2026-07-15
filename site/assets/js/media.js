@@ -30,3 +30,24 @@
     });
   });
 })();
+
+/* Row scroll arrows: advance the slider; hide at the end */
+(function () {
+  "use strict";
+  document.querySelectorAll(".fam-row__wrap").forEach(function (wrap) {
+    var slider = wrap.querySelector(".fam-row__slider");
+    var btn = wrap.querySelector(".fam-row__next");
+    if (!slider || !btn) return;
+    function update() {
+      var atEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 8;
+      var scrollable = slider.scrollWidth > slider.clientWidth + 8;
+      btn.classList.toggle("is-hidden", atEnd || !scrollable);
+    }
+    btn.addEventListener("click", function () {
+      slider.scrollBy({ left: Math.round(slider.clientWidth * 0.8), behavior: "smooth" });
+    });
+    slider.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
+})();
