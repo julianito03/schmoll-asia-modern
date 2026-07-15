@@ -655,7 +655,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 /* globe centered on the page; legend floats to its left */
 .globe-wrap { position: relative; display: block; }
 #globeViz {
-  width: min(100%, 940px); margin-left: auto; margin-right: clamp(0px, 2vw, 24px);
+  width: min(100%, 940px); margin-left: auto; margin-right: clamp(-40px, -2vw, 0px);
   min-height: 500px; height: clamp(500px, 70vh, 740px); cursor: grab;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;   /* whatever size the canvas ends up, keep the sphere centered in this box */
