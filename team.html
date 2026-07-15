@@ -256,6 +256,9 @@
   }).catch(function(){});
   function size(){ g.width(el.clientWidth).height(el.clientHeight); }
   size();
+  requestAnimationFrame(size);                                // first call can race the renderer
+  window.addEventListener('load', size);
+  if (window.ResizeObserver) new ResizeObserver(size).observe(el);
   g.pointOfView({lat:16,lng:100,altitude:1.9},0);
   var c=g.controls();
   c.autoRotate=true; c.autoRotateSpeed=0.42;
