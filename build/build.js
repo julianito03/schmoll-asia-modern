@@ -344,42 +344,105 @@ const contactPage = banner('Contact', 'Contact Us', '<span>Contact</span>') + `
 </section>` + CONTACT_CTA;
 
 /* ======================================================= NEWS / MEDIA */
-const news = [
-  ["06 Apr 2026","CPCA Show 2026 | Best PCB Equipment for AI Data servers","As AI infrastructure continues to expand, PCB manufacturers are facing increasing requirements for precision, performance, and process reliability."],
-  ["09 Dec 2025","HKPCA 2025 | Schmoll Asia | Best PCB Equipment Solutions in Asia | 30 years anniversary",""],
-  ["22 Apr 2025","Successful Participation at CPCA Show 2025 in Shanghai",""],
-  ["18 Dec 2024","Schmoll Asia Pacific Concludes a Successful Year at the HKPCA Show 2024",""],
-  ["26 Nov 2024","Schmoll Asia Pacific Showcases PCB Technology at CPCA 2024",""],
-  ["07 Nov 2024","Schmoll Asia Pacific's Success at TPCA Show 2024",""],
-  ["25 Sep 2024","Celebrating A Successful KPCA Show 2024: Innovation, Collaboration, And Growth",""],
-  ["28 Jun 2024","Schmoll Asia Pacific New Website",""]
-];
-const blog = [
-  ["06 Apr 2026","CPCA Show 2026 | Best PCB Equipment for AI Data servers"],
-  ["09 Dec 2025","HKPCA 2025 | Schmoll Asia | 30 years anniversary"],
-  ["11 Sep 2025","Granite — Schmoll's Best Option On The Market"],
-  ["22 Aug 2025","Difference between Schmoll Asia and Schmoll Maschinen"],
-  ["07 Aug 2025","WUS Printed Circuit's Expansion Powered by Schmoll Asia Pacific's Technology"],
-  ["01 Jul 2025","Celebrating a Strong Partnership: Larry Gao"]
-];
+/* Articles migrated from the live site (content/news/posts.json, built by
+   build/news-extract.js). LinkedIn feed from site/assets/data/linkedin.json
+   (built by build/linkedin-sync.js). */
+const POSTS = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "content/news/posts.json"), "utf8"));
+const LI = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "site/assets/data/linkedin.json"), "utf8"));
+
+const NEWS_KEYS = {
+  7923: "team-building-2026", 7848: "cpca-show-2026", 7577: "hkpca-2025",
+  7284: "cpca-show-2025",     7123: "hkpca-2024",     7009: "cpca-2024",
+  6938: "tpca-2024",          6796: "kpca-2024",      6672: "granite",
+  6480: "schmoll-asia-vs-maschinen", 5876: "wus-expansion",
+  3441: "larry-gao",          3217: "new-website"
+  // 7152 (Golden Supplier Award) has no recoverable body — listed without a detail page
+};
+const newsImg = (u) => "assets/img/news/" + u.split("/").pop().replace("-scaled", "").toLowerCase();
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const fmtDate = (iso) => { const [y, m, d] = iso.slice(0, 10).split("-"); return `${d} ${MONTHS[m - 1]} ${y}`; };
+
+// The Team Building article renders empty on the live site; its cross-post on
+// LinkedIn carries the same story, so that text serves as the article body.
+const TB_LI = LI.posts.find((p) => p.id === "7467579139282145280");
+const teamBuilding = POSTS.find((p) => p.id === 7923);
+if (teamBuilding && !teamBuilding.blocks.length && TB_LI) {
+  teamBuilding.featured = TB_LI.images[0] || null;
+  teamBuilding.liFeatured = true;
+  teamBuilding.blocks = TB_LI.text.split(/\n+/).filter(Boolean)
+    .map((t) => ({ t: "p", html: t.replace(/&/g, "&amp;").replace(/</g, "&lt;") }));
+  teamBuilding.blocks.push({ t: "p", html: `<em>Originally shared on <a href="${TB_LI.url}" target="_blank" rel="noopener">LinkedIn</a>.</em>` });
+}
+
+const postExcerpt = (p, len = 150) => {
+  let txt = "";
+  for (const b of p.blocks) {
+    if (b.t !== "p") continue;
+    txt += (txt ? " " : "") + b.html.replace(/<[^>]+>/g, "");
+    if (txt.length >= len) break;
+  }
+  return txt.length > len ? txt.slice(0, len).replace(/\s+\S*$/, "") + "…" : txt;
+};
+const postHref = (p) => NEWS_KEYS[p.id] ? `news-${NEWS_KEYS[p.id]}.html` : null;
+const postThumb = (p) => p.featured ? (p.liFeatured ? p.featured : newsImg(p.featured))
+  : (p.images[0] ? newsImg(p.images[0]) : "assets/img/facility-2.jpg");
+
+const newsCard = (p, feature = false) => {
+  const href = postHref(p);
+  const media = `<div class="news-card__media"><img src="${postThumb(p)}" alt="" loading="lazy"></div>`;
+  const meta = `<span class="news-card__meta">${fmtDate(p.date)}<i></i><span data-i18n="media.${p.category}">${p.category === "blog" ? "Blog" : "News"}</span></span>`;
+  const body = `<div class="news-card__body">${meta}<h3>${p.title}</h3>${feature ? `<p>${postExcerpt(p, 220)}</p>` : ""}
+    ${href ? `<span class="news-card__more"><span data-i18n="btn.readmore">Read more</span> ${arrow(14)}</span>` : ""}</div>`;
+  const cls = `news-card${feature ? " news-card--feature" : ""}`;
+  return href
+    ? `<a class="${cls}" href="${href}" data-reveal>${media}${body}</a>`
+    : `<div class="${cls}" data-reveal>${media}${body}</div>`;
+};
+
+const sorted = [...POSTS].sort((a, b) => b.date.localeCompare(a.date));
+const newsList = sorted.filter((p) => p.category === "news");
+const blogList = sorted.filter((p) => p.category === "blog");
+
+/* LinkedIn feed — baked from data; refresh via `node build/linkedin-sync.js --deploy` */
+const liCard = (p) => `
+  <a class="li-card" href="${p.url}" target="_blank" rel="noopener" data-reveal>
+    ${p.images[0] ? `<div class="li-card__media"><img src="${p.images[0]}" alt="" loading="lazy">${p.hasVideo ? '<span class="li-card__play"><svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.55)"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg></span>' : ""}</div>` : ""}
+    <div class="li-card__body">
+      <span class="news-card__meta">${fmtDate(p.date)}<i></i>LinkedIn</span>
+      <p>${p.text.split("\n")[0].slice(0, 120)}</p>
+      <span class="news-card__more"><span data-i18n="li.view">View post</span> ${arrow(14)}</span>
+    </div>
+  </a>`;
+
 const newsPage = banner('Media', 'News &amp; Insights', '<span>Media</span>') + `
 <section class="section">
   <div class="container">
-    <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.news">News</span><h2>Latest from Schmoll</h2></div>
-    <div class="grid" style="gap:1px;background:var(--line);border:1px solid var(--line)">
-      ${news.map((n,i)=>`<a href="#" class="office" style="display:grid;grid-template-columns:140px 1fr 40px;gap:24px;align-items:center;background:#fff"${i===0?' ':''}>
-        <span class="prod-card__no" style="font-size:.78rem">${n[0]}</span>
-        <div><h3 style="font-size:1.1rem;margin-bottom:${n[2]?'8px':'0'}">${n[1]}</h3>${n[2]?`<p style="font-size:.92rem">${n[2]}</p>`:''}</div>
-        <span style="color:var(--grey-400)">${arrow(18)}</span>
-      </a>`).join("")}
+    <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.news">News</span><h2>Latest from Schmoll</h2><p class="lead" data-i18n="news.lead">Exhibitions, milestones and announcements from across Asia Pacific.</p></div>
+    ${newsCard(newsList[0], true)}
+    <div class="news-grid">
+      ${newsList.slice(1).map((p) => newsCard(p)).join("")}
     </div>
 
-    <div id="blog" class="sec-head" style="margin-top:80px" data-reveal><span class="eyebrow" data-i18n="media.blog">Blog</span><h2>From the Schmoll Blog</h2></div>
-    <div class="roster" data-reveal style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
-      ${blog.map(([d,t])=>`<a href="#" class="roster__item" style="display:block"><span style="font-family:var(--font-mono);font-size:.72rem;color:var(--red);letter-spacing:.1em">${d}</span><b style="margin-top:8px;font-size:1rem;text-transform:none;letter-spacing:0">${t}</b></a>`).join("")}
+    <div id="blog" class="sec-head" style="margin-top:96px" data-reveal><span class="eyebrow" data-i18n="media.blog">Blog</span><h2>From the Schmoll Blog</h2><p class="lead" data-i18n="blog.lead">Technology, partnerships and the engineering behind our machines.</p></div>
+    <div class="news-grid">
+      ${blogList.map((p) => newsCard(p)).join("")}
     </div>
-
-    <div id="videos" class="sec-head" style="margin-top:80px" data-reveal><span class="eyebrow" data-i18n="media.videos">Videos</span><h2>Watch Schmoll in Action</h2><p class="lead">Product demonstrations and exhibition highlights.</p></div>
+  </div>
+</section>
+<section class="section section--alt" id="linkedin">
+  <div class="container">
+    <div class="li-head" data-reveal>
+      <div class="sec-head" style="margin-bottom:0"><span class="eyebrow">LinkedIn</span><h2 data-i18n="li.title">Live from LinkedIn</h2><p class="lead" data-i18n="li.lead">What we're sharing with the industry, as we post it.</p></div>
+      <a class="btn btn--ghost" href="${LI.source}" target="_blank" rel="noopener"><span data-i18n="li.follow">Follow Schmoll Asia Pacific</span> ${arrow(14)}</a>
+    </div>
+    <div class="li-grid">
+      ${LI.posts.slice(0, 6).map(liCard).join("")}
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div id="videos" class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.videos">Videos</span><h2>Watch Schmoll in Action</h2><p class="lead">Product demonstrations and exhibition highlights.</p></div>
     <div class="video-grid" data-reveal>
       ${[
         ["SIMPIMA 2026 — Exhibition Reel","https://videos.files.wordpress.com/Q1GHA7sS/simpimav2026.mp4"],
@@ -391,6 +454,45 @@ const newsPage = banner('Media', 'News &amp; Insights', '<span>Media</span>') + 
     </div>
   </div>
 </section>` + GALLERY + CONTACT_CTA;
+
+/* ---------- article pages ---------- */
+const renderBlocks = (blocks, liImages) => blocks.map((b) => {
+  if (b.t === "h") return `<h${b.level}>${b.text}</h${b.level}>`;
+  if (b.t === "p") return `<p>${b.html}</p>`;
+  if (b.t === "ul") return `<ul>${b.items.map((i) => `<li>${i}</li>`).join("")}</ul>`;
+  if (b.t === "img") {
+    const src = liImages && b.src.startsWith("assets/") ? b.src : newsImg(b.src);
+    return `<figure><a data-lightbox="${src}" href="${src}"><img src="${src}" alt="${b.alt || ""}" loading="lazy"></a>${b.caption ? `<figcaption>${b.caption}</figcaption>` : ""}</figure>`;
+  }
+  return "";
+}).join("\n");
+
+const articlePage = (p, prev, next) => {
+  const langs = Object.keys(p.translations || {});
+  const catLabel = p.category === "blog" ? "Blog" : "News";
+  return banner(catLabel, p.title,
+    `<a href="news.html" data-i18n="nav.media">Media</a><span>/</span><span data-i18n="media.${p.category}">${catLabel}</span>`,
+    postThumb(p)) + `
+<article class="section article">
+  <div class="container article__wrap">
+    <div class="article__meta" data-reveal>
+      <span class="news-card__meta">${fmtDate(p.date)}<i></i><span data-i18n="media.${p.category}">${catLabel}</span></span>
+      <a class="article__back" href="news.html"><span class="article__back-ico">${arrow(14)}</span> <span data-i18n="art.back">All news</span></a>
+    </div>
+    <div class="article__body prose" data-article-lang="en" data-reveal>
+      ${renderBlocks(p.blocks, p.liFeatured)}
+    </div>
+    ${langs.map((l) => `<div class="article__body prose" data-article-lang="${l}" hidden>
+      <h2 class="article__ttitle">${p.translations[l].title}</h2>
+      ${renderBlocks(p.translations[l].blocks, false)}
+    </div>`).join("\n")}
+    <nav class="article__nav" data-reveal>
+      ${prev ? `<a href="${postHref(prev)}"><span class="news-card__meta" data-i18n="art.prev">Previous</span><b>${prev.title}</b></a>` : "<span></span>"}
+      ${next ? `<a class="article__nav-next" href="${postHref(next)}"><span class="news-card__meta" data-i18n="art.next">Next</span><b>${next.title}</b></a>` : "<span></span>"}
+    </nav>
+  </div>
+</article>` + CONTACT_CTA;
+};
 
 /* ======================================================= MANIFEST */
 const PAGES = [
@@ -411,6 +513,17 @@ MACHINES.forEach((m, i) => {
     title: `${m.name} — Schmoll Asia Pacific`,
     desc: m.tagline.replace(/<[^>]+>/g, ""),
     main: productDetail(m, i)
+  });
+});
+
+// news/blog article pages (chronological prev/next across both categories)
+const withPages = sorted.filter((p) => postHref(p));
+withPages.forEach((p, i) => {
+  PAGES.push({
+    file: postHref(p),
+    title: `${p.title} — Schmoll Asia Pacific`,
+    desc: postExcerpt(p) || p.title,
+    main: articlePage(p, withPages[i + 1], withPages[i - 1])
   });
 });
 

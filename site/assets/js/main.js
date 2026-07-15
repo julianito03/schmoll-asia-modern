@@ -141,6 +141,14 @@
       const key = el.getAttribute("data-i18n-ph");
       if (dict[key] != null) el.setAttribute("placeholder", dict[key]);
     });
+    // article pages: show the translated body when one exists, else English
+    const artBlocks = document.querySelectorAll("[data-article-lang]");
+    if (artBlocks.length) {
+      const have = new Set();
+      artBlocks.forEach((el) => have.add(el.dataset.articleLang));
+      const want = have.has(code) ? code : "en";
+      artBlocks.forEach((el) => { el.hidden = el.dataset.articleLang !== want; });
+    }
     document.documentElement.lang = code;
     document.documentElement.dir = RTL.includes(code) ? "rtl" : "ltr";
     try { localStorage.setItem("sap_lang", code); } catch (e) {}
