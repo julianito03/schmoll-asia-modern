@@ -42,7 +42,7 @@ ${css}
 </style>
 </head>
 <body>
-<div class="draftbar"><span><b>DRAFT</b> ${title}</span><span style="display:flex;gap:8px"><a href="media-a.html">A</a><a href="media-b.html">B</a><a href="media-c.html">C</a><a href="../news.html">current</a></span></div>
+<div class="draftbar"><span><b>DRAFT</b> ${title}</span><span style="display:flex;gap:8px"><a href="media-a.html">A</a><a href="media-b.html">B</a><a href="media-c.html">C</a><a href="media-d.html">D</a><a href="../news.html">current</a></span></div>
 ${body}
 ${js ? `<script>${js}</script>` : ''}
 </body>
@@ -203,6 +203,113 @@ rows.forEach(function(r,i){r.addEventListener('mouseenter',function(){
 });});
 `;
 
+/* ================= D — FAMILY (schmoll-maschinen.de design language) ================= */
+const notch = 'clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%)';
+const dPanel = (it) => `
+  <a class="pnl" href="${it.href}"${it.ext?' target="_blank" rel="noopener"':''}>
+    <span class="pnl__head"><span>${it.k1}</span><span>${it.k2||''}</span></span>
+    <span class="pnl__title">${it.title}</span>
+    ${it.body?`<span class="pnl__body">${it.body}</span>`:''}
+    <span class="pnl__more">More <span>→</span></span>
+  </a>`;
+const dRow = (label, panels, variant='') => `
+<section class="drow${variant?' drow--'+variant:''}">
+  <h2 class="drow__h">${label}</h2>
+  <div class="drow__slider">${panels}</div>
+</section>`;
+
+const dHero = sorted.find(p=>p.isFeatured)||sorted[0];
+const newsPanels = sorted.filter(p=>p.type!=='insight'&&p.id!==dHero.id).map(p=>dPanel({href:'../news-'+KEYS[p.id]+'.html',k1:fd(p.date),k2:TYPE[p.type],title:p.cleanTitle,body:p.excerpt})).join('');
+const insightPanels = sorted.filter(p=>p.type==='insight'&&p.id!==dHero.id).map(p=>dPanel({href:'../news-'+KEYS[p.id]+'.html',k1:fd(p.date),k2:'Insight',title:p.cleanTitle,body:p.excerpt})).join('');
+const liPanels = liPosts.map(p=>`
+  <a class="pnl pnl--img" href="${p.url}" target="_blank" rel="noopener">
+    <img src="../${p.images[0]}" alt="" loading="lazy">
+    <span class="pnl__inner">
+      <span class="pnl__head"><span>${fd(p.date)}</span><span>LinkedIn ↗</span></span>
+      <span class="pnl__title pnl__title--s">${p.text.split('\n')[0].slice(0,80)}</span>
+    </span>
+  </a>`).join('');
+const vidTiles = VIDEOS.map(v=>`
+  <a class="vtile" href="../news.html#videos">
+    <span class="vtile__img"><img src="../${v.poster}" alt="" loading="lazy"><span class="vtile__play">▶</span></span>
+    <span class="vtile__cap">${v.title}</span>
+  </a>`).join('');
+
+const dBody = `
+<main class="dwrap">
+  <header class="dhead">
+    <h1>Media</h1>
+    <p>News, insights, videos and social updates from Schmoll Asia Pacific.</p>
+  </header>
+  <section class="dfeat">
+    <img class="dfeat__img" src="${thumb(dHero)}" alt="${dHero.imageAlt||''}">
+    <a class="dfeat__panel" href="../news-${KEYS[dHero.id]}.html">
+      <span class="pnl__head"><span>${fd(dHero.date)}</span><span>Featured</span></span>
+      <span class="dfeat__title">${dHero.cleanTitle}</span>
+      <span class="pnl__body">${dHero.excerpt}</span>
+      <span class="pnl__more">Read the story <span>→</span></span>
+    </a>
+  </section>
+  ${dRow('News &amp; Events', newsPanels)}
+  <div class="dband"><img src="../assets/img/facility-3.jpg" alt=""></div>
+  ${dRow('Expert Insights', insightPanels, 'diary')}
+  ${dRow('Videos', vidTiles, 'video')}
+  ${dRow('LinkedIn', liPanels, 'li')}
+</main>
+`;
+const dCss = `
+body{background:#333;color:#E5E5E5}
+.dwrap{padding-top:42px}
+.dhead{padding:clamp(40px,6vw,84px) clamp(20px,4vw,64px) clamp(20px,3vw,40px)}
+.dhead h1{font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:clamp(3rem,7vw,6rem);line-height:.95;color:#fff;position:relative;display:inline-block}
+.dhead h1::after{content:"";position:absolute;left:2px;bottom:-14px;width:56px;height:4px;background:var(--red)}
+.dhead p{margin-top:30px;font-family:var(--fb);font-size:15px;color:var(--g4);max-width:52ch}
+.dfeat{position:relative;margin:0 clamp(20px,4vw,64px) clamp(44px,5vw,72px)}
+.dfeat__img{width:100%;aspect-ratio:21/9;object-fit:cover;min-height:320px}
+.dfeat__panel{position:absolute;left:0;bottom:-26px;max-width:520px;background:var(--red);color:#fff;padding:26px 30px 24px;display:flex;flex-direction:column;gap:10px;${notch};transition:background .25s}
+.dfeat__panel:hover{background:var(--red-dark)}
+.dfeat__title{font-family:var(--fd);font-weight:600;font-size:clamp(1.15rem,1.8vw,1.55rem);line-height:1.2;text-transform:uppercase}
+.dfeat__panel .pnl__head span{color:rgba(255,255,255,.8)}
+.dfeat__panel .pnl__body{color:rgba(255,255,255,.85)}
+.dfeat__panel .pnl__more{color:#fff}
+.drow{padding:clamp(28px,3.5vw,48px) 0 clamp(20px,2.5vw,34px)}
+.drow__h{font-family:var(--fd);font-weight:600;text-transform:uppercase;font-size:clamp(1.1rem,1.7vw,1.5rem);color:#fff;padding:0 clamp(20px,4vw,64px);margin-bottom:20px}
+.drow__slider{display:flex;gap:16px;overflow-x:auto;padding:0 clamp(20px,4vw,64px) 14px;scrollbar-width:thin;scrollbar-color:var(--red) #3d3d3d}
+.drow__slider::-webkit-scrollbar{height:5px}
+.drow__slider::-webkit-scrollbar-track{background:#3d3d3d}
+.drow__slider::-webkit-scrollbar-thumb{background:var(--red)}
+.pnl{flex:0 0 clamp(270px,24vw,360px);display:flex;flex-direction:column;background:#4D4D4D;color:#E5E5E5;padding:24px 26px;min-height:230px;${notch};transition:background .3s ease-out}
+.pnl:hover{background:var(--red);color:#fff}
+.pnl__head{display:flex;justify-content:space-between;gap:10px;font-family:var(--fd);font-weight:600;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#e8514f;transition:color .2s}
+.pnl:hover .pnl__head,.pnl:hover .pnl__head span{color:#fff}
+.pnl__title{margin-top:12px;font-family:var(--fd);font-weight:600;font-size:1.12rem;line-height:1.25;text-transform:uppercase;color:#fff;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pnl__title--s{font-size:.95rem;text-transform:none}
+.pnl__body{margin-top:12px;font-size:13.5px;line-height:1.55;color:var(--g4);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;transition:color .2s}
+.pnl:hover .pnl__body{color:rgba(255,255,255,.85)}
+.pnl__more{margin-top:auto;padding-top:16px;font-family:var(--fd);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.pnl__more span{color:var(--red);transition:color .2s}
+.pnl:hover .pnl__more span{color:#fff}
+.drow--diary .pnl{background:#3d3d3d}
+.drow--diary .pnl__head{color:#e8514f}
+.drow--diary .pnl:hover{background:#4D4D4D;color:#E5E5E5}
+.drow--diary .pnl:hover .pnl__head{color:#e8514f}
+.pnl--img{padding:0;overflow:hidden;background:#3d3d3d}
+.pnl--img img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.pnl--img .pnl__inner{display:flex;flex-direction:column;padding:16px 20px 20px;flex:1}
+.dband{margin:clamp(30px,4vw,56px) 0}
+.dband img{width:100%;height:clamp(200px,30vw,380px);object-fit:cover;opacity:.85}
+.vtile{flex:0 0 clamp(300px,30vw,440px);display:flex;flex-direction:column;${notch};overflow:hidden;background:#3d3d3d}
+.vtile__img{position:relative;display:block}
+.vtile__img img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.vtile__play{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:14px}
+.vtile__play::before{content:"";position:absolute;width:50px;height:50px;border-radius:50%;background:rgba(10,10,10,.6);border:1px solid rgba(255,255,255,.4)}
+.vtile__cap{padding:14px 18px;font-family:var(--fd);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#E5E5E5;transition:background .25s,color .25s}
+.vtile:hover .vtile__cap{background:var(--red);color:#fff}
+main{padding-bottom:clamp(50px,6vw,90px)}
+@media(max-width:700px){.dfeat__panel{position:static;max-width:none;margin-top:-6px}}
+`;
+
+fs.writeFileSync(path.join(ROOT,'site/drafts/media-d.html'), shell('D · Family', dBody, dCss));
 fs.mkdirSync(path.join(ROOT,'site/drafts'),{recursive:true});
 fs.writeFileSync(path.join(ROOT,'site/drafts/media-a.html'), shell('A · Cover Story', aBody, aCss));
 fs.writeFileSync(path.join(ROOT,'site/drafts/media-b.html'), shell('B · Light Table', bBody, bCss, bJs));
