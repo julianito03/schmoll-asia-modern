@@ -352,11 +352,11 @@ const LI = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "site/assets/da
 
 const NEWS_KEYS = {
   7923: "team-building-2026", 7848: "cpca-show-2026", 7577: "hkpca-2025",
-  7284: "cpca-show-2025",     7123: "hkpca-2024",     7009: "cpca-2024",
+  7284: "cpca-show-2025",     7152: "golden-supplier-award",
+  7123: "hkpca-2024",         7009: "cpca-2024",
   6938: "tpca-2024",          6796: "kpca-2024",      6672: "granite",
   6480: "schmoll-asia-vs-maschinen", 5876: "wus-expansion",
   3441: "larry-gao",          3217: "new-website"
-  // 7152 (Golden Supplier Award) has no recoverable body — listed without a detail page
 };
 const newsImg = (u) => "assets/img/news/" + u.split("/").pop().replace("-scaled", "").toLowerCase();
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -365,6 +365,13 @@ const fmtDate = (iso) => { const [y, m, d] = iso.slice(0, 10).split("-"); return
 // The Team Building article renders empty on the live site; its cross-post on
 // LinkedIn carries the same story, so that text serves as the article body.
 const TB_LI = LI.posts.find((p) => p.id === "7467579139282145280");
+const golden = POSTS.find((p) => p.id === 7152);
+if (golden && !golden.blocks.length) {
+  golden.blocks = [
+    { t: "p", html: "Schmoll Asia Pacific was honoured with the <strong>Golden Supplier Award</strong> at the Founder PCB Supplier Conference in January 2025." },
+    { t: "p", html: `<em>Follow <a href="https://www.linkedin.com/company/schmoll-asia-pacific" target="_blank" rel="noopener">Schmoll Asia Pacific on LinkedIn</a> for more updates.</em>` },
+  ];
+}
 const teamBuilding = POSTS.find((p) => p.id === 7923);
 if (teamBuilding && !teamBuilding.blocks.length && TB_LI) {
   teamBuilding.featured = TB_LI.images[0] || null;
@@ -390,7 +397,7 @@ const postThumb = (p) => p.featured ? (p.liFeatured ? p.featured : newsImg(p.fea
 const newsCard = (p, feature = false) => {
   const href = postHref(p);
   const media = `<div class="news-card__media"><img src="${postThumb(p)}" alt="" loading="lazy"></div>`;
-  const meta = `<span class="news-card__meta">${fmtDate(p.date)}<i></i><span data-i18n="media.${p.category}">${p.category === "blog" ? "Blog" : "News"}</span></span>`;
+  const meta = `<span class="news-card__meta">${fmtDate(p.date)}<span data-i18n="media.${p.category}">${p.category === "blog" ? "Blog" : "News"}</span></span>`;
   const body = `<div class="news-card__body">${meta}<h3>${p.title}</h3>${feature ? `<p>${postExcerpt(p, 220)}</p>` : ""}
     ${href ? `<span class="news-card__more"><span data-i18n="btn.readmore">Read more</span> ${arrow(14)}</span>` : ""}</div>`;
   const cls = `news-card${feature ? " news-card--feature" : ""}`;
@@ -408,7 +415,7 @@ const liCard = (p) => `
   <a class="li-card" href="${p.url}" target="_blank" rel="noopener" data-reveal>
     ${p.images[0] ? `<div class="li-card__media"><img src="${p.images[0]}" alt="" loading="lazy">${p.hasVideo ? '<span class="li-card__play"><svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.55)"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg></span>' : ""}</div>` : ""}
     <div class="li-card__body">
-      <span class="news-card__meta">${fmtDate(p.date)}<i></i>LinkedIn</span>
+      <span class="news-card__meta">${fmtDate(p.date)}LinkedIn</span>
       <p>${p.text.split("\n").filter(Boolean).slice(0, 2).join(" — ").slice(0, 220)}</p>
       <span class="news-card__more"><span data-i18n="li.view">View post</span> ${arrow(14)}</span>
     </div>
@@ -418,7 +425,7 @@ const liCard = (p) => `
 const pTile = (p, span, lead = false) => {
   const href = postHref(p);
   const cat = p.category === "blog" ? "Blog" : "News";
-  const cap = `<div class="p-tile__cap"><span class="news-card__meta">${fmtDate(p.date)}<i></i><span data-i18n="media.${p.category}">${cat}</span></span><h3>${p.title}</h3></div>`;
+  const cap = `<div class="p-tile__cap"><span class="news-card__meta">${fmtDate(p.date)}<span data-i18n="media.${p.category}">${cat}</span></span><h3>${p.title}</h3></div>`;
   const img = `<img src="${postThumb(p)}" alt="" loading="lazy">`;
   const cls = `p-tile ${span}${lead ? " p-tile--lead" : ""}`;
   return href
@@ -429,7 +436,7 @@ const NEWS_SPANS = ["p-span8 p-rows2", "p-span4", "p-span4", "p-span4", "p-span4
 const BLOG_SPANS = ["p-span6", "p-span6", "p-span4", "p-span4", "p-span4", "p-span12"];
 
 const liTile = (p, span, lead = false) => {
-  const cap = `<div class="p-tile__cap"><span class="news-card__meta">${fmtDate(p.date)}<i></i>LinkedIn</span><h3>${p.text.split("\n")[0]}</h3></div>`;
+  const cap = `<div class="p-tile__cap"><span class="news-card__meta">${fmtDate(p.date)}LinkedIn</span><h3>${p.text.split("\n")[0]}</h3></div>`;
   const img = p.images[0] ? `<img src="${p.images[0]}" alt="" loading="lazy">` : "";
   return `<a class="p-tile ${span}${lead ? " p-tile--lead" : ""}" href="${p.url}" target="_blank" rel="noopener" data-reveal>${img}${cap}<span class="p-tile__go">${arrow(16)}</span></a>`;
 };
@@ -499,7 +506,7 @@ const articlePage = (p, prev, next) => {
 <article class="section article">
   <div class="container article__wrap">
     <div class="article__meta" data-reveal>
-      <span class="news-card__meta">${fmtDate(p.date)}<i></i><span data-i18n="media.${p.category}">${catLabel}</span></span>
+      <span class="news-card__meta">${fmtDate(p.date)}<span data-i18n="media.${p.category}">${catLabel}</span></span>
       <a class="article__back" href="news.html"><span class="article__back-ico">${arrow(14)}</span> <span data-i18n="art.back">All news</span></a>
     </div>
     <div class="article__body prose" data-article-lang="en" data-reveal>
