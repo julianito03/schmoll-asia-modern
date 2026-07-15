@@ -94,14 +94,7 @@ strong { color: var(--grey-900); font-weight: 700; }
   align-items: center;
   gap: .6em;
 }
-.eyebrow::before {
-  content: "";
-  width: 22px; height: 1px;
-  background: var(--red);
-  display: inline-block;
-}
 .eyebrow--mute { color: var(--grey-500); }
-.eyebrow--mute::before { background: var(--grey-400); }
 
 /* ----- Layout ----- */
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
@@ -585,7 +578,6 @@ strong { color: var(--grey-900); font-weight: 700; }
   border-top: 1px solid var(--line);
   display: flex; align-items: center; gap: 10px;
 }
-.video-card__cap::before { content: ""; width: 18px; height: 1px; background: var(--red); flex: none; }
 
 /* =========================================================================
    GALLERY
@@ -842,7 +834,6 @@ strong { color: var(--grey-900); font-weight: 700; }
   text-transform: uppercase; color: var(--grey-500);
   display: inline-flex; align-items: center; gap: 10px;
 }
-.news-card__meta i { width: 18px; height: 1px; background: var(--red); }
 
 /* Photo mosaic — the image is the tile; text is a small overlaid caption */
 .photo-mosaic {
