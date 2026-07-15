@@ -465,11 +465,13 @@ const mediaCta = `
 const heroPost = sorted.filter((p) => p.isFeatured).sort((a, b) => a.featuredRank - b.featuredRank)[0];
 
 const famPanel = (p) => `
-  <a class="fam-panel" href="${postHref(p)}">
-    <span class="fam-panel__head"><time datetime="${p.date}">${fmtDate(p.date)}</time><span data-i18n="mtype.${p.type}">${TYPE_LABELS[p.type]}</span></span>
-    <span class="fam-panel__title">${p.cleanTitle}</span>
-    ${excerptOf(p) ? `<span class="fam-panel__body">${excerptOf(p)}</span>` : ""}
-    <span class="fam-panel__more"><span data-i18n="m.more">More</span> <span aria-hidden="true">→</span></span>
+  <a class="fam-panel fam-panel--img" href="${postHref(p)}">
+    <img src="${postThumb(p)}" alt="${p.imageAlt || ""}" loading="lazy" width="640" height="360">
+    <span class="fam-panel__inner">
+      <span class="fam-panel__head"><time datetime="${p.date}">${fmtDate(p.date)}</time><span data-i18n="mtype.${p.type}">${TYPE_LABELS[p.type]}</span></span>
+      <span class="fam-panel__title fam-panel__title--s">${p.cleanTitle}</span>
+      <span class="fam-panel__more"><span data-i18n="m.more">More</span> <span aria-hidden="true">→</span></span>
+    </span>
   </a>`;
 
 const famVideo = (v, i) => `
@@ -498,8 +500,8 @@ const famRow = (id, labelKey, labelText, inner, variant = "") => `
   <div class="fam-row__slider container">${inner}</div>
 </section>`;
 
-const newsEventPosts = sorted.filter((p) => p.type !== "insight" && p !== heroPost);
-const insightPosts = sorted.filter((p) => p.type === "insight" && p !== heroPost);
+const newsEventPosts = sorted.filter((p) => p.type !== "insight");
+const insightPosts = sorted.filter((p) => p.type === "insight");
 
 const newsPage = `
 <header class="fam-head">
@@ -508,15 +510,6 @@ const newsPage = `
     <p data-i18n="mh.sub">Stories, technologies and people shaping advanced PCB manufacturing across Asia Pacific.</p>
   </div>
 </header>
-<section class="fam-feat container">
-  <img class="fam-feat__img" src="${postThumb(heroPost)}" alt="${heroPost.imageAlt}" width="1600" height="686" fetchpriority="high">
-  <a class="fam-feat__panel" href="${postHref(heroPost)}">
-    <span class="fam-panel__head fam-panel__head--onred"><time datetime="${heroPost.date}">${fmtDate(heroPost.date)}</time><span data-i18n="mh.featured">Featured Insight</span></span>
-    <span class="fam-feat__title">${heroPost.cleanTitle}</span>
-    <span class="fam-feat__body">${excerptOf(heroPost)}</span>
-    <span class="fam-panel__more"><span data-i18n="m.readinsight">Read the insight</span> <span aria-hidden="true">→</span></span>
-  </a>
-</section>
 ${famRow("news", "ms.newsevents", "News &amp; Events", newsEventPosts.map(famPanel).join(""))}
 <div class="fam-band" aria-hidden="true"><img src="assets/img/facility-3.jpg" alt="" loading="lazy"></div>
 ${famRow("insights", "mf.insight", "Expert Insights", insightPosts.map(famPanel).join(""), "diary")}
