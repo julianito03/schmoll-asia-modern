@@ -649,7 +649,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 /* =========================================================================
    GLOBE — interactive global presence
    ========================================================================= */
-.globe-sec { position: relative; overflow: hidden; }
+.globe-sec { position: relative; z-index: 5; }
 .globe-sec.section { padding-block: clamp(22px, 3vw, 40px); }
 .globe-sec .sec-head { margin-bottom: clamp(10px, 1.5vw, 18px); }
 .globe-sec .sec-head h2 { font-size: clamp(1.7rem, 3vw, 2.6rem); }
@@ -660,7 +660,7 @@ strong { color: var(--grey-900); font-weight: 700; }
   width: min(100%, 940px); margin-left: auto; margin-right: clamp(-120px, -6vw, 0px);
   min-height: 400px; height: clamp(400px, 58vh, 560px); cursor: grab;
   display: flex; align-items: center; justify-content: center;
-  overflow: hidden;   /* whatever size the canvas ends up, keep the sphere centered in this box */
+  overflow: visible;  /* canvas is rendered taller than this box so sphere + aura bleed over the sections */
 }
 #globeViz:active { cursor: grabbing; }
 #globeViz canvas { display: block; flex: none; }
