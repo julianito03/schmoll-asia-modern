@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>C · Register</title>
+<link rel="icon" href="../assets/monogram.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#C11819;--red-dark:#9d1314;--blue:#2C55A3;--ink:#141414;--g9:#333;--g7:#4D4D4D;--g5:#7F8080;--g4:#B3B3B3;--g2:#E5E5E5;--g1:#F2F2F2;--fd:"Jost",sans-serif;--fb:"Roboto Slab",serif;--fm:"Roboto Mono",monospace}
+body{font-family:var(--fb);color:var(--g9);background:#fff;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.draftbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:var(--ink);color:#fff;font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.draftbar a{color:#fff;border:1px solid rgba(255,255,255,.3);padding:5px 12px}
+.draftbar a:hover{border-color:#fff}
+.draftbar b{color:var(--red);}
+
+.reg{display:grid;grid-template-columns:minmax(380px,44fr) 56fr;min-height:100vh}
+.reg__list{padding:96px clamp(20px,3vw,48px) 60px;border-right:1px solid var(--g2)}
+.reg__list h1{font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:clamp(2rem,3.4vw,3rem);line-height:1;margin-bottom:10px}
+.reg__sub{font-family:var(--fm);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--g5);margin-bottom:34px}
+.reg__row{display:grid;grid-template-columns:34px 108px 1fr;gap:14px;align-items:baseline;padding:13px 8px;border-bottom:1px solid var(--g2);transition:background .15s}
+.reg__row:hover,.reg__row.is-on{background:var(--g1)}
+.reg__row:hover .reg__title,.reg__row.is-on .reg__title{color:var(--red)}
+.reg__no{font-family:var(--fm);font-size:10.5px;color:var(--g4)}
+.reg__meta{display:flex;flex-direction:column;gap:1px}
+.reg__date{font-family:var(--fm);font-size:10.5px;color:var(--g5)}
+.reg__type{font-family:var(--fm);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+.reg__title{font-family:var(--fd);font-weight:500;font-size:15.5px;line-height:1.35;transition:color .15s}
+.reg__stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--ink)}
+.reg__stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
+.reg__stage img.is-show{opacity:1}
+.reg__stamp{position:absolute;right:22px;bottom:18px;font-family:var(--fm);font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.85);background:rgba(10,10,10,.55);padding:5px 10px}
+@media(max-width:900px){.reg{grid-template-columns:1fr}.reg__stage{display:none}.reg__list{padding-top:76px}}
+
+</style>
+</head>
+<body>
+<div class="draftbar"><span><b>DRAFT</b> C · Register</span><span style="display:flex;gap:8px"><a href="media-a.html">A</a><a href="media-b.html">B</a><a href="media-c.html">C</a><a href="../news.html">current</a></span></div>
+
+<div class="reg">
+  <aside class="reg__list">
+    <h1>Media<br>Register</h1>
+    <p class="reg__sub">23 entries · hover to preview · click to open</p>
+    <a class="reg__row is-on" href="../news-team-building-2026.html" data-img="../assets/img/facility-2.jpg">
+      <span class="reg__no">01</span>
+      <span class="reg__meta"><span class="reg__date">2026-06-02</span><span class="reg__type">Company</span></span>
+      <span class="reg__title">Team building across Schmoll Asia Pacific</span>
+    </a>
+<a class="reg__row" href="../news-cpca-show-2026.html" data-img="../assets/img/news/cpca2026-march_group.jpg">
+      <span class="reg__no">02</span>
+      <span class="reg__meta"><span class="reg__date">2026-04-06</span><span class="reg__type">Insight</span></span>
+      <span class="reg__title">PCB equipment for the AI data-server era</span>
+    </a>
+<a class="reg__row" href="../news-hkpca-2025.html" data-img="../assets/img/news/hkpca-2025.jpeg">
+      <span class="reg__no">03</span>
+      <span class="reg__meta"><span class="reg__date">2025-12-09</span><span class="reg__type">Event</span></span>
+      <span class="reg__title">HKPCA 2025: 30 years of Schmoll in Asia</span>
+    </a>
+<a class="reg__row" href="../news-cpca-show-2025.html" data-img="../assets/img/news/wechatimg484-e1745310805761.jpg">
+      <span class="reg__no">04</span>
+      <span class="reg__meta"><span class="reg__date">2025-04-22</span><span class="reg__type">Event</span></span>
+      <span class="reg__title">CPCA Show 2025: report from Shanghai</span>
+    </a>
+<a class="reg__row" href="../news-golden-supplier-award.html" data-img="../assets/img/facility-2.jpg">
+      <span class="reg__no">05</span>
+      <span class="reg__meta"><span class="reg__date">2025-01-16</span><span class="reg__type">News</span></span>
+      <span class="reg__title">Golden Supplier Award at the Founder PCB Supplier Conference</span>
+    </a>
+<a class="reg__row" href="../news-hkpca-2024.html" data-img="../assets/img/news/wechatimg191.jpg">
+      <span class="reg__no">06</span>
+      <span class="reg__meta"><span class="reg__date">2024-12-18</span><span class="reg__type">Event</span></span>
+      <span class="reg__title">A successful year concludes at HKPCA Show 2024</span>
+    </a>
+<a class="reg__row" href="../news-cpca-2024.html" data-img="../assets/img/news/1731319205191.jpeg">
+      <span class="reg__no">07</span>
+      <span class="reg__meta"><span class="reg__date">2024-11-26</span><span class="reg__type">Event</span></span>
+      <span class="reg__title">Schmoll technology on show at CPCA 2024</span>
+    </a>
+<a class="reg__row" href="../news-tpca-2024.html" data-img="../assets/img/news/12b12f488a604db063a32c8e3b2bbe-e1730965959632.jpg">
+      <span class="reg__no">08</span>
+      <span class="reg__meta"><span class="reg__date">2024-11-07</span><span class="reg__type">Event</span></span>
+      <span class="reg__title">Success at TPCA Show 2024</span>
+    </a>
+<a class="reg__row" href="../news-kpca-2024.html" data-img="../assets/img/news/whatsapp-image-2024-09-05-at-09.33.00-1.jpeg">
+      <span class="reg__no">09</span>
+      <span class="reg__meta"><span class="reg__date">2024-09-25</span><span class="reg__type">Event</span></span>
+      <span class="reg__title">KPCA Show 2024: innovation and collaboration</span>
+    </a>
+<a class="reg__row" href="../news-granite.html" data-img="../assets/img/news/granit_reitz_granit_vorteile_content.jpg.webp">
+      <span class="reg__no">10</span>
+      <span class="reg__meta"><span class="reg__date">2024-09-11</span><span class="reg__type">Insight</span></span>
+      <span class="reg__title">Granite: the foundation of machine stability</span>
+    </a>
+<a class="reg__row" href="../news-schmoll-asia-vs-maschinen.html" data-img="../assets/img/news/t-min-e1724320574972.png">
+      <span class="reg__no">11</span>
+      <span class="reg__meta"><span class="reg__date">2024-08-22</span><span class="reg__type">Insight</span></span>
+      <span class="reg__title">Schmoll Asia and Schmoll Maschinen: how we work together</span>
+    </a>
+<a class="reg__row" href="../news-wus-expansion.html" data-img="../assets/img/news/screenshot-2024-08-07-at-13.39.15-min.jpg">
+      <span class="reg__no">12</span>
+      <span class="reg__meta"><span class="reg__date">2024-08-07</span><span class="reg__type">News</span></span>
+      <span class="reg__title">WUS Printed Circuit expands with Schmoll technology</span>
+    </a>
+<a class="reg__row" href="../news-larry-gao.html" data-img="../assets/img/news/wechatimg29-2-e1719822512279.jpg">
+      <span class="reg__no">13</span>
+      <span class="reg__meta"><span class="reg__date">2024-07-01</span><span class="reg__type">Company</span></span>
+      <span class="reg__title">Partnership story: Larry Gao</span>
+    </a>
+<a class="reg__row" href="../news-new-website.html" data-img="../assets/img/news/untitled-design-90.jpg">
+      <span class="reg__no">14</span>
+      <span class="reg__meta"><span class="reg__date">2024-06-28</span><span class="reg__type">News</span></span>
+      <span class="reg__title">A new website for Schmoll Asia Pacific</span>
+    </a>
+<a class="reg__row" href="../news.html#videos" data-img="../assets/img/video/poster-1.jpg">
+      <span class="reg__no">15</span>
+      <span class="reg__meta"><span class="reg__date">—</span><span class="reg__type">Video</span></span>
+      <span class="reg__title">SIMPIMA 2026 — Exhibition Reel</span>
+    </a>
+<a class="reg__row" href="../news.html#videos" data-img="../assets/img/video/poster-2.jpg">
+      <span class="reg__no">16</span>
+      <span class="reg__meta"><span class="reg__date">—</span><span class="reg__type">Video</span></span>
+      <span class="reg__title">Schmoll Asia Pacific</span>
+    </a>
+<a class="reg__row" href="../news.html#videos" data-img="../assets/img/video/poster-3.jpg">
+      <span class="reg__no">17</span>
+      <span class="reg__meta"><span class="reg__date">—</span><span class="reg__type">Video</span></span>
+      <span class="reg__title">Machine in Action</span>
+    </a>
+<a class="reg__row" href="../news.html#videos" data-img="../assets/img/video/poster-4.jpg">
+      <span class="reg__no">18</span>
+      <span class="reg__meta"><span class="reg__date">—</span><span class="reg__type">Video</span></span>
+      <span class="reg__title">Precision Drilling</span>
+    </a>
+<a class="reg__row" href="../news.html#videos" data-img="../assets/img/video/poster-5.jpg">
+      <span class="reg__no">19</span>
+      <span class="reg__meta"><span class="reg__date">—</span><span class="reg__type">Video</span></span>
+      <span class="reg__title">Schmoll Showcase</span>
+    </a>
+<a class="reg__row" href="https://www.linkedin.com/posts/schmoll-asia-pacific_schmollasiapacific-schmoll-tech-activity-7480519090714017792-MAQ9" target="_blank" rel="noopener" data-img="../assets/img/linkedin/7480519090714017792-0.jpg">
+      <span class="reg__no">20</span>
+      <span class="reg__meta"><span class="reg__date">2026-07-08</span><span class="reg__type">LinkedIn</span></span>
+      <span class="reg__title">The world behind Schmoll Asia Pacific</span>
+    </a>
+<a class="reg__row" href="https://www.linkedin.com/feed/update/urn:li:activity:7477282495827329024" target="_blank" rel="noopener" data-img="../assets/img/linkedin/7477282495827329024-0.jpg">
+      <span class="reg__no">21</span>
+      <span class="reg__meta"><span class="reg__date">2026-06-29</span><span class="reg__type">LinkedIn</span></span>
+      <span class="reg__title">Tapping in a new Era</span>
+    </a>
+<a class="reg__row" href="https://www.linkedin.com/posts/schmoll-asia-pacific_%F0%9D%97%96%F0%9D%97%BC%F0%9D%97%BB%F0%9D%97%BB%F0%9D%97%B2%F0%9D%97%B0%F0%9D%98%81%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%B4-%F0%9D%98%80%F0%9D%98%86%F0%9D%98%80%F0%9D%98%81%F0%9D%97%B2%F0%9D%97%BA%F0%9D%98%80-activity-7476174916208324608-n7Y0" target="_blank" rel="noopener" data-img="../assets/img/linkedin/7476174916208324608-0.jpg">
+      <span class="reg__no">22</span>
+      <span class="reg__meta"><span class="reg__date">2026-06-26</span><span class="reg__type">LinkedIn</span></span>
+      <span class="reg__title">🔗 Connecting systems – with Schmoll’s Automation Solutions</span>
+    </a>
+<a class="reg__row" href="https://www.linkedin.com/posts/schmoll-asia-pacific_schmoll-pcbmanufacturing-routing-activity-7473641723848658944-k5Sc" target="_blank" rel="noopener" data-img="../assets/img/linkedin/7473641723848658944-0.jpg">
+      <span class="reg__no">23</span>
+      <span class="reg__meta"><span class="reg__date">2026-06-19</span><span class="reg__type">LinkedIn</span></span>
+      <span class="reg__title">Schmoll’s Individual Table XY Axes Motors</span>
+    </a>
+  </aside>
+  <div class="reg__stage">
+    <img id="stageA" src="../assets/img/facility-2.jpg" alt="" class="is-show">
+    <img id="stageB" src="" alt="">
+    <span class="reg__stamp" id="stamp">01 / 23</span>
+  </div>
+</div>
+
+<script>
+var A=document.getElementById('stageA'),B=document.getElementById('stageB'),stamp=document.getElementById('stamp');
+var rows=document.querySelectorAll('.reg__row');var front=A,back=B,cur=0;
+rows.forEach(function(r,i){r.addEventListener('mouseenter',function(){
+  if(i===cur)return;cur=i;
+  rows.forEach(function(x){x.classList.remove('is-on')});r.classList.add('is-on');
+  back.src=r.dataset.img;
+  back.onload=function(){back.classList.add('is-show');front.classList.remove('is-show');var t=front;front=back;back=t;};
+  stamp.textContent=String(i+1).padStart(2,'0')+' / '+String(rows.length).padStart(2,'0');
+});});
+</script>
+</body>
+</html>
