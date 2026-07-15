@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=62">
+<link rel="stylesheet" href="assets/css/styles.css?v=63">
 </head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
@@ -259,7 +259,7 @@
   setTimeout(size, 300); setTimeout(size, 1200);
   window.addEventListener('load', size);
   if (window.ResizeObserver) new ResizeObserver(size).observe(el);
-  g.pointOfView({lat:16,lng:100,altitude:1.9},0);
+  g.pointOfView({lat:16,lng:100,altitude:1.2},0);
   var c=g.controls();
   c.autoRotate=true; c.autoRotateSpeed=0.42;
   c.enableZoom=false;   // don't hijack page scroll
