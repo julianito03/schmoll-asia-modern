@@ -497,8 +497,8 @@ const famLi = (p) => `
 const famRow = (id, labelKey, labelText, inner, variant = "") => `
 <section class="fam-row${variant ? " fam-row--" + variant : ""}" id="${id}">
   <div class="container"><h2 class="fam-row__h" data-i18n="${labelKey}">${labelText}</h2></div>
-  <div class="fam-row__wrap">
-    <div class="fam-row__slider container">${inner}</div>
+  <div class="container fam-row__wrap">
+    <div class="fam-row__slider">${inner}</div>
     <button type="button" class="fam-row__next" aria-label="Scroll right">
       <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
     </button>
