@@ -415,32 +415,35 @@ const liCard = (p) => `
   </a>`;
 
 const newsPage = banner('Media', 'News &amp; Insights', '<span>Media</span>') + `
-<section class="section">
+<section class="section section--alt">
   <div class="container">
     <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.news">News</span><h2>Latest from Schmoll</h2><p class="lead" data-i18n="news.lead">Exhibitions, milestones and announcements from across Asia Pacific.</p></div>
     ${newsCard(newsList[0], true)}
     <div class="news-grid">
       ${newsList.slice(1).map((p) => newsCard(p)).join("")}
     </div>
-
-    <div id="blog" class="sec-head" style="margin-top:96px" data-reveal><span class="eyebrow" data-i18n="media.blog">Blog</span><h2>From the Schmoll Blog</h2><p class="lead" data-i18n="blog.lead">Technology, partnerships and the engineering behind our machines.</p></div>
+  </div>
+</section>
+<section class="section" id="blog">
+  <div class="container">
+    <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.blog">Blog</span><h2>From the Schmoll Blog</h2><p class="lead" data-i18n="blog.lead">Technology, partnerships and the engineering behind our machines.</p></div>
     <div class="news-grid">
       ${blogList.map((p) => newsCard(p)).join("")}
     </div>
   </div>
 </section>
-<section class="section section--alt" id="linkedin">
+<section class="section section--dark" id="linkedin">
   <div class="container">
     <div class="li-head" data-reveal>
       <div class="sec-head" style="margin-bottom:0"><span class="eyebrow">LinkedIn</span><h2 data-i18n="li.title">Live from LinkedIn</h2><p class="lead" data-i18n="li.lead">What we're sharing with the industry, as we post it.</p></div>
-      <a class="btn btn--ghost" href="${LI.source}" target="_blank" rel="noopener"><span data-i18n="li.follow">Follow Schmoll Asia Pacific</span> ${arrow(14)}</a>
+      <a class="btn btn--light" href="${LI.source}" target="_blank" rel="noopener"><span data-i18n="li.follow">Follow Schmoll Asia Pacific</span> ${arrow(14)}</a>
     </div>
     <div class="li-grid">
       ${LI.posts.slice(0, 6).map(liCard).join("")}
     </div>
   </div>
 </section>
-<section class="section">
+<section class="section section--alt">
   <div class="container">
     <div id="videos" class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.videos">Videos</span><h2>Watch Schmoll in Action</h2><p class="lead">Product demonstrations and exhibition highlights.</p></div>
     <div class="video-grid" data-reveal>
@@ -450,7 +453,7 @@ const newsPage = banner('Media', 'News &amp; Insights', '<span>Media</span>') + 
         ["Machine in Action","https://schmoll-asia.com/wp-content/uploads/2024/07/0807.mp4"],
         ["Precision Drilling","https://schmoll-asia.com/wp-content/uploads/2024/07/08071.mp4"],
         ["Schmoll Showcase","https://schmoll-asia.com/wp-content/uploads/2024/05/0521.mp4"]
-      ].map(([t,u])=>`<div class="video-card"><video controls preload="none" playsinline src="${u}"></video><div class="video-card__cap">${t}</div></div>`).join("")}
+      ].map(([t,u],i)=>`<div class="video-card"><video controls preload="none" playsinline poster="assets/img/video/poster-${i+1}.jpg" src="${u}"></video><div class="video-card__cap">${t}</div></div>`).join("")}
     </div>
   </div>
 </section>` + GALLERY + CONTACT_CTA;
