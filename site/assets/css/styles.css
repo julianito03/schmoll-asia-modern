@@ -655,7 +655,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 /* globe centered on the page; legend floats to its left */
 .globe-wrap { position: relative; display: block; }
 #globeViz {
-  width: min(100%, 940px); margin-inline: auto;
+  width: min(100%, 940px); margin-left: auto; margin-right: clamp(20px, 6vw, 80px);
   min-height: 500px; height: clamp(500px, 70vh, 740px); cursor: grab;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;   /* whatever size the canvas ends up, keep the sphere centered in this box */
@@ -672,7 +672,6 @@ strong { color: var(--grey-900); font-weight: 700; }
 .globe-legend__dot--office { width: 12px; height: 12px; border-radius: 2px; background: #fff; transform: rotate(45deg); box-shadow: 0 0 0 2px var(--red); margin-top: 4px; }
 .globe-legend__t b { display: block; font-family: var(--font-display); text-transform: uppercase; font-size: .86rem; letter-spacing: .03em; color: #fff; }
 .globe-legend__t span { font-size: .78rem; color: var(--grey-400); }
-.globe-hint { font-family: var(--font-mono); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--grey-500); margin-top: 4px; line-height: 1.7; }
 /* Globe pins — always-visible dot markers; office name pops up only on hover */
 .gpin { pointer-events: none; user-select: none; }
 .gpin__hit { pointer-events: auto; cursor: pointer; text-decoration: none; position: relative; display: block; width: 16px; height: 16px; }
@@ -687,7 +686,6 @@ strong { color: var(--grey-900); font-weight: 700; }
 .gpin__hit:hover .gpin__label { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
 @media (max-width: 1080px){
   .globe-legend { position: static; transform: none; flex-direction: row; flex-wrap: wrap; gap: 14px 28px; max-width: none; margin-bottom: 18px; }
-  .globe-hint { width: 100%; }
 }
 
 /* =========================================================================
