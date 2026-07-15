@@ -421,69 +421,243 @@ const liCard = (p) => `
     </div>
   </a>`;
 
-/* photo tiles: the image IS the tile; caption is a small overlay */
-const pTile = (p, span, lead = false) => {
-  const href = postHref(p);
-  const cat = p.category === "blog" ? "Blog" : "News";
-  const cap = `<div class="p-tile__cap"><span class="news-card__meta">${fmtDate(p.date)}<span data-i18n="media.${p.category}">${cat}</span></span><h3>${p.title}</h3></div>`;
-  const img = `<img src="${postThumb(p)}" alt="" loading="lazy">`;
-  const cls = `p-tile ${span}${lead ? " p-tile--lead" : ""}`;
-  return href
-    ? `<a class="${cls}" href="${href}" data-reveal>${img}${cap}<span class="p-tile__go">${arrow(16)}</span></a>`
-    : `<div class="${cls}" data-reveal>${img}${cap}</div>`;
-};
-const NEWS_SPANS = ["p-span8 p-rows2", "p-span4", "p-span4", "p-span4", "p-span4", "p-span4", "p-span6", "p-span6"];
-const BLOG_SPANS = ["p-span6", "p-span6", "p-span4", "p-span4", "p-span4", "p-span12"];
+/* ============ PRECISION MEDIA HUB ============ */
+const VIDEOS = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "content/media/videos.json"), "utf8")).videos;
+const EDITORIAL = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "content/media/editorial.json"), "utf8"));
 
-const liTile = (p, span, lead = false) => {
-  const cap = `<div class="p-tile__cap"><span class="news-card__meta">${fmtDate(p.date)}LinkedIn</span><h3>${p.text.split("\n")[0]}</h3></div>`;
-  const img = p.images[0] ? `<img src="${p.images[0]}" alt="" loading="lazy">` : "";
-  return `<a class="p-tile ${span}${lead ? " p-tile--lead" : ""}" href="${p.url}" target="_blank" rel="noopener" data-reveal>${img}${cap}<span class="p-tile__go">${arrow(16)}</span></a>`;
-};
-const LI_SPANS = ["p-span6 p-rows2", "p-span3", "p-span3", "p-span3", "p-span3"];
+const TYPE_LABELS = { news: "News", insight: "Expert Insight", event: "Event", company: "Company Life", video: "Video" };
+const excerptOf = (p) => p.excerpt || postExcerpt(p, 140);
+const searchText = (p) => `${p.cleanTitle} ${excerptOf(p)} ${(p.topics || []).join(" ")}`.toLowerCase().replace(/"/g, "'");
 
-const newsPage = banner('Media', 'News &amp; Insights', '<span>Media</span>') + `
-<section class="section section--alt">
+const typeLabel = (t) => `<span class="media-card__type media-card__type--${t}" data-i18n="mtype.${t}">${TYPE_LABELS[t]}</span>`;
+const metaLine = (p) => `<span class="media-card__meta"><time datetime="${p.date}">${fmtDate(p.date)}</time><span aria-hidden="true">·</span><span>${p.readingTime} <span data-i18n="m.minread">min read</span></span></span>`;
+
+/* mediaCard() — unified feed card (posts) */
+const mediaCard = (p) => `
+  <article class="media-card" data-type="${p.type}" data-topics="${(p.topics || []).join(" ")}" data-search="${searchText(p)}" data-date="${p.date}">
+    <a class="media-card__link" href="${postHref(p)}">
+      <span class="media-card__media"><img src="${postThumb(p)}" alt="${p.imageAlt || ""}" loading="lazy" width="900" height="563"></span>
+      <span class="media-card__body">
+        <span class="media-card__top">${typeLabel(p.type)}${metaLine(p)}</span>
+        <span class="media-card__title">${p.cleanTitle}</span>
+        <span class="media-card__excerpt">${excerptOf(p)}</span>
+        <span class="media-card__action"><span data-i18n="m.read">Read the story</span> ${arrow(14)}</span>
+      </span>
+    </a>
+  </article>`;
+
+/* video feed card */
+const videoCard = (v, i) => `
+  <article class="media-card" data-type="video" data-topics="${(v.topics || []).join(" ")}" data-search="${(v.title + " " + (v.description || "")).toLowerCase()}" data-date="2024-06-01">
+    <a class="media-card__link" href="#videos" data-video-jump="${v.id}">
+      <span class="media-card__media"><img src="${v.poster}" alt="${v.title}" loading="lazy" width="900" height="506"><span class="media-card__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><circle cx="12" cy="12" r="11" fill="rgba(10,10,10,.62)"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg></span></span>
+      <span class="media-card__body">
+        <span class="media-card__top">${typeLabel("video")}<span class="media-card__meta"><time>2024–2026</time></span></span>
+        <span class="media-card__title">${v.title}</span>
+        ${v.description ? `<span class="media-card__excerpt">${v.description}</span>` : ""}
+        <span class="media-card__action"><span data-i18n="m.watch">Watch the video</span> ${arrow(14)}</span>
+      </span>
+    </a>
+  </article>`;
+
+/* ---------- hero ---------- */
+const heroPost = sorted.filter((p) => p.isFeatured).sort((a, b) => a.featuredRank - b.featuredRank)[0];
+const mediaHero = `
+<section class="media-hero">
+  <div class="container media-hero__grid">
+    <div class="media-hero__copy">
+      <span class="eyebrow" data-i18n="mh.eyebrow">Schmoll Media / Asia Pacific</span>
+      <h1 data-i18n="mh.title">Precision in Motion</h1>
+      <p data-i18n="mh.sub">Stories, technologies and people shaping advanced PCB manufacturing across Asia Pacific.</p>
+      <div class="media-hero__actions">
+        <a class="btn" href="#feed" data-i18n="mh.cta1">Explore latest stories</a>
+        <a class="btn btn--ghost" href="#videos" data-i18n="mh.cta2">Watch machines in action</a>
+      </div>
+    </div>
+    <a class="media-hero__feature" href="${postHref(heroPost)}">
+      <img src="${postThumb(heroPost)}" alt="${heroPost.imageAlt}" width="1200" height="750" fetchpriority="high">
+      <span class="media-hero__feature-body">
+        <span class="media-card__top"><span class="media-card__type media-card__type--${heroPost.type}" data-i18n="mh.featured">Featured Insight</span><span class="media-card__meta"><time datetime="${heroPost.date}">${fmtDate(heroPost.date)}</time></span></span>
+        <span class="media-hero__feature-title">${heroPost.cleanTitle}</span>
+        <span class="media-hero__feature-sub">${excerptOf(heroPost)}</span>
+        <span class="media-card__action"><span data-i18n="m.readinsight">Read the insight</span> ${arrow(14)}</span>
+      </span>
+    </a>
+  </div>
+</section>`;
+
+/* ---------- toolbar ---------- */
+const FILTERS = [
+  ["all", "All"], ["news", "News"], ["insight", "Expert Insights"],
+  ["event", "Events"], ["video", "Videos"], ["company", "Company Life"]
+];
+const mediaToolbar = `
+<div class="media-toolbar" id="media-toolbar">
+  <div class="container media-toolbar__row">
+    <div class="media-toolbar__filters" role="group" aria-label="Filter media by type">
+      ${FILTERS.map(([k, l], i) => `<button type="button" data-filter="${k}" aria-pressed="${i === 0}" data-i18n="mf.${k}">${l}</button>`).join("")}
+    </div>
+    <div class="media-toolbar__search">
+      <label for="media-search" class="visually-hidden" data-i18n="m.searchlabel">Search media</label>
+      <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M14 14l4 4" stroke="currentColor" stroke-width="1.6"/></svg>
+      <input id="media-search" type="search" placeholder="Search technologies, machines and stories" data-i18n-ph="m.searchph" autocomplete="off">
+    </div>
+    <p class="media-toolbar__count" aria-live="polite" id="media-count"></p>
+  </div>
+</div>`;
+
+/* ---------- featured stories (hero item excluded) ---------- */
+const featuredRest = sorted.filter((p) => p.isFeatured && p !== heroPost).sort((a, b) => a.featuredRank - b.featuredRank);
+const featuredExtra = featuredRest.length < 3 ? sorted.filter((p) => !p.isFeatured && p !== heroPost).slice(0, 3 - featuredRest.length) : [];
+const featuredSet = [...featuredRest, ...featuredExtra].slice(0, 3);
+const featuredStory = (p, lead = false) => `
+  <a class="feature-story${lead ? " feature-story--lead" : ""}" href="${postHref(p)}">
+    <span class="feature-story__media"><img src="${postThumb(p)}" alt="${p.imageAlt || ""}" loading="lazy" width="900" height="563"></span>
+    <span class="feature-story__body">
+      <span class="media-card__top">${typeLabel(p.type)}${metaLine(p)}</span>
+      <span class="feature-story__title">${p.cleanTitle}</span>
+      ${lead ? `<span class="media-card__excerpt">${excerptOf(p)}</span>` : ""}
+      <span class="media-card__action"><span data-i18n="m.read">Read the story</span> ${arrow(14)}</span>
+    </span>
+  </a>`;
+const featuredSection = `
+<section class="section media-section">
   <div class="container">
-    <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.news">News</span><h2>Latest from Schmoll</h2></div>
-    <div class="photo-mosaic">
-      ${newsList.map((p, i) => pTile(p, NEWS_SPANS[i] || "p-span4", i === 0)).join("")}
+    <div class="sec-head sec-head--tight"><span class="eyebrow" data-i18n="ms.featured">Selected Stories</span></div>
+    <div class="media-feature-grid">
+      ${featuredStory(featuredSet[0], true)}
+      <div class="media-feature-grid__side">
+        ${featuredSet.slice(1).map((p) => featuredStory(p)).join("")}
+      </div>
     </div>
   </div>
-</section>
-<section class="section" id="blog">
+</section>`;
+
+/* ---------- unified feed (everything, videos included) ---------- */
+const feedItems = [
+  ...sorted.map((p) => ({ date: p.date, html: mediaCard(p) })),
+  ...VIDEOS.map((v, i) => ({ date: "2024-06-0" + (5 - i), html: videoCard(v, i) })),
+].sort((a, b) => b.date.localeCompare(a.date));
+const feedSection = `
+<section class="section media-section" id="feed">
   <div class="container">
-    <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.blog">Blog</span><h2>From the Schmoll Blog</h2></div>
-    <div class="photo-mosaic">
-      ${blogList.map((p, i) => pTile(p, BLOG_SPANS[i] || "p-span4", i === 5)).join("")}
+    <div class="sec-head sec-head--tight"><span class="eyebrow" data-i18n="ms.latest">Latest from Schmoll</span></div>
+    <div class="media-feed" id="media-feed">
+      ${feedItems.map((f) => f.html).join("")}
+    </div>
+    <p class="media-empty" id="media-empty" hidden><span data-i18n="m.empty">No media items match these filters.</span> <button type="button" id="media-clear" data-i18n="m.clear">Clear filters</button></p>
+    <div class="media-more"><button type="button" class="btn btn--ghost" id="media-loadmore" hidden data-i18n="m.loadmore">Load more stories</button></div>
+  </div>
+</section>`;
+
+/* ---------- topic index ---------- */
+const topicCount = (key) => sorted.filter((p) => (p.topics || []).includes(key)).length
+  + VIDEOS.filter((v) => (v.topics || []).includes(key)).length;
+const topicIndex = `
+<section class="section media-section media-section--alt" id="topics">
+  <div class="container">
+    <div class="sec-head sec-head--tight"><span class="eyebrow" data-i18n="ms.topics">Explore by Technology</span></div>
+    <div class="media-topic-index">
+      ${Object.entries(EDITORIAL.topicIndex).filter(([k]) => topicCount(k) > 0).map(([k, t]) => `
+      <div class="media-topic">
+        <button type="button" class="media-topic__head" data-topic="${k}">
+          <span class="media-topic__label">${t.label}</span>
+          <span class="media-topic__count">${topicCount(k)} <span data-i18n="m.stories">stories</span></span>
+        </button>
+        <p class="media-topic__blurb">${t.blurb}</p>
+        <span class="media-topic__links">
+          ${t.products.length ? `<a href="product-${t.products[0]}.html">${MACHINES.find((m) => m.key === t.products[0])?.name || t.products[0]} ${arrow(12)}</a>` : ""}
+          ${t.application ? `<a href="${t.application}" data-i18n="m.solutions">Related solutions ${arrow(12)}</a>` : ""}
+        </span>
+      </div>`).join("")}
     </div>
   </div>
-</section>
-<section class="section section--dark" id="linkedin">
+</section>`;
+
+/* ---------- Video Lab (poster-first: src attached on play by media.js) ---------- */
+const featVideo = VIDEOS.find((v) => v.featured) || VIDEOS[0];
+const videoLab = `
+<section class="section section--dark media-section" id="videos">
   <div class="container">
-    <div class="li-head" data-reveal>
-      <div class="sec-head" style="margin-bottom:0"><span class="eyebrow">LinkedIn</span><h2 data-i18n="li.title">Live from LinkedIn</h2></div>
-      <a class="btn btn--light" href="${LI.source}" target="_blank" rel="noopener"><span data-i18n="li.follow">Follow Schmoll Asia Pacific</span> ${arrow(14)}</a>
-    </div>
-    <div class="photo-mosaic">
-      ${LI.posts.slice(0, 5).map((p, i) => liTile(p, LI_SPANS[i], i === 0)).join("")}
+    <div class="sec-head sec-head--tight"><span class="eyebrow">Video Lab</span><h2 class="media-h2" data-i18n="ms.videolab">See Precision in Action</h2></div>
+    <div class="video-lab">
+      <figure class="video-lab__player">
+        <div class="video-lab__stage" id="video-stage">
+          <img src="${featVideo.poster}" alt="${featVideo.title}" id="video-poster" width="1280" height="720">
+          <button type="button" class="video-lab__play" id="video-play" data-src="${featVideo.videoUrl}" aria-label="Play: ${featVideo.title}">
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5l12 7-12 7z" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <figcaption class="video-lab__caption"><b id="video-title">${featVideo.title}</b><span id="video-desc">${featVideo.description || ""}</span></figcaption>
+      </figure>
+      <div class="video-lab__playlist" role="list">
+        ${VIDEOS.map((v) => `
+        <button type="button" class="video-lab__item${v === featVideo ? " is-active" : ""}" role="listitem" data-video="${v.id}" data-src="${v.videoUrl}" data-poster="${v.poster}" data-title="${v.title}" data-desc="${v.description || ""}">
+          <img src="${v.poster}" alt="" loading="lazy" width="320" height="180">
+          <span>${v.title}</span>
+        </button>`).join("")}
+      </div>
     </div>
   </div>
-</section>
-<section class="section section--alt">
+</section>`;
+
+/* ---------- LinkedIn strip (restrained, clearly external) ---------- */
+const liIcon = '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.16h4.52V23H.24V8.16zM8.34 8.16h4.33v2.03h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.93V23h-4.51v-7.29c0-1.74-.03-3.98-2.42-3.98-2.43 0-2.8 1.9-2.8 3.86V23H8.34V8.16z"/></svg>';
+const extIcon = '<svg viewBox="0 0 14 14" width="11" height="11" aria-hidden="true"><path d="M4 2h8v8M12 2L2 12" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>';
+const liVisible = LI.posts.filter((p) => !p.hidden && p.approved !== false).slice(0, 4);
+const socialStrip = `
+<section class="section media-section media-section--alt" id="linkedin">
   <div class="container">
-    <div id="videos" class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.videos">Videos</span><h2>Watch Schmoll in Action</h2></div>
-    <div class="video-grid" data-reveal>
-      ${[
-        ["SIMPIMA 2026 — Exhibition Reel","https://videos.files.wordpress.com/Q1GHA7sS/simpimav2026.mp4"],
-        ["Schmoll Asia Pacific","https://schmoll-asia.com/wp-content/uploads/2024/06/Untitled-design.mp4"],
-        ["Machine in Action","https://schmoll-asia.com/wp-content/uploads/2024/07/0807.mp4"],
-        ["Precision Drilling","https://schmoll-asia.com/wp-content/uploads/2024/07/08071.mp4"],
-        ["Schmoll Showcase","https://schmoll-asia.com/wp-content/uploads/2024/05/0521.mp4"]
-      ].map(([t,u],i)=>`<div class="video-card${i===0?' video-card--feature':''}"><video controls preload="none" playsinline poster="assets/img/video/poster-${i+1}.jpg" src="${u}"></video><div class="video-card__cap">${t}</div></div>`).join("")}
+    <div class="li-head">
+      <div class="sec-head sec-head--tight" style="margin-bottom:0"><span class="eyebrow">${liIcon} LinkedIn</span><h2 class="media-h2" data-i18n="ms.linkedin">Latest from Schmoll Asia Pacific</h2></div>
+      <a class="btn btn--ghost" href="${LI.source}" target="_blank" rel="noopener noreferrer"><span data-i18n="li.follow">Follow on LinkedIn</span> ${extIcon}</a>
+    </div>
+    <div class="social-strip">
+      ${liVisible.map((p) => `
+      <a class="social-card" href="${p.url}" target="_blank" rel="noopener noreferrer">
+        ${p.images[0] ? `<span class="social-card__media"><img src="${p.images[0]}" alt="" loading="lazy" width="600" height="338" onerror="this.parentNode.hidden=true"></span>` : ""}
+        <span class="social-card__body">
+          <span class="media-card__meta"><time datetime="${p.date}">${fmtDate(p.date)}</time><span aria-hidden="true">·</span><span>${liIcon} LinkedIn</span></span>
+          <span class="social-card__title">${(p.customTitle || p.text.split("\n")[0]).slice(0, 90)}</span>
+          <span class="media-card__action"><span data-i18n="li.view">View post</span> ${extIcon} <span class="visually-hidden" data-i18n="m.external">(external link)</span></span>
+        </span>
+      </a>`).join("")}
     </div>
   </div>
-</section>` + GALLERY + CONTACT_CTA;
+</section>`;
+
+/* ---------- contextual CTA ---------- */
+const mediaCta = `
+<section class="section media-section">
+  <div class="container media-cta">
+    <div>
+      <h2 class="media-h2" data-i18n="mc.title">Looking for a specific manufacturing solution?</h2>
+      <p data-i18n="mc.body">Explore the relevant machine and application pages, or speak with a regional specialist.</p>
+    </div>
+    <div class="media-cta__actions">
+      <a class="btn" href="products.html" data-i18n="mc.products">Explore products</a>
+      <a class="btn btn--ghost" href="contact.html" data-i18n="mc.contact">Contact our team</a>
+    </div>
+  </div>
+</section>`;
+
+const newsPage = mediaHero + mediaToolbar + featuredSection + feedSection + topicIndex + videoLab + socialStrip + mediaCta;
+
+const MEDIA_HEAD = `<link rel="canonical" href="https://julianito03.github.io/schmoll-asia-modern/news.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Media — Schmoll Asia Pacific">
+<meta property="og:description" content="Stories, technologies and people shaping advanced PCB manufacturing across Asia Pacific.">
+<meta property="og:image" content="https://julianito03.github.io/schmoll-asia-modern/${postThumb(heroPost)}">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">${JSON.stringify({
+  "@context": "https://schema.org", "@type": "CollectionPage",
+  name: "Media — Schmoll Asia Pacific",
+  description: "News, expert insights, videos and company stories from Schmoll Asia Pacific.",
+  publisher: { "@type": "Organization", name: "Schmoll Asia Pacific" }
+})}</script>
+`;
+const MEDIA_SCRIPTS = `<script src="assets/js/media.js?v=1"></script>
+`;
 
 /* ---------- article pages ---------- */
 const renderBlocks = (blocks, liImages) => blocks.map((b) => {
@@ -497,29 +671,95 @@ const renderBlocks = (blocks, liImages) => blocks.map((b) => {
   return "";
 }).join("\n");
 
+const relatedArticles = (p) => {
+  const rel = sorted.filter((q) => q.id !== p.id && q.topics.some((t) => p.topics.includes(t))).slice(0, 3);
+  if (!rel.length) return "";
+  return `
+  <aside class="related-media">
+    <h2 class="media-h2" data-i18n="art.related">Related stories</h2>
+    <div class="media-feed media-feed--related">${rel.map(mediaCard).join("")}</div>
+  </aside>`;
+};
+
+const relatedProductsBlock = (p) => {
+  if (!p.relatedProducts.length) return "";
+  return `
+  <aside class="related-products">
+    <span class="eyebrow" data-i18n="art.tech">Relevant technology</span>
+    <div class="related-products__row">
+      ${p.relatedProducts.map((key) => {
+        const m = MACHINES.find((x) => x.key === key);
+        if (!m) return "";
+        return `<a href="product-${key}.html"><b>${m.name}</b><span>${m.cat}</span><span class="media-card__action" data-i18n="art.viewmachine">View machine ${arrow(12)}</span></a>`;
+      }).join("")}
+    </div>
+  </aside>`;
+};
+
+const articleHead = (p) => {
+  const url = `https://julianito03.github.io/schmoll-asia-modern/${postHref(p)}`;
+  const img = `https://julianito03.github.io/schmoll-asia-modern/${postThumb(p)}`;
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": p.type === "insight" ? "BlogPosting" : "NewsArticle",
+    headline: p.cleanTitle,
+    description: excerptOf(p),
+    image: img,
+    datePublished: p.date,
+    dateModified: p.date,
+    inLanguage: "en",
+    mainEntityOfPage: url,
+    publisher: { "@type": "Organization", name: "Schmoll Asia Pacific" },
+  };
+  return `<link rel="canonical" href="${url}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="${p.cleanTitle.replace(/"/g, "&quot;")}">
+<meta property="og:description" content="${excerptOf(p).replace(/"/g, "&quot;")}">
+<meta property="og:image" content="${img}">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">${JSON.stringify(ld)}</script>
+`;
+};
+
+// the hero figure already shows the featured image — drop a duplicate lead image
+const bodyBlocks = (p) => {
+  const b = p.blocks[0];
+  if (b && b.t === "img") {
+    const resolved = b.src.startsWith("assets/") ? b.src : newsImg(b.src);
+    if (resolved === postThumb(p)) return p.blocks.slice(1);
+  }
+  return p.blocks;
+};
+
 const articlePage = (p, prev, next) => {
   const langs = Object.keys(p.translations || {});
-  const catLabel = p.category === "blog" ? "Blog" : "News";
-  return banner(catLabel, p.title,
-    `<a href="news.html" data-i18n="nav.media">Media</a><span>/</span><span data-i18n="media.${p.category}">${catLabel}</span>`,
-    postThumb(p)) + `
+  const catLabel = TYPE_LABELS[p.type] || "News";
+  return `
 <article class="section article">
   <div class="container article__wrap">
-    <div class="article__meta" data-reveal>
-      <span class="news-card__meta">${fmtDate(p.date)}<span data-i18n="media.${p.category}">${catLabel}</span></span>
-      <a class="article__back" href="news.html"><span class="article__back-ico">${arrow(14)}</span> <span data-i18n="art.back">All news</span></a>
-    </div>
-    <div class="article__body prose" data-article-lang="en" data-reveal>
-      ${renderBlocks(p.blocks, p.liFeatured)}
+    <header class="article-header">
+      <nav class="breadcrumb breadcrumb--onlight" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><a href="news.html" data-i18n="nav.media">Media</a><span>/</span><span data-i18n="mtype.${p.type}">${catLabel}</span></nav>
+      <h1 class="article-header__title">${p.cleanTitle}</h1>
+      ${excerptOf(p) ? `<p class="article-header__standfirst">${excerptOf(p)}</p>` : ""}
+      <div class="article-header__meta">
+        ${typeLabel(p.type)}
+        <span class="media-card__meta"><time datetime="${p.date}">${fmtDate(p.date)}</time><span aria-hidden="true">·</span><span>${p.readingTime} <span data-i18n="m.minread">min read</span></span></span>
+      </div>
+    </header>
+    <figure class="article-hero"><img src="${postThumb(p)}" alt="${p.imageAlt || ""}" width="1200" height="675"></figure>
+    <div class="article__body prose" data-article-lang="en">
+      ${renderBlocks(bodyBlocks(p), p.liFeatured)}
     </div>
     ${langs.map((l) => `<div class="article__body prose" data-article-lang="${l}" hidden>
       <h2 class="article__ttitle">${p.translations[l].title}</h2>
       ${renderBlocks(p.translations[l].blocks, false)}
     </div>`).join("\n")}
-    <nav class="article__nav" data-reveal>
-      ${prev ? `<a href="${postHref(prev)}"><span class="news-card__meta" data-i18n="art.prev">Previous</span><b>${prev.title}</b></a>` : "<span></span>"}
-      ${next ? `<a class="article__nav-next" href="${postHref(next)}"><span class="news-card__meta" data-i18n="art.next">Next</span><b>${next.title}</b></a>` : "<span></span>"}
+    ${relatedProductsBlock(p)}
+    <nav class="article__nav" aria-label="More articles">
+      ${prev ? `<a href="${postHref(prev)}"><span class="media-card__meta" data-i18n="art.prev">Previous</span><b>${prev.cleanTitle}</b></a>` : "<span></span>"}
+      ${next ? `<a class="article__nav-next" href="${postHref(next)}"><span class="media-card__meta" data-i18n="art.next">Next</span><b>${next.cleanTitle}</b></a>` : "<span></span>"}
     </nav>
+    ${relatedArticles(p)}
   </div>
 </article>` + CONTACT_CTA;
 };
@@ -533,7 +773,7 @@ const PAGES = [
   { file:"service.html",      title:"Service — Schmoll Asia Pacific",                       desc:"Maintenance, spare parts, repair and R&D services to keep your Schmoll machines at peak performance.", main:servicePage },
   { file:"careers.html",      title:"Careers — Schmoll Asia Pacific",                       desc:"Start your career with Schmoll — a dynamic, innovative environment for growth.", main:careersPage },
   { file:"contact.html",      title:"Contact — Schmoll Asia Pacific",                       desc:"Contact Schmoll Asia Pacific — 8 offices across 7 countries in Asia Pacific.", main:contactPage },
-  { file:"news.html",         title:"Media — Schmoll Asia Pacific",                         desc:"News, blog and videos from Schmoll Asia Pacific.", main:newsPage }
+  { file:"news.html",         title:"Media — Schmoll Asia Pacific",                         desc:"News, expert insights, videos and company stories from Schmoll Asia Pacific.", main:newsPage, head:MEDIA_HEAD, scripts:MEDIA_SCRIPTS }
 ];
 
 // machine detail pages
@@ -552,8 +792,9 @@ withPages.forEach((p, i) => {
   PAGES.push({
     file: postHref(p),
     title: `${p.title} — Schmoll Asia Pacific`,
-    desc: postExcerpt(p) || p.title,
-    main: articlePage(p, withPages[i + 1], withPages[i - 1])
+    desc: excerptOf(p) || p.title,
+    main: articlePage(p, withPages[i + 1], withPages[i - 1]),
+    head: articleHead(p)
   });
 });
 

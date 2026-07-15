@@ -1,0 +1,55 @@
+{
+  "comment": "Video metadata for the Video Lab. Titles/descriptions must stay truthful — durations, captions and better titles need confirmation from Schmoll (needsMetadata: true). Poster-first loading: the <video> src is attached only on play.",
+  "videos": [
+    {
+      "id": "simpima-2026-reel",
+      "title": "SIMPIMA 2026 — Exhibition Reel",
+      "description": "Impressions from the Schmoll Asia Pacific presence at SIMPIMA 2026.",
+      "poster": "assets/img/video/poster-1.jpg",
+      "videoUrl": "https://videos.files.wordpress.com/Q1GHA7sS/simpimav2026.mp4",
+      "topics": ["events"],
+      "featured": true,
+      "needsMetadata": false
+    },
+    {
+      "id": "sap-intro",
+      "title": "Schmoll Asia Pacific",
+      "description": "",
+      "poster": "assets/img/video/poster-2.jpg",
+      "videoUrl": "https://schmoll-asia.com/wp-content/uploads/2024/06/Untitled-design.mp4",
+      "topics": [],
+      "featured": false,
+      "needsMetadata": true
+    },
+    {
+      "id": "machine-in-action",
+      "title": "Machine in Action",
+      "description": "",
+      "poster": "assets/img/video/poster-3.jpg",
+      "videoUrl": "https://schmoll-asia.com/wp-content/uploads/2024/07/0807.mp4",
+      "topics": [],
+      "featured": false,
+      "needsMetadata": true
+    },
+    {
+      "id": "precision-drilling",
+      "title": "Precision Drilling",
+      "description": "",
+      "poster": "assets/img/video/poster-4.jpg",
+      "videoUrl": "https://schmoll-asia.com/wp-content/uploads/2024/07/08071.mp4",
+      "topics": ["drilling"],
+      "featured": false,
+      "needsMetadata": true
+    },
+    {
+      "id": "schmoll-showcase",
+      "title": "Schmoll Showcase",
+      "description": "",
+      "poster": "assets/img/video/poster-5.jpg",
+      "videoUrl": "https://schmoll-asia.com/wp-content/uploads/2024/05/0521.mp4",
+      "topics": [],
+      "featured": false,
+      "needsMetadata": true
+    }
+  ]
+}

@@ -8,7 +8,17 @@
   "featured": null,
   "blocks": [],
   "images": [],
-  "translations": {}
+  "translations": {},
+  "type": "company",
+  "cleanTitle": "Team building across Schmoll Asia Pacific",
+  "excerpt": "Colleagues from engineering, service, sales and operations came together for a day of sport and team spirit.",
+  "topics": [],
+  "imageAlt": "Schmoll Asia Pacific employees forming the letters SAP on a basketball court, seen from above",
+  "isFeatured": false,
+  "featuredRank": 99,
+  "relatedProducts": [],
+  "relatedApplications": [],
+  "readingTime": 1
  },
  {
   "id": 7848,
@@ -143,7 +153,29 @@
      }
     ]
    }
-  }
+  },
+  "type": "insight",
+  "cleanTitle": "PCB equipment for the AI data-server era",
+  "excerpt": "How high-density server requirements are changing drilling, imaging, registration and automation needs — impressions from CPCA Show 2026.",
+  "topics": [
+   "ai-data-servers",
+   "drilling",
+   "automation"
+  ],
+  "imageAlt": "Schmoll Asia Pacific team at the CPCA Show 2026 exhibition booth in Shanghai",
+  "isFeatured": true,
+  "featuredRank": 1,
+  "relatedProducts": [
+   "eagle",
+   "hawk",
+   "mdi",
+   "automation"
+  ],
+  "relatedApplications": [
+   "backdrilling",
+   "automation"
+  ],
+  "readingTime": 1
  },
  {
   "id": 7577,
@@ -355,7 +387,20 @@
      }
     ]
    }
-  }
+  },
+  "type": "event",
+  "cleanTitle": "HKPCA 2025: 30 years of Schmoll in Asia",
+  "excerpt": "HKPCA 2025 in Shenzhen closed the exhibition year and marked three decades of Schmoll activity in the region.",
+  "topics": [
+   "drilling",
+   "automation"
+  ],
+  "imageAlt": "Schmoll Asia Pacific booth and team at HKPCA 2025 in Shenzhen",
+  "isFeatured": true,
+  "featuredRank": 2,
+  "relatedProducts": [],
+  "relatedApplications": [],
+  "readingTime": 2
  },
  {
   "id": 7284,
@@ -421,7 +466,19 @@
      }
     ]
    }
-  }
+  },
+  "type": "event",
+  "cleanTitle": "CPCA Show 2025: report from Shanghai",
+  "excerpt": "A look back at an inspiring presence at CPCA Show 2025, held in Shanghai in March.",
+  "topics": [
+   "drilling"
+  ],
+  "imageAlt": "Schmoll Asia Pacific team photo at the CPCA Show 2025 booth in Shanghai",
+  "isFeatured": false,
+  "featuredRank": 99,
+  "relatedProducts": [],
+  "relatedApplications": [],
+  "readingTime": 1
  },
  {
   "id": 7152,
@@ -432,7 +489,19 @@
   "featured": null,
   "blocks": [],
   "images": [],
-  "translations": {}
+  "translations": {},
+  "type": "news",
+  "cleanTitle": "Golden Supplier Award at the Founder PCB Supplier Conference",
+  "excerpt": "Schmoll Asia Pacific was honoured with the Golden Supplier Award in January 2025.",
+  "topics": [
+   "service"
+  ],
+  "imageAlt": "Schmoll machine installed at a customer facility",
+  "isFeatured": false,
+  "featuredRank": 99,
+  "relatedProducts": [],
+  "relatedApplications": [],
+  "readingTime": 1
  },
  {
   "id": 7123,
@@ -524,7 +593,20 @@
      }
     ]
    }
-  }
+  },
+  "type": "event",
+  "cleanTitle": "A successful year concludes at HKPCA Show 2024",
+  "excerpt": "Closing the 2024 exhibition calendar in Shenzhen with machine demonstrations and customer meetings.",
+  "topics": [
+   "drilling",
+   "automation"
+  ],
+  "imageAlt": "Schmoll Asia Pacific team at the HKPCA Show 2024 booth",
+  "isFeatured": true,
+  "featuredRank": 3,
+  "relatedProducts": [],
+  "relatedApplications": [],
+  "readingTime": 1
  },
  {
   "id": 7009,
@@ -583,7 +665,19 @@
    "https://schmoll-asia.com/wp-content/uploads/2024/11/1730880120741.jpeg",
    "https://schmoll-asia.com/wp-content/uploads/2024/11/content.webp"
   ],
-  "translations": {}
+  "translations": {},
+  "type": "event",
+  "cleanTitle": "Schmoll technology on show at CPCA 2024",
+  "excerpt": "Drilling, routing and automation technology presented to PCB manufacturers at CPCA 2024.",
+  "topics": [
+   "drilling"
+  ],
+  "imageAlt": "Visitors at the Schmoll Asia Pacific booth during CPCA 2024",
+  "isFeatured": false,
+  "featuredRank": 99,
+  "relatedProducts": [],
+  "relatedApplications": [],
+  "readingTime": 1
  },
  {
   "id": 6938,
@@ -723,7 +817,19 @@
      }
     ]
    }
-  }
+  },
+  "type": "event",
+  "cleanTitle": "Success at TPCA Show 2024",
+  "excerpt": "Meeting Taiwan's PCB industry at TPCA Show 2024.",
+  "topics": [
+   "drilling"
+  ],
+  "imageAlt": "Schmoll Asia Pacific booth team at TPCA Show 2024 in Taiwan",
+  "isFeatured": false,
+  "featuredRank": 99,
+  "relatedProducts": [],
+  "relatedApplications": [],
+  "readingTime": 1
  },
  {
   "id": 6796,
@@ -887,7 +993,19 @@
      }
     ]
    }
-  }
+  },
+  "type": "event",
+  "cleanTitle": "KPCA Show 2024: innovation and collaboration",
+  "excerpt": "Presenting PCB drilling technology to the Korean market at KPCA Show 2024.",
+  "topics": [
+   "drilling"
+  ],
+  "imageAlt": "Schmoll Asia Pacific team with visitors at KPCA Show 2024 in Korea",
+  "isFeatured": false,
+  "featuredRank": 99,
+  "relatedProducts": [],
+  "relatedApplications": [],
+  "readingTime": 2
  },
  {
   "id": 6672,
@@ -1091,7 +1209,24 @@
      }
     ]
    }
-  }
+  },
+  "type": "insight",
+  "cleanTitle": "Granite: the foundation of machine stability",
+  "excerpt": "Why granite machine bases reduce vibration and improve drilling accuracy — and where ours come from.",
+  "topics": [
+   "drilling",
+   "granite"
+  ],
+  "imageAlt": "Granite machine bases in the Reitz Natursteintechnik production warehouse in Aßlar, Germany",
+  "isFeatured": false,
+  "featuredRank": 99,
+  "relatedProducts": [
+   "eagle",
+   "hawk",
+   "falcon"
+  ],
+  "relatedApplications": [],
+  "readingTime": 2
  },
  {
   "id": 6480,
@@ -1797,7 +1932,19 @@
      }
     ]
    }
-  }
+  },
+  "type": "insight",
+  "cleanTitle": "Schmoll Asia and Schmoll Maschinen: how we work together",
+  "excerpt": "The roles of the German factory and the Asia Pacific sales and service organisation, explained.",
+  "topics": [
+   "service"
+  ],
+  "imageAlt": "Schmoll Asia Pacific and Schmoll Maschinen logos side by side",
+  "isFeatured": false,
+  "featuredRank": 99,
+  "relatedProducts": [],
+  "relatedApplications": [],
+  "readingTime": 3
  },
  {
   "id": 5876,
@@ -2231,7 +2378,23 @@
      }
     ]
    }
-  }
+  },
+  "type": "news",
+  "cleanTitle": "WUS Printed Circuit expands with Schmoll technology",
+  "excerpt": "Wus Printed Circuit selects Schmoll machines for its manufacturing expansion.",
+  "topics": [
+   "drilling",
+   "automation"
+  ],
+  "imageAlt": "Schmoll drilling machines installed in a WUS Printed Circuit production line",
+  "isFeatured": false,
+  "featuredRank": 99,
+  "relatedProducts": [
+   "eagle",
+   "automation"
+  ],
+  "relatedApplications": [],
+  "readingTime": 2
  },
  {
   "id": 3441,
@@ -2679,7 +2842,19 @@
      }
     ]
    }
-  }
+  },
+  "type": "company",
+  "cleanTitle": "Partnership story: Larry Gao",
+  "excerpt": "Celebrating the partnership with Larry Gao, Managing Director of HIFA Automation Equipments Mfg.",
+  "topics": [
+   "automation"
+  ],
+  "imageAlt": "Drift car sponsored by Schmoll driven by Larry Gao",
+  "isFeatured": false,
+  "featuredRank": 99,
+  "relatedProducts": [],
+  "relatedApplications": [],
+  "readingTime": 2
  },
  {
   "id": 3217,
@@ -2987,6 +3162,16 @@
      }
     ]
    }
-  }
+  },
+  "type": "news",
+  "cleanTitle": "A new website for Schmoll Asia Pacific",
+  "excerpt": "The launch of the Schmoll Asia Pacific website in 2024.",
+  "topics": [],
+  "imageAlt": "Person browsing the Schmoll Asia Pacific website on a desktop computer",
+  "isFeatured": false,
+  "featuredRank": 99,
+  "relatedProducts": [],
+  "relatedApplications": [],
+  "readingTime": 1
  }
 ]

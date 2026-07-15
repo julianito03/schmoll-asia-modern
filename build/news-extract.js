@@ -163,6 +163,37 @@ for (const id of EN_IDS) {
   });
 }
 
+// merge editorial overlay: content type, display headline, excerpt, topics,
+// alt text, featured flags, related products/applications, reading time
+const EDITORIAL = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/media/editorial.json'), 'utf8'));
+for (const p of out) {
+  const ed = EDITORIAL.posts[String(p.id)] || {};
+  const words = p.blocks.filter(b => b.t === 'p' || b.t === 'ul')
+    .map(b => (b.html || (b.items || []).join(' ')).replace(/<[^>]+>/g, ''))
+    .join(' ').split(/\s+/).filter(Boolean).length;
+  Object.assign(p, {
+    type: ed.type || (p.category === 'blog' ? 'insight' : 'news'),
+    cleanTitle: ed.cleanTitle || p.title,
+    excerpt: ed.excerpt || '',
+    topics: ed.topics || [],
+    imageAlt: ed.imageAlt || '',
+    isFeatured: !!ed.featured,
+    featuredRank: ed.featuredRank || 99,
+    relatedProducts: ed.relatedProducts || [],
+    relatedApplications: ed.relatedApplications || [],
+    readingTime: Math.max(1, Math.round(words / 200)),
+  });
+  if (p.isFeatured && !p.images.length && !p.featured && p.id !== 7923) {
+    throw new Error(`featured item ${p.id} has no image`);
+  }
+  if (!p.excerpt) console.warn(`WARN: post ${p.id} has no excerpt`);
+}
+const slugs = new Set();
+for (const p of out) {
+  if (slugs.has(p.slug)) console.warn(`WARN: duplicate slug ${p.slug}`);
+  slugs.add(p.slug);
+}
+
 fs.writeFileSync(path.join(ROOT, 'content/news/posts.json'), JSON.stringify(out, null, 1));
 for (const p of out) {
   console.log(p.id, p.date, p.category, 'blocks=' + p.blocks.length, 'imgs=' + p.images.length,

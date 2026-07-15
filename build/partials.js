@@ -10,7 +10,7 @@ const HEADER = `<header class="site-header">
         <li><a href="team.html" data-i18n="nav.team">Team</a></li>
         <li><a href="products.html" data-i18n="nav.products">Products</a></li>
         <li class="has-dropdown">
-          <button type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n="nav.application">Application</span>
+          <button type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n="nav.application">Applications</span>
             <svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></button>
           <div class="dropdown">
             <a href="applications.html#ccd" data-i18n="app.ccd">CCD Application</a>
@@ -120,7 +120,7 @@ const GALLERY = `<section class="section">
   </div>
 </section>`;
 
-function page({ title, desc, main, lang = "en" }) {
+function page({ title, desc, main, lang = "en", head = "", scripts = "" }) {
   return `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
@@ -132,25 +132,18 @@ function page({ title, desc, main, lang = "en" }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=57">
-<script>try{if(sessionStorage.getItem('sap_loaded'))document.documentElement.classList.add('pl-skip')}catch(e){}</script>
-</head>
+<link rel="stylesheet" href="assets/css/styles.css?v=58">
+${head}</head>
 <body>
-
-<div class="preloader" id="preloader" role="status" aria-label="Loading">
-  <div class="preloader__inner">
-    <img class="preloader__logo" src="assets/img/logo-sap-30yrs.jpg?v=22" alt="Schmoll Asia Pacific">
-    <span class="preloader__bar" aria-hidden="true"></span>
-  </div>
-</div>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 ${HEADER}
-<main>
+<main id="main">
 ${main}
 </main>
 ${FOOTER}
-<script src="assets/js/i18n.js?v=44"></script>
-<script src="assets/js/main.js?v=48"></script>
-</body>
+<script src="assets/js/i18n.js?v=45"></script>
+<script src="assets/js/main.js?v=49"></script>
+${scripts}</body>
 </html>`;
 }
 
