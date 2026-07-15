@@ -409,26 +409,61 @@ const liCard = (p) => `
     ${p.images[0] ? `<div class="li-card__media"><img src="${p.images[0]}" alt="" loading="lazy">${p.hasVideo ? '<span class="li-card__play"><svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.55)"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg></span>' : ""}</div>` : ""}
     <div class="li-card__body">
       <span class="news-card__meta">${fmtDate(p.date)}<i></i>LinkedIn</span>
-      <p>${p.text.split("\n")[0].slice(0, 120)}</p>
+      <p>${p.text.split("\n").filter(Boolean).slice(0, 2).join(" — ").slice(0, 220)}</p>
       <span class="news-card__more"><span data-i18n="li.view">View post</span> ${arrow(14)}</span>
     </div>
+  </a>`;
+
+/* mosaic tiles: [0] lead cover, [1] tall, [2-4] standard tiles, [5-7] compact text tiles */
+const mosaicTile = (p, kind) => {
+  const href = postHref(p);
+  const meta = `<span class="news-card__meta">${fmtDate(p.date)}<i></i><span data-i18n="media.${p.category}">${p.category === "blog" ? "Blog" : "News"}</span></span>`;
+  if (kind === "lead") {
+    const inner = `<img src="${postThumb(p)}" alt=""><div class="m-lead__body">${meta}<h3>${p.title}</h3><p>${postExcerpt(p, 180)}</p>
+      <span class="news-card__more"><span data-i18n="btn.readmore">Read more</span> ${arrow(14)}</span></div>`;
+    return `<a class="m-lead" href="${href}" data-reveal>${inner}</a>`;
+  }
+  if (kind === "mini") {
+    const body = `${meta}<h3>${p.title}</h3>${href ? `<span class="news-card__more"><span data-i18n="btn.readmore">Read more</span> ${arrow(14)}</span>` : ""}`;
+    return href ? `<a class="m-mini" href="${href}" data-reveal>${body}</a>` : `<div class="m-mini" data-reveal>${body}</div>`;
+  }
+  const cls = kind === "tall" ? "news-card m-tall" : "news-card m-tile";
+  const body = `<div class="news-card__media"><img src="${postThumb(p)}" alt="" loading="lazy"></div>
+    <div class="news-card__body">${meta}<h3>${p.title}</h3>${kind === "tall" ? `<p>${postExcerpt(p, 130)}</p>` : ""}
+    ${href ? `<span class="news-card__more"><span data-i18n="btn.readmore">Read more</span> ${arrow(14)}</span>` : ""}</div>`;
+  return href ? `<a class="${cls}" href="${href}" data-reveal>${body}</a>` : `<div class="${cls}" data-reveal>${body}</div>`;
+};
+const mosaicKind = (i) => i === 0 ? "lead" : i === 1 ? "tall" : i <= 4 ? "tile" : "mini";
+
+const blogRow = (p) => `
+  <a class="blog-row" href="${postHref(p)}" data-reveal>
+    <span class="news-card__meta">${fmtDate(p.date)}<i></i><span data-i18n="media.blog">Blog</span></span>
+    <div><h3 class="blog-row__title">${p.title}</h3><p>${postExcerpt(p, 130)}</p></div>
+    <div class="blog-row__thumb"><img src="${postThumb(p)}" alt="" loading="lazy"></div>
+    <span class="blog-row__arrow">${arrow(18)}</span>
+  </a>`;
+
+const liRow = (p) => `
+  <a class="li-row" href="${p.url}" target="_blank" rel="noopener" data-reveal>
+    <div class="li-row__thumb">${p.images[0] ? `<img src="${p.images[0]}" alt="" loading="lazy">` : ""}</div>
+    <div class="li-row__text"><span class="news-card__meta">${fmtDate(p.date)}</span><b>${p.text.split("\n")[0]}</b></div>
+    <span class="li-row__arrow">${arrow(18)}</span>
   </a>`;
 
 const newsPage = banner('Media', 'News &amp; Insights', '<span>Media</span>') + `
 <section class="section section--alt">
   <div class="container">
     <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.news">News</span><h2>Latest from Schmoll</h2><p class="lead" data-i18n="news.lead">Exhibitions, milestones and announcements from across Asia Pacific.</p></div>
-    ${newsCard(newsList[0], true)}
-    <div class="news-grid">
-      ${newsList.slice(1).map((p) => newsCard(p)).join("")}
+    <div class="mosaic">
+      ${newsList.map((p, i) => mosaicTile(p, mosaicKind(i))).join("")}
     </div>
   </div>
 </section>
 <section class="section" id="blog">
   <div class="container">
     <div class="sec-head" data-reveal><span class="eyebrow" data-i18n="media.blog">Blog</span><h2>From the Schmoll Blog</h2><p class="lead" data-i18n="blog.lead">Technology, partnerships and the engineering behind our machines.</p></div>
-    <div class="news-grid">
-      ${blogList.map((p) => newsCard(p)).join("")}
+    <div class="blog-index">
+      ${blogList.map(blogRow).join("")}
     </div>
   </div>
 </section>
@@ -438,8 +473,11 @@ const newsPage = banner('Media', 'News &amp; Insights', '<span>Media</span>') + 
       <div class="sec-head" style="margin-bottom:0"><span class="eyebrow">LinkedIn</span><h2 data-i18n="li.title">Live from LinkedIn</h2><p class="lead" data-i18n="li.lead">What we're sharing with the industry, as we post it.</p></div>
       <a class="btn btn--light" href="${LI.source}" target="_blank" rel="noopener"><span data-i18n="li.follow">Follow Schmoll Asia Pacific</span> ${arrow(14)}</a>
     </div>
-    <div class="li-grid">
-      ${LI.posts.slice(0, 6).map(liCard).join("")}
+    <div class="li-split">
+      ${liCard(LI.posts[0])}
+      <div class="li-rows">
+        ${LI.posts.slice(1, 6).map(liRow).join("")}
+      </div>
     </div>
   </div>
 </section>
@@ -453,7 +491,7 @@ const newsPage = banner('Media', 'News &amp; Insights', '<span>Media</span>') + 
         ["Machine in Action","https://schmoll-asia.com/wp-content/uploads/2024/07/0807.mp4"],
         ["Precision Drilling","https://schmoll-asia.com/wp-content/uploads/2024/07/08071.mp4"],
         ["Schmoll Showcase","https://schmoll-asia.com/wp-content/uploads/2024/05/0521.mp4"]
-      ].map(([t,u],i)=>`<div class="video-card"><video controls preload="none" playsinline poster="assets/img/video/poster-${i+1}.jpg" src="${u}"></video><div class="video-card__cap">${t}</div></div>`).join("")}
+      ].map(([t,u],i)=>`<div class="video-card${i===0?' video-card--feature':''}"><video controls preload="none" playsinline poster="assets/img/video/poster-${i+1}.jpg" src="${u}"></video><div class="video-card__cap">${t}</div></div>`).join("")}
     </div>
   </div>
 </section>` + GALLERY + CONTACT_CTA;
