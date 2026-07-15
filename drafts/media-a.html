@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>A · Cover Story</title>
+<link rel="icon" href="../assets/monogram.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#C11819;--red-dark:#9d1314;--blue:#2C55A3;--ink:#141414;--g9:#333;--g7:#4D4D4D;--g5:#7F8080;--g4:#B3B3B3;--g2:#E5E5E5;--g1:#F2F2F2;--fd:"Jost",sans-serif;--fb:"Roboto Slab",serif;--fm:"Roboto Mono",monospace}
+body{font-family:var(--fb);color:var(--g9);background:#fff;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.draftbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:var(--ink);color:#fff;font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.draftbar a{color:#fff;border:1px solid rgba(255,255,255,.3);padding:5px 12px}
+.draftbar a:hover{border-color:#fff}
+.draftbar b{color:var(--red);}
+
+.cover{position:relative;display:flex;align-items:flex-end;height:100vh;min-height:560px;overflow:hidden;color:#fff}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.9),rgba(8,8,8,.15) 55%,rgba(8,8,8,.35))}
+.cover__body{position:relative;z-index:1;padding:clamp(28px,5vw,72px);max-width:900px;display:flex;flex-direction:column;gap:18px}
+.cover__k{font-family:var(--fm);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.cover h1{font-family:var(--fd);font-weight:700;font-size:clamp(2rem,5vw,4.2rem);line-height:1.05;text-transform:uppercase}
+.cover__go{font-family:var(--fd);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--red);align-self:flex-start;padding-bottom:4px}
+.fs{padding:clamp(36px,5vw,64px) 0 0}
+.fs__head{display:flex;align-items:baseline;justify-content:space-between;padding:0 clamp(20px,4vw,64px);margin-bottom:18px}
+.fs__head h2{font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:clamp(1.2rem,2vw,1.7rem)}
+.fs__hint{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--g5)}
+.fs__row{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 clamp(20px,4vw,64px) 8px;scrollbar-width:thin}
+.fs__card{position:relative;flex:0 0 clamp(300px,38vw,560px);aspect-ratio:16/9;overflow:hidden;scroll-snap-align:start;color:#fff;background:var(--g1)}
+.fs__card img{width:100%;height:100%;object-fit:cover;transition:transform .4s cubic-bezier(.22,.61,.36,1)}
+.fs__card:hover img{transform:scale(1.03)}
+.fs__card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.85),rgba(8,8,8,0) 55%)}
+.fs__cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.fs__date{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.fs__t{font-family:var(--fd);font-weight:600;font-size:15px;line-height:1.3}
+.fs__play{position:absolute;inset:0;display:grid;place-items:center;font-size:15px;color:#fff;z-index:1}
+.fs__play::before{content:"";position:absolute;width:52px;height:52px;border-radius:50%;background:rgba(10,10,10,.6);border:1px solid rgba(255,255,255,.4)}
+body>section:last-of-type{padding-bottom:clamp(48px,6vw,90px)}
+
+</style>
+</head>
+<body>
+<div class="draftbar"><span><b>DRAFT</b> A · Cover Story</span><span style="display:flex;gap:8px"><a href="media-a.html">A</a><a href="media-b.html">B</a><a href="media-c.html">C</a><a href="../news.html">current</a></span></div>
+
+<a class="cover" href="../news-cpca-show-2026.html">
+  <img src="../assets/img/news/cpca2026-march_group.jpg" alt="Schmoll Asia Pacific team at the CPCA Show 2026 exhibition booth in Shanghai">
+  <div class="cover__body">
+    <span class="cover__k">06 Apr 2026 · Featured</span>
+    <h1>PCB equipment for the AI data-server era</h1>
+    <span class="cover__go">Read the story →</span>
+  </div>
+</a>
+
+<section class="fs">
+  <header class="fs__head"><h2>News & Events</h2><span class="fs__hint">scroll →</span></header>
+  <div class="fs__row">
+  <a class="fs__card" href="../news-team-building-2026.html">
+    <img src="../assets/img/facility-2.jpg" alt="Schmoll Asia Pacific employees forming the letters SAP on a basketball court, seen from above" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">02 Jun 2026</span><span class="fs__t">Team building across Schmoll Asia Pacific</span></span>
+  </a>
+  <a class="fs__card" href="../news-hkpca-2025.html">
+    <img src="../assets/img/news/hkpca-2025.jpeg" alt="Schmoll Asia Pacific booth and team at HKPCA 2025 in Shenzhen" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">09 Dec 2025</span><span class="fs__t">HKPCA 2025: 30 years of Schmoll in Asia</span></span>
+  </a>
+  <a class="fs__card" href="../news-cpca-show-2025.html">
+    <img src="../assets/img/news/wechatimg484-e1745310805761.jpg" alt="Schmoll Asia Pacific team photo at the CPCA Show 2025 booth in Shanghai" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">22 Apr 2025</span><span class="fs__t">CPCA Show 2025: report from Shanghai</span></span>
+  </a>
+  <a class="fs__card" href="../news-golden-supplier-award.html">
+    <img src="../assets/img/facility-2.jpg" alt="Schmoll machine installed at a customer facility" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">16 Jan 2025</span><span class="fs__t">Golden Supplier Award at the Founder PCB Supplier Conference</span></span>
+  </a>
+  <a class="fs__card" href="../news-hkpca-2024.html">
+    <img src="../assets/img/news/wechatimg191.jpg" alt="Schmoll Asia Pacific team at the HKPCA Show 2024 booth" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">18 Dec 2024</span><span class="fs__t">A successful year concludes at HKPCA Show 2024</span></span>
+  </a>
+  <a class="fs__card" href="../news-cpca-2024.html">
+    <img src="../assets/img/news/1731319205191.jpeg" alt="Visitors at the Schmoll Asia Pacific booth during CPCA 2024" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">26 Nov 2024</span><span class="fs__t">Schmoll technology on show at CPCA 2024</span></span>
+  </a>
+  <a class="fs__card" href="../news-tpca-2024.html">
+    <img src="../assets/img/news/12b12f488a604db063a32c8e3b2bbe-e1730965959632.jpg" alt="Schmoll Asia Pacific booth team at TPCA Show 2024 in Taiwan" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">07 Nov 2024</span><span class="fs__t">Success at TPCA Show 2024</span></span>
+  </a>
+  <a class="fs__card" href="../news-kpca-2024.html">
+    <img src="../assets/img/news/whatsapp-image-2024-09-05-at-09.33.00-1.jpeg" alt="Schmoll Asia Pacific team with visitors at KPCA Show 2024 in Korea" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">25 Sep 2024</span><span class="fs__t">KPCA Show 2024: innovation and collaboration</span></span>
+  </a>
+  <a class="fs__card" href="../news-wus-expansion.html">
+    <img src="../assets/img/news/screenshot-2024-08-07-at-13.39.15-min.jpg" alt="Schmoll drilling machines installed in a WUS Printed Circuit production line" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">07 Aug 2024</span><span class="fs__t">WUS Printed Circuit expands with Schmoll technology</span></span>
+  </a>
+  <a class="fs__card" href="../news-larry-gao.html">
+    <img src="../assets/img/news/wechatimg29-2-e1719822512279.jpg" alt="Drift car sponsored by Schmoll driven by Larry Gao" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">01 Jul 2024</span><span class="fs__t">Partnership story: Larry Gao</span></span>
+  </a>
+  <a class="fs__card" href="../news-new-website.html">
+    <img src="../assets/img/news/untitled-design-90.jpg" alt="Person browsing the Schmoll Asia Pacific website on a desktop computer" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">28 Jun 2024</span><span class="fs__t">A new website for Schmoll Asia Pacific</span></span>
+  </a></div>
+</section>
+
+<section class="fs">
+  <header class="fs__head"><h2>Expert Insights</h2><span class="fs__hint">scroll →</span></header>
+  <div class="fs__row">
+  <a class="fs__card" href="../news-granite.html">
+    <img src="../assets/img/news/granit_reitz_granit_vorteile_content.jpg.webp" alt="Granite machine bases in the Reitz Natursteintechnik production warehouse in Aßlar, Germany" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">11 Sep 2024</span><span class="fs__t">Granite: the foundation of machine stability</span></span>
+  </a>
+  <a class="fs__card" href="../news-schmoll-asia-vs-maschinen.html">
+    <img src="../assets/img/news/t-min-e1724320574972.png" alt="Schmoll Asia Pacific and Schmoll Maschinen logos side by side" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">22 Aug 2024</span><span class="fs__t">Schmoll Asia and Schmoll Maschinen: how we work together</span></span>
+  </a></div>
+</section>
+
+<section class="fs">
+  <header class="fs__head"><h2>Videos</h2><span class="fs__hint">scroll →</span></header>
+  <div class="fs__row">
+  <a class="fs__card" href="../news.html#videos">
+    <img src="../assets/img/video/poster-1.jpg" alt="" loading="lazy">
+    <span class="fs__play">▶</span>
+    <span class="fs__cap"><span class="fs__date"></span><span class="fs__t">SIMPIMA 2026 — Exhibition Reel</span></span>
+  </a>
+  <a class="fs__card" href="../news.html#videos">
+    <img src="../assets/img/video/poster-2.jpg" alt="" loading="lazy">
+    <span class="fs__play">▶</span>
+    <span class="fs__cap"><span class="fs__date"></span><span class="fs__t">Schmoll Asia Pacific</span></span>
+  </a>
+  <a class="fs__card" href="../news.html#videos">
+    <img src="../assets/img/video/poster-3.jpg" alt="" loading="lazy">
+    <span class="fs__play">▶</span>
+    <span class="fs__cap"><span class="fs__date"></span><span class="fs__t">Machine in Action</span></span>
+  </a>
+  <a class="fs__card" href="../news.html#videos">
+    <img src="../assets/img/video/poster-4.jpg" alt="" loading="lazy">
+    <span class="fs__play">▶</span>
+    <span class="fs__cap"><span class="fs__date"></span><span class="fs__t">Precision Drilling</span></span>
+  </a>
+  <a class="fs__card" href="../news.html#videos">
+    <img src="../assets/img/video/poster-5.jpg" alt="" loading="lazy">
+    <span class="fs__play">▶</span>
+    <span class="fs__cap"><span class="fs__date"></span><span class="fs__t">Schmoll Showcase</span></span>
+  </a></div>
+</section>
+
+<section class="fs">
+  <header class="fs__head"><h2>LinkedIn</h2><span class="fs__hint">scroll →</span></header>
+  <div class="fs__row">
+  <a class="fs__card" href="https://www.linkedin.com/posts/schmoll-asia-pacific_schmollasiapacific-schmoll-tech-activity-7480519090714017792-MAQ9" target="_blank" rel="noopener">
+    <img src="../assets/img/linkedin/7480519090714017792-0.jpg" alt="" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">08 Jul 2026</span><span class="fs__t">The world behind Schmoll Asia Pacific</span></span>
+  </a>
+  <a class="fs__card" href="https://www.linkedin.com/feed/update/urn:li:activity:7477282495827329024" target="_blank" rel="noopener">
+    <img src="../assets/img/linkedin/7477282495827329024-0.jpg" alt="" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">29 Jun 2026</span><span class="fs__t">Tapping in a new Era</span></span>
+  </a>
+  <a class="fs__card" href="https://www.linkedin.com/posts/schmoll-asia-pacific_%F0%9D%97%96%F0%9D%97%BC%F0%9D%97%BB%F0%9D%97%BB%F0%9D%97%B2%F0%9D%97%B0%F0%9D%98%81%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%B4-%F0%9D%98%80%F0%9D%98%86%F0%9D%98%80%F0%9D%98%81%F0%9D%97%B2%F0%9D%97%BA%F0%9D%98%80-activity-7476174916208324608-n7Y0" target="_blank" rel="noopener">
+    <img src="../assets/img/linkedin/7476174916208324608-0.jpg" alt="" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">26 Jun 2026</span><span class="fs__t">🔗 Connecting systems – with Schmoll’s Automation Solutions</span></span>
+  </a>
+  <a class="fs__card" href="https://www.linkedin.com/posts/schmoll-asia-pacific_schmoll-pcbmanufacturing-routing-activity-7473641723848658944-k5Sc" target="_blank" rel="noopener">
+    <img src="../assets/img/linkedin/7473641723848658944-0.jpg" alt="" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">19 Jun 2026</span><span class="fs__t">Schmoll’s Individual Table XY Axes Motors</span></span>
+  </a>
+  <a class="fs__card" href="https://www.linkedin.com/posts/schmoll-asia-pacific_techthursday-precisionengineering-smartmanufacturing-activity-7471105763684368384-WLrP" target="_blank" rel="noopener">
+    <img src="../assets/img/linkedin/7471105763684368384-0.jpg" alt="" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">12 Jun 2026</span><span class="fs__t">Highly Flexible Modular Systems for Imaging📐✨</span></span>
+  </a>
+  <a class="fs__card" href="https://www.linkedin.com/feed/update/urn:li:activity:7470808571308523520" target="_blank" rel="noopener">
+    <img src="../assets/img/linkedin/7470808571308523520-0.jpg" alt="" loading="lazy">
+    
+    <span class="fs__cap"><span class="fs__date">11 Jun 2026</span><span class="fs__t">Kick Off Your Success</span></span>
+  </a></div>
+</section>
+
+
+</body>
+</html>

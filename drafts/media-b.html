@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>B · Light Table</title>
+<link rel="icon" href="../assets/monogram.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#C11819;--red-dark:#9d1314;--blue:#2C55A3;--ink:#141414;--g9:#333;--g7:#4D4D4D;--g5:#7F8080;--g4:#B3B3B3;--g2:#E5E5E5;--g1:#F2F2F2;--fd:"Jost",sans-serif;--fb:"Roboto Slab",serif;--fm:"Roboto Mono",monospace}
+body{font-family:var(--fb);color:var(--g9);background:#fff;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.draftbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:var(--ink);color:#fff;font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.draftbar a{color:#fff;border:1px solid rgba(255,255,255,.3);padding:5px 12px}
+.draftbar a:hover{border-color:#fff}
+.draftbar b{color:var(--red);}
+
+body{background:#111;color:#fff}
+.lt-head{padding:84px clamp(20px,4vw,64px) 26px;display:flex;align-items:baseline;gap:26px;flex-wrap:wrap}
+.lt-head h1{font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:clamp(2.4rem,5vw,4rem)}
+.lt-head p{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g5)}
+.wall{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;padding:0 clamp(20px,4vw,64px) 110px;grid-auto-rows:clamp(120px,15vw,220px);grid-auto-flow:dense}
+.b-3{grid-column:span 3}.b-4{grid-column:span 4}.b-6{grid-column:span 6}.b-r2{grid-row:span 2}
+.tile{position:relative;overflow:hidden;background:#1c1c1c}
+.tile img{width:100%;height:100%;object-fit:cover;opacity:.82;filter:saturate(.92);transition:opacity .3s,transform .5s cubic-bezier(.22,.61,.36,1)}
+.tile:hover img{opacity:1;transform:scale(1.03);filter:none}
+.tile__n{position:absolute;top:10px;left:10px;font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.85);background:rgba(10,10,10,.55);padding:3px 7px}
+.tile[data-type=insight] .tile__n{background:var(--blue)}
+.tile[data-type=news] .tile__n{background:var(--red)}
+.tile[data-type=linkedin] .tile__n{background:#0a66c2}
+.tile__play{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:13px}
+.tile__play::before{content:"";position:absolute;width:46px;height:46px;border-radius:50%;background:rgba(10,10,10,.6);border:1px solid rgba(255,255,255,.4)}
+.capbar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;align-items:center;gap:14px;padding:16px clamp(20px,4vw,64px);background:rgba(14,14,14,.96);border-top:1px solid rgba(255,255,255,.14);font-family:var(--fd);font-weight:500;font-size:15px;min-height:56px}
+.capbar__type{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g5);flex:none}
+@media(max-width:860px){.b-3,.b-4,.b-6{grid-column:span 6}.b-r2{grid-row:span 1}}
+
+</style>
+</head>
+<body>
+<div class="draftbar"><span><b>DRAFT</b> B · Light Table</span><span style="display:flex;gap:8px"><a href="media-a.html">A</a><a href="media-b.html">B</a><a href="media-c.html">C</a><a href="../news.html">current</a></span></div>
+
+<header class="lt-head">
+  <h1>Media</h1>
+  <p>News · Insights · Videos · LinkedIn — hover any image</p>
+</header>
+<main class="wall">
+  <a class="tile b-6 b-r2" href="../news-team-building-2026.html" data-cap="02 Jun 2026 — Team building across Schmoll Asia Pacific" data-type="company">
+    <img src="../assets/img/facility-2.jpg" alt="" loading="lazy"><span class="tile__n">01</span>
+  </a>
+  <a class="tile b-3" href="../news-cpca-show-2026.html" data-cap="06 Apr 2026 — PCB equipment for the AI data-server era" data-type="insight">
+    <img src="../assets/img/news/cpca2026-march_group.jpg" alt="" loading="lazy"><span class="tile__n">02</span>
+  </a>
+  <a class="tile b-3" href="../news-hkpca-2025.html" data-cap="09 Dec 2025 — HKPCA 2025: 30 years of Schmoll in Asia" data-type="event">
+    <img src="../assets/img/news/hkpca-2025.jpeg" alt="" loading="lazy"><span class="tile__n">03</span>
+  </a>
+  <a class="tile b-3" href="../news-cpca-show-2025.html" data-cap="22 Apr 2025 — CPCA Show 2025: report from Shanghai" data-type="event">
+    <img src="../assets/img/news/wechatimg484-e1745310805761.jpg" alt="" loading="lazy"><span class="tile__n">04</span>
+  </a>
+  <a class="tile b-3" href="../news-golden-supplier-award.html" data-cap="16 Jan 2025 — Golden Supplier Award at the Founder PCB Supplier Conference" data-type="news">
+    <img src="../assets/img/facility-2.jpg" alt="" loading="lazy"><span class="tile__n">05</span>
+  </a>
+  <a class="tile b-4" href="../news-hkpca-2024.html" data-cap="18 Dec 2024 — A successful year concludes at HKPCA Show 2024" data-type="event">
+    <img src="../assets/img/news/wechatimg191.jpg" alt="" loading="lazy"><span class="tile__n">06</span>
+  </a>
+  <a class="tile b-4" href="../news-cpca-2024.html" data-cap="26 Nov 2024 — Schmoll technology on show at CPCA 2024" data-type="event">
+    <img src="../assets/img/news/1731319205191.jpeg" alt="" loading="lazy"><span class="tile__n">07</span>
+  </a>
+  <a class="tile b-4" href="../news-tpca-2024.html" data-cap="07 Nov 2024 — Success at TPCA Show 2024" data-type="event">
+    <img src="../assets/img/news/12b12f488a604db063a32c8e3b2bbe-e1730965959632.jpg" alt="" loading="lazy"><span class="tile__n">08</span>
+  </a>
+  <a class="tile b-6" href="../news-kpca-2024.html" data-cap="25 Sep 2024 — KPCA Show 2024: innovation and collaboration" data-type="event">
+    <img src="../assets/img/news/whatsapp-image-2024-09-05-at-09.33.00-1.jpeg" alt="" loading="lazy"><span class="tile__n">09</span>
+  </a>
+  <a class="tile b-6" href="../news-granite.html" data-cap="11 Sep 2024 — Granite: the foundation of machine stability" data-type="insight">
+    <img src="../assets/img/news/granit_reitz_granit_vorteile_content.jpg.webp" alt="" loading="lazy"><span class="tile__n">10</span>
+  </a>
+  <a class="tile b-4" href="../news-schmoll-asia-vs-maschinen.html" data-cap="22 Aug 2024 — Schmoll Asia and Schmoll Maschinen: how we work together" data-type="insight">
+    <img src="../assets/img/news/t-min-e1724320574972.png" alt="" loading="lazy"><span class="tile__n">11</span>
+  </a>
+  <a class="tile b-4" href="../news-wus-expansion.html" data-cap="07 Aug 2024 — WUS Printed Circuit expands with Schmoll technology" data-type="news">
+    <img src="../assets/img/news/screenshot-2024-08-07-at-13.39.15-min.jpg" alt="" loading="lazy"><span class="tile__n">12</span>
+  </a>
+  <a class="tile b-4" href="../news-larry-gao.html" data-cap="01 Jul 2024 — Partnership story: Larry Gao" data-type="company">
+    <img src="../assets/img/news/wechatimg29-2-e1719822512279.jpg" alt="" loading="lazy"><span class="tile__n">13</span>
+  </a>
+  <a class="tile b-3" href="../news-new-website.html" data-cap="28 Jun 2024 — A new website for Schmoll Asia Pacific" data-type="news">
+    <img src="../assets/img/news/untitled-design-90.jpg" alt="" loading="lazy"><span class="tile__n">14</span>
+  </a>
+  <a class="tile b-3" href="../news.html#videos" data-cap="Video — SIMPIMA 2026 — Exhibition Reel" data-type="video">
+    <img src="../assets/img/video/poster-1.jpg" alt="" loading="lazy"><span class="tile__play">▶</span><span class="tile__n">15</span>
+  </a>
+  <a class="tile b-3" href="../news.html#videos" data-cap="Video — Schmoll Asia Pacific" data-type="video">
+    <img src="../assets/img/video/poster-2.jpg" alt="" loading="lazy"><span class="tile__play">▶</span><span class="tile__n">16</span>
+  </a>
+  <a class="tile b-3" href="../news.html#videos" data-cap="Video — Machine in Action" data-type="video">
+    <img src="../assets/img/video/poster-3.jpg" alt="" loading="lazy"><span class="tile__play">▶</span><span class="tile__n">17</span>
+  </a>
+  <a class="tile b-6" href="../news.html#videos" data-cap="Video — Precision Drilling" data-type="video">
+    <img src="../assets/img/video/poster-4.jpg" alt="" loading="lazy"><span class="tile__play">▶</span><span class="tile__n">18</span>
+  </a>
+  <a class="tile b-3" href="../news.html#videos" data-cap="Video — Schmoll Showcase" data-type="video">
+    <img src="../assets/img/video/poster-5.jpg" alt="" loading="lazy"><span class="tile__play">▶</span><span class="tile__n">19</span>
+  </a>
+  <a class="tile b-3" href="https://www.linkedin.com/posts/schmoll-asia-pacific_schmollasiapacific-schmoll-tech-activity-7480519090714017792-MAQ9" target="_blank" rel="noopener" data-cap="08 Jul 2026 — The world behind Schmoll Asia Pacific" data-type="linkedin">
+    <img src="../assets/img/linkedin/7480519090714017792-0.jpg" alt="" loading="lazy"><span class="tile__n">20</span>
+  </a>
+  <a class="tile b-4" href="https://www.linkedin.com/feed/update/urn:li:activity:7477282495827329024" target="_blank" rel="noopener" data-cap="29 Jun 2026 — Tapping in a new Era" data-type="linkedin">
+    <img src="../assets/img/linkedin/7477282495827329024-0.jpg" alt="" loading="lazy"><span class="tile__n">21</span>
+  </a>
+  <a class="tile b-4" href="https://www.linkedin.com/posts/schmoll-asia-pacific_%F0%9D%97%96%F0%9D%97%BC%F0%9D%97%BB%F0%9D%97%BB%F0%9D%97%B2%F0%9D%97%B0%F0%9D%98%81%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%B4-%F0%9D%98%80%F0%9D%98%86%F0%9D%98%80%F0%9D%98%81%F0%9D%97%B2%F0%9D%97%BA%F0%9D%98%80-activity-7476174916208324608-n7Y0" target="_blank" rel="noopener" data-cap="26 Jun 2026 — 🔗 Connecting systems – with Schmoll’s Automation Solutions" data-type="linkedin">
+    <img src="../assets/img/linkedin/7476174916208324608-0.jpg" alt="" loading="lazy"><span class="tile__n">22</span>
+  </a>
+  <a class="tile b-4" href="https://www.linkedin.com/posts/schmoll-asia-pacific_schmoll-pcbmanufacturing-routing-activity-7473641723848658944-k5Sc" target="_blank" rel="noopener" data-cap="19 Jun 2026 — Schmoll’s Individual Table XY Axes Motors" data-type="linkedin">
+    <img src="../assets/img/linkedin/7473641723848658944-0.jpg" alt="" loading="lazy"><span class="tile__n">23</span>
+  </a>
+</main>
+<div class="capbar" id="capbar"><span class="capbar__type" id="captype"></span><span id="captext">Schmoll Asia Pacific — media archive. Hover an image.</span></div>
+
+<script>
+var cap=document.getElementById('captext'),typ=document.getElementById('captype');
+document.querySelectorAll('.tile').forEach(function(t){
+  t.addEventListener('mouseenter',function(){cap.textContent=t.dataset.cap;typ.textContent=t.dataset.type;});
+});
+document.querySelector('.wall').addEventListener('mouseleave',function(){cap.textContent='Schmoll Asia Pacific — media archive. Hover an image.';typ.textContent='';});
+</script>
+</body>
+</html>
