@@ -770,9 +770,10 @@ strong { color: var(--grey-900); font-weight: 700; }
 .page-banner__media::after { content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(20,20,20,.4), #141414); }
 .page-banner .container { position: relative; z-index: 1; }
 .page-banner h1 { color: #fff; }
-/* Team page: brighter hero image, lighter shadow */
-.page-banner--team .page-banner__media img { opacity: .6; }
-.page-banner--team .page-banner__media::after { background: linear-gradient(180deg, rgba(20,20,20,.15), rgba(20,20,20,.72)); }
+/* Team page: brighter hero image, lighter shadow, slightly taller block */
+.page-banner--team { padding-block: clamp(110px, 15vw, 195px) clamp(75px, 9vw, 120px); }
+.page-banner--team .page-banner__media img { opacity: .8; }
+.page-banner--team .page-banner__media::after { background: linear-gradient(180deg, rgba(20,20,20,.06), rgba(20,20,20,.5)); }
 .breadcrumb { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--grey-500); margin-bottom: 22px; display: flex; gap: 10px; }
 .breadcrumb a:hover { color: var(--red); }
 .breadcrumb span { color: var(--grey-700); }
