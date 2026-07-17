@@ -17,7 +17,7 @@ const banner = (eyebrow, title, crumbs, img = "assets/img/facility-2.jpg", cls =
 </section>`;
 
 /* ======================================================= ABOUT */
-const about = banner('About', 'German Quality &amp; Innovation', '<span>About</span>', 'assets/img/about-cpca-2026.jpg', 'page-banner--about') + `
+const about = banner('About', 'German Quality &amp;<br>Innovation', '<span>About</span>', 'assets/img/about-cpca-2026.jpg', 'page-banner--about') + `
 <section class="section">
   <div class="container">
     <div class="grid" style="grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,80px);align-items:center">
