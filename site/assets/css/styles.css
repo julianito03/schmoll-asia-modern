@@ -266,6 +266,8 @@ strong { color: var(--grey-900); font-weight: 700; }
 .hero h1 { color: #fff; margin: 22px 0 24px; }
 .hero h1 em { font-style: normal; color: var(--red); }
 .hero__sub { font-size: clamp(1.1rem, 1.8vw, 1.45rem); color: var(--grey-300); max-width: 48ch; margin-bottom: 40px; }
+/* White peak divider, matching the interior banners */
+.hero::after { content:""; position:absolute; bottom:0; right:11%; z-index:1; width:clamp(140px, 19vw, 280px); height:clamp(84px, 11vw, 162px); background:var(--white); clip-path:polygon(50% 0, 100% 100%, 0 100%); pointer-events:none; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 
 /* Animated technical grid overlay */
