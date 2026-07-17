@@ -777,6 +777,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 .breadcrumb { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--grey-500); margin-bottom: 22px; display: flex; gap: 10px; }
 .breadcrumb a:hover { color: var(--red); }
 .breadcrumb span { color: var(--grey-700); }
+.breadcrumb span:last-child { color: var(--red); }
 
 /* Prose */
 .prose p { margin-bottom: 1.2em; max-width: 68ch; }
@@ -1041,6 +1042,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 .article-header { padding-top: clamp(16px, 2vw, 24px); }
 .breadcrumb--onlight { position: static; margin-bottom: 22px; }
 .breadcrumb--onlight a, .breadcrumb--onlight span { color: var(--grey-500); }
+.breadcrumb--onlight span:last-child { color: var(--red); }
 .breadcrumb--onlight a:hover { color: var(--red); }
 .article-header__title {
   text-transform: none; letter-spacing: -.01em; line-height: 1.12;
