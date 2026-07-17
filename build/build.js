@@ -12,7 +12,6 @@ const banner = (eyebrow, title, crumbs, img = "assets/img/facility-2.jpg") => `
   <div class="page-banner__media"><img src="${img}" alt=""></div>
   <div class="container">
     <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span>${crumbs}</nav>
-    <span class="eyebrow">${eyebrow}</span>
     <h1 style="margin-top:18px">${title}</h1>
   </div>
 </section>`;
