@@ -7,8 +7,8 @@ const OUT = path.join(__dirname, "..", "site");
 
 /* ---------- helpers ---------- */
 const arrow = (s = 16) => `<svg viewBox="0 0 16 16" width="${s}" height="${s}" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>`;
-const banner = (eyebrow, title, crumbs, img = "assets/img/facility-2.jpg") => `
-<section class="page-banner">
+const banner = (eyebrow, title, crumbs, img = "assets/img/facility-2.jpg", cls = "") => `
+<section class="page-banner${cls ? " " + cls : ""}">
   <div class="page-banner__media"><img src="${img}" alt=""></div>
   <div class="container">
     <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span>${crumbs}</nav>
@@ -17,7 +17,7 @@ const banner = (eyebrow, title, crumbs, img = "assets/img/facility-2.jpg") => `
 </section>`;
 
 /* ======================================================= ABOUT */
-const about = banner('About', 'German Quality &amp; Innovation', '<span>About</span>', 'assets/img/facility-1.jpg') + `
+const about = banner('About', 'German Quality &amp; Innovation', '<span>About</span>', 'assets/img/about-cpca-2026.jpg', 'page-banner--about') + `
 <section class="section">
   <div class="container">
     <div class="grid" style="grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,80px);align-items:center">
@@ -27,7 +27,7 @@ const about = banner('About', 'German Quality &amp; Innovation', '<span>About</s
         <p>Schmoll has offered German quality and innovation across Asia since 1996, operating as a leading PCB drilling and routing machinery provider. Our machines are built on precision-engineering fundamentals: high-speed linear motors, granite machine bases for superior stability, and sophisticated tool adjustment systems.</p>
         <p>We help you meet your expectations with efficient solutions and machinery — your technology partner and a solution provider you can trust.</p>
       </div>
-      <div data-reveal data-delay="1"><img src="assets/img/exhibition-cpca-2026.jpg" alt="Schmoll Asia Pacific booth at CPCA Show 2026, Shanghai" style="width:100%;border:1px solid var(--line);border-radius:var(--radius)" loading="lazy"></div>
+      <div data-reveal data-delay="1"><img src="assets/img/facility-2.jpg" alt="Schmoll precision machine" style="width:100%;border:1px solid var(--line);border-radius:var(--radius)" loading="lazy"></div>
     </div>
   </div>
 </section>

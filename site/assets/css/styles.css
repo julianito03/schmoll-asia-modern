@@ -770,8 +770,14 @@ strong { color: var(--grey-900); font-weight: 700; }
 .page-banner__media::after { content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(20,20,20,.06), rgba(20,20,20,.5)); }
 .page-banner .container { position: relative; z-index: 1; }
 .page-banner h1 { color: #fff; }
+/* White peak divider rising from the bottom edge of every banner block */
+.page-banner::after { content:""; position:absolute; bottom:0; right:11%; z-index:2; width:clamp(140px, 19vw, 280px); height:clamp(84px, 11vw, 162px); background:var(--white); clip-path:polygon(50% 0, 100% 100%, 0 100%); pointer-events:none; }
+/* Keep banner titles clear of the peak on wider screens */
+@media (min-width: 760px) { .page-banner h1 { max-width: 64%; } }
 /* Team page: slightly taller block */
 .page-banner--team { padding-block: clamp(110px, 15vw, 195px) clamp(75px, 9vw, 120px); }
+/* About: bias the group-photo crop downward so the team is visible */
+.page-banner--about .page-banner__media img { object-position: center 60%; }
 .breadcrumb { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--grey-500); margin-bottom: 22px; display: flex; gap: 10px; }
 .breadcrumb a:hover { color: var(--red); }
 .breadcrumb span { color: var(--grey-700); }
