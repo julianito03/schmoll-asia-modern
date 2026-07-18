@@ -596,7 +596,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 
 /* History timeline with pictures — alternating cards on a central spine */
 .htl { position: relative; max-width: 1020px; margin: clamp(40px,6vw,72px) auto 0; }
-.htl__spine { position: absolute; top: 4px; bottom: 4px; left: 50%; width: 2px; transform: translateX(-50%); background: linear-gradient(180deg, transparent, var(--red) 5%, var(--red) 95%, transparent); }
+.htl::before { content: ""; position: absolute; top: 4px; bottom: 4px; left: 50%; width: 2px; transform: translateX(-50%); background: linear-gradient(180deg, transparent, var(--red) 5%, var(--red) 95%, transparent); }
 .htl__item { position: relative; width: 50%; box-sizing: border-box; padding: 0 46px 44px 0; }
 .htl__item:nth-child(even) { margin-left: 50%; padding: 44px 0 44px 46px; }
 .htl__node { position: absolute; top: 10px; width: 15px; height: 15px; border-radius: 50%; background: #fff; border: 3px solid var(--red); box-shadow: 0 0 0 5px var(--bg-alt); z-index: 1; }
@@ -844,7 +844,7 @@ strong { color: var(--grey-900); font-weight: 700; }
   .tl-item { grid-template-columns: 80px 1fr; gap: 14px; }
   .hero__stats { gap: 28px; }
   /* History timeline stacks to a single left-aligned column */
-  .htl__spine { left: 8px; }
+  .htl::before { left: 8px; }
   .htl__item, .htl__item:nth-child(even) { width: 100%; margin-left: 0; padding: 0 0 28px 34px; }
   .htl__item:nth-child(odd) .htl__node, .htl__item:nth-child(even) .htl__node { left: 1px; right: auto; top: 10px; }
 }
