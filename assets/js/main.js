@@ -18,15 +18,17 @@
 
   /* ---------- Dropdowns (click on mobile, hover on desktop via CSS) ---------- */
   document.querySelectorAll(".menu > li.has-dropdown").forEach((li) => {
+    // Mobile: a caret button toggles the submenu (when present)
     const btn = li.querySelector("button");
-    if (!btn) return;
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const wasOpen = li.classList.contains("is-open");
-      document.querySelectorAll(".menu > li.is-open").forEach((o) => o.classList.remove("is-open"));
-      if (!wasOpen) li.classList.add("is-open");
-    });
-    // desktop hover
+    if (btn) {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const wasOpen = li.classList.contains("is-open");
+        document.querySelectorAll(".menu > li.is-open").forEach((o) => o.classList.remove("is-open"));
+        if (!wasOpen) li.classList.add("is-open");
+      });
+    }
+    // Desktop: hover reveals the submenu — works whether the top item is a button or a link
     li.addEventListener("mouseenter", () => { if (window.innerWidth > 860) li.classList.add("is-open"); });
     li.addEventListener("mouseleave", () => { if (window.innerWidth > 860) li.classList.remove("is-open"); });
   });
