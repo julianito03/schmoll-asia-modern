@@ -45,8 +45,7 @@ const about = banner('About', 'German Quality &amp;<br>Innovation', '<span>About
   <div class="htl-grid" aria-hidden="true"></div>
   <div class="container">
     <div class="sec-head" data-reveal><span class="eyebrow">1943 · 2023</span><h2>80 Years of Innovation</h2><p class="lead">Eight decades of milestones that shaped PCB drilling, from the first European drilling machine to X-Ray inspection.</p></div>
-    <div class="htl">
-      <div class="htl__rail" aria-hidden="true"><div class="htl__fill"></div></div>
+    <div class="htl" role="region" aria-label="Company history, 1943 to 2023" tabindex="0">
       ${[
         ["1943","Schmoll Foundation","Foundation of Schmoll Maschinen by Heinz Schmoll in Kronberg, Germany.","1943.jpg","138","199"],
         ["1962","First PCB Drilling Machine","The first PCB drilling machine in Europe, a defining milestone for the electronics manufacturing industry.","1962.jpg","727","600"],
@@ -60,17 +59,15 @@ const about = banner('About', 'German Quality &amp;<br>Innovation', '<span>About
         ["2010","Direct Imaging","Direct Imaging technology revolutionizes PCB production by eliminating the need for traditional photomasks.","2010.jpg","378","315"],
         ["2015","Laser Drilling","Laser drilling creates microvias and through-holes with unparalleled precision and speed, reaching extremely small, intricate holes.","2015.png","375","333"],
         ["2023","X-Ray Inspection","X-Ray systems enable non-destructive testing and alignment, allowing detailed examination of inner layers and solder joints.","2023.jpg","379","309"]
-      ].map(([y,t,d,img,iw,ih],i)=>`<div class="htl__item" data-reveal>
+      ].map(([y,t,d,img,iw,ih],i,a)=>`<article class="htl__item${i===a.length-1?" htl__item--last":""}" data-reveal>
         <div class="htl__node" aria-hidden="true"></div>
-        <article class="htl__card">
-          <div class="htl__media"><img class="htl__img" src="assets/img/history/${img}" alt="${t}, ${y}" width="${iw}" height="${ih}" loading="lazy" decoding="async"></div>
-          <div class="htl__body">
-            <div class="htl__meta"><span class="htl__idx">${String(i+1).padStart(2,"0")} / 12</span><span class="htl__year">${y}</span></div>
-            <h3 class="htl__title">${t}</h3>
-            <p class="htl__text">${d}</p>
-          </div>
-        </article>
-      </div>`).join("")}
+        <div class="htl__media"><img class="htl__img" src="assets/img/history/${img}" alt="${t}, ${y}" width="${iw}" height="${ih}" loading="lazy" decoding="async"></div>
+        <div class="htl__body">
+          <div class="htl__meta"><span class="htl__idx">${String(i+1).padStart(2,"0")}</span><span class="htl__year">${y}</span></div>
+          <h3 class="htl__title">${t}</h3>
+          <p class="htl__text">${d}</p>
+        </div>
+      </article>`).join("")}
     </div>
   </div>
 </section>` + CONTACT_CTA;

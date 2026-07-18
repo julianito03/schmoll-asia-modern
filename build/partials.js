@@ -135,7 +135,7 @@ function page({ title, desc, main, lang = "en", head = "", scripts = "" }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=94">
+<link rel="stylesheet" href="assets/css/styles.css?v=95">
 ${head}</head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
@@ -145,7 +145,7 @@ ${main}
 </main>
 ${FOOTER}
 <script src="assets/js/i18n.js?v=48"></script>
-<script src="assets/js/main.js?v=51"></script>
+<script src="assets/js/main.js?v=52"></script>
 ${scripts}</body>
 </html>`;
 }
