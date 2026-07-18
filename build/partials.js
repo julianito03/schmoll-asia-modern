@@ -53,7 +53,7 @@ const HEADER = `<header class="site-header">
    content. Its plated vias are the only industry-specific decoration. */
 const FOOT_TRACE = 'M-24 44 H252 l22 22 H500 l22 -22 H918 l22 22 H1166 l22 -22 H1464';
 const FOOT_VIAS = [[274,66],[522,44],[940,66],[1188,44]];
-const FOOT_PCB_BG = '<svg class="footer-pcb" viewBox="0 0 1440 96" preserveAspectRatio="none" fill="none" aria-hidden="true">'
+const FOOT_PCB_BG = '<svg class="footer-pcb" viewBox="0 0 1440 96" preserveAspectRatio="xMidYMid meet" fill="none" aria-hidden="true">'
   + `<path class="footer-pcb__trace" d="${FOOT_TRACE}" pathLength="100"/>`
   + `<path class="footer-pcb__signal" d="${FOOT_TRACE}" pathLength="100"/>`
   + '<g class="footer-pcb__vias">' + FOOT_VIAS.map(([x, y]) => `<g transform="translate(${x} ${y})"><circle class="footer-pcb__via-ring" r="7"/><circle class="footer-pcb__via-hole" r="2.5"/></g>`).join('') + '</g>'
@@ -88,7 +88,7 @@ const FOOTER = `<footer class="site-footer">
         <a href="#" data-i18n="foot.cookie">Cookie Policy</a>
       </div>
 
-      <div class="footer-col">
+      <div class="footer-col footer-contact">
         <h4 data-i18n="foot.questions">You have questions?</h4>
         <a href="contact.html" data-i18n="nav.contact">Contact</a>
         <a href="careers.html" data-i18n="nav.careers">Careers</a>
