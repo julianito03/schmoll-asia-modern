@@ -813,8 +813,8 @@ strong { color: var(--grey-900); font-weight: 700; }
 /* Team page: slightly taller block */
 .page-banner--team { padding-block: clamp(110px, 15vw, 195px) clamp(75px, 9vw, 120px); }
 /* About: title rides high over the clean upper area; group sits lower in a taller block */
-.page-banner--about { padding-block: clamp(56px, 7vw, 96px) clamp(150px, 20vw, 240px); }
-.page-banner--about .page-banner__media img { object-position: center 50%; }
+.page-banner--about { padding-block: clamp(52px, 7vw, 92px) clamp(160px, 21vw, 262px); }
+.page-banner--about .page-banner__media img { object-position: center 44%; }
 @media (min-width: 760px) { .page-banner--about h1 { max-width: 88%; } }
 .breadcrumb { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--grey-500); margin-bottom: 22px; display: flex; gap: 10px; }
 .breadcrumb a:hover { color: var(--red); }
