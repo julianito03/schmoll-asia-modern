@@ -901,6 +901,17 @@ strong { color: var(--grey-900); font-weight: 700; }
   .prod-card, .prod-card--wide, .prod-card--feature { grid-column: span 12; }
   .site-footer { padding-top: 72px; }
   .footer-grid > .footer-col:last-child { min-height: 0; padding: 28px 24px 34px; }
+  /* History slider: one card in focus with a peek of the next */
+  .htl { gap: 18px; padding-top: 26px; scroll-padding-left: var(--gutter); }
+  .htl__item { flex-basis: 84vw; padding-top: 28px; }
+  .htl__item::before { right: -18px; top: 8px; }
+  .htl__node { width: 16px; height: 16px; }
+  .htl__media img { aspect-ratio: 3 / 2; }
+  .htl__title { font-size: 1.02rem; }
+  .htl__text { font-size: .88rem; }
+  /* About hero: shorter, title framed above the crowd on portrait screens */
+  .page-banner--about { padding-block: clamp(46px,11vw,72px) clamp(120px,34vw,168px); }
+  .page-banner--about .page-banner__media img { object-position: center 38%; }
 }
 
 /* =========================================================================
