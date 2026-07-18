@@ -43,19 +43,29 @@ const about = banner('About', 'German Quality &amp;<br>Innovation', '<span>About
 </section>
 <section class="section section--alt">
   <div class="container">
-    <div class="sec-head" data-reveal><span class="eyebrow">1943 — 2023</span><h2>80 Years of Innovation</h2><p class="lead">Eight decades of milestones that shaped PCB drilling.</p></div>
-    <div class="timeline" data-reveal>
+    <div class="sec-head" data-reveal><span class="eyebrow">1943 · 2023</span><h2>80 Years of Innovation</h2><p class="lead">Eight decades of milestones that shaped PCB drilling, from the first European drilling machine to X-Ray inspection.</p></div>
+    <div class="htl">
+      <div class="htl__spine" aria-hidden="true"></div>
       ${[
-        ["1943","Founded by Heinz Schmoll in Germany."],
-        ["1962","First European PCB drilling machine."],
-        ["1985","Twin concept introduced — dual spindles."],
-        ["1992","Contact Bit Detection (CBD) system."],
-        ["1999","Linear motor technology."],
-        ["2004","MXY-CCD concept for precision drilling."],
-        ["2006","300k sub-spindle — up to 300,000 RPM."],
-        ["2015","Laser drilling technology."],
-        ["2023","X-Ray inspection systems."]
-      ].map(([y,t])=>`<div class="tl-item"><div class="tl-year">${y}</div><div class="tl-text">${t}</div></div>`).join("")}
+        ["1943","Schmoll Foundation","Foundation of Schmoll Maschinen by Heinz Schmoll in Kronberg, Germany.","1943.jpg"],
+        ["1962","First PCB Drilling Machine","The first PCB drilling machine in Europe, a defining milestone for the electronics manufacturing industry.","1962.jpg"],
+        ["1985","Twin Concept","The Twin concept introduced two spindles working simultaneously, significantly increasing productivity and drilling precision.","1985.jpg"],
+        ["1992","Contact Bit Detection","CBD detects broken drill bits in real time by monitoring the electrical contact between bit and panel surface, preventing defects.","1992.jpg"],
+        ["1993","Automation","Automated loading and unloading, robotic arms and intelligent control systems raise efficiency, reduce manual labor and minimize errors.","1993-automation.jpg"],
+        ["1993","Thomas Kunz","At 33, Thomas Kunz led Schmoll Maschinen out of insolvency. Over 32 years his leadership transformed Schmoll into a PCB industry leader.","1993-kunz.jpeg"],
+        ["1999","Linear Motor","Linear motors deliver high speed, exceptional positioning accuracy and excellent dynamic behavior in PCB drilling machines.","1999.png"],
+        ["2004","MXY-CCD Concept","High-end drilling combined with CCD-controlled reference systems enables precise back drilling and accurate positioning for complex designs.","2004.jpg"],
+        ["2006","300K Sub-Spindle","A high-speed sub-spindle for small-diameter holes, running up to 300,000 RPM with exceptional precision and efficiency.","2006.png"],
+        ["2010","Direct Imaging","Direct Imaging technology revolutionizes PCB production by eliminating the need for traditional photomasks.","2010.jpg"],
+        ["2015","Laser Drilling","Laser drilling creates microvias and through-holes with unparalleled precision and speed, reaching extremely small, intricate holes.","2015.png"],
+        ["2023","X-Ray Inspection","X-Ray systems enable non-destructive testing and alignment, allowing detailed examination of inner layers and solder joints.","2023.jpg"]
+      ].map(([y,t,d,img])=>`<div class="htl__item" data-reveal>
+        <div class="htl__node" aria-hidden="true"></div>
+        <div class="htl__card">
+          <div class="htl__media"><img src="assets/img/history/${img}" alt="${t}, ${y}" loading="lazy"></div>
+          <div class="htl__body"><span class="htl__year">${y}</span><h3 class="htl__title">${t}</h3><p class="htl__text">${d}</p></div>
+        </div>
+      </div>`).join("")}
     </div>
   </div>
 </section>` + CONTACT_CTA;
