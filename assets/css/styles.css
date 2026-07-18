@@ -603,6 +603,7 @@ strong { color: var(--grey-900); font-weight: 700; }
 .htl-sec .container { position: relative; z-index: 1; }
 .htl-sec .sec-head h2 { color: #fff; }
 .htl-sec .sec-head .lead { color: var(--grey-300); }
+.htl-sec .sec-head .eyebrow { color: #ff9d96; }
 
 /* Horizontal drilling-log slider: one row you scrub through, thin red scrollbar
    as the progress gauge, drill-via nodes on a rail that light as they enter. */
@@ -629,8 +630,9 @@ strong { color: var(--grey-900); font-weight: 700; }
 .htl__img.is-loaded { opacity: 1; transform: none; }
 .htl__body { padding-top: 15px; }
 .htl__meta { display: flex; align-items: baseline; gap: 12px; }
-.htl__idx { font-family: var(--font-mono); color: var(--grey-500); font-size: .7rem; letter-spacing: .16em; }
-.htl__year { font-family: var(--font-mono); color: var(--red); font-size: 1rem; font-weight: 500; letter-spacing: .06em; }
+.htl__idx { font-family: var(--font-mono); color: var(--grey-400); font-size: .7rem; letter-spacing: .16em; }
+.htl__year { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-mono); color: #fff; font-size: 1.02rem; font-weight: 600; letter-spacing: .06em; }
+.htl__year::before { content: ""; width: 8px; height: 8px; background: var(--red); box-shadow: 0 0 8px rgba(255,80,70,.7); flex: none; }
 .htl__title { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: .02em; font-size: 1rem; line-height: 1.15; margin: 8px 0 7px; color: #fff; }
 .htl__text { font-size: .84rem; line-height: 1.56; color: var(--grey-300); }
 
