@@ -730,17 +730,31 @@ strong { color: var(--grey-900); font-weight: 700; }
 /* =========================================================================
    FOOTER
    ========================================================================= */
-.site-footer { background: #0e0e0e; color: var(--grey-400); padding-block: 72px 32px; }
-.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid var(--line-dark); }
+/* Footer — schmoll-maschinen.de language: dark grey ground, white uppercase
+   headings, red chamfered contact panel raised above the columns. */
+.site-footer { background: #4d4d4d; color: var(--grey-300); padding-block: 92px 30px; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1.15fr 1fr 1fr; gap: 44px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.15); align-items: start; }
 .footer-brand .logo__type b, .footer-brand .logo__mark { color: #fff; }
-.footer-brand p { margin-top: 20px; font-size: .92rem; max-width: 34ch; }
-.footer-col h4 { color: #fff; font-size: .8rem; letter-spacing: .14em; margin-bottom: 18px; }
-.footer-col a { display: block; padding: 7px 0; font-size: .92rem; color: var(--grey-400); transition: color .2s, padding .2s; }
-.footer-col a:hover { color: var(--red); padding-left: 6px; }
-.footer-wechat img { background: #fff; padding: 8px; border-radius: var(--radius); width: 120px; height: 120px; }
-.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 28px; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .06em; color: var(--grey-500); }
-.footer-bottom a { color: var(--grey-500); }
-.footer-bottom a:hover { color: var(--grey-300); }
+.footer-brand > p { margin-top: 20px; font-size: .92rem; max-width: 34ch; color: var(--grey-300); }
+.site-footer h4 { color: #fff; font-family: var(--font-display); font-size: .82rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
+.footer-col a { display: block; padding: 7px 0; font-size: .92rem; color: var(--grey-300); transition: color .2s, padding .2s; }
+.footer-col a:hover { color: #fff; padding-left: 6px; }
+
+/* Raised red contact panel with a diagonally-cut top-right corner */
+.footer-contact { background: var(--red); color: #fff; margin-top: -56px; padding: 34px 32px 32px; clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%); }
+.footer-contact h4 { color: #fff; }
+.footer-contact a { display: block; padding: 6px 0; font-size: .92rem; color: #fff; opacity: .9; transition: opacity .2s, padding-left .2s; }
+.footer-contact a:hover { opacity: 1; padding-left: 5px; }
+.footer-contact__addr { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.3); }
+.footer-contact__addr b { display: block; font-family: var(--font-display); text-transform: uppercase; letter-spacing: .08em; font-size: .82rem; margin-bottom: 8px; }
+.footer-contact__addr a { font-family: var(--font-mono); font-size: .82rem; letter-spacing: .02em; }
+
+.footer-wechat { margin-top: 28px; }
+.footer-wechat img { background: #fff; padding: 7px; border-radius: var(--radius); width: 104px; height: 104px; }
+
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 26px; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .06em; color: var(--grey-400); }
+.footer-bottom a { color: var(--grey-400); }
+.footer-bottom a:hover { color: #fff; }
 .footer-legal { display: flex; gap: 22px; flex-wrap: wrap; }
 
 /* =========================================================================
@@ -791,6 +805,8 @@ strong { color: var(--grey-900); font-weight: 700; }
 @media (max-width: 1080px) {
   .prod-card, .prod-card--wide, .prod-card--feature { grid-column: span 6; grid-row: auto; }
   .footer-top { grid-template-columns: 1fr 1fr; }
+  .site-footer { padding-top: 64px; }
+  .footer-contact { margin-top: 0; }
 }
 @media (max-width: 860px) {
   .burger { display: flex; }
