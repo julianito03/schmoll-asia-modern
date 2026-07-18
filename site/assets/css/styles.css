@@ -742,9 +742,12 @@ strong { color: var(--grey-900); font-weight: 700; }
 .footer-pcb__base path { stroke: rgba(255,255,255,.09); stroke-width: 1.5; }
 .footer-pcb__flow path { stroke: var(--red); stroke-width: 1.5; stroke-opacity: .9; stroke-dasharray: 5 23; animation: pcbFlow 2.4s linear infinite; }
 .footer-pcb__via circle { fill: #3d3d3d; stroke: rgba(255,255,255,.16); stroke-width: 1.5; }
-.footer-pcb__pulse { fill: #fff; }
+.footer-pcb__spark path { stroke: #ff6a60; stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 1 168; animation: pcbSpark 3.4s linear infinite; filter: drop-shadow(0 0 3px rgba(255,80,70,.8)); }
+.footer-pcb__spark path:nth-child(2n) { animation-duration: 4.6s; }
+.footer-pcb__spark path:nth-child(3n) { animation-duration: 5.4s; }
 @keyframes pcbFlow { to { stroke-dashoffset: -112; } }
-@media (prefers-reduced-motion: reduce) { .footer-pcb__flow path { animation: none; } .footer-pcb__pulse { display: none; } }
+@keyframes pcbSpark { to { stroke-dashoffset: -169; } }
+@media (prefers-reduced-motion: reduce) { .footer-pcb__flow path, .footer-pcb__spark path { animation: none; } .footer-pcb__spark { display: none; } }
 
 .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.1fr; gap: clamp(32px,5vw,64px); padding-bottom: 38px; border-bottom: 1px solid rgba(255,255,255,.14); }
 .footer-brand__word { height: 46px; width: auto; }

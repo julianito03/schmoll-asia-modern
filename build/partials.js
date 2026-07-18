@@ -65,7 +65,7 @@ const FOOT_PCB_BG = '<svg class="footer-pcb" viewBox="0 0 1440 400" preserveAspe
   + '<g class="footer-pcb__base">' + FOOT_TRACES.map((d, i) => `<path id="ft${i}" d="${d}"/>`).join('') + '</g>'
   + '<g class="footer-pcb__flow">' + FOOT_TRACES.map((d) => `<path d="${d}"/>`).join('') + '</g>'
   + '<g class="footer-pcb__via">' + FOOT_VIAS.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5"/>`).join('') + '</g>'
-  + [0, 2, 3].map((i) => `<circle class="footer-pcb__pulse" r="3.2"><animateMotion dur="${5 + i}s" repeatCount="indefinite" rotate="auto"><mpath href="#ft${i}"/></animateMotion></circle>`).join('')
+  + '<g class="footer-pcb__spark">' + FOOT_TRACES.map((d) => `<path d="${d}"/>`).join('') + '</g>'
   + '</svg>';
 
 const FOOTER = `<footer class="site-footer">
@@ -145,7 +145,7 @@ function page({ title, desc, main, lang = "en", head = "", scripts = "" }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=88">
+<link rel="stylesheet" href="assets/css/styles.css?v=89">
 ${head}</head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
