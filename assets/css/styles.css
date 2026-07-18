@@ -730,32 +730,50 @@ strong { color: var(--grey-900); font-weight: 700; }
 /* =========================================================================
    FOOTER
    ========================================================================= */
-/* Footer — schmoll-maschinen.de language: dark grey ground, white uppercase
-   headings, red chamfered contact panel raised above the columns. */
-.site-footer { background: #4d4d4d; color: var(--grey-300); padding-block: 92px 30px; }
-.footer-top { display: grid; grid-template-columns: 1.5fr 1.15fr 1fr 1fr; gap: 44px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.15); align-items: start; }
-.footer-brand .logo__type b, .footer-brand .logo__mark { color: #fff; }
-.footer-brand > p { margin-top: 20px; font-size: .92rem; max-width: 34ch; color: var(--grey-300); }
-.site-footer h4 { color: #fff; font-family: var(--font-display); font-size: .82rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
-.footer-col a { display: block; padding: 7px 0; font-size: .92rem; color: var(--grey-300); transition: color .2s, padding .2s; }
-.footer-col a:hover { color: #fff; padding-left: 6px; }
+/* =========================================================================
+   FOOTER — "control plate": an asymmetric grey machine bed with a raised red
+   registration plate as the focal object. Fiducial + mono register marks and a
+   ghosted crosshair monogram carry the precision-engineering brand. Grounded in
+   schmoll-maschinen.de's dark-grey + red-chamfer language, pushed further.
+   ========================================================================= */
+.site-footer { position: relative; overflow: hidden; background: #4d4d4d; color: var(--grey-300); padding-block: clamp(72px,9vw,120px) 26px; }
+.site-footer::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18) 10%, rgba(255,255,255,.18) 90%, transparent); }
+.footer-watermark { position: absolute; left: -3%; bottom: -18%; width: min(440px, 40vw); opacity: .05; pointer-events: none; filter: grayscale(1) brightness(4); }
 
-/* Raised red contact panel with a diagonally-cut top-right corner */
-.footer-contact { background: var(--red); color: #fff; margin-top: -56px; padding: 34px 32px 32px; clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%); }
-.footer-contact h4 { color: #fff; }
-.footer-contact a { display: block; padding: 6px 0; font-size: .92rem; color: #fff; opacity: .9; transition: opacity .2s, padding-left .2s; }
-.footer-contact a:hover { opacity: 1; padding-left: 5px; }
-.footer-contact__addr { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.3); }
-.footer-contact__addr b { display: block; font-family: var(--font-display); text-transform: uppercase; letter-spacing: .08em; font-size: .82rem; margin-bottom: 8px; }
-.footer-contact__addr a { font-family: var(--font-mono); font-size: .82rem; letter-spacing: .02em; }
+.footer-grid { position: relative; display: grid; grid-template-columns: 1.25fr 1fr .95fr; gap: clamp(32px,5vw,72px); align-items: start; padding-bottom: 40px; }
 
-.footer-wechat { margin-top: 28px; }
-.footer-wechat img { background: #fff; padding: 7px; border-radius: var(--radius); width: 104px; height: 104px; }
+/* Brand */
+.footer-brand__word { height: 46px; width: auto; }
+.footer-brand__tag { margin-top: 22px; max-width: 32ch; font-size: .92rem; line-height: 1.7; color: var(--grey-300); }
+.footer-wechat { margin-top: 30px; }
+.footer-wechat img { display: block; margin-top: 12px; background: #fff; padding: 6px; width: 92px; height: 92px; }
 
-.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 26px; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .06em; color: var(--grey-400); }
-.footer-bottom a { color: var(--grey-400); }
-.footer-bottom a:hover { color: #fff; }
-.footer-legal { display: flex; gap: 22px; flex-wrap: wrap; }
+/* Section labels get a small PCB-pad tick (not a fake 01/02 sequence) */
+.site-footer h4, .footer-tick { display: flex; align-items: center; gap: 10px; color: #fff; font-family: var(--font-display); font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 22px; }
+.site-footer h4::before, .footer-tick::before { content: ""; width: 7px; height: 7px; background: var(--red); flex: none; }
+.footer-tick { margin-bottom: 0; font-size: .68rem; color: var(--grey-400); }
+
+/* Nav index */
+.footer-nav { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(22px,3vw,40px); }
+.footer-nav a { display: block; padding: 8px 0; font-size: .94rem; color: var(--grey-300); transition: color .2s var(--ease), transform .2s var(--ease); }
+.footer-nav a:hover { color: #fff; transform: translateX(5px); }
+
+/* The red registration / control plate — the signature */
+.footer-plate { position: relative; margin-top: clamp(-64px,-5vw,0px); padding: clamp(28px,3vw,38px) clamp(26px,2.4vw,34px) 30px; background: var(--red); color: #fff; clip-path: polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 0 100%); box-shadow: 0 26px 60px -32px rgba(0,0,0,.65); }
+.footer-plate__fid { position: absolute; top: 15px; right: 15px; width: 34px; height: 34px; }
+.footer-plate__reg { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.82); }
+.footer-plate h3 { margin: 12px 0 24px; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.28rem,1.7vw,1.6rem); line-height: 1.08; text-transform: uppercase; letter-spacing: .01em; color: #fff; max-width: 12ch; }
+.footer-plate__links a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; font-family: var(--font-display); font-size: .82rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: #fff; border-top: 1px solid rgba(255,255,255,.26); transition: padding-left .2s var(--ease); }
+.footer-plate__links a:last-child { border-bottom: 1px solid rgba(255,255,255,.26); }
+.footer-plate__links a:hover { padding-left: 6px; }
+.footer-plate__links svg { width: 16px; height: 16px; flex: none; opacity: .85; }
+.footer-plate__mail { margin-top: 22px; display: flex; flex-direction: column; gap: 9px; }
+.footer-plate__mail a { font-family: var(--font-mono); font-size: .8rem; letter-spacing: .02em; color: rgba(255,255,255,.9); transition: color .2s; }
+.footer-plate__mail a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Baseline registration stamp */
+.footer-bottom { position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.14); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .06em; color: var(--grey-400); }
+.footer-reg-string { color: var(--grey-500); }
 
 /* =========================================================================
    LIGHTBOX
@@ -804,9 +822,10 @@ strong { color: var(--grey-900); font-weight: 700; }
    ========================================================================= */
 @media (max-width: 1080px) {
   .prod-card, .prod-card--wide, .prod-card--feature { grid-column: span 6; grid-row: auto; }
-  .footer-top { grid-template-columns: 1fr 1fr; }
-  .site-footer { padding-top: 64px; }
-  .footer-contact { margin-top: 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px 48px; }
+  .footer-plate { grid-column: 1 / -1; margin-top: 20px; }
+  .footer-plate h3 { max-width: none; }
+  .site-footer { padding-top: 68px; }
 }
 @media (max-width: 860px) {
   .burger { display: flex; }
@@ -827,7 +846,9 @@ strong { color: var(--grey-900); font-weight: 700; }
   .hero__stats { gap: 28px; }
 }
 @media (max-width: 560px) {
-  .footer-top { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-plate { clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%); }
+  .footer-bottom { flex-direction: column; }
   .prod-card, .prod-card--wide, .prod-card--feature { grid-column: span 12; }
 }
 
