@@ -67,7 +67,7 @@ window.SCHMOLL_I18N = {
     "ct.name": "Name", "ct.email": "Email", "ct.company": "Company Name",
     "ct.note": "*Your email is safe with us, we don't spam.",
     "foot.tagline": "German-engineered precision, automation and high-performance solutions for PCB manufacturing across Asia Pacific.",
-    "foot.questions": "You have questions?", "foot.channels": "Channels", "foot.explore": "Explore", "foot.legal": "Legal",
+    "foot.questions": "You have questions?", "foot.reg": "Get in touch", "foot.channels": "Channels", "foot.explore": "Explore", "foot.legal": "Legal",
     "foot.terms": "Term of use", "foot.privacy": "Privacy Policy", "foot.cookie": "Cookie Policy",
     "foot.rights": "All rights reserved."
   },
@@ -126,7 +126,7 @@ window.SCHMOLL_I18N = {
     "ct.name": "姓名", "ct.email": "电子邮箱", "ct.company": "公司名称",
     "ct.note": "*您的邮箱信息安全，我们绝不发送垃圾邮件。",
     "foot.tagline": "源自德国工艺的精密、自动化与高性能 PCB 制造解决方案，服务整个亚太地区。",
-    "foot.questions": "有疑问吗？", "foot.channels": "渠道", "foot.explore": "探索", "foot.legal": "法律",
+    "foot.questions": "有疑问吗？", "foot.reg": "联系我们", "foot.channels": "渠道", "foot.explore": "探索", "foot.legal": "法律",
     "foot.terms": "使用条款", "foot.privacy": "隐私政策", "foot.cookie": "Cookie 政策",
     "foot.rights": "版权所有。"
   },
@@ -185,7 +185,7 @@ window.SCHMOLL_I18N = {
     "ct.name": "姓名", "ct.email": "電子郵箱", "ct.company": "公司名稱",
     "ct.note": "*您的郵箱資料安全，我們絕不發送垃圾郵件。",
     "foot.tagline": "源自德國工藝的精密、自動化與高效能 PCB 製造解決方案，服務整個亞太地區。",
-    "foot.questions": "有疑問嗎？", "foot.channels": "渠道", "foot.explore": "探索", "foot.legal": "法律",
+    "foot.questions": "有疑問嗎？", "foot.reg": "聯絡我們", "foot.channels": "渠道", "foot.explore": "探索", "foot.legal": "法律",
     "foot.terms": "使用條款", "foot.privacy": "私隱政策", "foot.cookie": "Cookie 政策",
     "foot.rights": "版權所有。"
   },
@@ -244,7 +244,7 @@ window.SCHMOLL_I18N = {
     "ct.name": "이름", "ct.email": "이메일", "ct.company": "회사명",
     "ct.note": "*귀하의 이메일은 안전하며, 스팸을 보내지 않습니다.",
     "foot.tagline": "아시아 태평양 전역의 PCB 제조를 위한 독일 엔지니어링 정밀성, 자동화 및 고성능 솔루션.",
-    "foot.questions": "궁금한 점이 있으신가요?", "foot.channels": "채널", "foot.explore": "둘러보기", "foot.legal": "법적 고지",
+    "foot.questions": "궁금한 점이 있으신가요?", "foot.reg": "문의하기", "foot.channels": "채널", "foot.explore": "둘러보기", "foot.legal": "법적 고지",
     "foot.terms": "이용약관", "foot.privacy": "개인정보 보호정책", "foot.cookie": "쿠키 정책",
     "foot.rights": "모든 권리 보유."
   },
@@ -303,7 +303,7 @@ window.SCHMOLL_I18N = {
     "ct.name": "Nama", "ct.email": "E-mel", "ct.company": "Nama Syarikat",
     "ct.note": "*E-mel anda selamat dengan kami, kami tidak menghantar spam.",
     "foot.tagline": "Kepresisan kejuruteraan Jerman, automasi dan penyelesaian berprestasi tinggi untuk pembuatan PCB di seluruh Asia Pasifik.",
-    "foot.questions": "Ada pertanyaan?", "foot.channels": "Saluran", "foot.explore": "Terokai", "foot.legal": "Undang-undang",
+    "foot.questions": "Ada pertanyaan?", "foot.reg": "Hubungi kami", "foot.channels": "Saluran", "foot.explore": "Terokai", "foot.legal": "Undang-undang",
     "foot.terms": "Terma penggunaan", "foot.privacy": "Dasar Privasi", "foot.cookie": "Dasar Kuki",
     "foot.rights": "Hak cipta terpelihara."
   },
@@ -362,7 +362,7 @@ window.SCHMOLL_I18N = {
     "ct.name": "ชื่อ", "ct.email": "อีเมล", "ct.company": "ชื่อบริษัท",
     "ct.note": "*อีเมลของคุณปลอดภัยกับเรา เราไม่ส่งสแปม",
     "foot.tagline": "ความแม่นยำแบบวิศวกรรมเยอรมัน ระบบอัตโนมัติ และโซลูชันประสิทธิภาพสูงสำหรับการผลิต PCB ทั่วภูมิภาคเอเชียแปซิฟิก",
-    "foot.questions": "มีคำถามหรือไม่?", "foot.channels": "ช่องทาง", "foot.explore": "สำรวจ", "foot.legal": "กฎหมาย",
+    "foot.questions": "มีคำถามหรือไม่?", "foot.reg": "ติดต่อเรา", "foot.channels": "ช่องทาง", "foot.explore": "สำรวจ", "foot.legal": "กฎหมาย",
     "foot.terms": "ข้อตกลงในการใช้งาน", "foot.privacy": "นโยบายความเป็นส่วนตัว", "foot.cookie": "นโยบายคุกกี้",
     "foot.rights": "สงวนลิขสิทธิ์"
   },
@@ -421,7 +421,7 @@ window.SCHMOLL_I18N = {
     "ct.name": "Tên", "ct.email": "Email", "ct.company": "Tên công ty",
     "ct.note": "*Email của bạn được bảo mật, chúng tôi không gửi thư rác.",
     "foot.tagline": "Độ chính xác kỹ thuật Đức, tự động hóa và các giải pháp hiệu suất cao cho sản xuất PCB trên khắp Châu Á – Thái Bình Dương.",
-    "foot.questions": "Bạn có câu hỏi?", "foot.channels": "Kênh", "foot.explore": "Khám phá", "foot.legal": "Pháp lý",
+    "foot.questions": "Bạn có câu hỏi?", "foot.reg": "Liên hệ", "foot.channels": "Kênh", "foot.explore": "Khám phá", "foot.legal": "Pháp lý",
     "foot.terms": "Điều khoản sử dụng", "foot.privacy": "Chính sách bảo mật", "foot.cookie": "Chính sách Cookie",
     "foot.rights": "Bảo lưu mọi quyền."
   }
