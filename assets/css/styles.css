@@ -728,39 +728,108 @@ strong { color: var(--grey-900); font-weight: 700; }
 .cta-band p { color: var(--grey-400); margin: 14px auto 30px; max-width: 46ch; }
 
 /* =========================================================================
-   FOOTER
+   FOOTER — a living multilayer PCB: quiet nets around a raised solder-mask
+   panel, drilled vias, and one smoothly travelling signal per trace.
    ========================================================================= */
-/* =========================================================================
-   FOOTER — dark-grey ground with an animated PCB-trace background: current
-   flows along the copper (dash animation) with travelling signal pulses.
-   ========================================================================= */
-.site-footer { position: relative; overflow: hidden; background: #4d4d4d; color: var(--grey-300); padding-block: clamp(64px,8vw,104px) 30px; }
-.site-footer .container { position: relative; z-index: 1; }
+.site-footer {
+  position: relative; isolation: isolate; overflow: hidden;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(193,24,25,.15), transparent 38%),
+    linear-gradient(145deg, #25282b 0%, #191b1e 72%);
+  color: var(--grey-300); padding-block: clamp(62px,7vw,92px) 28px;
+}
+.site-footer::before {
+  content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none; opacity: .23;
+  background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent 82%);
+  mask-image: linear-gradient(to bottom, #000, transparent 82%);
+}
+.site-footer::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(20,22,24,.78), transparent 24%, transparent 76%, rgba(20,22,24,.78));
+}
+.site-footer .container { position: relative; z-index: 2; }
 
-/* Animated PCB traces */
+/* Perimeter copper and plated-through holes */
 .footer-pcb { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-.footer-pcb__base path { stroke: rgba(255,255,255,.09); stroke-width: 1.5; }
-.footer-pcb__flow path { stroke: var(--red); stroke-width: 1.5; stroke-opacity: .9; stroke-dasharray: 5 23; animation: pcbFlow 2.4s linear infinite; }
-.footer-pcb__via circle { fill: #3d3d3d; stroke: rgba(255,255,255,.16); stroke-width: 1.5; }
-.footer-pcb__spark path { stroke: #ff6a60; stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 1 168; animation: pcbSpark 3.4s linear infinite; filter: drop-shadow(0 0 3px rgba(255,80,70,.8)); }
-.footer-pcb__spark path:nth-child(2n) { animation-duration: 4.6s; }
-.footer-pcb__spark path:nth-child(3n) { animation-duration: 5.4s; }
-@keyframes pcbFlow { to { stroke-dashoffset: -112; } }
-@keyframes pcbSpark { to { stroke-dashoffset: -169; } }
-@media (prefers-reduced-motion: reduce) { .footer-pcb__flow path, .footer-pcb__spark path { animation: none; } .footer-pcb__spark { display: none; } }
+.footer-pcb__base path { stroke: rgba(255,255,255,.13); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
+.footer-pcb__signal path {
+  stroke: #e13a3c; stroke-width: 2.5; stroke-linecap: round; vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1 99; animation: footerSignal 7.2s linear infinite;
+  filter: drop-shadow(0 0 4px rgba(225,58,60,.72));
+}
+.footer-pcb__signal path:nth-child(2n) { animation-duration: 8.8s; animation-delay: -3.1s; }
+.footer-pcb__signal path:nth-child(3n) { animation-duration: 10.4s; animation-delay: -6.2s; }
+.footer-pcb__via-ring { fill: #24272a; stroke: rgba(219,220,222,.3); stroke-width: 2; }
+.footer-pcb__via-hole { fill: #101214; stroke: var(--red); stroke-width: 1.2; }
+.footer-pcb__pads rect { fill: rgba(193,24,25,.5); stroke: rgba(255,255,255,.2); stroke-width: 1; }
+@keyframes footerSignal { to { stroke-dashoffset: -100; } }
 
-.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.1fr; gap: clamp(32px,5vw,64px); padding-bottom: 38px; border-bottom: 1px solid rgba(255,255,255,.14); }
+/* Raised board plane */
+.footer-shell {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, rgba(49,52,55,.88), rgba(31,33,36,.91));
+  border: 1px solid rgba(255,255,255,.13); border-radius: 4px;
+  box-shadow: 0 28px 70px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.035);
+  backdrop-filter: blur(8px);
+}
+.footer-shell::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 72px; height: 3px;
+  background: var(--red); box-shadow: 72px 0 rgba(193,24,25,.32);
+}
+
+/* Process bus: a subtle nod to drill → route → image → automate */
+.footer-process {
+  min-height: 66px; display: grid; grid-template-columns: auto minmax(320px,1fr) auto;
+  align-items: center; gap: clamp(20px,3vw,42px); padding: 0 clamp(24px,3.4vw,44px);
+  border-bottom: 1px solid rgba(255,255,255,.11);
+  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+.footer-process__id { color: rgba(255,255,255,.8); white-space: nowrap; }
+.footer-process__since { white-space: nowrap; }
+.footer-process__bus { position: relative; display: grid; grid-template-columns: repeat(4,1fr); }
+.footer-process__bus::before { content:""; position:absolute; left:5%; right:5%; top:6px; height:1px; background:rgba(255,255,255,.13); }
+.footer-process__bus span { position: relative; display: grid; justify-items: center; gap: 5px; white-space: nowrap; }
+.footer-process__bus i {
+  position: relative; z-index: 1; width: 13px; height: 13px; border: 1px solid rgba(255,255,255,.35);
+  border-radius: 50%; background: #282b2e; box-shadow: inset 0 0 0 3px #282b2e;
+}
+.footer-process__bus span:first-child i { background: var(--red); }
+.footer-process__bus b { color: var(--red); font-weight: 500; margin-right: 5px; }
+
+.footer-grid {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.15fr; gap: clamp(32px,5vw,64px);
+  padding: clamp(38px,4.5vw,58px) clamp(24px,3.4vw,44px) clamp(34px,4vw,48px);
+}
 .footer-brand__word { height: 46px; width: auto; }
-.footer-brand__tag { margin-top: 22px; max-width: 32ch; font-size: .92rem; line-height: 1.7; color: var(--grey-300); }
-.footer-wechat { margin-top: 28px; }
-.footer-wechat img { display: block; margin-top: 12px; background: #fff; padding: 6px; width: 92px; height: 92px; }
-.footer-tick { display: block; color: #fff; font-family: var(--font-display); font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
-.site-footer h4 { color: #fff; font-family: var(--font-display); font-size: .78rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 20px; }
-.footer-col a { display: block; padding: 7px 0; font-size: .92rem; color: var(--grey-300); transition: color .2s, transform .2s; }
-.footer-col a:hover { color: #fff; transform: translateX(4px); }
-.footer-col .footer-mail { font-family: var(--font-mono); font-size: .82rem; letter-spacing: .01em; }
+.footer-brand__tag { margin-top: 22px; max-width: 32ch; font-size: .9rem; line-height: 1.7; color: var(--grey-300); }
+.footer-wechat { margin-top: 26px; display: inline-grid; gap: 11px; }
+.footer-qr { position: relative; display: block; width: 104px; height: 104px; padding: 6px; background: #fff; }
+.footer-qr::before, .footer-qr::after { content:""; position:absolute; width:14px; height:14px; border-color:var(--red); border-style:solid; }
+.footer-qr::before { left:-4px; top:-4px; border-width:2px 0 0 2px; }
+.footer-qr::after { right:-4px; bottom:-4px; border-width:0 2px 2px 0; }
+.footer-wechat img { display: block; width: 92px; height: 92px; }
+.footer-tick { display: block; color: #fff; font-family: var(--font-display); font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.site-footer h4 { color: #fff; font-family: var(--font-display); font-size: .76rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 20px; }
+.footer-col a {
+  position: relative; display: block; padding: 7px 0 7px 0; font-size: .9rem; color: var(--grey-300);
+  transition: color .25s var(--ease), padding-left .25s var(--ease);
+}
+.footer-col a::before {
+  content:""; position:absolute; left:0; top:50%; width:5px; height:5px; border:1px solid var(--red); border-radius:50%;
+  opacity:0; transform:translate(-2px,-50%) scale(.35); transition:opacity .25s, transform .25s var(--ease);
+}
+.footer-col a:hover { color: #fff; padding-left: 13px; }
+.footer-col a:hover::before { opacity:1; transform:translate(0,-50%) scale(1); }
+.footer-col .footer-mail { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .01em; overflow-wrap: anywhere; }
 .footer-col .footer-mail:first-of-type { margin-top: 12px; }
-.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; padding-top: 22px; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .06em; color: var(--grey-400); }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; padding-top: 20px; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .06em; color: var(--grey-400); }
+
+@media (prefers-reduced-motion: reduce) { .footer-pcb__signal path { animation: none; stroke-dasharray: 1 99; } }
 
 /* =========================================================================
    LIGHTBOX
@@ -810,6 +879,8 @@ strong { color: var(--grey-900); font-weight: 700; }
 @media (max-width: 1080px) {
   .prod-card, .prod-card--wide, .prod-card--feature { grid-column: span 6; grid-row: auto; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px 48px; }
+  .footer-process { grid-template-columns: auto minmax(300px,1fr); }
+  .footer-process__since { display: none; }
 }
 @media (max-width: 860px) {
   .burger { display: flex; }
@@ -828,11 +899,18 @@ strong { color: var(--grey-900); font-weight: 700; }
   .svc-list, .lead-card { grid-template-columns: 1fr; }
   .tl-item { grid-template-columns: 80px 1fr; gap: 14px; }
   .hero__stats { gap: 28px; }
+  .footer-process { display: block; min-height: 0; padding-block: 18px; }
+  .footer-process__id { display: none; }
 }
 @media (max-width: 560px) {
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; }
   .prod-card, .prod-card--wide, .prod-card--feature { grid-column: span 12; }
+  .site-footer { padding-top: 44px; }
+  .footer-process { padding-inline: 18px; }
+  .footer-process__bus { font-size: .55rem; letter-spacing: .08em; }
+  .footer-process__bus b { display: none; }
+  .footer-grid { padding-inline: 22px; }
 }
 
 /* =========================================================================
