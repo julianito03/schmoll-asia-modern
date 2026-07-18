@@ -70,7 +70,7 @@
     reveal.forEach((el) => el.classList.add("is-visible"));
   }
 
-  /* ---------- History timeline: depth-gauge fill, node activation, lazy fade ---------- */
+  /* ---------- History slider: node lighting + lazy image fade ---------- */
   const htl = document.querySelector(".htl");
   if (htl) {
     // Fade images in as they lazy-load
@@ -78,25 +78,18 @@
       if (img.complete && img.naturalWidth) img.classList.add("is-loaded");
       else img.addEventListener("load", () => img.classList.add("is-loaded"), { once: true });
     });
-    // Scroll-driven red gauge + node lighting
-    const rail = htl.querySelector(".htl__rail");
-    const nodes = Array.from(htl.querySelectorAll(".htl__node"));
+    // Light each milestone node as it crosses the activation line while scrubbing
+    const items = Array.from(htl.querySelectorAll(".htl__item"));
     let ticking = false;
     const update = () => {
       ticking = false;
-      const r = htl.getBoundingClientRect();
-      const anchor = window.innerHeight * 0.55;
-      const p = Math.max(0, Math.min(1, (anchor - r.top) / r.height));
-      htl.style.setProperty("--htl-progress", (p * 100).toFixed(2) + "%");
-      const railRect = rail.getBoundingClientRect();
-      const fillBottom = railRect.top + railRect.height * p;
-      nodes.forEach((n) => {
-        const nr = n.getBoundingClientRect();
-        n.classList.toggle("is-active", nr.top + nr.height / 2 <= fillBottom + 2);
-      });
+      const box = htl.getBoundingClientRect();
+      const line = box.left + box.width * 0.34;
+      items.forEach((it) => { it.classList.toggle("is-active", it.getBoundingClientRect().left <= line); });
     };
     const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
     update();
+    htl.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
   }
