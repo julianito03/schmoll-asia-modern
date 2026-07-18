@@ -106,20 +106,6 @@ const CONTACT_CTA = `<section class="section section--alt" id="contact">
   </div>
 </section>`;
 
-/* Reusable "Inside Schmoll" photo gallery (lightbox) */
-const GALLERY = `<section class="section">
-  <div class="container">
-    <div class="sec-head" data-reveal><span class="eyebrow">Inside Schmoll</span><h2>Precision, in practice</h2><p class="lead">German-engineered machines at work across our Asia Pacific facilities.</p></div>
-    <div class="gallery" data-reveal>
-      <a class="span2" data-lightbox="assets/img/facility-3.jpg" href="assets/img/facility-3.jpg"><img src="assets/img/facility-3.jpg" alt="Schmoll machine in operation" loading="lazy"></a>
-      <a data-lightbox="assets/img/facility-1.jpg" href="assets/img/facility-1.jpg"><img src="assets/img/facility-1.jpg" alt="Schmoll precision machine" loading="lazy"></a>
-      <a data-lightbox="assets/img/facility-2.jpg" href="assets/img/facility-2.jpg"><img src="assets/img/facility-2.jpg" alt="Schmoll facility" loading="lazy"></a>
-      <a data-lightbox="assets/img/apps/xray.png" href="assets/img/apps/xray.png"><img src="assets/img/apps/xray.png" alt="X-ray application detail" loading="lazy" style="object-position:center top"></a>
-      <a data-lightbox="assets/img/team-hero.jpg" href="assets/img/team-hero.jpg"><img src="assets/img/team-hero.jpg" alt="Schmoll Asia Pacific team" loading="lazy"></a>
-    </div>
-  </div>
-</section>`;
-
 function page({ title, desc, main, lang = "en", head = "", scripts = "" }) {
   return `<!DOCTYPE html>
 <html lang="${lang}">
@@ -147,4 +133,4 @@ ${scripts}</body>
 </html>`;
 }
 
-module.exports = { HEADER, FOOTER, CONTACT_CTA, GALLERY, page };
+module.exports = { HEADER, FOOTER, CONTACT_CTA, page };

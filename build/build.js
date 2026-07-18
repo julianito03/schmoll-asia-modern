@@ -2,7 +2,7 @@
    Generates interior pages into ../site/ using shared chrome from partials.js. */
 const fs = require("fs");
 const path = require("path");
-const { CONTACT_CTA, GALLERY, page } = require("./partials.js");
+const { CONTACT_CTA, page } = require("./partials.js");
 const OUT = path.join(__dirname, "..", "site");
 
 /* ---------- helpers ---------- */
@@ -56,17 +56,6 @@ const about = banner('About', 'German Quality &amp;<br>Innovation', '<span>About
         ["2015","Laser drilling technology."],
         ["2023","X-Ray inspection systems."]
       ].map(([y,t])=>`<div class="tl-item"><div class="tl-year">${y}</div><div class="tl-text">${t}</div></div>`).join("")}
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="container">
-    <div class="sec-head" data-reveal><span class="eyebrow">Inside Schmoll</span><h2>Precision, in practice</h2></div>
-    <div class="gallery" data-reveal>
-      <a class="span2" data-lightbox="assets/img/facility-3.jpg" href="assets/img/facility-3.jpg"><img src="assets/img/facility-3.jpg" alt="Schmoll machine in operation" loading="lazy"></a>
-      <a data-lightbox="assets/img/facility-1.jpg" href="assets/img/facility-1.jpg"><img src="assets/img/facility-1.jpg" alt="" loading="lazy"></a>
-      <a data-lightbox="assets/img/machines/eagle.webp?v=7" href="assets/img/machines/eagle.webp?v=7" style="background:radial-gradient(120% 100% at 50% 35%,#2c2c30,#141416)"><img src="assets/img/machines/eagle.webp?v=7" alt="Eagle machine" loading="lazy" style="object-fit:contain;padding:10px"></a>
-      <a data-lightbox="assets/img/team-hero.jpg" href="assets/img/team-hero.jpg"><img src="assets/img/team-hero.jpg" alt="Schmoll team" loading="lazy"></a>
     </div>
   </div>
 </section>` + CONTACT_CTA;
@@ -287,7 +276,7 @@ const servicePage = banner('Service', 'Got a Problem? Schmoll is Here.', '<span>
       <div class="svc-item"><span class="svc-item__no">04</span><h3 data-i18n="svc.rnd">R&amp;D Center</h3><p>Innovative &amp; cutting-edge research and development to advance your process.</p></div>
     </div>
   </div>
-</section>` + GALLERY + CONTACT_CTA;
+</section>` + CONTACT_CTA;
 
 /* ======================================================= CAREERS */
 const careersPage = banner('Careers', 'Start Your Career With Schmoll', '<span>Careers</span>', 'assets/img/team-hero.jpg') + `
@@ -308,7 +297,7 @@ const careersPage = banner('Careers', 'Start Your Career With Schmoll', '<span>C
       </div>
     </div>
   </div>
-</section>` + GALLERY + CONTACT_CTA;
+</section>` + CONTACT_CTA;
 
 /* ======================================================= CONTACT */
 const offices = [
