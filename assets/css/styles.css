@@ -895,6 +895,24 @@ strong { color: var(--grey-900); font-weight: 700; }
   /* History slider: narrower cards, swipe horizontally */
   .htl__item { flex-basis: 76vw; }
 }
+/* =========================================================================
+   SITE-WIDE MOBILE ADAPTATIONS
+   ========================================================================= */
+@media (max-width: 760px) {
+  /* Every inline two-column .grid block (contact, mission, alternating
+     sections across all pages) collapses to a single column. !important is
+     required to beat the inline grid-template-columns. */
+  .grid { grid-template-columns: 1fr !important; }
+  .grid > * { min-width: 0; }
+  /* 3D globe: centered, no side bleed, legend lifted above it */
+  #globeViz { margin-left: auto !important; margin-right: auto !important; height: clamp(300px, 52vh, 430px); min-height: 300px; }
+  .globe-legend { position: static; transform: none; flex-direction: row; flex-wrap: wrap; max-width: none; gap: 14px 24px; margin-bottom: 16px; }
+  .globe-wrap { text-align: center; }
+}
+@media (max-width: 480px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 560px) {
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; }
