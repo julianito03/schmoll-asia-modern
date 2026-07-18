@@ -594,22 +594,45 @@ strong { color: var(--grey-900); font-weight: 700; }
 .tl-year { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--grey-900); }
 .tl-text { color: var(--text-soft); }
 
-/* History timeline with pictures — alternating cards on a central spine */
-.htl { position: relative; max-width: 1020px; margin: clamp(40px,6vw,72px) auto 0; }
-.htl::before { content: ""; position: absolute; top: 4px; bottom: 4px; left: 50%; width: 2px; transform: translateX(-50%); background: linear-gradient(180deg, transparent, var(--red) 5%, var(--red) 95%, transparent); }
-.htl__item { position: relative; width: 50%; box-sizing: border-box; padding: 0 46px 44px 0; }
-.htl__item:nth-child(even) { margin-left: 50%; padding: 44px 0 44px 46px; }
-.htl__node { position: absolute; top: 10px; width: 15px; height: 15px; border-radius: 50%; background: #fff; border: 3px solid var(--red); box-shadow: 0 0 0 5px var(--bg-alt); z-index: 1; }
-.htl__item:nth-child(odd) .htl__node { right: -8px; }
-.htl__item:nth-child(even) .htl__node { top: 54px; left: -8px; }
-.htl__card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 18px 40px -30px rgba(0,0,0,.35); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
-.htl__card:hover { transform: translateY(-4px); box-shadow: 0 26px 50px -28px rgba(0,0,0,.45); }
-.htl__media { aspect-ratio: 16 / 10; background: var(--grey-100); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--line); }
-.htl__media img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
-.htl__body { padding: 16px 20px 22px; text-align: left; }
-.htl__year { font-family: var(--font-mono); color: var(--red); font-size: .82rem; font-weight: 500; letter-spacing: .12em; }
-.htl__title { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: .02em; font-size: 1.06rem; margin: 7px 0 9px; color: var(--grey-900); }
-.htl__text { font-size: .9rem; line-height: 1.62; color: var(--text-soft); }
+/* History — "The Drilling Log": dark grey machine bed, a scroll-driven red
+   depth-gauge axis with drill-via nodes, images mounted as archive prints. */
+.htl-sec { position: relative; overflow: hidden; background: #4d4d4d; color: var(--grey-300); }
+.htl-grid { position: absolute; inset: 0; pointer-events: none; opacity: .6;
+  background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 52px 52px; -webkit-mask-image: radial-gradient(120% 80% at 50% 30%, #000, transparent 78%); mask-image: radial-gradient(120% 80% at 50% 30%, #000, transparent 78%); }
+.htl-sec .container { position: relative; z-index: 1; }
+.htl-sec .sec-head h2 { color: #fff; }
+.htl-sec .sec-head .lead { color: var(--grey-300); }
+
+.htl { position: relative; max-width: 1040px; margin: clamp(44px,6vw,76px) auto 0; }
+/* Depth-gauge axis: grey rail + red fill that descends on scroll */
+.htl__rail { position: absolute; top: 6px; bottom: 6px; left: 50%; width: 2px; transform: translateX(-50%); background: rgba(255,255,255,.16); z-index: 0; }
+.htl__fill { position: absolute; top: 0; left: 0; width: 100%; height: var(--htl-progress, 0%); background: linear-gradient(180deg, var(--red), #ff5a50); box-shadow: 0 0 14px 1px rgba(255,80,70,.55); }
+
+.htl__item { position: relative; width: 50%; box-sizing: border-box; padding: 0 52px 52px 0; }
+.htl__item:nth-child(even) { margin-left: 50%; padding: 40px 0 52px 52px; }
+
+/* Drill-via node on the axis; lights red once the gauge passes it */
+.htl__node { position: absolute; top: 8px; width: 20px; height: 20px; border-radius: 50%; background: #4d4d4d; border: 2px solid rgba(255,255,255,.35); z-index: 2; transition: border-color .3s var(--ease), box-shadow .4s var(--ease); }
+.htl__node::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: rgba(255,255,255,.4); transition: background .3s var(--ease); }
+.htl__item:nth-child(odd) .htl__node { right: -10px; }
+.htl__item:nth-child(even) .htl__node { top: 48px; left: -10px; }
+.htl__node.is-active { border-color: var(--red); box-shadow: 0 0 0 4px rgba(193,24,25,.22), 0 0 16px rgba(255,80,70,.6); }
+.htl__node.is-active::after { background: var(--red); }
+
+/* Card: image as a white archive print, caption on the dark board */
+.htl__card { position: relative; }
+.htl__media { background: #fff; padding: 10px; box-shadow: 0 24px 46px -24px rgba(0,0,0,.7); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+.htl__card:hover .htl__media { transform: translateY(-4px); box-shadow: 0 30px 56px -22px rgba(0,0,0,.8); }
+.htl__media img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; background: #f4f4f4; }
+.htl__img { opacity: 0; transform: scale(1.04); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.htl__img.is-loaded { opacity: 1; transform: none; }
+.htl__body { padding-top: 18px; }
+.htl__meta { display: flex; align-items: baseline; gap: 14px; }
+.htl__idx { font-family: var(--font-mono); color: var(--grey-500); font-size: .7rem; letter-spacing: .16em; }
+.htl__year { font-family: var(--font-mono); color: var(--red); font-size: 1.02rem; font-weight: 500; letter-spacing: .06em; }
+.htl__title { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: .02em; font-size: 1.1rem; margin: 9px 0 9px; color: #fff; }
+.htl__text { font-size: .9rem; line-height: 1.64; color: var(--grey-300); max-width: 42ch; }
 
 /* =========================================================================
    TEAM
@@ -868,9 +891,9 @@ strong { color: var(--grey-900); font-weight: 700; }
   .tl-item { grid-template-columns: 80px 1fr; gap: 14px; }
   .hero__stats { gap: 28px; }
   /* History timeline stacks to a single left-aligned column */
-  .htl::before { left: 8px; }
-  .htl__item, .htl__item:nth-child(even) { width: 100%; margin-left: 0; padding: 0 0 28px 34px; }
-  .htl__item:nth-child(odd) .htl__node, .htl__item:nth-child(even) .htl__node { left: 1px; right: auto; top: 10px; }
+  .htl__rail { left: 9px; }
+  .htl__item, .htl__item:nth-child(even) { width: 100%; margin-left: 0; padding: 0 0 34px 40px; }
+  .htl__item:nth-child(odd) .htl__node, .htl__item:nth-child(even) .htl__node { left: 0; right: auto; top: 8px; }
 }
 @media (max-width: 560px) {
   .footer-grid { grid-template-columns: 1fr; }
