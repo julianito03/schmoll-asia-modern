@@ -741,6 +741,10 @@ strong { color: var(--grey-900); font-weight: 700; }
 .footer-watermark { position: absolute; left: -3%; bottom: -18%; width: min(440px, 40vw); opacity: .05; pointer-events: none; filter: grayscale(1) brightness(4); }
 
 .footer-grid { position: relative; display: grid; grid-template-columns: 1.25fr 1fr .95fr; gap: clamp(32px,5vw,72px); align-items: start; padding-bottom: 40px; }
+/* Registration brackets frame the footer like an engineering drawing */
+.footer-grid::before, .footer-grid::after { content: ""; position: absolute; top: -18px; width: 16px; height: 16px; border: 1px solid rgba(255,255,255,.4); pointer-events: none; }
+.footer-grid::before { left: 0; border-width: 1px 0 0 1px; }
+.footer-grid::after { right: 0; border-width: 1px 1px 0 0; }
 
 /* Brand */
 .footer-brand__word { height: 46px; width: auto; }
@@ -758,9 +762,13 @@ strong { color: var(--grey-900); font-weight: 700; }
 .footer-nav a { display: block; padding: 8px 0; font-size: .94rem; color: var(--grey-300); transition: color .2s var(--ease), transform .2s var(--ease); }
 .footer-nav a:hover { color: #fff; transform: translateX(5px); }
 
-/* The red registration / control plate — the signature */
-.footer-plate { position: relative; margin-top: clamp(-64px,-5vw,0px); padding: clamp(28px,3vw,38px) clamp(26px,2.4vw,34px) 30px; background: var(--red); color: #fff; clip-path: polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 0 100%); box-shadow: 0 26px 60px -32px rgba(0,0,0,.65); }
-.footer-plate__fid { position: absolute; top: 15px; right: 15px; width: 34px; height: 34px; }
+/* The red contact module — a PCB board with a castellated (plated half-hole)
+   edge and a silkscreen outline. The signature; original to Schmoll's craft. */
+.footer-plate { --notch: 9px; --pitch: 30px; position: relative; margin-top: clamp(-60px,-5vw,0px); padding: clamp(30px,3vw,40px) clamp(26px,2.4vw,34px) 34px clamp(34px,3vw,46px); background: var(--red); color: #fff;
+  -webkit-mask: radial-gradient(var(--notch) at left, #0000 97%, #000) 0 0 / 100% var(--pitch) repeat-y;
+          mask: radial-gradient(var(--notch) at left, #0000 97%, #000) 0 0 / 100% var(--pitch) repeat-y; }
+.footer-plate::after { content: ""; position: absolute; inset: 9px 9px 9px 15px; border: 1px solid rgba(255,255,255,.28); pointer-events: none; }
+.footer-plate__fid { position: absolute; top: 15px; right: 15px; width: 34px; height: 34px; z-index: 1; }
 .footer-plate__reg { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.82); }
 .footer-plate h3 { margin: 12px 0 24px; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.28rem,1.7vw,1.6rem); line-height: 1.08; text-transform: uppercase; letter-spacing: .01em; color: #fff; max-width: 12ch; }
 .footer-plate__links a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; font-family: var(--font-display); font-size: .82rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: #fff; border-top: 1px solid rgba(255,255,255,.26); transition: padding-left .2s var(--ease); }
@@ -805,8 +813,8 @@ strong { color: var(--grey-900); font-weight: 700; }
 /* Team page: slightly taller block */
 .page-banner--team { padding-block: clamp(110px, 15vw, 195px) clamp(75px, 9vw, 120px); }
 /* About: title rides high over the clean upper area; group sits lower in a taller block */
-.page-banner--about { padding-block: clamp(70px, 9vw, 120px) clamp(230px, 30vw, 390px); }
-.page-banner--about .page-banner__media img { object-position: center 18%; }
+.page-banner--about { padding-block: clamp(56px, 7vw, 96px) clamp(150px, 20vw, 240px); }
+.page-banner--about .page-banner__media img { object-position: center 50%; }
 @media (min-width: 760px) { .page-banner--about h1 { max-width: 88%; } }
 .breadcrumb { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--grey-500); margin-bottom: 22px; display: flex; gap: 10px; }
 .breadcrumb a:hover { color: var(--red); }
@@ -847,7 +855,6 @@ strong { color: var(--grey-900); font-weight: 700; }
 }
 @media (max-width: 560px) {
   .footer-grid { grid-template-columns: 1fr; }
-  .footer-plate { clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%); }
   .footer-bottom { flex-direction: column; }
   .prod-card, .prod-card--wide, .prod-card--feature { grid-column: span 12; }
 }
