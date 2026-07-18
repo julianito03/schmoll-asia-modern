@@ -49,73 +49,51 @@ const HEADER = `<header class="site-header">
   </div>
 </header>`;
 
-/* Living multilayer-board footer. The traces stay at the perimeter so the
-   navigation remains calm and legible; a single signal travels each net. */
-const FOOT_TRACES = [
-  'M-40 76 H180 l28 28 H470',
-  'M970 76 h238 l28 28 h244',
-  'M-40 478 H250 l34 -34 H520',
-  'M892 478 h210 l34 -34 h344',
-  'M72 196 v92 l28 28 v112',
-  'M1368 164 v94 l-30 30 v118',
-  'M1040 152 h168 l30 30 h130',
-  'M72 360 h154 l28 -28 h150'
-];
-const FOOT_VIAS = [[208,104],[1236,104],[284,444],[1136,444],[100,316],[1338,288],[1238,182],[254,332]];
-const FOOT_PCB_BG = '<svg class="footer-pcb" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">'
-  + '<g class="footer-pcb__base">' + FOOT_TRACES.map((d) => `<path d="${d}" pathLength="100"/>`).join('') + '</g>'
-  + '<g class="footer-pcb__signal">' + FOOT_TRACES.map((d) => `<path d="${d}" pathLength="100"/>`).join('') + '</g>'
-  + '<g class="footer-pcb__vias">' + FOOT_VIAS.map(([x, y]) => `<g transform="translate(${x} ${y})"><circle class="footer-pcb__via-ring" r="9"/><circle class="footer-pcb__via-hole" r="3.2"/></g>`).join('') + '</g>'
-  + '<g class="footer-pcb__pads"><rect x="454" y="69" width="22" height="14" rx="2"/><rect x="964" y="69" width="22" height="14" rx="2"/><rect x="512" y="471" width="22" height="14" rx="2"/><rect x="884" y="471" width="22" height="14" rx="2"/></g>'
+/* A single quiet PCB net defines the footer edge without competing with the
+   content. Its plated vias are the only industry-specific decoration. */
+const FOOT_TRACE = 'M-24 44 H252 l22 22 H500 l22 -22 H918 l22 22 H1166 l22 -22 H1464';
+const FOOT_VIAS = [[274,66],[522,44],[940,66],[1188,44]];
+const FOOT_PCB_BG = '<svg class="footer-pcb" viewBox="0 0 1440 96" preserveAspectRatio="none" fill="none" aria-hidden="true">'
+  + `<path class="footer-pcb__trace" d="${FOOT_TRACE}" pathLength="100"/>`
+  + `<path class="footer-pcb__signal" d="${FOOT_TRACE}" pathLength="100"/>`
+  + '<g class="footer-pcb__vias">' + FOOT_VIAS.map(([x, y]) => `<g transform="translate(${x} ${y})"><circle class="footer-pcb__via-ring" r="7"/><circle class="footer-pcb__via-hole" r="2.5"/></g>`).join('') + '</g>'
   + '</svg>';
 
 const FOOTER = `<footer class="site-footer">
   ${FOOT_PCB_BG}
   <div class="container">
-    <div class="footer-shell">
-      <div class="footer-process" aria-hidden="true">
-        <span class="footer-process__id">PCB · ASIA PACIFIC</span>
-        <div class="footer-process__bus">
-          <span><i></i><b>01</b> Drill</span>
-          <span><i></i><b>02</b> Route</span>
-          <span><i></i><b>03</b> Image</span>
-          <span><i></i><b>04</b> Automate</span>
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <img class="footer-brand__word" src="assets/img/logo-sap-white.png?v=10" alt="Schmoll Asia Pacific">
+        <p class="footer-brand__tag" data-i18n="foot.tagline">German-engineered precision, automation and high-performance solutions for PCB manufacturing across Asia Pacific.</p>
+        <div class="footer-wechat">
+          <span class="footer-tick" data-i18n="foot.wechat">Our WeChat</span>
+          <img src="assets/img/wechat-qr.png" alt="Schmoll Asia Pacific WeChat QR code" width="92" height="92" loading="lazy">
         </div>
-        <span class="footer-process__since">SINCE 1996</span>
       </div>
-      <div class="footer-grid">
 
-        <div class="footer-brand">
-          <img class="footer-brand__word" src="assets/img/logo-sap-white.png?v=10" alt="Schmoll Asia Pacific">
-          <p class="footer-brand__tag" data-i18n="foot.tagline">German-engineered precision, automation and high-performance solutions for PCB manufacturing across Asia Pacific.</p>
-          <div class="footer-wechat">
-            <span class="footer-tick" data-i18n="foot.wechat">Our WeChat</span>
-            <span class="footer-qr"><img src="assets/img/wechat-qr.png" alt="Schmoll Asia Pacific WeChat QR code" width="92" height="92" loading="lazy"></span>
-          </div>
-        </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot.channels">Channels</h4>
+        <a href="about.html" data-i18n="nav.about">About</a>
+        <a href="products.html" data-i18n="nav.products">Products</a>
+        <a href="team.html" data-i18n="nav.team">Team</a>
+        <a href="news.html" data-i18n="nav.media">Media</a>
+      </div>
 
-        <div class="footer-col">
-          <h4 data-i18n="foot.channels">Channels</h4>
-          <a href="about.html" data-i18n="nav.about">About</a>
-          <a href="products.html" data-i18n="nav.products">Products</a>
-          <a href="team.html" data-i18n="nav.team">Team</a>
-          <a href="news.html" data-i18n="nav.media">Media</a>
-        </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot.legal">Legal</h4>
+        <a href="#" data-i18n="foot.terms">Term of use</a>
+        <a href="#" data-i18n="foot.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="foot.cookie">Cookie Policy</a>
+      </div>
 
-        <div class="footer-col">
-          <h4 data-i18n="foot.legal">Legal</h4>
-          <a href="#" data-i18n="foot.terms">Term of use</a>
-          <a href="#" data-i18n="foot.privacy">Privacy Policy</a>
-          <a href="#" data-i18n="foot.cookie">Cookie Policy</a>
-        </div>
-
-        <div class="footer-col">
-          <h4 data-i18n="foot.questions">You have questions?</h4>
-          <a href="contact.html" data-i18n="nav.contact">Contact</a>
-          <a href="careers.html" data-i18n="nav.careers">Careers</a>
-          <a class="footer-mail" href="mailto:sales@schmoll-asia.com">sales@schmoll-asia.com</a>
-          <a class="footer-mail" href="mailto:career@schmoll-asia.com">career@schmoll-asia.com</a>
-        </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot.questions">You have questions?</h4>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
+        <a href="careers.html" data-i18n="nav.careers">Careers</a>
+        <a class="footer-mail" href="mailto:sales@schmoll-asia.com">sales@schmoll-asia.com</a>
+        <a class="footer-mail" href="mailto:career@schmoll-asia.com">career@schmoll-asia.com</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -157,7 +135,7 @@ function page({ title, desc, main, lang = "en", head = "", scripts = "" }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=90">
+<link rel="stylesheet" href="assets/css/styles.css?v=91">
 ${head}</head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
