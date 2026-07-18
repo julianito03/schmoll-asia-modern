@@ -45,7 +45,6 @@ const about = banner('About', 'German Quality &amp;<br>Innovation', '<span>About
   <div class="container">
     <div class="sec-head" data-reveal><span class="eyebrow">1943 · 2023</span><h2>80 Years of Innovation</h2><p class="lead">Eight decades of milestones that shaped PCB drilling, from the first European drilling machine to X-Ray inspection.</p></div>
     <div class="htl">
-      <div class="htl__spine" aria-hidden="true"></div>
       ${[
         ["1943","Schmoll Foundation","Foundation of Schmoll Maschinen by Heinz Schmoll in Kronberg, Germany.","1943.jpg"],
         ["1962","First PCB Drilling Machine","The first PCB drilling machine in Europe, a defining milestone for the electronics manufacturing industry.","1962.jpg"],
