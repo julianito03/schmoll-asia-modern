@@ -145,7 +145,7 @@ ${main}
 </main>
 ${FOOTER}
 <script src="assets/js/i18n.js?v=48"></script>
-<script src="assets/js/main.js?v=49"></script>
+<script src="assets/js/main.js?v=50"></script>
 ${scripts}</body>
 </html>`;
 }
